@@ -40,7 +40,17 @@ Route::prefix('admin')->group(function(){
         /**
          * notícias
          */
-        //Route::resource('noticias', 'Noticias\NoticiasController', ['only' => ['index', 'store', 'create', 'edit', 'update']]);
+        Route::resource('noticias', 'Noticias\NoticiasController', ['only' => ['index', 'store', 'create', 'edit', 'update']]);
+        /**
+         * categorias
+         */
+        Route::resource('categorias', 'Noticias\NoticiasCategoriasController', ['only' => ['index', 'create', 'store', 'edit', 'update']]);
 
+        /**
+         *
+         * RESOLVER PROBLEMA VER-NOTICIA NO SITE
+         *
+         */
+        //Route::name('ver-noticia')->get('/ver-noticia/{noticia}', 'NoticiasController@verNoticia');
     });
 });

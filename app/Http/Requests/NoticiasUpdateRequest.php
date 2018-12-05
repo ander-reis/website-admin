@@ -13,7 +13,7 @@ class NoticiasUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,26 @@ class NoticiasUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $this->sanitize();
+
         return [
-            //
+            'id_categoria' => 'required',
+            'dt_noticia' => 'required|date_format:Y-m-d',
+            'hr_noticia' => 'required',
+            'ds_resumo' => 'required|max:80',
+            'ds_texto' => 'required',
+            'fl_exibir_destaque' => 'required',
+            'fl_oculta' => 'required'
         ];
+    }
+
+    /**
+     *  sanitize html
+     */
+    public function sanitize()
+    {
+        $input = $this->all();
+        $input['ds_resumo'] = trim(filter_var($input['ds_resumo'], FILTER_SANITIZE_STRING));
+        $this->replace($input);
     }
 }

@@ -13,7 +13,7 @@ class NoticiasCategoriaUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,20 @@ class NoticiasCategoriaUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $this->sanitize();
+
         return [
-            //
+            'ds_categoria' => 'required|max:50'
         ];
+    }
+
+    /**
+     *  sanitize html
+     */
+    public function sanitize()
+    {
+        $input = $this->all();
+        $input['ds_categoria'] = trim(filter_var($input['ds_categoria'], FILTER_SANITIZE_STRING));
+        $this->replace($input);
     }
 }

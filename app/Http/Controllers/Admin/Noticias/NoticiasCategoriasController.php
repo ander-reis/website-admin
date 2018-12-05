@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Noticias;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticiasCategoriaCreateRequest;
 use App\Http\Requests\NoticiasCategoriaUpdateRequest;
 use App\Repositories\NoticiasCategoriaRepository;
-use App\Validators\NoticiasCategoriaValidator;
 
 /**
  * Class NoticiasCategoriasController.
@@ -24,21 +19,15 @@ class NoticiasCategoriasController extends Controller
      */
     protected $repository;
 
-    /**
-     * @var NoticiasCategoriaValidator
-     */
-    protected $validator;
 
     /**
      * NoticiasCategoriasController constructor.
      *
      * @param NoticiasCategoriaRepository $repository
-     * @param NoticiasCategoriaValidator $validator
      */
-    public function __construct(NoticiasCategoriaRepository $repository, NoticiasCategoriaValidator $validator)
+    public function __construct(NoticiasCategoriaRepository $repository)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
     }
 
     /**
@@ -48,23 +37,24 @@ class NoticiasCategoriasController extends Controller
      */
     public function index()
     {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $noticiasCategorias = $this->repository->all();
+        $noticiasCategorias = $this->repository->orderBy('id')->paginate();
+        return view('admin.categorias.index', compact('noticiasCategorias'));
+    }
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $noticiasCategorias,
-            ]);
-        }
-
-        return view('noticiasCategorias.index', compact('noticiasCategorias'));
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.categorias.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  NoticiasCategoriaCreateRequest $request
+     * @param  NoticiasCategoriasCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
@@ -73,53 +63,14 @@ class NoticiasCategoriasController extends Controller
     public function store(NoticiasCategoriaCreateRequest $request)
     {
         try {
+            $data = $request->only(array_keys($request->all()));
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $this->repository->create($data);
 
-            $noticiasCategorium = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'NoticiasCategoria created.',
-                'data'    => $noticiasCategorium->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            return redirect()->route('admin.categorias.index')->with('message', 'Categoria cadastrada com sucesso');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error-message', 'Não foi possível cadastrar a categoria');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $noticiasCategorium = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $noticiasCategorium,
-            ]);
-        }
-
-        return view('noticiasCategorias.show', compact('noticiasCategorium'));
     }
 
     /**
@@ -131,15 +82,15 @@ class NoticiasCategoriasController extends Controller
      */
     public function edit($id)
     {
-        $noticiasCategorium = $this->repository->find($id);
+        $categorias = $this->repository->find($id);
 
-        return view('noticiasCategorias.edit', compact('noticiasCategorium'));
+        return view('admin.categorias.edit', compact('categorias'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  NoticiasCategoriaUpdateRequest $request
+     * @param  NoticiasCategoriasUpdateRequest $request
      * @param  string            $id
      *
      * @return Response
@@ -149,56 +100,11 @@ class NoticiasCategoriasController extends Controller
     public function update(NoticiasCategoriaUpdateRequest $request, $id)
     {
         try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
-            $noticiasCategorium = $this->repository->update($request->all(), $id);
-
-            $response = [
-                'message' => 'NoticiasCategoria updated.',
-                'data'    => $noticiasCategorium->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            $data = $request->only(array_keys($request->all()));
+            $this->repository->update($data, $id);
+            return redirect()->to($data['redirects_to'])->with('message', 'Categoria editado com sucesso');
+        } catch (\Exception $e) {
+            return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a categoria');
         }
-    }
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'NoticiasCategoria deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
-
-        return redirect()->back()->with('message', 'NoticiasCategoria deleted.');
     }
 }

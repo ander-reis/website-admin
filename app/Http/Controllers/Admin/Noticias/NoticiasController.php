@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Noticias;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticiasCreateRequest;
 use App\Http\Requests\NoticiasUpdateRequest;
 use App\Repositories\NoticiasRepository;
-use App\Validators\NoticiasValidator;
 
 /**
  * Class NoticiasController.
@@ -25,20 +20,13 @@ class NoticiasController extends Controller
     protected $repository;
 
     /**
-     * @var NoticiasValidator
-     */
-    protected $validator;
-
-    /**
      * NoticiasController constructor.
      *
      * @param NoticiasRepository $repository
-     * @param NoticiasValidator $validator
      */
-    public function __construct(NoticiasRepository $repository, NoticiasValidator $validator)
+    public function __construct(NoticiasRepository $repository)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
     }
 
     /**
@@ -48,17 +36,19 @@ class NoticiasController extends Controller
      */
     public function index()
     {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $noticias = $this->repository->all();
+        $noticias = $this->repository->orderBy('id', 'desc')->paginate();
 
-        if (request()->wantsJson()) {
+        return view('admin.noticias.index', compact('noticias'));
+    }
 
-            return response()->json([
-                'data' => $noticias,
-            ]);
-        }
-
-        return view('noticias.index', compact('noticias'));
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.noticias.create');
     }
 
     /**
@@ -73,53 +63,13 @@ class NoticiasController extends Controller
     public function store(NoticiasCreateRequest $request)
     {
         try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-            $noticia = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'Noticias created.',
-                'data'    => $noticia->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            $data = $request->only(array_keys($request->all()));
+            $data['dt_noticia'] = Noticias::convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            $this->repository->create($data);
+            return redirect()->route('admin.noticias.index')->with('message', 'Cadastro realizado com sucesso');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $noticia = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $noticia,
-            ]);
-        }
-
-        return view('noticias.show', compact('noticia'));
     }
 
     /**
@@ -131,9 +81,9 @@ class NoticiasController extends Controller
      */
     public function edit($id)
     {
-        $noticia = $this->repository->find($id);
+        $noticias = $this->repository->find($id);
 
-        return view('noticias.edit', compact('noticia'));
+        return view('admin.noticias.edit', compact('noticias'));
     }
 
     /**
@@ -149,56 +99,16 @@ class NoticiasController extends Controller
     public function update(NoticiasUpdateRequest $request, $id)
     {
         try {
+            $data = $request->only(array_keys($request->all()));
+            $data['dt_noticia'] = Noticias::convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            unset($data['hr_noticia']);
+            $this->repository->update($data, $id);
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
-            $noticia = $this->repository->update($request->all(), $id);
-
-            $response = [
-                'message' => 'Noticias updated.',
-                'data'    => $noticia->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            //return redirect()->route('admin.noticias.index')->with('message', 'Notícia editada com sucesso');
+            return redirect()->to($data['redirects_to'])->with('message', 'Notícia editado com sucesso');
+        } catch (\Exception $e) {
+            //return redirect()->back()->with('error-message', 'Não foi possível editar a notícia');
+            return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a notícia');
         }
-    }
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'Noticias deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
-
-        return redirect()->back()->with('message', 'Noticias deleted.');
     }
 }
