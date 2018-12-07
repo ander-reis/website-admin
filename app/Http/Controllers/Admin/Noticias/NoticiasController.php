@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Noticias;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticiasCreateRequest;
 use App\Http\Requests\NoticiasUpdateRequest;
+use App\Models\Noticias;
 use App\Repositories\NoticiasRepository;
 
 /**

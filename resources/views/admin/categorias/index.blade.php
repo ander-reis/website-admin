@@ -1,0 +1,44 @@
+@extends('layouts.admin')
+
+@section('content')
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Categorias</h1>
+            <p>
+                <a href="{{ route('admin.categorias.create') }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Categoria</a>
+            </p>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th class="text-center">Data do Cadastro</th>
+                    <th class="text-center">Data da Edição</th>
+                    <th class="text-center">Editar</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($noticiasCategorias as $categoria)
+                    <tr>
+                        <td>{{ $categoria->id }}</td>
+                        <td>{{ $categoria->ds_categoria }}</td>
+                        <td class="text-center">{{ $categoria->created_at_formatted }}</td>
+                        <td class="text-center">{{ $categoria->updated_at_formatted }}</td>
+
+                        <td class="text-center">
+                            <a class="text-dark" href="{{ route('admin.categorias.edit', ['noticia' => $categoria->id]) }}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true">&nbsp;</i></a>
+                            {{--<a href="{{ route('clients.edit',['client' => $client->id])}}">Editar</a> |--}}
+                            {{--<a href="{{ route('clients.show',['client' => $client->id])}}">Ver</a>--}}
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+            {{--paginacao--}}
+            {!! $noticiasCategorias->links() !!}
+
+        </div>
+    </div>
+@endsection()

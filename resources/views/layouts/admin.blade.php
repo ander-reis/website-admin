@@ -15,7 +15,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+
+    <!-- Highcharts -->
+    <script src="{{ asset('js/highcharts.js') }}"></script>
 </head>
 <body>
     <div id="app">
@@ -33,6 +36,39 @@
 
                         <li class="nav-item {{ active('admin.noticias.*') }}">
                             <a class="nav-link" href="{{ route('admin.noticias.index') }}">Notícias</a>
+                        </li>
+
+                        <li class="nav-item {{ active('admin.slider.*') }}">
+                            <a class="nav-link" href="{{ route('admin.slider.index') }}">Slider</a>
+                        </li>
+
+                        <li class="nav-item {{ active('admin.owl-carousel.*') }}">
+                            <a class="nav-link" href="{{ route('admin.owl-carousel.index') }}">Owl Carousel</a>
+                        </li>
+
+                        <li class="nav-item {{ active('admin.paginas.*') }}">
+                            <a class="nav-link" href="{{ route('admin.paginas.index') }}">Páginas Principais</a>
+                        </li>
+
+                        <li class="nav-item {{ active('admin.menu') }}">
+                            <a class="nav-link" href="{{ route('admin.menu', 'menu=1') }}">Menu<span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item dropdown mx-3 {{ active('admin.convencao.*') }}">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Convênções e Acordos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.convencao.index', ['convencao' => 2]) }}">Educação Básica</a>
+                                <a class="dropdown-item" href="{{ route('admin.convencao.index', ['convencao' => 1]) }}">Ensino Superior</a>
+                                <a class="dropdown-item" href="{{ route('admin.convencao.index', ['convencao' => 9]) }}">PUC-SP</a>
+                                <a class="dropdown-item" href="{{ route('admin.convencao.index', ['convencao' => 3]) }}">Sesi</a>
+                                <a class="dropdown-item" href="{{ route('admin.convencao.index', ['convencao' => 4]) }}">Senai</a>
+                                <a class="dropdown-item" href="{{ route('admin.convencao.index', ['convencao' => 5]) }}">Senai Superior</a>
+                                <a class="dropdown-item" href="{{ route('admin.convencao.index', ['convencao' => 6]) }}">Senac</a>
+                                <a class="dropdown-item" href="{{ route('admin.convencao.index', ['convencao' => 8]) }}">Mackenzie</a>
+                                <a class="dropdown-item" href="{{ route('admin.convencao.index', ['convencao' => 7]) }}">Ensino Supletivo</a>
+                            </div>
                         </li>
 
                     </ul>
@@ -72,7 +108,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/admin.js') }}"></script>
 
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
@@ -85,6 +121,6 @@
         $("input[maxlength]").maxlength();
     </script>
 
-    {{--@stack('scripts')--}}
+    @stack('scripts')
 </body>
 </html>
