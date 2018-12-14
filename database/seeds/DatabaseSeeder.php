@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ConvencoesEntidadeTableSeeder::class);
         $this->call(ConvencoesTableSeeder::class);
         $this->call(ConvencoesClausulasTableSeeder::class);
+        $this->call(UserSinproWebsiteTableSeeder::class);
     }
 }

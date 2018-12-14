@@ -108,42 +108,4 @@ class Noticias extends Model implements Transformable
     {
         return substr($this->dt_noticia, 11, -3);
     }
-
-    /**
-     * Mutators formata limit ds_texto
-     *
-     * @return string
-     */
-    public function getDsTextoFormattedAttribute()
-    {
-        return Str::words(strip_tags($this->ds_texto), 5, '...');
-    }
-
-    /**
-     * Mutators formata ds_resumo para 6 palavras
-     *
-     * @return string
-     */
-    public function getDsResumoNoticiaAttribute()
-    {
-        return Str::words(strip_tags($this->ds_resumo), 6, '...');
-    }
-
-    /**
-     * Mutators formata ds_resumo para 10 palavras no destaque da home
-     * @return string
-     */
-    public function getDsTextoHomeDestaqueRowAttribute()
-    {
-        return Str::words(strip_tags($this->ds_texto), 10, '...');
-    }
-
-    /**
-     * Mutators formata ds_resumo para 100 palavras na coluna
-     * @return string
-     */
-    public function getDsTextoHomeDestaqueColAttribute()
-    {
-        return Str::words(strip_tags($this->ds_texto), 100, '...');
-    }
 }

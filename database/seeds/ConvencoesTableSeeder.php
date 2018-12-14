@@ -13,7 +13,7 @@ class ConvencoesTableSeeder extends Seeder
     {
         $entidadesId = \App\Models\ConvencoesEntidade::all();
 
-        $convencoes = factory(\App\Models\Convencoes::class, 5)->make();
+        $convencoes = factory(\App\Models\Convencoes::class, 100)->make();
 
         $repository = app(\App\Repositories\ConvencoesRepository::class);
         $collectionConvencoes = $this->getConvencoes();

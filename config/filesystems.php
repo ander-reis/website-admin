@@ -55,9 +55,14 @@ return [
             'visibility' => 'public',
         ],
 
+//        'upload_local' => [
+//            'driver' => 'local',
+//            'root' => storage_path('app/public/upload')
+//        ],
+
         'upload_local' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/upload')
+            'root' => env('PATH_STORAGE_UPLOAD').'storage\app\public\upload'
         ],
 
         's3' => [

@@ -35,9 +35,9 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                {{--<a class="text-info" href="{{ route('ver-noticia', ['noticia-id' => $noticia->id]) }}" target="_blank">--}}
-                                    {{--<i class="fa fa-eye fa-2x" aria-hidden="true"></i>--}}
-                                {{--</a>--}}
+                                <a class="text-info" href="{{ env('APP_URL_SITE_VER_NOTICIA') }}{{ $noticia->id }}" target="_blank">
+                                    <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

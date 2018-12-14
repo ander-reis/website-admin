@@ -49,13 +49,6 @@ Route::prefix('admin')->group(function(){
         Route::resource('categorias', 'Noticias\NoticiasCategoriasController', ['only' => ['index', 'create', 'store', 'edit', 'update']]);
 
         /**
-         *
-         * RESOLVER PROBLEMA VER-NOTICIA NO SITE
-         *
-         */
-        //Route::name('ver-noticia')->get('/ver-noticia/{noticia}', 'NoticiasController@verNoticia');
-
-        /**
          * slider
          */
         Route::resource('slider', 'Slider\SlidersController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
