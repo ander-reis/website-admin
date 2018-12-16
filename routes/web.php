@@ -76,8 +76,6 @@ Route::prefix('admin')->group(function(){
             Route::name('menu')->get('/', 'MenuTree\MenuController@index');
             Route::name('haddcustommenu')->post('/addcustommenu', 'MenuTree\MenuController@addcustommenu');
             Route::name('hdeleteitemmenu')->post('/deleteitemmenu', 'MenuTree\MenuController@deleteitemmenu');
-            Route::name('hdeletemenug')->post('/deletemenug','MenuTree\MenuController@deletemenug');
-            Route::name('hcreatenewmenu')->post('/createnewmenu', 'MenuTree\MenuController@createnewmenu');
             Route::name('hgeneratemenucontrol')->post('/generatemenucontrol', 'MenuTree\MenuController@generatemenucontrol');
             Route::name('hupdateitem')->post('/updateitem', 'MenuTree\MenuController@updateitem');
         });

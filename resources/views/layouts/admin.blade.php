@@ -51,7 +51,7 @@
                         </li>
 
                         <li class="nav-item {{ active('admin.menu') }}">
-                            <a class="nav-link" href="{{ route('admin.menu', 'menu=1') }}">Menu<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ route('admin.menu', 'menu=1') }}">Menu</a>
                         </li>
 
                         <li class="nav-item dropdown mx-3 {{ active('admin.convencao.*') }}">

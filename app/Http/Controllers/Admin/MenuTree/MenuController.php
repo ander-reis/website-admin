@@ -22,13 +22,13 @@ class MenuController extends Controller
         return view('admin.menu-tree.index', compact('indmenu', 'menus'));
     }
 
-    public function createnewmenu()
-    {
-        $menu = new Menus();
-        $menu->name = request()->input("menuname");
-        $menu->save();
-        return json_encode(array("resp" => $menu->id));
-    }
+//    public function createnewmenu()
+//    {
+//        $menu = new Menus();
+//        $menu->name = request()->input("menuname");
+//        $menu->save();
+//        return json_encode(array("resp" => $menu->id));
+//    }
 
     public function deleteitemmenu()
     {
@@ -37,20 +37,20 @@ class MenuController extends Controller
         $menuitem->delete();
     }
 
-    public function deletemenug()
-    {
-        $menus = new MenuItems();
-        $getall = $menus->getall(request()->input("id"));
-        if (count($getall) == 0) {
-            $menudelete = Menus::find(request()->input("id"));
-            $menudelete->delete();
-
-            return json_encode(array("resp" => "you delete this item"));
-        } else {
-            return json_encode(array("resp" => "You have to delete all items first", "error" => 1));
-
-        }
-    }
+//    public function deletemenug()
+//    {
+//        $menus = new MenuItems();
+//        $getall = $menus->getall(request()->input("id"));
+//        if (count($getall) == 0) {
+//            $menudelete = Menus::find(request()->input("id"));
+//            $menudelete->delete();
+//
+//            return json_encode(array("resp" => "you delete this item"));
+//        } else {
+//            return json_encode(array("resp" => "You have to delete all items first", "error" => 1));
+//
+//        }
+//    }
 
     public function updateitem()
     {
@@ -76,12 +76,14 @@ class MenuController extends Controller
     {
         $menuitem = new MenuItems;
         $menuitem->label = request()->input("labelmenu");
-        $menuitem->link = (request()->input("linkmenu")) ? request()->input('linkmenu') : '#';
+//        $menuitem->link = (request()->input("linkmenu")) ? request()->input('linkmenu') : '#';
+        $menuitem->link = '#';
         $menuitem->class_active = request()->input("categorymenu");
         $menuitem->menu = request()->input("idmenu");
         $menuitem->sort = MenuItems::getNextSortRoot(request()->input("idmenu"));
         $menuitem->menu_custom = (request()->input('custommenu') == 0) ? 0 : 1;
         $menuitem->save();
+        return response()->json(['success'=>'Data is successfully added']);
     }
 
     public function generatemenucontrol()
@@ -89,7 +91,6 @@ class MenuController extends Controller
 //        $menu = Menu::find(request()->input("idmenu"));
 //        $menu->name = request()->input("menuname");
 //        $menu->save();
-
         if (is_array(request()->input("arraydata"))) {
             foreach (request()->input("arraydata") as $value) {
                 $menuitem = MenuItems::find($value["id"]);
