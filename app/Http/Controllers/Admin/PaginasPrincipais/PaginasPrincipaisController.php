@@ -78,9 +78,10 @@ class PaginasPrincipaisController extends Controller
             $data = $request->only(array_keys($request->all()));
 
             /**
-             * customiza url
+             * cria url
              */
-            $data['url_pagina'] = $this->customUrl($data['txt_titulo']);
+            $url = removeSpecialChars($data['txt_titulo']);
+            $data['url_pagina'] = customUrl($url);
 
             /**
              * cadastra pagina
@@ -143,9 +144,10 @@ class PaginasPrincipaisController extends Controller
             $data = $request->only(array_keys($request->all()));
 
             /**
-             * altera url
+             * cria url
              */
-            $data['url_pagina'] = self::customUrl($data['txt_titulo']);
+            $url = removeSpecialChars($data['txt_titulo']);
+            $data['url_pagina'] = customUrl($url);
 
             $edit_page = $this->repository->update($data, $id);
 
@@ -191,43 +193,5 @@ class PaginasPrincipaisController extends Controller
         } catch (\Exception $e){
             return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível excluir a página');
         }
-    }
-
-    /**
-     * Trata a url para a pagina
-     * @param $url
-     * @return mixed|string
-     */
-    private function customUrl($url)
-    {
-        $url_pagina = $this->removeSpecialChars($url);
-        $url_pagina = strtolower($url_pagina);
-        $url_pagina = str_replace(".", '', $url_pagina);
-        $url_pagina = str_replace(" ", '-', $url_pagina);
-        return $url_pagina;
-    }
-
-    /**
-     * Substitui letras com acentos
-     * @param $string
-     * @return string
-     */
-    public function removeSpecialChars($string)
-    {
-        $tr = strtr($string, array(
-                'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A',
-                'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E', 'Ê' => 'E', 'Ë' => 'E',
-                'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ð' => 'D', 'Ñ' => 'N',
-                'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O',
-                'Ù' => 'U', 'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y', 'Ŕ' => 'R',
-                'Þ' => 's', 'ß' => 'B', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a',
-                'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ç' => 'c', 'è' => 'e', 'é' => 'e',
-                'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i',
-                'ð' => 'o', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o',
-                'ö' => 'o', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ý' => 'y',
-                'þ' => 'b', 'ÿ' => 'y', 'ŕ' => 'r'
-            )
-        );
-        return $tr;
     }
 }

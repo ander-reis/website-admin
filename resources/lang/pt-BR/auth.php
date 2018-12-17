@@ -17,5 +17,5 @@ return [
     'forgot_password' => 'Esqueceu a senha?',
     'remember_me' => 'Lembrar-me',
     'password' => 'Senha',
-    'email_address' => 'E-mail'
+    'email_address' => 'E-mail',
 ];

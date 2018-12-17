@@ -37,7 +37,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Configura  novo username
+     * Sobreescreve username
      *
      * @return string
      */
@@ -47,12 +47,24 @@ class AuthController extends Controller
     }
 
     /**
+     * Sobreescreve validação do login
+     * @param Request $request
+     */
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'senha' => 'required|string',
+        ]);
+    }
+
+    /**
      * @param Request $request
      * @return array|\Illuminate\Http\JsonResponse
      */
     public function accessToken(Request $request)
     {
-//        $this->validateLogin($request);
+        $this->validateLogin($request);
 
         $credentials = $this->credentials($request);
 //        dd(\Auth::guard('api')->attempt($credentials));
