@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(NoticiasTableSeeder::class);
         $this->call(SliderTableSeeder::class);
         $this->call(OwlCarouselTableSeeder::class);
-//        $this->call(ConteudoPaginasPrincipaisTableSeeder::class);
+        $this->call(ConteudoPaginasPrincipaisTableSeeder::class);
         $this->call(MenuTreeTableSeeder::class);
         $this->call(MenuCategoriasTableSeeder::class);
         $this->call(MenuTreeItemsTableSeeder::class);

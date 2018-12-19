@@ -44,7 +44,7 @@ function addcustommenu() {
             // linkmenu: $("#custom-menu-item-url").val(),
             categorymenu: $("#custom-menu-item-category").val(),
             // idmenu : $("#idmenu").val()
-            idmenu: 1
+            idmenu: '1'
         },
         dataType: '',
         success: function (response) {

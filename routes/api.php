@@ -75,6 +75,16 @@ use Illuminate\Http\Request;
                  * Rota clausulas
                  */
                 ApiRoute::resource('/clausulas', 'ClausulasController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+
+                /**
+                 * Rota menu
+                 */
+                ApiRoute::resource('/menu', 'MenuController', ['only' => ['index']]);
+
+                /**
+                 * Rota paginas principais
+                 */
+                ApiRoute::resource('/paginas', 'PaginasPrincipaisController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
             });
     });
 });

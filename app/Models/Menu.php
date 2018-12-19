@@ -23,7 +23,6 @@ class Menu extends Model
     {
         $menuItem = new MenuItems;
         $menu_list = $menuItem->getall($menu_id);
-//        dd($menu_list);
         $roots = $menu_list->where('menu', (integer) $menu_id)->where('parent', 0);
 
         $items = self::tree($roots, $menu_list);

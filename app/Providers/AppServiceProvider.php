@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Convencoes;
 use App\Models\Noticias;
 use App\Transformers\NoticiasTransformer;
 use Dingo\Api\Exception\Handler;

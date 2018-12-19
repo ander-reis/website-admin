@@ -6,7 +6,7 @@
     ?>
     <link href="{{ asset('css/style-menu.css') }}" rel="stylesheet">
     <div id="hwpwrap">
-        <div class="custom-wp-admin wp-admin wp-core-ui js   menu-max-depth-0 nav-menus-php auto-fold admin-bar">
+        <div class="custom-wp-admin wp-admin wp-core-ui js menu-max-depth-0 nav-menus-php auto-fold admin-bar">
             <div id="wpwrap">
                 <div id="wpcontent">
                     <div id="wpbody">
@@ -14,39 +14,43 @@
                             <div class="wrap">
                                 <h1>{{ $indmenu->name }}</h1>
                                 <div id="nav-menus-frame">
-                                    <div id="menu-settings-column" class="metabox-holder">
-                                        <div class="clear"></div>
-                                        <div id="side-sortables" class="accordion-container">
-                                            <ul class="outer-border">
-                                                <li class="control-section accordion-section  open add-page"
-                                                    id="add-page">
-                                                    <h3 class="accordion-section-title hndle" tabindex="0"> Menu
-                                                        Personalizado</h3>
-                                                    <div class="accordion-section-content">
-                                                        <div class="inside">
-                                                            @component('admin.form-components._form_group',['field' => 'custom-menu-item-category'])
-                                                                {{ Form::label('custom-menu-item-category', 'Categoria', ['class' => 'control-label']) }}
-                                                                {{ Form::select('custom-menu-item-category', \App\Models\MenuCategorias::pluck('label', 'class_active'), null, ['style' => 'box-sizing: border-box', 'class' => 'form-control']) }}
-                                                            @endcomponent
-                                                            <div class="customlinkdiv" id="customlinkdiv">
-                                                                @component('admin.form-components._form_group_inline',['field' => 'custom-menu-item-name', 'class' => ''])
-                                                                    {{ Form::label('custom-menu-item-name', 'Nome', ['class' => 'howto control-label']) }}
-                                                                    {{ Form::text('custom-menu-item-name', null, ['class' => 'form-control', 'id' => 'custom-menu-item-name', 'placeholder' => 'Entre com o Nome', 'maxlength' => 100]) }}
+                                    @if(request()->has('menu')  && !empty(request()->input("menu")))
+                                        <div id="menu-settings-column" class="metabox-holder">
+                                            <div class="clear"></div>
+                                            <div id="side-sortables" class="accordion-container">
+                                                <ul class="outer-border">
+                                                    <li class="control-section accordion-section  open add-page"
+                                                        id="add-page">
+                                                        <h3 class="accordion-section-title hndle" tabindex="0"> Menu
+                                                            Personalizado</h3>
+                                                        <div class="accordion-section-content">
+                                                            <div class="inside">
+                                                                @component('admin.form-components._form_group',['field' => 'custom-menu-item-category'])
+                                                                    {{ Form::label('custom-menu-item-category', 'Categoria', ['class' => 'control-label']) }}
+                                                                    {{ Form::select('custom-menu-item-category', \App\Models\MenuCategorias::pluck('label', 'class_active'), null,
+                                                                    ['style' => 'box-sizing: border-box', 'class' => 'form-control']) }}
                                                                 @endcomponent
-                                                                <p class="button-controls">
-                                                                    <button class="btn btn-dark col-md-9"
-                                                                            id="custom-menu-btn-name"
-                                                                            onclick="addcustommenu()" disabled>Incluir
-                                                                    </button>
-                                                                    <span class="spinner" id="spincustomu"></span>
-                                                                </p>
+                                                                <div class="customlinkdiv" id="customlinkdiv">
+                                                                    @component('admin.form-components._form_group_inline',['field' => 'custom-menu-item-name', 'class' => ''])
+                                                                        {{ Form::label('custom-menu-item-name', 'Nome', ['class' => 'howto control-label']) }}
+                                                                        {{ Form::text('custom-menu-item-name', null, ['class' => 'form-control', 'id' => 'custom-menu-item-name', 'placeholder' => 'Entre com o Nome', 'maxlength' => 100]) }}
+                                                                    @endcomponent
+                                                                    <p class="button-controls">
+                                                                        <button class="btn btn-dark col-md-9"
+                                                                                id="custom-menu-btn-name"
+                                                                                onclick="addcustommenu()" disabled>
+                                                                            Incluir
+                                                                        </button>
+                                                                        <span class="spinner" id="spincustomu"></span>
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                     <div id="menu-management-liquid">
                                         <div id="menu-management">
                                             <form id="update-nav-menu" action="" method="post"
@@ -88,8 +92,7 @@
                                                                                     <span class="item-title">
                                                                                         <span class="menu-item-title">
                                                                                             <span id="menutitletemp_{{$m->id}}">{{$m->label}}</span>
-                                                                                            <span style="color: transparent;">|{{$m->id}}
-                                                                                                |</span>
+                                                                                            <span style="color: transparent;">|{{$m->id}}|</span>
                                                                                             <span>{!! $m->fl_status_formatted !!}</span>
                                                                                         </span>
                                                                                     </span>
@@ -137,7 +140,6 @@
                                                                                         <input type="text"
                                                                                                id="url_menu_{{$m->id}}"
                                                                                                class="widefat code edit-menu-item-url"
-                                                                                               id="url_menu_{{$m->id}}"
                                                                                                value="{{$m->link}}"
                                                                                                readonly>
                                                                                     </label>
@@ -235,10 +237,7 @@
             var updateitemr = '{{ route("admin.hupdateitem")}}';
             var generatemenucontrolr = '{{ route("admin.hgeneratemenucontrol") }}';
             var deleteitemmenur = '{{ route("admin.hdeleteitemmenu") }}';
-                    {{--var deletemenugr= '{{ route("admin.hdeletemenug") }}';--}}
-                    {{--var createnewmenur= '{{ route("admin.hcreatenewmenu") }}';--}}
             var csrftoken = "{{ csrf_token() }}";
-
             var menuwr = "{{ url()->current() }}";
 
             $.ajaxSetup({
@@ -272,5 +271,4 @@
         <script type="text/javascript" src="{{asset('js/menu/scripts2.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/menu/menu.js')}}"></script>
     @endpush
-
 @endsection

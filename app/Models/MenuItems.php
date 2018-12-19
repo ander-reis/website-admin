@@ -76,7 +76,6 @@ class MenuItems extends Model
      * @return mixed
      */
     public function getall($id) {
-//        return $this->where("menu", $id)->orderBy("sort", "asc")->get();
         return $this->where("menu", $id)->where('fl_status', '1')->orderBy("sort", "asc")->get();
     }
 

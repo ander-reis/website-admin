@@ -174,5 +174,10 @@ return [
         'year'                  => 'ano',
         'email'                 => 'e-mail',
         'remember'              => 'lembrar-se de mim',
+        'tp_busca'              => 'tipo de busca',
+        'txt_titulo_busca'      => 'título da busca',
+        'txt_titulo'            => 'título da página',
+        'ds_texto'              => 'texto',
+        'fl_status'             => 'status da página'
     ],
 ];
