@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UserSinproWebsiteTableSeeder extends Seeder
+class SinproWebsiteUserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

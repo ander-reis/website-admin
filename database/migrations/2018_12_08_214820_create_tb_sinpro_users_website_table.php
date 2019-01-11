@@ -19,6 +19,10 @@ class CreateTbSinproUsersWebsiteTable extends Migration
             $table->string('email')->unique();
             $table->string('matricula', 8)->unique();
             $table->string('cpf', 14)->unique();
+            $table->string('rg')->nullable();
+            $table->date('ds_data_nascimento')->nullable();
+            $table->string('ds_sexo', 2)->nullable();
+            $table->string('ds_disciplina')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

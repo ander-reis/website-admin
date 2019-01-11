@@ -178,6 +178,10 @@ return [
         'txt_titulo_busca'      => 'título da busca',
         'txt_titulo'            => 'título da página',
         'ds_texto'              => 'texto',
-        'fl_status'             => 'status da página'
+        'fl_status'             => 'status da página',
+        'id_categoria'          => 'categoria',
+        'ds_resumo'             => 'título',
+        'dt_noticia'            => 'data',
+        'hr_noticia'            => 'horário'
     ],
 ];

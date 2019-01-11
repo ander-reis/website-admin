@@ -139,7 +139,6 @@ class ConvencoesClausulasController extends Controller
         try{
             $id_clausula = $request->only(array_keys($request->all()))['id_clausula'];
             $this->clausulasRepository->delete($id_clausula);
-            $request->session()->flash('message', 'Categoria excluída com sucesso.');
             return redirect()->route('admin.convencao.clausulas.index', ['convencao' => $id])
                 ->with('message', 'Cláusula excluído com sucesso');
         }catch (\Exception $e){

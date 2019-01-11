@@ -14,7 +14,7 @@ class UsersWebsite extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'matricula', 'cpf'
+        'name', 'email', 'password', 'matricula', 'cpf', 'email', 'rg', 'ds_data_nascimento', 'ds_sexo', 'ds_disciplina'
     ];
 
     /**
