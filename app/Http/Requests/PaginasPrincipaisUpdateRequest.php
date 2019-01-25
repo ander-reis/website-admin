@@ -23,6 +23,8 @@ class PaginasPrincipaisUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $this->sanitize();
+
         return [
             'tp_busca' => 'required',
             'txt_titulo_busca' => 'required|max:75',

@@ -17,8 +17,8 @@ class CreateTbSinproEscolasTesteTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('escola', 255);
-            $table->string('endereco', 255);
-            $table->string('telefone', 255);
+            $table->string('endereco', 255)->nullable();
+            $table->string('telefone', 255)->nullable();
             $table->timestamps();
         });
     }

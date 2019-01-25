@@ -99,5 +99,12 @@ Route::prefix('admin')->group(function(){
              */
             Route::resource('convencao.clausulas', 'Convencoes\ConvencoesClausulasController', ['only' => ['index', 'store', 'create', 'edit', 'update', 'destroy']]);
         });
+
+        /**
+         * grupo configurações
+         */
+        Route::group(['prefix' => 'configuracoes'], function(){
+//            Route::resource('rede-social', 'Configuracoes\RedesSociaisController');
+        });
     });
 });

@@ -16,3 +16,10 @@ $('#deletePaginaModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     modal.find('#id-pagina').val(recipient);
 });
+
+$('#updateRedeSocialModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var recipient = button.data('whatever');
+    var modal = $(this);
+    modal.find('#id-rede-social').val(recipient);
+});
