@@ -65,7 +65,7 @@ class NoticiasController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            $data['dt_noticia'] = Noticias::convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
             $this->repository->create($data);
             return redirect()->route('admin.noticias.index')->with('message', 'Cadastro realizado com sucesso');
         } catch (\Exception $e) {
@@ -101,7 +101,7 @@ class NoticiasController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            $data['dt_noticia'] = Noticias::convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
             unset($data['hr_noticia']);
             $this->repository->update($data, $id);
 

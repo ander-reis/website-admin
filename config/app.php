@@ -154,7 +154,6 @@ return [
         Unisharp\Ckeditor\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Folklore\Image\ImageServiceProvider::class,
-//        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -55,18 +55,6 @@ class Noticias extends Model implements Transformable
     }
 
     /**
-     * Concatena data e hora
-     *
-     * @param $date
-     * @param $hour
-     * @return string
-     */
-    public static function convertDateTime($date, $hour)
-    {
-        return $date . ' ' . $hour . ':00';
-    }
-
-    /**
      * Mutators formata data
      *
      * @return string
