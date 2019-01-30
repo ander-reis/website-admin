@@ -17,11 +17,35 @@ class Noticias extends Model implements Transformable
     use TransformableTrait;
 
     /**
-     * Table
+     * Conexão database website
+     */
+//    protected $connection = 'sqlsrv-website';
+//    protected $table = 'tb_sinpro_noticias';
+
+    /**
+     * Conexão teste Postgre
+     */
+    protected $connection = 'pgsql';
+    protected $table = 'tb_sinpro_noticias';
+
+    /**
+     * configura primary key
      *
      * @var string
      */
-    protected $table = 'tb_sinpro_noticias';
+    protected $primaryKey = 'id_noticia';
+
+    /**
+     * configura CREATED_AT
+     */
+    const CREATED_AT = 'dt_cadastro';
+
+    /**
+     * não permite a criação dos campos created_at e updated_at no database
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -30,6 +54,8 @@ class Noticias extends Model implements Transformable
      */
     protected $fillable = [
         'id_categoria',
+        'dt_cadastro',
+        'dt_expira',
         'dt_noticia',
         'fl_exibir_destaque',
         'ds_resumo',
@@ -40,6 +66,7 @@ class Noticias extends Model implements Transformable
 
     /**
      * Dates
+     *
      * @var array
      */
     protected $dates = ['dt_noticia'];
@@ -63,7 +90,6 @@ class Noticias extends Model implements Transformable
     public function getDtNoticiaFormattedAttribute()
     {
         return (new \DateTime($this->dt_noticia))->format('d/m/Y');
-
     }
 
     /**
@@ -74,7 +100,7 @@ class Noticias extends Model implements Transformable
      */
     public function getCreatedAtFormattedAttribute()
     {
-        return (new \DateTime($this->created_at))->format('d/m/Y');
+        return (new \DateTime($this->dt_cadastro))->format('d/m/Y');
     }
 
     /**

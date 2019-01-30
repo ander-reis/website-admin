@@ -14,9 +14,8 @@ class CreateTbSinproNoticiasCategoriasTable extends Migration
     public function up()
     {
         Schema::create('tb_sinpro_noticias_categorias', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_categoria');
             $table->string('ds_categoria', 50);
-            $table->timestamps();
         });
     }
 

@@ -41,7 +41,7 @@ class LoginController extends Controller
     /**
      * Valida request user
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return void
      */
     protected function validateLogin(Request $request)
@@ -55,7 +55,7 @@ class LoginController extends Controller
     /**
      * Valida quais campos devem ser pegos da request
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     protected function credentials(Request $request)

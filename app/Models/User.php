@@ -11,10 +11,23 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable;
 
     /**
-     * Nome database
-     *
-     * @var string
+     * Conexão database SINPRO
      */
+//    protected $connection = 'sqlsrv-sinpro';
+//    protected $table = 'Cadastro_Professores';
+//    protected $primaryKey = 'Codigo_Professor';
+//    protected $rememberTokenName = null;
+
+    /**
+     * Conexão database website
+     */
+//    protected $table = 'tb_sinpro_noticias';
+//    protected $connection = 'sqlsrv-website';
+
+    /**
+     * Conexão teste Postgre
+     */
+    protected $connection = 'pgsql';
     protected $table = 'tb_sinpro_usuarios';
 
     /**

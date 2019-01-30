@@ -16,11 +16,20 @@ class NoticiasCategoria extends Model implements Transformable
     use TransformableTrait;
 
     /**
-     * Table
-     *
-     * @var $table string
+     * Conexão database website
      */
+//    protected $connection = 'sqlsrv-website';
+//    protected $table = 'tb_sinpro_noticias_categorias';
+//    protected $primaryKey = 'id_categoria';
+//    public $timestamps = false;
+
+    /**
+     * Conexão teste Postgre
+     */
+    protected $connection = 'pgsql';
     protected $table = 'tb_sinpro_noticias_categorias';
+    protected $primaryKey = 'id_categoria';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
