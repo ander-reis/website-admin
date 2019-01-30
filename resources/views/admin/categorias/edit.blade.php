@@ -10,7 +10,7 @@
             {{Session::get('error-message')}}
         @endcomponent
 
-        {{ Form::model($categorias, ['route' => ['admin.categorias.update', $categorias->id], 'method' => 'PUT' ]) }}
+        {{ Form::model($categorias, ['route' => ['admin.categorias.update', $categorias->id_categoria], 'method' => 'PUT' ]) }}
 
         @include('admin.categorias._form')
 

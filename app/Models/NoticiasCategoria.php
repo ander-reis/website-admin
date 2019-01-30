@@ -47,26 +47,4 @@ class NoticiasCategoria extends Model implements Transformable
     {
         return $this->hasMany(Noticias::class, 'id_categoria');
     }
-
-    /**
-     * Mutators formata data criação
-     *
-     * @return string
-     * @throws \Exception
-     */
-    public function getCreatedAtFormattedAttribute()
-    {
-        return (new \DateTime($this->created_at))->format('d/m/Y');
-    }
-
-    /**
-     * Mutators formata data edição
-     *
-     * @return string
-     * @throws \Exception
-     */
-    public function getUpdatedAtFormattedAttribute()
-    {
-        return (new \DateTime($this->updated_at))->format('d/m/Y');
-    }
 }
