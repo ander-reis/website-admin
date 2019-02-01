@@ -14,15 +14,15 @@ class CreateTbSinproConteudoPaginasPrincipaisTable extends Migration
     public function up()
     {
         Schema::create('tb_sinpro_conteudo_paginas_principais', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_pagina');
             $table->smallInteger('tp_busca');
             $table->string('txt_titulo_busca', 75);
             $table->string('txt_titulo', 75);
-            $table->text('ds_texto');
+            $table->text('txt_pagina');
             $table->string('url_pagina', 100)->unique();
-            $table->string('ds_palavra_chave', 150)->nullable();
-            $table->char('fl_status', 1);
-            $table->timestamps();
+            $table->string('ds_palavra_chave', 150);
+            $table->dateTime('dt_alteracao');
+            $table->tinyInteger('fl_status');
         });
     }
 

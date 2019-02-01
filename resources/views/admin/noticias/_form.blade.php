@@ -36,14 +36,14 @@
 @endcomponent
 
 <div class="row mb-3">
-@component('admin.form-components._form_group_inline',['field' => 'dt_noticia', 'class' => 'col-md-6'])
-        {{ Form::label('dt_noticia', 'Data da Notícia', ['class' => 'control-label']) }}
-        {{ Form::date('dt_noticia', (isset($noticias->dt_noticia) ? $noticias->dt_noticia : \Carbon\Carbon::now()), ['class' => 'form-control']) }}
+@component('admin.form-components._form_group_inline',['field' => 'dt_cadastro', 'class' => 'col-md-6'])
+        {{ Form::label('dt_cadastro', 'Data da Notícia', ['class' => 'control-label']) }}
+        {{ Form::date('dt_cadastro', (isset($noticias->dt_cadastro_utc_formatted) ? $noticias->dt_cadastro_utc_formatted : \Carbon\Carbon::now()), ['class' => 'form-control']) }}
 @endcomponent
 
 @component('admin.form-components._form_group_inline', ['field' => 'hr_noticia', 'class' => 'col-md-6'])
         {{ Form::label('hr_noticia', 'Horário da Notícia', ['class' => 'control-label']) }}
-        {{ Form::time('hr_noticia', (isset($noticias->hr_noticia_formatted) ? $noticias->hr_noticia_formatted : ''), ['class' => 'form-control']) }}
+        {{ Form::time('hr_noticia', (isset($noticias->hr_noticia_formatted) ? $noticias->hr_noticia_formatted : \Carbon\Carbon::now()->format('H:i')), ['class' => 'form-control']) }}
 @endcomponent
 </div>
 

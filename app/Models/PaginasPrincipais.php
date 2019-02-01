@@ -12,10 +12,29 @@ use Illuminate\Database\Eloquent\Model;
 class PaginasPrincipais extends Model
 {
     /**
-     * Table
+     * Conexão database website
+     */
+//    protected $connection = 'sqlsrv-website';
+//    protected $table =  'tb_sinpro_conteudo_paginas_principais';
+
+    /**
+     * Conexão teste Postgre
+     */
+    protected $connection = 'pgsql';
+    protected $table =  'tb_sinpro_conteudo_paginas_principais';
+
+    /**
      * @var string
      */
-    protected $table =  'tb_sinpro_conteudo_paginas_principais';
+    protected $primaryKey = 'id_pagina';
+    /**
+     * configura updated_at
+     */
+    public const UPDATED_AT = 'dt_alteracao';
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -26,11 +45,14 @@ class PaginasPrincipais extends Model
         'tp_busca',
         'txt_titulo_busca',
         'txt_titulo',
-        'ds_texto',
+        'txt_pagina',
         'url_pagina',
         'ds_palavra_chave',
+        'dt_alteracao',
         'fl_status'
     ];
+
+    protected $hidden = ['dt_alteracao'];
 
     /**
      * Mutators formata status da página
@@ -41,5 +63,4 @@ class PaginasPrincipais extends Model
     {
         return $this->fl_status ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
     }
-
 }

@@ -65,11 +65,11 @@ class NoticiasController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            $data['dt_cadastro'] = convertDateTime($data['dt_cadastro'], $data['hr_noticia']);
             $this->repository->create($data);
             return redirect()->route('admin.noticias.index')->with('message', 'Cadastro realizado com sucesso');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
+            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro' . $e->getMessage());
         }
     }
 
@@ -83,7 +83,6 @@ class NoticiasController extends Controller
     public function edit($id)
     {
         $noticias = $this->repository->find($id);
-
         return view('admin.noticias.edit', compact('noticias'));
     }
 
@@ -101,7 +100,7 @@ class NoticiasController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            $data['dt_cadastro'] = convertDateTime($data['dt_cadastro'], $data['hr_noticia']);
             unset($data['hr_noticia']);
             $this->repository->update($data, $id);
 

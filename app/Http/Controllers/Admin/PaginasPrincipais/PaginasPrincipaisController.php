@@ -8,6 +8,7 @@ use App\Http\Requests\PaginasPrincipaisDeleteRequest;
 use App\Http\Requests\PaginasPrincipaisUpdateRequest;
 use App\Models\MenuItems;
 use App\Repositories\PaginasPrincipaisRepository;
+use Carbon\Carbon;
 
 /**
  * Class PaginasPrincipaisController.
@@ -20,14 +21,6 @@ class PaginasPrincipaisController extends Controller
      * @var PaginasPrincipaisRepository
      */
     protected $repository;
-    /**
-     * @var MenuItems
-     */
-    private $menuItems;
-    /**
-     * @var Menu
-     */
-    private $menu;
 
     /**
      * PaginasPrincipaisController constructor.
@@ -35,10 +28,9 @@ class PaginasPrincipaisController extends Controller
      * @param PaginasPrincipaisRepository $repository
      * @param MenuItems $menuItems
      */
-    public function __construct(PaginasPrincipaisRepository $repository, MenuItems $menuItems)
+    public function __construct(PaginasPrincipaisRepository $repository)
     {
         $this->repository = $repository;
-        $this->menuItems = $menuItems;
     }
 
     /**
@@ -48,7 +40,7 @@ class PaginasPrincipaisController extends Controller
      */
     public function index()
     {
-        $paginas = $this->repository->orderBy('id')->paginate();
+        $paginas = $this->repository->orderBy('id_pagina')->paginate();
 
         return view('admin.paginas-principais.index', compact('paginas'));
     }
@@ -84,23 +76,14 @@ class PaginasPrincipaisController extends Controller
             $data['url_pagina'] = customUrl($url);
 
             /**
-             * cadastra pagina
+             * cadstrar data de alteração
              */
-            $create_page = $this->repository->create($data);
+            $data['dt_alteracao'] = Carbon::now();
 
             /**
-             * cadastra menu
+             * cadastra pagina
              */
-            if($create_page){
-                $page = [
-                    'txt_titulo' => $data['txt_titulo'],
-                    'url_pagina' => $data['url_pagina'],
-                    'txt_classe' => 'paginas-principais.*',
-                    'menu_custom' => $create_page->id,
-                    'fl_status' => $data['fl_status']
-                ];
-                $this->menuItems->createLinkMenuPage($page);
-            }
+            $this->repository->create($data);
 
             return redirect()->route('admin.paginas.index')->with('message', 'Cadastro realizado com sucesso');
         } catch (\Exception $e) {
@@ -136,38 +119,30 @@ class PaginasPrincipaisController extends Controller
      *
      * @return Response
      *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(PaginasPrincipaisUpdateRequest $request, $id)
     {
-        try {
-            $data = $request->only(array_keys($request->all()));
-
-            /**
-             * cria url
-             */
-            $url = removeSpecialChars($data['txt_titulo']);
-            $data['url_pagina'] = customUrl($url);
-
-            $edit_page = $this->repository->update($data, $id);
-
-            /**
-             * editar menu
-             */
-            if($edit_page->wasChanged('txt_titulo') || $edit_page->wasChanged('fl_status')){
-                $page = [
-                    'txt_titulo' => $data['txt_titulo'],
-                    'url_pagina' => $data['url_pagina'],
-                    'txt_classe' => 'paginas-principais.*',
-                    'fl_status' => $data['fl_status']
-                ];
-                $this->menuItems->editLinkMenuPage($page, $id);
-            }
-
-            return redirect()->to($data['redirects_to'])->with('message', 'Página editado com sucesso');
-        } catch (\Exception $e) {
-            return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a página');
-        }
+        return dd('aqui');
+//        try {
+//            $data = $request->only(array_keys($request->all()));
+//
+//            /**
+//             * cria url
+//             */
+//            $url = removeSpecialChars($data['txt_titulo']);
+//            $data['url_pagina'] = customUrl($url);
+//
+//            /**
+//             * cadstrar data de alteração
+//             */
+////            $data['dt_alteracao'] = Carbon::now();
+//
+//            $this->repository->update($data, $id);
+//
+//            return redirect()->to($data['redirects_to'])->with('message', 'Página editado com sucesso');
+//        } catch (\Exception $e) {
+//            return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a página');
+//        }
     }
 
 
@@ -183,11 +158,7 @@ class PaginasPrincipaisController extends Controller
         try {
             $data = $request->only(array_keys($request->all()));
 
-            $delete_page = $this->repository->delete($data['id_pagina']);
-
-            if($delete_page){
-                $this->menuItems->deleteLinkPage($data['id_pagina']);
-            }
+            $this->repository->delete($data['id_pagina']);
 
             return redirect()->to($data['redirects_to'])->with('message', 'Página excluído com sucesso');
         } catch (\Exception $e){

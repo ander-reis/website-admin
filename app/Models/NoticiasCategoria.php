@@ -20,16 +20,23 @@ class NoticiasCategoria extends Model implements Transformable
      */
 //    protected $connection = 'sqlsrv-website';
 //    protected $table = 'tb_sinpro_noticias_categorias';
-//    protected $primaryKey = 'id_categoria';
-//    public $timestamps = false;
+
 
     /**
      * Conexão teste Postgre
      */
     protected $connection = 'pgsql';
     protected $table = 'tb_sinpro_noticias_categorias';
+
+    /**
+     * @var string
+     */
     protected $primaryKey = 'id_categoria';
+    /**
+     * @var bool
+     */
     public $timestamps = false;
+
 
     /**
      * The attributes that are mass assignable.

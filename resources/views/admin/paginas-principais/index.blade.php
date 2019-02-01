@@ -24,7 +24,7 @@
                 <tbody>
                 @foreach($paginas as $pagina)
                     <tr>
-                        <td>{{ $pagina->id }}</td>
+                        <td>{{ $pagina->id_pagina }}</td>
                         <td>{{ $pagina->txt_titulo }}</td>
                         <td>/{{ $pagina->url_pagina }}</td>
                         <td class="text-center">

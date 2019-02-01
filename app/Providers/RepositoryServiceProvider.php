@@ -31,8 +31,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\ConvencoesRepository::class, \App\Repositories\ConvencoesRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\ConvencoesClausulasRepository::class, \App\Repositories\ConvencoesClausulasRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\ConvencoesEntidadeRepository::class, \App\Repositories\ConvencoesEntidadeRepositoryEloquent::class);
-        $this->app->bind(\App\Repositories\ConfiguracoesRepository::class, \App\Repositories\ConfiguracoesRepositoryEloquent::class);
-        $this->app->bind(\App\Repositories\RedesSociaisRepository::class, \App\Repositories\RedesSociaisRepositoryEloquent::class);
         //:end-bindings:
     }
 }

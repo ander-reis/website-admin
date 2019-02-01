@@ -24,7 +24,7 @@ class PaginasPrincipaisDeleteRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_paginas' => 'numeric'
+            'id_pagina' => 'numeric'
         ];
     }
 }

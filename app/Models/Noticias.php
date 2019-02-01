@@ -87,9 +87,9 @@ class Noticias extends Model implements Transformable
      * @return string
      * @throws \Exception
      */
-    public function getDtNoticiaFormattedAttribute()
+    public function getDtCadastroFormattedAttribute()
     {
-        return (new \DateTime($this->dt_noticia))->format('d/m/Y');
+        return (new \DateTime($this->dt_cadastro))->format('d/m/Y');
     }
 
     /**
@@ -101,6 +101,17 @@ class Noticias extends Model implements Transformable
     public function getCreatedAtFormattedAttribute()
     {
         return (new \DateTime($this->dt_cadastro))->format('d/m/Y');
+    }
+
+    /**
+     * Mutators formata data para o form de edição
+     *
+     * @return string
+     * @throws \Exception
+     */
+    public function getDtCadastroUTCFormattedAttribute()
+    {
+        return (new \DateTime($this->dt_cadastro))->format('Y-m-d');
     }
 
     /**
@@ -120,6 +131,6 @@ class Noticias extends Model implements Transformable
      */
     public function getHrNoticiaFormattedAttribute()
     {
-        return substr($this->dt_noticia, 11, -3);
+        return substr($this->dt_cadastro, 11, -3);
     }
 }

@@ -28,7 +28,7 @@
                         <td>{{ $noticia->ds_resumo }}</td>
                         <td class="text-center">{{ $noticia->created_at_formatted }}</td>
                         <td class="text-center">{!! $noticia->fl_oculta_formatted !!}</td>
-                        <td class="text-center">{{ $noticia->dt_noticia_formatted }}</td>
+                        <td class="text-center">{{ $noticia->dt_cadastro_formatted }}</td>
                         <td class="text-center">
                             <a class="text-dark" href="{{ route('admin.noticias.edit', ['noticia' => $noticia->id_noticia]) }}">
                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>

@@ -70,17 +70,6 @@ Route::prefix('admin')->group(function(){
         Route::name('slider.thumb_small_asset')->get('slider/{slider}/thumb_small_asset', 'Slider\SlidersController@thumbSmallAsset');
 
         /**
-         * menu
-         */
-        Route::group(['prefix' => 'menu'], function () {
-            Route::name('menu')->get('/', 'MenuTree\MenuController@index');
-            Route::name('haddcustommenu')->post('/addcustommenu', 'MenuTree\MenuController@addcustommenu');
-            Route::name('hdeleteitemmenu')->post('/deleteitemmenu', 'MenuTree\MenuController@deleteitemmenu');
-            Route::name('hgeneratemenucontrol')->post('/generatemenucontrol', 'MenuTree\MenuController@generatemenucontrol');
-            Route::name('hupdateitem')->post('/updateitem', 'MenuTree\MenuController@updateitem');
-        });
-
-        /**
          * grupo convencoes e acordos
          */
         Route::group(['prefix' => 'convencoes-e-acordos'], function(){

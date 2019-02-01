@@ -18,7 +18,6 @@ class CreateTbSinproNoticiasTable extends Migration
             $table->integer('id_categoria')->nullable();
             $table->dateTime('dt_cadastro')->default('1/1/1900');
             $table->dateTime('dt_expira')->default('1/1/1900')->nullable();
-            $table->dateTime('dt_noticia')->default('1/1/1900');
             $table->char('fl_exibir_destaque', 1);
             $table->string('ds_resumo', 80);
             $table->text('ds_texto');

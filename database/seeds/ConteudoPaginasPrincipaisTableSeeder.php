@@ -17,14 +17,14 @@ class ConteudoPaginasPrincipaisTableSeeder extends Seeder
         $paginas->each(function(\App\Models\PaginasPrincipais $model) use($faker){
             $model->txt_titulo = $faker->sentence(3);
             $txt_titulo = $model->txt_titulo;
-            $url_pagina = $this->tratar($txt_titulo);
+            $url_pagina = $this->tratarURL($txt_titulo);
             $model->url_pagina = $url_pagina;
             $model->save();
         });
 
     }
 
-    protected function tratar($string)
+    protected function tratarURL($string)
     {
         $string = substr($string,0,-1);
         $string = strtolower($string);

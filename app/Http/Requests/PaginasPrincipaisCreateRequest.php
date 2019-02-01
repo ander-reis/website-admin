@@ -27,8 +27,8 @@ class PaginasPrincipaisCreateRequest extends FormRequest
             'tp_busca' => 'required',
             'txt_titulo_busca' => 'required|max:75',
             'txt_titulo' => 'required|max:75',
-            'ds_texto' => 'required',
-            'ds_palavra_chave' => 'max:150',
+            'txt_pagina' => 'required',
+            'ds_palavra_chave' => 'required|max:150',
             'fl_status' => 'required'
         ];
     }
@@ -41,7 +41,7 @@ class PaginasPrincipaisCreateRequest extends FormRequest
         $input = $this->all();
         $input['txt_titulo_busca'] = trim(filter_var($input['txt_titulo_busca'], FILTER_SANITIZE_STRING));
         $input['txt_titulo'] = trim(filter_var($input['txt_titulo'], FILTER_SANITIZE_STRING));
-        $input['ds_palavra_chave'] = trim(filter_var($input[''], ds_palavra_chaveFILTER_SANITIZE_STRING));
+        $input['ds_palavra_chave'] = trim(filter_var($input['ds_palavra_chave'], FILTER_SANITIZE_STRING));
         $this->replace($input);
     }
 }

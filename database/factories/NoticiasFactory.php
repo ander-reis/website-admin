@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Models\Noticias::class, function (Faker $faker) {
     return [
-        'dt_noticia' => $faker->dateTime('now', 'UTC'),
+        'dt_cadastro' => $faker->dateTime('now', 'UTC'),
         'fl_exibir_destaque' => rand(0, 1),
         'ds_resumo' => $faker->text(80),
         'ds_texto' => $faker->sentence(rand(10, 30)),

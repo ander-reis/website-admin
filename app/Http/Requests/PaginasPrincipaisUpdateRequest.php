@@ -43,7 +43,7 @@ class PaginasPrincipaisUpdateRequest extends FormRequest
         $input = $this->all();
         $input['txt_titulo_busca'] = trim(filter_var($input['txt_titulo_busca'], FILTER_SANITIZE_STRING));
         $input['txt_titulo'] = trim(filter_var($input['txt_titulo'], FILTER_SANITIZE_STRING));
-        $input['ds_palavra_chave'] = trim(filter_var($input[''], ds_palavra_chaveFILTER_SANITIZE_STRING));
+        $input['ds_palavra_chave'] = trim(filter_var($input['ds_palavra_chave'], FILTER_SANITIZE_STRING));
         $this->replace($input);
     }
 }

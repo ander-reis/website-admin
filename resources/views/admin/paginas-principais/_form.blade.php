@@ -2,7 +2,6 @@
 
 @component('admin.form-components._form_group',['field' => 'tp_busca'])
     {{ Form::label('tp_busca', 'Tipo de Busca', ['class' => 'control-label']) }}
-{{--    {{ Form::select('tp_busca', \Website\Models\NoticiasCategoria::pluck('ds_categoria', 'id'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}--}}
     {{ Form::select('tp_busca', [1 => 'Sinpro-SP', 2 => 'Serviços', 3 => 'Convenções', 4 => 'Guia de Consultas'], null, ['placeholder' => 'Selecione o Tipo de Busca', 'class' => 'form-control']) }}
 @endcomponent
 
@@ -16,9 +15,9 @@
     {{ Form::text('txt_titulo', null, ['class' => 'form-control', 'maxlength' => 75]) }}
 @endcomponent
 
-@component('admin.form-components._form_group',['field' => 'ds_texto'])
-    {{ Form::label('ds_texto', 'Texto', ['class' => 'control-label']) }}
-    {{ Form::textarea('ds_texto', null, ['class' => 'form-control']) }}
+@component('admin.form-components._form_group',['field' => 'txt_pagina'])
+    {{ Form::label('txt_pagina', 'Texto', ['class' => 'control-label']) }}
+    {{ Form::textarea('txt_pagina', null, ['class' => 'form-control']) }}
 @endcomponent
 
 @component('admin.form-components._form_group',['field' => 'ds_palavra_chave'])
@@ -30,13 +29,13 @@
     {{ Form::label('fl_status', 'Status da Página', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_status')?' text-danger':''}}">
         <label>
-            {{ Form::radio('fl_status', '1', true) }} Ativo
+            {{ Form::radio('fl_status', 1, true) }} Ativo
         </label>
     </div>
 
     <div class="radio{{$errors->has('fl_status')?' text-danger':''}}">
         <label>
-            {{ Form::radio('fl_status', '0') }} Oculta
+            {{ Form::radio('fl_status', 0) }} Oculta
         </label>
     </div>
 @endcomponent
