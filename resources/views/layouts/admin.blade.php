@@ -48,10 +48,6 @@
                             <a class="nav-link" href="{{ route('admin.owl-carousel.index') }}">Owl Carousel</a>
                         </li>
 
-                        <li class="nav-item {{ active('admin.paginas.*') }}">
-                            <a class="nav-link" href="{{ route('admin.paginas.index') }}">Páginas</a>
-                        </li>
-
                         <li class="nav-item dropdown mx-3 {{ active('admin.convencao.*') }}">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
