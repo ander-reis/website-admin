@@ -40,12 +40,7 @@ class Noticias extends Model implements Transformable
      */
     const CREATED_AT = 'dt_cadastro';
 
-    /**
-     * não permite a criação dos campos created_at e updated_at no database
-     *
-     * @var bool
-     */
-    public $timestamps = false;
+    const UPDATED_AT = 'dt_alteracao';
 
     /**
      * The attributes that are mass assignable.

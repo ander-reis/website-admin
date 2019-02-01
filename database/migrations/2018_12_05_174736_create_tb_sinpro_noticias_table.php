@@ -16,7 +16,8 @@ class CreateTbSinproNoticiasTable extends Migration
         Schema::create('tb_sinpro_noticias', function (Blueprint $table) {
             $table->increments('id_noticia');
             $table->integer('id_categoria')->nullable();
-            $table->dateTime('dt_cadastro')->default('1/1/1900');
+            $table->dateTime('dt_cadastro');
+            $table->dateTime('dt_alteracao');
             $table->dateTime('dt_expira')->default('1/1/1900')->nullable();
             $table->char('fl_exibir_destaque', 1);
             $table->string('ds_resumo', 80);

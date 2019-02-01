@@ -36,7 +36,7 @@
                             </a>
                         </td>
                         <td class="text-center">
-                            <a class="text-danger" href="#" data-toggle="modal" data-target="#deletePaginaModal" data-whatever="{{ $pagina->id }}">
+                            <a class="text-danger" href="#" data-toggle="modal" data-target="#deletePaginaModal" data-whatever="{{ $pagina->id_pagina }}">
                                 <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
                             </a>
                         </td>

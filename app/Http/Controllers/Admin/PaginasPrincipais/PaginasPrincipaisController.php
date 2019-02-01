@@ -122,27 +122,21 @@ class PaginasPrincipaisController extends Controller
      */
     public function update(PaginasPrincipaisUpdateRequest $request, $id)
     {
-        return dd('aqui');
-//        try {
-//            $data = $request->only(array_keys($request->all()));
-//
-//            /**
-//             * cria url
-//             */
-//            $url = removeSpecialChars($data['txt_titulo']);
-//            $data['url_pagina'] = customUrl($url);
-//
-//            /**
-//             * cadstrar data de alteração
-//             */
-////            $data['dt_alteracao'] = Carbon::now();
-//
-//            $this->repository->update($data, $id);
-//
-//            return redirect()->to($data['redirects_to'])->with('message', 'Página editado com sucesso');
-//        } catch (\Exception $e) {
-//            return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a página');
-//        }
+        try {
+            $data = $request->only(array_keys($request->all()));
+
+            /**
+             * cria url
+             */
+            $url = removeSpecialChars($data['txt_titulo']);
+            $data['url_pagina'] = customUrl($url);
+
+            $this->repository->update($data, $id);
+
+            return redirect()->to($data['redirects_to'])->with('message', 'Página editado com sucesso');
+        } catch (\Exception $e) {
+            return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a página');
+        }
     }
 
 

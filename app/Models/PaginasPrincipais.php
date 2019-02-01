@@ -28,13 +28,10 @@ class PaginasPrincipais extends Model
      */
     protected $primaryKey = 'id_pagina';
     /**
-     * configura updated_at
+     * configura timestamps
      */
-    public const UPDATED_AT = 'dt_alteracao';
-    /**
-     * @var bool
-     */
-    public $timestamps = false;
+    const CREATED_AT = 'dt_criacao';
+    const UPDATED_AT = 'dt_alteracao';
 
     /**
      * The attributes that are mass assignable.
@@ -48,11 +45,10 @@ class PaginasPrincipais extends Model
         'txt_pagina',
         'url_pagina',
         'ds_palavra_chave',
-        'dt_alteracao',
         'fl_status'
     ];
 
-    protected $hidden = ['dt_alteracao'];
+    protected $hidden = ['dt_alteracao', 'dt_criacao'];
 
     /**
      * Mutators formata status da página

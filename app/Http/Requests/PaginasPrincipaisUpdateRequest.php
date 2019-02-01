@@ -29,7 +29,7 @@ class PaginasPrincipaisUpdateRequest extends FormRequest
             'tp_busca' => 'required',
             'txt_titulo_busca' => 'required|max:75',
             'txt_titulo' => 'required|max:75',
-            'ds_texto' => 'required',
+            'txt_pagina' => 'required',
             'ds_palavra_chave' => 'max:150',
             'fl_status' => 'required'
         ];

@@ -21,6 +21,7 @@ class CreateTbSinproConteudoPaginasPrincipaisTable extends Migration
             $table->text('txt_pagina');
             $table->string('url_pagina', 100)->unique();
             $table->string('ds_palavra_chave', 150);
+            $table->dateTime('dt_criacao');
             $table->dateTime('dt_alteracao');
             $table->tinyInteger('fl_status');
         });
