@@ -32,10 +32,10 @@ class ConvencoesRepositoryEloquent extends BaseRepository implements ConvencoesR
     {
         $model = parent::create($attributes);
 
-        $this->uploadConvencao($model->id, $attributes['url_arquivo']);
+        $this->uploadConvencao($model->id_convencao, $attributes['url_arquivo']);
 
         if($model->url_aditamento){
-            $this->uploadConvencaoAditamento($model->id, $attributes['url_aditamento']);
+            $this->uploadConvencaoAditamento($model->id_convencao, $attributes['url_aditamento']);
         }
 
         return $model;
@@ -54,11 +54,11 @@ class ConvencoesRepositoryEloquent extends BaseRepository implements ConvencoesR
         $model =  parent::update(array_except($attributes, ['url_arquivo', 'url_aditamento']), $id);
 
         if(isset($attributes['url_arquivo'])){
-            $this->uploadConvencao($model->id, $attributes['url_arquivo']);
+            $this->uploadConvencao($model->id_convencao, $attributes['url_arquivo']);
         }
 
         if(isset($attributes['url_aditamento'])){
-            $this->uploadConvencaoAditamento($model->id, $attributes['url_aditamento']);
+            $this->uploadConvencaoAditamento($model->id_convencao, $attributes['url_aditamento']);
         }
 
         return $model;

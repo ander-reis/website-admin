@@ -26,7 +26,6 @@ class PaginasPrincipaisController extends Controller
      * PaginasPrincipaisController constructor.
      *
      * @param PaginasPrincipaisRepository $repository
-     * @param MenuItems $menuItems
      */
     public function __construct(PaginasPrincipaisRepository $repository)
     {
@@ -74,11 +73,6 @@ class PaginasPrincipaisController extends Controller
              */
             $url = removeSpecialChars($data['txt_titulo']);
             $data['url_pagina'] = customUrl($url);
-
-            /**
-             * cadstrar data de alteração
-             */
-            $data['dt_alteracao'] = Carbon::now();
 
             /**
              * cadastra pagina

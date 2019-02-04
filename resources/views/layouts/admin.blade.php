@@ -132,7 +132,6 @@
         @yield('content')
     </div>
 </div>
-
 <!-- Scripts -->
 <script src="{{ asset('js/admin.js') }}"></script>
 
@@ -146,7 +145,5 @@
     // }, 5000);
     $("input[maxlength]").maxlength();
 </script>
-
-@stack('scripts')
 </body>
 </html>

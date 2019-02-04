@@ -14,7 +14,8 @@ class ConvencoesClausulasTableSeeder extends Seeder
         $convencoesId = \App\Models\Convencoes::all();
 
         $clausulas = factory(\App\Models\ConvencoesClausulas::class, 20)->make();
-        $id = $convencoesId->random()->id;
+        $id = $convencoesId->random()->id_convencao;
+
         $clausulas->each(function(\App\Models\ConvencoesClausulas $model) use($id){
             $model->convencao()->associate($id)->save();
         });

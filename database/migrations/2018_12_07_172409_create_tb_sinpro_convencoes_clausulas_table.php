@@ -23,7 +23,7 @@ class CreateTbSinproConvencoesClausulasTable extends Migration
             $table->char('fl_ativo', 1)->default(1);
             $table->timestamps();
 
-            $table->foreign('id_convencao')->references('id')->on('tb_sinpro_convencoes');
+            $table->foreign('id_convencao')->references('id_convencao')->on('tb_sinpro_convencoes');
         });
     }
 

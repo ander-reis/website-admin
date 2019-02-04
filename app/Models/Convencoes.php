@@ -18,11 +18,25 @@ class Convencoes extends Model implements Transformable
     use TransformableTrait, ConvencaoPaths, AditamentoPaths;
 
     /**
-     * Table
+     * Conexão database website
+     */
+//    protected $connection = 'sqlsrv-website';
+//    protected $table = 'tb_sinpro_convencoes';
+
+    /**
+     * Conexão teste Postgre
+     */
+    protected $connection = 'pgsql';
+    protected $table = 'tb_sinpro_convencoes';
+
+    /**
+     * configura primary key
      *
      * @var string
      */
-    protected $table = 'tb_sinpro_convencoes';
+    protected $primaryKey = 'id_convencao';
+
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -46,8 +60,6 @@ class Convencoes extends Model implements Transformable
     protected $hidden = [
         'url_arquivo',
         'url_aditamento',
-        'created_at',
-        'updated_at'
     ];
 
     /**

@@ -23,7 +23,11 @@ class CreateTbSinproConteudoPaginasPrincipaisTable extends Migration
             $table->string('ds_palavra_chave', 150);
             $table->dateTime('dt_criacao');
             $table->dateTime('dt_alteracao');
-            $table->tinyInteger('fl_status');
+            /**
+             * postgres não tem o campo tinyInt
+             */
+//            $table->char('fl_status', 1);
+            $table->tinyInteger('fl_status')->default(0);
         });
     }
 

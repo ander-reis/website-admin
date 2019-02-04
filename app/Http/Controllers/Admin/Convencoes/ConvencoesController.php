@@ -55,7 +55,7 @@ class ConvencoesController extends Controller
          * consulta convencoes
          */
         $convencoes = $this->convencoesRepository->scopeQuery(function($query) use($id){
-            return $query->orderBy('id','desc')
+            return $query->orderBy('id_convencao','desc')
                 ->where('fl_entidade', $id);
         })->paginate();
 

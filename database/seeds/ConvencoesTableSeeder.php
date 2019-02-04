@@ -13,7 +13,7 @@ class ConvencoesTableSeeder extends Seeder
     {
         $entidadesId = \App\Models\ConvencoesEntidade::all();
 
-        $convencoes = factory(\App\Models\Convencoes::class, 100)->make();
+        $convencoes = factory(\App\Models\Convencoes::class, 10)->make();
 
         $repository = app(\App\Repositories\ConvencoesRepository::class);
         $collectionConvencoes = $this->getConvencoes();
@@ -21,11 +21,12 @@ class ConvencoesTableSeeder extends Seeder
 
         $convencoes->each(function(\App\Models\Convencoes $model) use ($entidadesId, $repository, $collectionConvencoes, $collectionConvencoesAditamento){
 
-            $id = $entidadesId->random()->id;
-            $model->entidade()->associate($id)->save();
+            $id_entidades = $entidadesId->random()->id;
+            $model->entidade()->associate($id_entidades)->save();
 
-            $repository->uploadConvencao($model->id, $collectionConvencoes->random());
-            $repository->uploadConvencaoAditamento($model->id, $collectionConvencoesAditamento->random());
+            $repository->uploadConvencao($model->id_convencao, $collectionConvencoes->random());
+
+            $repository->uploadConvencaoAditamento($model->id_convencao, $collectionConvencoesAditamento->random());
         });
     }
 
