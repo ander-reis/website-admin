@@ -76,10 +76,10 @@ return [
             'password' => env('DB_PASSWORD_SQLSRV_SINPRO', ''),
             'charset' => 'utf8',
             'prefix' => '',
-            'options' => array(
+            'options' => [
                 PDO::ATTR_STRINGIFY_FETCHES => false,
                 PDO::SQLSRV_ATTR_FETCHES_NUMERIC_TYPE => true
-            )
+            ]
         ],
 
         'sqlsrv-website' => [
@@ -91,10 +91,10 @@ return [
             'password' => env('DB_PASSWORD_SQLSRV_WEBSITE', ''),
             'charset' => 'utf8',
             'prefix' => '',
-            'options' => array(
+            'options' => [
                 PDO::ATTR_STRINGIFY_FETCHES => false,
                 PDO::SQLSRV_ATTR_FETCHES_NUMERIC_TYPE => true
-            )
+            ]
         ],
 
     ],

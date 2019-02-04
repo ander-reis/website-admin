@@ -29,12 +29,12 @@
                             {!! $convencao->fl_ativo_formatted !!}
                         </td>
                         <td class="text-center">
-                            <a class="text-primary" href="{{ route('admin.convencao.clausulas.index', ['convencao' => $convencao->id]) }}">
+                            <a class="text-primary" href="{{ route('admin.convencao.clausulas.index', ['convencao' => $convencao->id_convencao]) }}">
                                 <i class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
                             </a>
                         </td>
                         <td class="text-center">
-                            <a class="text-dark" href="{{ route('admin.convencao.edit', ['convencao' => $convencao->id]) }}">
+                            <a class="text-dark" href="{{ route('admin.convencao.edit', ['convencao' => $convencao->id_convencao]) }}">
                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                             </a>
                         </td>
