@@ -28,6 +28,8 @@ class CreateTbSinproAdminPermissoes extends Migration
 
 
 
+
+
         });
     }
 
