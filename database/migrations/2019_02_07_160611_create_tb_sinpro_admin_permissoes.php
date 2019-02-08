@@ -14,13 +14,15 @@ class CreateTbSinproAdminPermissoes extends Migration
     public function up()
     {
         Schema::create('tb_sinpro_admin_permissoes', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('id_usuario');
             $table->integer('id_pagina');
             $table->char('fl_consulta', 1)->default(0);
             $table->char('fl_cadastro', 1)->default(0);
             $table->char('fl_alteracao', 1)->default(0);
             $table->char('fl_exclusao', 1)->default(0);
-            $table->timestamps();
+            $table->dateTime('dt_cadastro')->default(Carbon\Carbon::now());
+            $table->dateTime('dt_alteracao')->default(Carbon\Carbon::now());
 
             $table->foreign('id_usuario')->references('id_usuario')->on('tb_sinpro_usuarios');
             $table->foreign('id_pagina')->references('id_pagina')->on('tb_sinpro_admin_paginas');
