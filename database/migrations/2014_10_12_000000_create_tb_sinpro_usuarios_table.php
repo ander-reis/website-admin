@@ -20,6 +20,8 @@ class CreateTbSinproUsuariosTable extends Migration
             $table->string('senha');
             $table->rememberToken();
             $table->timestamps();
+
+
         });
     }
 
