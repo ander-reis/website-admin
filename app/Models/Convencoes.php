@@ -89,7 +89,7 @@ class Convencoes extends Model implements Transformable
      */
     public function getFlAtivoFormattedAttribute()
     {
-        return $this->fl_ativo ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
+        return ($this->fl_ativo ==  'S') ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
     }
 
     /**
@@ -101,27 +101,6 @@ class Convencoes extends Model implements Transformable
     {
         $name = $this->entidade->ds_entidade;
         $name = str_replace(" ", "", $name);
-        return $entidade = $this->retirarAcentos($name);
-    }
-
-    /**
-     * Mutators verifica se existe caractere especial e modifica para ano/ano
-     *
-     * @return mixed
-     */
-    public function getDtValidadeUploadFormattedAttribute()
-    {
-        return preg_replace("/[^A-Za-z0-9-]/", '_', $this->dt_validade);
-    }
-
-    /**
-     * Metodo para retirar acentos da string
-     *
-     * @param $string
-     * @return mixed
-     */
-    public function retirarAcentos($string)
-    {
-        return preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ç|Ç)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U c n N"),$string);
+        return $entidade = removeSpecialChars($name);
     }
 }

@@ -29,12 +29,12 @@
                             {!! $clausula->fl_ativo_formatted !!}
                         </td>
                         <td class="text-center">
-                            <a class="text-dark" href="{{ route('admin.convencao.clausulas.edit', ['clausula' => $clausula->id, 'convencao' => $clausula->id_convencao]) }}">
+                            <a class="text-dark" href="{{ route('admin.convencao.clausulas.edit', ['clausula' => $clausula->id_clausula, 'convencao' => $clausula->id_convencao]) }}">
                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                             </a>
                         </td>
                         <td class="text-center">
-                            <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteClausulaModal" data-whatever="{{ $clausula->id }}">
+                            <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteClausulaModal" data-whatever="{{ $clausula->id_clausula }}">
                                 <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
                             </a>
                         </td>
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    @component('admin.clausulas._modal_delete', ['convencao_id' => $convencao->id])
+    @component('admin.clausulas._modal_delete', ['convencao_id' => $convencao->id_convencao])
     @endcomponent
 
 @endsection()

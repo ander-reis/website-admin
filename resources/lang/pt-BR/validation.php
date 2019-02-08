@@ -183,6 +183,7 @@ return [
         'id_categoria'          => 'categoria',
         'ds_resumo'             => 'título',
         'dt_noticia'            => 'data',
-        'hr_noticia'            => 'horário'
+        'hr_noticia'            => 'horário',
+        'fl_app'                => 'ativo no aplicativo'
     ],
 ];

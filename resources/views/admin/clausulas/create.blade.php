@@ -11,7 +11,7 @@
             {{Session::get('error-message')}}
         @endcomponent
 
-        {{ Form::model($convencao, ['route' => ['admin.convencao.clausulas.store', $convencao->id]]) }}
+        {{ Form::model(null, ['route' => ['admin.convencao.clausulas.store', $convencao->id_convencao]]) }}
 
         @include('admin.clausulas._form')
 

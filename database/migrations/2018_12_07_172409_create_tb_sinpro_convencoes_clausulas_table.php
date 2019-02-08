@@ -14,14 +14,13 @@ class CreateTbSinproConvencoesClausulasTable extends Migration
     public function up()
     {
         Schema::create('tb_sinpro_convencoes_clausulas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_convencao');
-            $table->integer('num_clausula');
-            $table->string('ds_titulo', 150);
-            $table->text('ds_texto');
+            $table->increments('id_clausula');
+            $table->integer('id_convencao')->default(0);
+            $table->integer('num_clausula')->default(0);
+            $table->string('ds_titulo', 150)->default('');
+            $table->text('ds_texto')->default('');
             $table->string('ds_palavra_chave', 150)->nullable();
-            $table->char('fl_ativo', 1)->default(1);
-            $table->timestamps();
+            $table->char('fl_ativo', 1)->default('S');
 
             $table->foreign('id_convencao')->references('id_convencao')->on('tb_sinpro_convencoes');
         });

@@ -17,11 +17,25 @@ class ConvencoesClausulas extends Model implements Transformable
     use TransformableTrait;
 
     /**
-     * Table
+     * Conexão database website
+     */
+//    protected $connection = 'sqlsrv-website';
+//    protected $table = 'tb_sinpro_convencoes_clausulas';
+
+    /**
+     * Conexão teste Postgre
+     */
+    protected $connection = 'pgsql';
+    protected $table = 'tb_sinpro_convencoes_clausulas';
+
+    /**
+     * configura primary key
      *
      * @var string
      */
-    protected $table = 'tb_sinpro_convencoes_clausulas';
+    protected $primaryKey = 'id_clausula';
+
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -54,7 +68,7 @@ class ConvencoesClausulas extends Model implements Transformable
      */
     public function getFlAtivoFormattedAttribute()
     {
-        return $this->fl_ativo ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
+        return ($this->fl_ativo == 'S') ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
     }
 
     /**

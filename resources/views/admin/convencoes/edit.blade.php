@@ -10,7 +10,7 @@
             {{Session::get('error-message')}}
         @endcomponent
 
-        {{ Form::model($model, ['route' => ['admin.convencao.update', $model->id], 'files' => true, 'method' => 'PUT']) }}
+        {{ Form::model($model, ['route' => ['admin.convencao.update', $model], 'files' => true, 'method' => 'PUT']) }}
 
         @include('admin.convencoes._form')
 

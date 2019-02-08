@@ -92,7 +92,7 @@ class ConvencoesController extends Controller
                     ->with('message', 'Cadastro realizado com sucesso');
             }
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
+            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro' . $e->getMessage());
         }
     }
 
@@ -106,6 +106,7 @@ class ConvencoesController extends Controller
     public function edit($id)
     {
         $model = $this->convencoesRepository->find($id);
+        //dd($model);
         return view('admin.convencoes.edit', compact('model'));
     }
 
@@ -120,6 +121,7 @@ class ConvencoesController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
+
             $this->convencoesRepository->update($data, $id);
             return redirect()->to($data['redirects_to'])->with('message', 'Convenção editado com sucesso');
         } catch (\Exception $e) {

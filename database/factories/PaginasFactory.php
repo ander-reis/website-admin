@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\App\Models\MenuItems::class, function (Faker $faker) {
+$factory->define(\App\Models\Paginas::class, function (Faker $faker) {
     return [
         //
     ];

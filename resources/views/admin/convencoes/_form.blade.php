@@ -46,13 +46,13 @@
     {{ Form::label('fl_app', 'Ativo no Aplicativo', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_app') ? ' text-danger' : ''}}">
         <label>
-            {{ Form::radio('fl_app', '1', true) }} Ativo
+            {{ Form::radio('fl_app', 1, true) }} Ativo
         </label>
     </div>
 
     <div class="radio{{$errors->has('fl_app') ? ' text-danger' : ''}}">
         <label>
-            {{ Form::radio('fl_app', '0') }} Oculta
+            {{ Form::radio('fl_app', 0) }} Oculta
         </label>
     </div>
 @endcomponent
@@ -61,13 +61,13 @@
     {{ Form::label('fl_ativo', 'Status da Convenção', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
         <label>
-            {{ Form::radio('fl_ativo', '1', true) }} Ativo
+            {{ Form::radio('fl_ativo', 'S', true) }} Ativo
         </label>
     </div>
 
     <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
         <label>
-            {{ Form::radio('fl_ativo', '0') }} Oculta
+            {{ Form::radio('fl_ativo', 'N') }} Oculta
         </label>
     </div>
 @endcomponent

@@ -20,7 +20,7 @@ class CreateTbSinproConvencoesTable extends Migration
             $table->string('url_arquivo', 100)->default('');
             $table->string('ds_titulo_aditamento', 100)->default('');
             $table->string('url_aditamento', 100)->default('');
-            $table->char('fl_app', 1)->default('0');
+            $table->smallInteger('fl_app')->default(0);
             $table->integer('fl_entidade')->default(0);
             $table->char('fl_ativo', 1)->default('S');
 

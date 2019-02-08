@@ -52,7 +52,7 @@ trait ConvencaoUploads
         /** @var FilesystemAdapter $storage */
         $storage = $model->getStorage();
         //formata data para ano_ano
-        $dt_validade = $model->dt_validade_upload_formatted;
+        $dt_validade = dateValidateUpload($model->dt_validade);
         //cria nome para convencao
         $name = $model->entidade_name . '_' . $dt_validade . ".{$file->guessExtension()}";
         //faz upload

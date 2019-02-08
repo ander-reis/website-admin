@@ -30,6 +30,8 @@ class User extends Authenticatable implements JWTSubject
     protected $connection = 'pgsql';
     protected $table = 'tb_sinpro_usuarios';
 
+    protected $primaryKey = 'id_usuario';
+
     /**
      * The attributes that are mass assignable.
      *

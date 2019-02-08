@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CadastroProfessoresTableSeeder::class);
         $this->call(MateriaTableSeeder::class);
         $this->call(CepSPTableSeeder::class);
+        $this->call(PaginasTableSeeder::class);
     }
 }
