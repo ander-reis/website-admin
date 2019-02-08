@@ -26,6 +26,8 @@ class CreateTbSinproAdminPermissoes extends Migration
             $table->foreign('id_pagina')->references('id_pagina')->on('tb_sinpro_admin_paginas');
 
 
+
+
         });
     }
 
