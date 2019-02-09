@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Noticias;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticiasCreateRequest;
 use App\Http\Requests\NoticiasUpdateRequest;
-use App\Models\Noticias;
 use App\Repositories\NoticiasRepository;
 
 /**
@@ -34,6 +33,7 @@ class NoticiasController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index()
     {
@@ -49,6 +49,10 @@ class NoticiasController extends Controller
      */
     public function create()
     {
+        if(\Gate::denies('noticias.create')){
+            return redirect()->route('admin.noticias.index')->with('message', 'Não Autorizado');
+        }
+
         return view('admin.noticias.create');
     }
 
@@ -69,8 +73,19 @@ class NoticiasController extends Controller
             $this->repository->create($data);
             return redirect()->route('admin.noticias.index')->with('message', 'Cadastro realizado com sucesso');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro' . $e->getMessage());
+            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
         }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return view('admin.noticias.show');
     }
 
     /**
@@ -79,9 +94,14 @@ class NoticiasController extends Controller
      * @param  int $id
      *
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit($id)
     {
+        if(\Gate::denies('noticias.update')){
+            return redirect()->route('admin.noticias.index')->with('message', 'Não Autorizado');
+        }
+
         $noticias = $this->repository->find($id);
         return view('admin.noticias.edit', compact('noticias'));
     }
@@ -104,10 +124,8 @@ class NoticiasController extends Controller
             unset($data['hr_noticia']);
             $this->repository->update($data, $id);
 
-            //return redirect()->route('admin.noticias.index')->with('message', 'Notícia editada com sucesso');
             return redirect()->to($data['redirects_to'])->with('message', 'Notícia editado com sucesso');
         } catch (\Exception $e) {
-            //return redirect()->back()->with('error-message', 'Não foi possível editar a notícia');
             return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a notícia');
         }
     }

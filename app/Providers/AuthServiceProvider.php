@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use App\Auth\CustomUserProvider;
+use App\Models\Convencoes;
+use App\Models\Noticias;
+use App\Policies\ConvencoesPolicy;
+use App\Policies\NoticiasPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,7 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        Noticias::class => NoticiasPolicy::class,
+        Convencoes::class => ConvencoesPolicy::class,
     ];
 
     /**
@@ -32,5 +37,11 @@ class AuthServiceProvider extends ServiceProvider
         \Auth::provider('custom-user', function ($app, array $config){
             return new CustomUserProvider($app['hash'], $config['model']);
         });
+
+        /**
+         * define acl para paginas
+         */
+        Gate::resource('noticias', 'App\Policies\NoticiasPolicy');
+        Gate::resource('convencoes', 'App\Policies\ConvencoesPolicy');
     }
 }

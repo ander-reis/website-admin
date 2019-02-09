@@ -69,6 +69,10 @@ class ConvencoesController extends Controller
      */
     public function create()
     {
+        if(\Gate::denies('convencoes.create')){
+            return redirect()->back()->with('message', 'Não Autorizado');
+        }
+
         return view('admin.convencoes.create');
     }
 
@@ -92,7 +96,7 @@ class ConvencoesController extends Controller
                     ->with('message', 'Cadastro realizado com sucesso');
             }
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro' . $e->getMessage());
+            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
         }
     }
 
@@ -105,8 +109,12 @@ class ConvencoesController extends Controller
      */
     public function edit($id)
     {
+        if(\Gate::denies('convencoes.update')){
+            return redirect()->back()->with('message', 'Não Autorizado');
+        }
+
         $model = $this->convencoesRepository->find($id);
-        //dd($model);
+
         return view('admin.convencoes.edit', compact('model'));
     }
 

@@ -8,7 +8,12 @@
             </div>
 
             <p>
-                <a href="{{ route('admin.convencao.create', ['entidade_id' => $entidade->id]) }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Convenção</a>
+                @can('convencoes.create')
+                    <a href="{{ route('admin.convencao.create', ['entidade_id' => $entidade->id]) }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Convenção</a>
+                @endcan
+                @cannot('convencoes.create')
+                    <button class="btn btn-primary mr-2 mt-2 mb-2" disabled>Cadastrar Convenção</button>
+                @endcannot
             </p>
             <table class="table">
                 <thead>
@@ -34,9 +39,14 @@
                             </a>
                         </td>
                         <td class="text-center">
-                            <a class="text-dark" href="{{ route('admin.convencao.edit', ['convencao' => $convencao->id_convencao]) }}">
-                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                            </a>
+                            @can('convencoes.update')
+                                <a class="text-dark" href="{{ route('admin.convencao.edit', ['convencao' => $convencao->id_convencao]) }}">
+                                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                </a>
+                            @endcan
+                            @cannot('convencoes.update')
+                                <i class="fa fa-exclamation-circle text-danger" aria-hidden="true"></i>
+                            @endcannot
                         </td>
                     </tr>
                 @endforeach

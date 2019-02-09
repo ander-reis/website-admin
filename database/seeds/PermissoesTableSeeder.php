@@ -19,5 +19,23 @@ class PermissoesTableSeeder extends Seeder
             'fl_alteracao' => 1,
             'fl_exclusao' => 1
         ]);
+
+        factory(\App\Models\Permissoes::class)->create([
+            'id_usuario' => 2,
+            'id_pagina' => 1,
+            'fl_consulta' => 0,
+            'fl_cadastro' => 0,
+            'fl_alteracao' => 0,
+            'fl_exclusao' => 0
+        ]);
+
+        factory(\App\Models\Permissoes::class)->create([
+            'id_usuario' => 2,
+            'id_pagina' => 21,
+            'fl_consulta' => 0,
+            'fl_cadastro' => 1,
+            'fl_alteracao' => 0,
+            'fl_exclusao' => 0
+        ]);
     }
 }
