@@ -129,6 +129,10 @@
             {{Session::get('message')}}
         @endcomponent
 
+        @component('admin.components._alert_error')
+            {{Session::get('error-message')}}
+        @endcomponent
+
         @yield('content')
     </div>
 </div>

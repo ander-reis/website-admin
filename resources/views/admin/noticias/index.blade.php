@@ -33,8 +33,7 @@
                         <td>{{ $noticia->id_noticia }}</td>
                         <td>
                             @can('noticias.view')
-                                <a class="text-dark"
-                                   href="{{ route('admin.noticias.show', ['noticia' => $noticia->id_noticia]) }}">
+                                <a href="{{ route('admin.noticias.show', ['noticia' => $noticia->id_noticia]) }}">
                                     {{ $noticia->ds_resumo }}
                                 </a>
                             @endcan

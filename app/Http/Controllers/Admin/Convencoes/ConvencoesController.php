@@ -70,7 +70,7 @@ class ConvencoesController extends Controller
     public function create()
     {
         if(\Gate::denies('convencoes.create')){
-            return redirect()->back()->with('message', 'Não Autorizado');
+            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
         }
 
         return view('admin.convencoes.create');
@@ -100,6 +100,17 @@ class ConvencoesController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        if (\Gate::denies('convencoes.view')) {
+            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
+        }
+
+        $convencao = $this->convencoesRepository->find($id);
+
+        return view('admin.convencoes.show', compact('convencao'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -110,7 +121,7 @@ class ConvencoesController extends Controller
     public function edit($id)
     {
         if(\Gate::denies('convencoes.update')){
-            return redirect()->back()->with('message', 'Não Autorizado');
+            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
         }
 
         $model = $this->convencoesRepository->find($id);
