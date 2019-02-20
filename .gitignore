@@ -3,6 +3,7 @@
 /public/storage
 /public/js/admin.js
 /public/css/admin.css
+/public/vendor
 /storage/*.key
 /vendor
 /.idea
