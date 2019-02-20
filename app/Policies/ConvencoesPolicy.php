@@ -21,4 +21,16 @@ class ConvencoesPolicy
         $permissao = Permissoes::where('id_usuario', '=', $user->id_usuario)->where('id_pagina', '=', 21)->first();
         return (isset($permissao)) ? ($permissao->fl_alteracao) ? true : false : true;
     }
+
+    public function view(User $user)
+    {
+        $permissao = Permissoes::where('id_usuario', '=', $user->id_usuario)->where('id_pagina', '=', 21)->first();
+        return (isset($permissao)) ? ($permissao->fl_consulta) ? true : false : true;
+    }
+
+    public function delete(User $user)
+    {
+        $permissao = Permissoes::where('id_usuario', '=', $user->id_usuario)->where('id_pagina', '=', 21)->first();
+        return (isset($permissao)) ? ($permissao->fl_exclusao) ? true : false : true;
+    }
 }

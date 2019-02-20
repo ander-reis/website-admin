@@ -78,6 +78,7 @@ Route::prefix('admin')->group(function(){
             Route::name('convencao.store')->post('/store', 'Convencoes\ConvencoesController@store');
             Route::name('convencao.edit')->get('/{id}/edit', 'Convencoes\ConvencoesController@edit');
             Route::name('convencao.update')->put('/{id}', 'Convencoes\ConvencoesController@update');
+            Route::name('convencao.show')->get('/{id}/convencao/{id_convencao}', 'Convencoes\ConvencoesController@show');
             /**
              * rotas para download do pdf
              */

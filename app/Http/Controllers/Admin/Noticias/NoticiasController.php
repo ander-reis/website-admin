@@ -50,7 +50,7 @@ class NoticiasController extends Controller
     public function create()
     {
         if(\Gate::denies('noticias.create')){
-            return redirect()->route('admin.noticias.index')->with('message', 'Não Autorizado');
+            return redirect()->route('admin.noticias.index')->with('error-message', 'Acesso não Autorizado');
         }
 
         return view('admin.noticias.create');
@@ -85,7 +85,13 @@ class NoticiasController extends Controller
      */
     public function show($id)
     {
-        return view('admin.noticias.show');
+        if (\Gate::denies('noticias.view')) {
+            return redirect()->route('admin.noticias.index')->with('error-message', 'Acesso não Autorizado');
+        }
+
+        $noticia = $this->repository->find($id);
+
+        return view('admin.noticias.show', compact('noticia'));
     }
 
     /**
@@ -99,10 +105,11 @@ class NoticiasController extends Controller
     public function edit($id)
     {
         if(\Gate::denies('noticias.update')){
-            return redirect()->route('admin.noticias.index')->with('message', 'Não Autorizado');
+            return redirect()->route('admin.noticias.index')->with('error-message', 'Acesso não Autorizado');
         }
 
         $noticias = $this->repository->find($id);
+
         return view('admin.noticias.edit', compact('noticias'));
     }
 

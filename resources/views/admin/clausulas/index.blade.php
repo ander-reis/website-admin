@@ -7,7 +7,12 @@
                 <h1>{{ $convencao->ds_titulo }}</h1>
             </div>
             <p>
-                <a href="{{ route('admin.convencao.clausulas.create', ['convencao' => $convencao]) }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Cláusula</a>
+                @can('convencoes.create')
+                    <a href="{{ route('admin.convencao.clausulas.create', ['convencao' => $convencao]) }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Cláusula</a>
+                @endcan
+                @cannot('convencoes.create')
+                    <button class="btn btn-primary mr-2 mt-2 mb-2" disabled>Cadastrar Claúsula</button>
+                @endcannot
             </p>
 
             <table class="table">
@@ -29,14 +34,24 @@
                             {!! $clausula->fl_ativo_formatted !!}
                         </td>
                         <td class="text-center">
-                            <a class="text-dark" href="{{ route('admin.convencao.clausulas.edit', ['clausula' => $clausula->id_clausula, 'convencao' => $clausula->id_convencao]) }}">
-                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                            </a>
+                            @can('convencoes.update')
+                                <a class="text-dark" href="{{ route('admin.convencao.clausulas.edit', ['clausula' => $clausula->id_clausula, 'convencao' => $clausula->id_convencao]) }}">
+                                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                </a>
+                            @endcan
+                            @cannot('convencoes.update')
+                                <i class="fa fa-exclamation-circle text-danger" aria-hidden="true"></i>
+                            @endcannot
                         </td>
                         <td class="text-center">
-                            <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteClausulaModal" data-whatever="{{ $clausula->id_clausula }}">
-                                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
-                            </a>
+                            @can('convencoes.delete')
+                                <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteClausulaModal" data-whatever="{{ $clausula->id_clausula }}">
+                                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                                </a>
+                            @endcan
+                            @cannot('convencoes.delete')
+                                <i class="fa fa-exclamation-circle text-danger" aria-hidden="true"></i>
+                            @endcannot
                         </td>
                     </tr>
                 @endforeach
