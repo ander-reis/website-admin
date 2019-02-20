@@ -95,6 +95,7 @@ Route::prefix('admin')->group(function(){
          */
         Route::group(['prefix' => 'configuracoes'], function(){
 //            Route::resource('rede-social', 'Configuracoes\RedesSociaisController');
+
         });
     });
 });
