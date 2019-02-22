@@ -8,6 +8,6 @@ $factory->define(\App\Models\Convencoes::class, function (Faker $faker) {
         'dt_validade' => $faker->year('now'),
         'ds_titulo_aditamento' => $faker->text(100),
         'fl_app' => '1',
-        'fl_ativo' => 'S',
+        'fl_ativo' => 1,
     ];
 });

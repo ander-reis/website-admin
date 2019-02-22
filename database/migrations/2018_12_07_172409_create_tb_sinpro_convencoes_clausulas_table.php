@@ -20,7 +20,7 @@ class CreateTbSinproConvencoesClausulasTable extends Migration
             $table->string('ds_titulo', 150)->default('');
             $table->text('ds_texto')->default('');
             $table->string('ds_palavra_chave', 150)->nullable();
-            $table->char('fl_ativo', 1)->default('S');
+            $table->char('fl_ativo', 1)->default(1);
 
             $table->foreign('id_convencao')->references('id_convencao')->on('tb_sinpro_convencoes');
         });
