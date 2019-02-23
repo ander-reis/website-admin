@@ -60,6 +60,10 @@ class ConvencoesClausulasController extends Controller
      */
     public function create(Convencoes $convencao)
     {
+        if(\Gate::denies('convencoes.create')){
+            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
+        }
+
         return view('admin.clausulas.create', compact('convencao'));
     }
 
@@ -96,6 +100,10 @@ class ConvencoesClausulasController extends Controller
      */
     public function edit(Convencoes $convencao, $id)
     {
+        if(\Gate::denies('convencoes.update')){
+            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
+        }
+
         $clausulas = $this->clausulasRepository->find($id);
 
         return view('admin.clausulas.edit', compact('convencao', 'clausulas'));
@@ -137,6 +145,10 @@ class ConvencoesClausulasController extends Controller
     public function destroy(ConvencoesClausulasDeleteRequest $request, $id)
     {
         try{
+            if(\Gate::denies('convencoes.delete')){
+                return redirect()->back()->with('error-message', 'Acesso não Autorizado');
+            }
+
             $id_clausula = $request->only(array_keys($request->all()))['id_clausula'];
             $this->clausulasRepository->delete($id_clausula);
             return redirect()->route('admin.convencao.clausulas.index', ['convencao' => $id])

@@ -6,7 +6,6 @@
             <div class="my-3">
                 <h1>{{ $entidade->ds_entidade }}</h1>
             </div>
-
             <p>
                 @can('convencoes.create')
                     <a href="{{ route('admin.convencao.create', ['entidade_id' => $entidade->id]) }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Convenção</a>
@@ -28,7 +27,16 @@
                 <tbody>
                 @foreach($convencoes as $convencao)
                     <tr>
-                        <td>{{ $convencao->ds_titulo }}</td>
+                        <td>
+                            @can('noticias.view')
+                                <a href="{{ route('admin.convencao.show', ['id' => $entidade->id, 'id_convencao' => $convencao->id_convencao]) }}">
+                                    {{ $convencao->ds_titulo }}
+                                </a>
+                            @endcan
+                            @cannot('noticias.view')
+                                {{ $convencao->ds_titulo }}
+                            @endcannot
+                        </td>
                         <td class="text-center">{{ $convencao->dt_validade }}</td>
                         <td>
                             {!! $convencao->fl_ativo_formatted !!}
