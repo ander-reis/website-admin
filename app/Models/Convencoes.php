@@ -30,12 +30,17 @@ class Convencoes extends Model implements Transformable
     protected $table = 'tb_sinpro_convencoes';
 
     /**
-     * configura primary key
+     * Configura primary key
      *
      * @var string
      */
     protected $primaryKey = 'id_convencao';
 
+    /**
+     * Configura a criação dos campos created_at e updated_at no banco de dados
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
     /**
@@ -55,6 +60,8 @@ class Convencoes extends Model implements Transformable
     ];
 
     /**
+     * Configura os campos que não deverão aparecer na coleção
+     *
      * @var array
      */
     protected $hidden = [
@@ -80,16 +87,6 @@ class Convencoes extends Model implements Transformable
     public function clausulas()
     {
         return $this->hasMany(ConvencoesClausulas::class, 'id_convencao');
-    }
-
-    /**
-     * Accessor formata fl_ativo
-     *
-     * @return string
-     */
-    public function getFlAtivoFormattedAttribute()
-    {
-        return ($this->fl_ativo ==  'S') ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
     }
 
     /**

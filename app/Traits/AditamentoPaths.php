@@ -46,16 +46,6 @@ trait AditamentoPaths
      */
     public function getAditamentoAssetAttribute()
     {
-        return route('admin.aditamento.asset', ['id' => $this->id_convencao]);
-    }
-
-    /**
-     * Download do pdf para disponibilizar no site
-     *
-     * @return string
-     */
-    public function getAditamentoWebAssetAttribute()
-    {
-        return route('aditamento.asset', ['id' => $this->id_convencao]);
+        return route('admin.aditamento.asset', ['id_convencao' => $this->id_convencao]);
     }
 }

@@ -42,7 +42,7 @@
                             @endcannot
                         </td>
                         <td class="text-center">{{ $noticia->created_at_formatted }}</td>
-                        <td class="text-center">{!! $noticia->fl_oculta_formatted !!}</td>
+                        <td class="text-center">{!! flStatus($noticia->fl_oculta) !!}</td>
                         <td class="text-center">{{ $noticia->dt_cadastro_formatted }}</td>
                         <td class="text-center">
                             @can('noticias.update')

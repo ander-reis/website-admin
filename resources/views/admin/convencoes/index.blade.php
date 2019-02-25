@@ -39,7 +39,7 @@
                         </td>
                         <td class="text-center">{{ $convencao->dt_validade }}</td>
                         <td>
-                            {!! $convencao->fl_ativo_formatted !!}
+                            {!! flStatus($convencao->fl_ativo) !!}
                         </td>
                         <td class="text-center">
                             <a class="text-primary" href="{{ route('admin.convencao.clausulas.index', ['convencao' => $convencao->id_convencao]) }}">

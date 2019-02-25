@@ -10,6 +10,7 @@ use App\Http\Requests\ConvencoesUpdateRequest;
 use App\Models\Convencoes;
 use App\Repositories\ConvencoesEntidadeRepository;
 use App\Repositories\ConvencoesRepository;
+use Illuminate\Support\Facades\Artisan;
 
 /**
  * Class ConvencoesController.
@@ -106,9 +107,9 @@ class ConvencoesController extends Controller
             return redirect()->back()->with('error-message', 'Acesso não Autorizado');
         }
 
-        $convencao = $this->convencoesRepository->find($id);
+        $model = $this->convencoesRepository->find($id);
 
-        return view('admin.convencoes.show', compact('convencao'));
+        return view('admin.convencoes.show', compact('model'));
     }
 
     /**

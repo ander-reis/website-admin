@@ -124,7 +124,7 @@
         </nav>
     @endauth
 
-    <div class="container mb-3">
+    <div class="container mt-3 mb-3">
         @component('admin.components._alert_success')
             {{Session::get('message')}}
         @endcomponent
@@ -144,9 +144,9 @@
 
 <script type="text/javascript">
     $('#ds_texto').ckeditor();
-    // setTimeout(function () {
-    //     $("#successMessage").hide('slow')
-    // }, 5000);
+    setTimeout(function () {
+        $("#successMessage").hide('slow')
+    }, 5000);
     $("input[maxlength]").maxlength();
 </script>
 </body>

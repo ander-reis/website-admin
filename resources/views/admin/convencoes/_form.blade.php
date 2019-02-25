@@ -61,13 +61,13 @@
     {{ Form::label('fl_ativo', 'Status da Convenção', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
         <label>
-            {{ Form::radio('fl_ativo', 'S', true) }} Ativo
+            {{ Form::radio('fl_ativo', '1', true) }} Ativo
         </label>
     </div>
 
     <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
         <label>
-            {{ Form::radio('fl_ativo', 'N') }} Oculta
+            {{ Form::radio('fl_ativo', '0') }} Oculta
         </label>
     </div>
 @endcomponent

@@ -47,16 +47,6 @@ trait ConvencaoPaths
      */
     public function getConvencaoAssetAttribute()
     {
-        return route('admin.convencao.asset', ['id' => $this->id_convencao]);
+        return route('admin.convencao.asset', ['id_convencao' => $this->id_convencao]);
     }
-
-    /**
-     * Download do pdf para disponibilizar no site
-     *
-     * @return string
-     */
-//    public function getConvencaoWebAssetAttribute()
-//    {
-//        return route('convencao.asset', ['id' => $this->id_convencao]);
-//    }
 }

@@ -89,9 +89,9 @@ class NoticiasController extends Controller
             return redirect()->route('admin.noticias.index')->with('error-message', 'Acesso não Autorizado');
         }
 
-        $noticia = $this->repository->find($id);
+        $model = $this->repository->find($id);
 
-        return view('admin.noticias.show', compact('noticia'));
+        return view('admin.noticias.show', compact('model'));
     }
 
     /**

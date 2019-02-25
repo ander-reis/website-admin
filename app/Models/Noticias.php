@@ -77,7 +77,7 @@ class Noticias extends Model implements Transformable
     }
 
     /**
-     * Mutators formata data
+     * Mutators formata data -> 01/01/2000
      *
      * @return string
      * @throws \Exception
@@ -88,18 +88,7 @@ class Noticias extends Model implements Transformable
     }
 
     /**
-     * Mutators formata data
-     *
-     * @return string
-     * @throws \Exception
-     */
-    public function getCreatedAtFormattedAttribute()
-    {
-        return (new \DateTime($this->dt_cadastro))->format('d/m/Y');
-    }
-
-    /**
-     * Mutators formata data para o form de edição
+     * Mutators formata data para o form de edição -> 2000-12-30
      *
      * @return string
      * @throws \Exception
@@ -110,17 +99,7 @@ class Noticias extends Model implements Transformable
     }
 
     /**
-     * Mutators formata status da notícia
-     *
-     * @return string
-     */
-    public function getFlOcultaFormattedAttribute()
-    {
-        return $this->fl_oculta ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
-    }
-
-    /**
-     * Mutators formata hr_expira
+     * Mutators formata hr_expira -> 12:00
      *
      * @return bool|string
      */
