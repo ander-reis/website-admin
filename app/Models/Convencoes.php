@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
-use App\Traits\AditamentoPaths;
 use App\Traits\ConvencaoPaths;
 
 /**
@@ -15,7 +14,7 @@ use App\Traits\ConvencaoPaths;
  */
 class Convencoes extends Model implements Transformable
 {
-    use TransformableTrait, ConvencaoPaths, AditamentoPaths;
+    use TransformableTrait, ConvencaoPaths;
 
     /**
      * Conexão database website

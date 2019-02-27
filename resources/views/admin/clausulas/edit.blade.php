@@ -10,7 +10,7 @@
         {{Session::get('error-message')}}
     @endcomponent
 
-    {{ Form::model($clausulas, ['route' => ['admin.convencao.clausulas.update', $convencao, $clausulas], 'method' => 'PUT']) }}
+    {{ Form::model($clausula, ['route' => ['admin.convencao.clausulas.update', 'convencoes_entidade' => $convencoes->fl_entidade, $convencoes, $clausula], 'method' => 'PUT']) }}
 
     @include('admin.clausulas._form')
 

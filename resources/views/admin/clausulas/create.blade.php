@@ -4,14 +4,12 @@
     <div class="col-md-12">
         <div class="my-3">
             <h1>Cadastrar Cláusula</h1>
-            <p>Convenção Coletiva: <b>{{ $convencao->ds_titulo }}</b></p>
+            <p>Convenção Coletiva: <b>{{ $convencoes->ds_titulo }}</b></p>
         </div>
 
-        @component('admin.components._alert_error')
-            {{Session::get('error-message')}}
-        @endcomponent
+        {{--{{dd($convencoes)}}--}}
 
-        {{ Form::model(null, ['route' => ['admin.convencao.clausulas.store', $convencao->id_convencao]]) }}
+        {{ Form::model(null, ['route' => ['admin.convencao.clausulas.store', 'convencoes_entidade' => $convencoes->fl_entidade, $convencoes]]) }}
 
         @include('admin.clausulas._form')
 

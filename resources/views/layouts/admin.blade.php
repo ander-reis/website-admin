@@ -144,9 +144,9 @@
 
 <script type="text/javascript">
     $('#ds_texto').ckeditor();
-    setTimeout(function () {
-        $("#successMessage").hide('slow')
-    }, 5000);
+    // setTimeout(function () {
+    //     $("#successMessage").hide('slow')
+    // }, 5000);
     $("input[maxlength]").maxlength();
 </script>
 </body>

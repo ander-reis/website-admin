@@ -184,6 +184,12 @@ return [
         'ds_resumo'             => 'título',
         'dt_noticia'            => 'data',
         'hr_noticia'            => 'horário',
-        'fl_app'                => 'ativo no aplicativo'
+        'fl_app'                => 'ativo no aplicativo',
+        'dt_validade'           => 'ano de validade',
+        'ds_titulo'             => 'título',
+        'url_arquivo'           => 'upload',
+        'fl_entidade'           => 'entidade',
+        'ds_texto'              => 'texto',
+        'num_clausula'          => 'cláusula',
     ],
 ];

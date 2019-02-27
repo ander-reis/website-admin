@@ -4,17 +4,22 @@
     <div class="row">
         <div class="col-md-12">
             <div class="my-3">
-                <h1>{{ $convencao->ds_titulo }}</h1>
+                <h1>{{ $convencoes->ds_titulo }}</h1>
             </div>
             <p>
                 @can('convencoes.create')
-                    <a href="{{ route('admin.convencao.clausulas.create', ['convencao' => $convencao]) }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Cláusula</a>
+                    <a href="{{ route('admin.convencao.clausulas.create',
+                    ['convencoes_entidade' => $convencoes->fl_entidade, $convencoes]) }}"
+                       class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Cláusula</a>
                 @endcan
                 @cannot('convencoes.create')
                     <button class="btn btn-primary mr-2 mt-2 mb-2" disabled>Cadastrar Claúsula</button>
                 @endcannot
             </p>
 
+            @component('admin.components._data_exists', ['collection' => $clausulas->isEmpty()])@endcomponent
+
+            @if(!$clausulas->isEmpty())
             <table class="table">
                 <thead>
                 <tr>
@@ -35,7 +40,11 @@
                         </td>
                         <td class="text-center">
                             @can('convencoes.update')
-                                <a class="text-dark" href="{{ route('admin.convencao.clausulas.edit', ['clausula' => $clausula->id_clausula, 'convencao' => $clausula->id_convencao]) }}">
+                                <a class="text-dark" href="{{ route('admin.convencao.clausulas.edit', [
+                                'convencoes_entidade' => $convencoes->fl_entidade,
+                                'convencoes' => $clausula->id_convencao,
+                                '$clausula' => $clausula,
+                                ]) }}">
                                     <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                 </a>
                             @endcan
@@ -57,13 +66,14 @@
                 @endforeach
                 </tbody>
             </table>
+            @endif
 
             {{--paginacao--}}
             {!! $clausulas->links() !!}
         </div>
     </div>
 
-    @component('admin.clausulas._modal_delete', ['convencao_id' => $convencao->id_convencao])
+    @component('admin.clausulas._modal_delete', ['convencoes_entidade' => $convencoes->fl_entidade, 'convencao_id' => $convencoes->id_convencao])
     @endcomponent
 
 @endsection()

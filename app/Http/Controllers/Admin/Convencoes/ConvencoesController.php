@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Convencoes;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Response;
 use App\Http\Requests\ConvencoesCreateRequest;
 use App\Http\Requests\ConvencoesUpdateRequest;
 use App\Models\Convencoes;
+use App\Models\ConvencoesEntidade;
 use App\Repositories\ConvencoesEntidadeRepository;
 use App\Repositories\ConvencoesRepository;
 use Illuminate\Support\Facades\Artisan;
@@ -101,13 +101,13 @@ class ConvencoesController extends Controller
         }
     }
 
-    public function show($id)
+    public function show(ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes)
     {
         if (\Gate::denies('convencoes.view')) {
             return redirect()->back()->with('error-message', 'Acesso não Autorizado');
         }
 
-        $model = $this->convencoesRepository->find($id);
+        $model = $convencoes;
 
         return view('admin.convencoes.show', compact('model'));
     }
@@ -119,13 +119,13 @@ class ConvencoesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes)
     {
         if(\Gate::denies('convencoes.update')){
             return redirect()->back()->with('error-message', 'Acesso não Autorizado');
         }
 
-        $model = $this->convencoesRepository->find($id);
+        $model = $convencoes;
 
         return view('admin.convencoes.edit', compact('model'));
     }
@@ -157,6 +157,7 @@ class ConvencoesController extends Controller
      */
     public function convencaoAsset(Convencoes $convencao)
     {
+        Artisan::call('cache:clear');
         return response()->file($convencao->convencao_path);
     }
 
@@ -168,6 +169,7 @@ class ConvencoesController extends Controller
      */
     public function aditamentoAsset(Convencoes $convencao)
     {
+        Artisan::call('cache:clear');
         return response()->file($convencao->aditamento_path);
     }
 }

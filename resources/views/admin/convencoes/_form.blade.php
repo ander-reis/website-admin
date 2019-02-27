@@ -32,9 +32,11 @@
 @endcomponent
 
 @if(isset($model->url_aditamento))
-    @component('admin.components._download_pdf')
-        {{ $model->aditamento_asset }}
-    @endcomponent
+    @if(!$model->url_aditamento == '')
+        @component('admin.components._download_pdf')
+            {{ $model->aditamento_asset }}
+        @endcomponent
+    @endif
 @endif
 
 @component('admin.form-components._form_group',['field' => 'dt_validade'])
@@ -46,13 +48,13 @@
     {{ Form::label('fl_app', 'Ativo no Aplicativo', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_app') ? ' text-danger' : ''}}">
         <label>
-            {{ Form::radio('fl_app', 1, true) }} Ativo
+            {{ Form::radio('fl_app', (isset($model->fl_ativo) == 1) ? 1 : '1', true) }} Ativo
         </label>
     </div>
 
     <div class="radio{{$errors->has('fl_app') ? ' text-danger' : ''}}">
         <label>
-            {{ Form::radio('fl_app', 0) }} Oculta
+            {{ Form::radio('fl_app', 0, false) }} Oculta
         </label>
     </div>
 @endcomponent

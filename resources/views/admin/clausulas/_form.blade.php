@@ -1,5 +1,5 @@
-@if(!isset($clausulas->id))
-    {{ Form::hidden('id_convencao', $convencao->id_convencao, ['class' => 'form-control']) }}
+@if(!isset($clausula->id))
+    {{ Form::hidden('id_convencao', $convencoes->id_convencao, ['class' => 'form-control']) }}
 @endif
 
 <div class="form-row mb-3">
@@ -28,13 +28,13 @@
     {{ Form::label('fl_ativo', 'Status da Cláusula', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_ativo')?' text-danger':''}}">
         <label>
-            {{ Form::radio('fl_ativo', 'S', true) }} Ativo
+            {{ Form::radio('fl_ativo', '1', true) }} Ativo
         </label>
     </div>
 
     <div class="radio{{$errors->has('fl_ativo')?' text-danger':''}}">
         <label>
-            {{ Form::radio('fl_ativo', 'N', false) }} Oculta
+            {{ Form::radio('fl_ativo', '0', false) }} Oculta
         </label>
     </div>
 @endcomponent

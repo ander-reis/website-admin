@@ -26,7 +26,7 @@ class ConvencoesClausulasCreateRequest extends FormRequest
         $this->sanitize();
 
         return [
-            'id_convencao' => 'required',
+//            'id_convencao' => 'required',
             'num_clausula' => 'required|numeric',
             'ds_titulo' => 'required|max:150|string',
             'ds_texto' => 'required',

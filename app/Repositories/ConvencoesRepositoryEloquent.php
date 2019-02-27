@@ -2,12 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Traits\AditamentoUploads;
 use App\Traits\ConvencaoUploads;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Models\Convencoes;
-use App\Validators\ConvencoesValidator;
 
 /**
  * Class ConvencoesRepositoryEloquent.
@@ -19,7 +17,7 @@ class ConvencoesRepositoryEloquent extends BaseRepository implements ConvencoesR
     /**
      * Trait para upload do arquivo
      */
-    use ConvencaoUploads, AditamentoUploads;
+    use ConvencaoUploads;
 
     /**
      * Sobreescreve metodo create do model

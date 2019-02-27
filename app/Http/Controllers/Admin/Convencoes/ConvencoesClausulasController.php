@@ -8,6 +8,8 @@ use App\Http\Requests\ConvencoesClausulasCreateRequest;
 use App\Http\Requests\ConvencoesClausulasUpdateRequest;
 use App\Http\Requests\ConvencoesClausulasDeleteRequest;
 use App\Models\Convencoes;
+use App\Models\ConvencoesClausulas;
+use App\Models\ConvencoesEntidade;
 use App\Repositories\ConvencoesClausulasRepository;
 use App\Repositories\ConvencoesRepository;
 
@@ -45,12 +47,11 @@ class ConvencoesClausulasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes)
     {
-        $convencao = $this->convencoesRepository->find($id);
-        $clausulas = $convencao->clausulas()->orderBy('num_clausula', 'asc')->paginate();
+        $clausulas = $convencoes->clausulas()->orderBy('num_clausula', 'asc')->paginate();
 
-        return view('admin.clausulas.index', compact('clausulas', 'convencao'));
+        return view('admin.clausulas.index', compact('clausulas', 'convencoes'));
     }
 
     /**
@@ -58,13 +59,13 @@ class ConvencoesClausulasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Convencoes $convencao)
+    public function create($convencoes_entidade, Convencoes $convencoes)
     {
-        if(\Gate::denies('convencoes.create')){
+        if (\Gate::denies('convencoes.create')) {
             return redirect()->back()->with('error-message', 'Acesso não Autorizado');
         }
 
-        return view('admin.clausulas.create', compact('convencao'));
+        return view('admin.clausulas.create', compact('convencoes'));
     }
 
     /**
@@ -76,18 +77,20 @@ class ConvencoesClausulasController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(ConvencoesClausulasCreateRequest $request, Convencoes $convencao)
+    public function store(ConvencoesClausulasCreateRequest $request, Convencoes $convencoes)
     {
+        dd($convencoes);
         try {
             $data = $request->only(array_keys($request->all()));
 
             $this->clausulasRepository->create($data);
 
-
-            return redirect()->route('admin.convencao.clausulas.index', ['convencao' => $convencao])
-                ->with('message', 'Cadastro realizado com sucesso');
+            return redirect()->route('admin.convencao.clausulas.index', [
+                'convencoes_entidade' => $convencoes->fl_entidade,
+                'convencoes' => $convencoes->id_convencao
+            ])->with('message', 'Cadastro realizado com sucesso');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
+            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro' . $e->getMessage());
         }
     }
 
@@ -98,22 +101,20 @@ class ConvencoesClausulasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Convencoes $convencao, $id)
+    public function edit(ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes, ConvencoesClausulas $clausula)
     {
-        if(\Gate::denies('convencoes.update')){
+        if (\Gate::denies('convencoes.update')) {
             return redirect()->back()->with('error-message', 'Acesso não Autorizado');
         }
 
-        $clausulas = $this->clausulasRepository->find($id);
-
-        return view('admin.clausulas.edit', compact('convencao', 'clausulas'));
+        return view('admin.clausulas.edit', compact('convencoes', 'clausula'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  ConvencoesClausulasUpdateRequest $request
-     * @param  string            $id
+     * @param  string $id
      *
      * @return Response
      *
@@ -144,8 +145,8 @@ class ConvencoesClausulasController extends Controller
      */
     public function destroy(ConvencoesClausulasDeleteRequest $request, $id)
     {
-        try{
-            if(\Gate::denies('convencoes.delete')){
+        try {
+            if (\Gate::denies('convencoes.delete')) {
                 return redirect()->back()->with('error-message', 'Acesso não Autorizado');
             }
 
@@ -153,7 +154,7 @@ class ConvencoesClausulasController extends Controller
             $this->clausulasRepository->delete($id_clausula);
             return redirect()->route('admin.convencao.clausulas.index', ['convencao' => $id])
                 ->with('message', 'Cláusula excluído com sucesso');
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back()->with('error-message', 'Não foi possível excluir a cláusula');
         }
     }

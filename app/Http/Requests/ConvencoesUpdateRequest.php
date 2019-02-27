@@ -28,9 +28,9 @@ class ConvencoesUpdateRequest extends FormRequest
         return [
             'ds_titulo' => 'required|max:100',
             'dt_validade' => 'required|max:9',
-            'url_arquivo' => 'mimes:pdf|max:10000',
+            'url_arquivo' => 'mimes:pdf|max:2048',
             'ds_titulo_aditamento' => 'max:100',
-            'url_aditamento' => 'mimes:pdf|max:1024',
+            'url_aditamento' => 'mimes:pdf|max:2048',
             'fl_app' => 'required',
             'fl_ativo' => 'required'
         ];
