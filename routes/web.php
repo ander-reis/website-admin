@@ -90,10 +90,10 @@ Route::prefix('admin')->group(function(){
 //            Route::resource('convencao.clausulas', 'Convencoes\ConvencoesClausulasController', ['only' => ['index', 'store', 'create', 'edit', 'update', 'destroy']]);
             Route::name('convencao.clausulas.index')->get('/{convencoes_entidade}/convencao/{convencoes}/clausulas', 'Convencoes\ConvencoesClausulasController@index');
             Route::name('convencao.clausulas.create')->get('/{convencoes_entidade}/convencao/{convencoes}/clausulas/create', 'Convencoes\ConvencoesClausulasController@create');
-            Route::name('convencao.clausulas.store')->post('/{convencoes_entidade}/convencao/{convencoes}/clausulas/store/', 'Convencoes\ConvencoesClausulasController@store');
+            Route::name('convencao.clausulas.store')->post('/{convencoes_entidade}/convencao/{convencoes}/clausulas', 'Convencoes\ConvencoesClausulasController@store');
             Route::name('convencao.clausulas.edit')->get('/{convencoes_entidade}/convencao/{convencoes}/clausulas/{clausula}/edit', 'Convencoes\ConvencoesClausulasController@edit');
-            Route::name('convencao.clausulas.update')->put('{clausula}', 'Convencoes\ConvencoesClausulasController@update');
-            Route::name('convencao.clausulas.destroy')->delete('/{convencoes_entidade}/convencao/{convencoes}/clausulas/{clausula}/destroy', 'Convencoes\ConvencoesClausulasController@delete');
+            Route::name('convencao.clausulas.update')->put('/{convencoes_entidade}/convencao/{convencoes}/clausulas/{clausula}', 'Convencoes\ConvencoesClausulasController@update');
+            Route::name('convencao.clausulas.destroy')->delete('/{convencoes_entidade}/convencao/{convencoes}', 'Convencoes\ConvencoesClausulasController@destroy');
         });
 
         /**

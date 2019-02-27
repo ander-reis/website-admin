@@ -77,20 +77,20 @@ class ConvencoesClausulasController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(ConvencoesClausulasCreateRequest $request, Convencoes $convencoes)
+    public function store(ConvencoesClausulasCreateRequest $request, ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes)
     {
-        dd($convencoes);
         try {
             $data = $request->only(array_keys($request->all()));
+            $data['id_convencao'] = $convencoes->id_convencao;
 
             $this->clausulasRepository->create($data);
 
             return redirect()->route('admin.convencao.clausulas.index', [
-                'convencoes_entidade' => $convencoes->fl_entidade,
+                'convencoes_entidade' => $convencoesEntidade->id,
                 'convencoes' => $convencoes->id_convencao
             ])->with('message', 'Cadastro realizado com sucesso');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro' . $e->getMessage());
+            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
         }
     }
 
@@ -107,7 +107,7 @@ class ConvencoesClausulasController extends Controller
             return redirect()->back()->with('error-message', 'Acesso não Autorizado');
         }
 
-        return view('admin.clausulas.edit', compact('convencoes', 'clausula'));
+        return view('admin.clausulas.edit', compact('$convencoes_entidade', 'convencoes', 'clausula'));
     }
 
     /**
@@ -120,18 +120,19 @@ class ConvencoesClausulasController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(ConvencoesClausulasUpdateRequest $request, $id, $id_clausula)
+    public function update(ConvencoesClausulasUpdateRequest $request, ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes, ConvencoesClausulas $clausula)
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            $data['id_convencao'] = $id;
 
-            $this->clausulasRepository->update($data, $id_clausula);
+            $this->clausulasRepository->update($data, $clausula->id_clausula);
 
-            return redirect()->route('admin.convencao.clausulas.index', ['convencao' => $data['id_convencao']])
-                ->with('message', 'Editado realizado com sucesso');
+            return redirect()->route('admin.convencao.clausulas.index', [
+                'convencoes_entidade' => $convencoesEntidade->id,
+                'convencoes' => $convencoes->id_convencao
+            ])->with('message', 'Editado realizado com sucesso');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível editar a cláusula');
+            return redirect()->back()->with('error-message', 'Não foi possível editar a cláusula' . $e->getMessage());
         }
     }
 
@@ -143,7 +144,7 @@ class ConvencoesClausulasController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ConvencoesClausulasDeleteRequest $request, $id)
+    public function destroy(ConvencoesClausulasDeleteRequest $request, $convencoes_entidade, $id_convencao)
     {
         try {
             if (\Gate::denies('convencoes.delete')) {
@@ -151,9 +152,12 @@ class ConvencoesClausulasController extends Controller
             }
 
             $id_clausula = $request->only(array_keys($request->all()))['id_clausula'];
+
             $this->clausulasRepository->delete($id_clausula);
-            return redirect()->route('admin.convencao.clausulas.index', ['convencao' => $id])
-                ->with('message', 'Cláusula excluído com sucesso');
+            return redirect()->route('admin.convencao.clausulas.index', [
+                'convencoes_entidade' => $convencoes_entidade,
+                'convencoes' => $id_convencao
+            ])->with('message', 'Cláusula excluído com sucesso');
         } catch (\Exception $e) {
             return redirect()->back()->with('error-message', 'Não foi possível excluir a cláusula');
         }

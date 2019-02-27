@@ -7,8 +7,6 @@
             <p>Convenção Coletiva: <b>{{ $convencoes->ds_titulo }}</b></p>
         </div>
 
-        {{--{{dd($convencoes)}}--}}
-
         {{ Form::model(null, ['route' => ['admin.convencao.clausulas.store', 'convencoes_entidade' => $convencoes->fl_entidade, $convencoes]]) }}
 
         @include('admin.clausulas._form')

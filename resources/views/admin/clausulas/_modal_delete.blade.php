@@ -10,8 +10,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
 {{--            {{ Form::open(['route' => ['admin.convencao.clausulas.destroy', 'convencao' => $convencao_id, 'clausula' => "delete"], 'method' => 'DELETE']) }}--}}
-            {{ Form::open(['route' => ['admin.convencao.clausulas.destroy', 'convencoes_entidade' => $convencoes_entidade, 'convencao' => $convencao_id, 'clausula' => "delete"], 'method' => 'DELETE']) }}
+            {{ Form::open(['route' => ['admin.convencao.clausulas.destroy', $convencoes_entidade, $convencao_id], 'method' => 'DELETE']) }}
             {{ Form::hidden('id_clausula', null, ['class' => 'form-control', 'id' => 'id-clausula']) }}
             <div class="modal-body">
                 <h3>Excluir Cláusula?</h3>

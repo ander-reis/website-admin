@@ -42,8 +42,8 @@
                             @can('convencoes.update')
                                 <a class="text-dark" href="{{ route('admin.convencao.clausulas.edit', [
                                 'convencoes_entidade' => $convencoes->fl_entidade,
-                                'convencoes' => $clausula->id_convencao,
-                                '$clausula' => $clausula,
+                                $convencoes,
+                                $clausula,
                                 ]) }}">
                                     <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                 </a>

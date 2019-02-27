@@ -6,10 +6,6 @@
         <h1>Editar Cláusula</h1>
     </div>
 
-    @component('admin.components._alert_error')
-        {{Session::get('error-message')}}
-    @endcomponent
-
     {{ Form::model($clausula, ['route' => ['admin.convencao.clausulas.update', 'convencoes_entidade' => $convencoes->fl_entidade, $convencoes, $clausula], 'method' => 'PUT']) }}
 
     @include('admin.clausulas._form')

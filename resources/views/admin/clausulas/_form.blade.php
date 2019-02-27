@@ -1,7 +1,3 @@
-@if(!isset($clausula->id))
-    {{ Form::hidden('id_convencao', $convencoes->id_convencao, ['class' => 'form-control']) }}
-@endif
-
 <div class="form-row mb-3">
     @component('admin.form-components._form_group_inline',['field' => 'num_clausula', 'class' => 'col-md-2'])
         {{ Form::label('num_clausula', 'Número Cláusula', ['class' => 'control-label']) }}
