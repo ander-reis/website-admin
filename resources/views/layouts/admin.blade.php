@@ -138,16 +138,20 @@
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/admin.js') }}"></script>
+<script src="{{ asset('js/bs-custom-file-input.min.js') }}"></script>
 
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 
 <script type="text/javascript">
-    $('#ds_texto').ckeditor();
-    // setTimeout(function () {
-    //     $("#successMessage").hide('slow')
-    // }, 5000);
-    $("input[maxlength]").maxlength();
+    $(document).ready(function () {
+        bsCustomFileInput.init()
+        $('#ds_texto').ckeditor();
+        setTimeout(function () {
+            $("#successMessage").hide('slow')
+        }, 5000);
+        $("input[maxlength]").maxlength();
+    })
 </script>
 </body>
 </html>

@@ -6,10 +6,6 @@
             <h1>Cadastrar Convenção Coletiva</h1>
         </div>
 
-        @component('admin.components._alert_error')
-            {{Session::get('error-message')}}
-        @endcomponent
-
         {{ Form::open(['route' => 'admin.convencao.store', 'files' => true]) }}
 
         @include('admin.convencoes._form')

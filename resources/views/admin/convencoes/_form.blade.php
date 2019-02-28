@@ -11,8 +11,11 @@
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'url_arquivo'])
-    {{ Form::label('url_arquivo', 'Upload Convenção Coletiva', ['class' => 'control-label']) }}
-    {{ Form::file('url_arquivo', ['class' => 'form-control-file']) }}
+    <p>Upload</p>
+    <div class="custom-file form-group">
+        {{ Form::file('url_arquivo', ['class' => 'custom-file-input', 'lang' => 'br']) }}
+        {{ Form::label('url_arquivo', 'Upload Convenção Coletiva', ['class' => 'custom-file-label control-label']) }}
+    </div>
 @endcomponent
 
 @if(isset($model->url_arquivo))
@@ -27,8 +30,11 @@
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'url_aditamento'])
-    {{ Form::label('url_aditamento', 'Upload Arquivo Aditamento', ['class' => 'control-label']) }}
-    {{ Form::file('url_aditamento', ['class' => 'form-control-file']) }}
+    <p>Upload Aditamento</p>
+    <div class="custom-file">
+        {{ Form::file('url_aditamento', ['class' => 'custom-file-input', 'lang' => 'br']) }}
+        {{ Form::label('url_arquivo', 'Upload Arquivo Aditamento', ['class' => 'custom-file-label']) }}
+    </div>
 @endcomponent
 
 @if(isset($model->url_aditamento))
@@ -47,29 +53,27 @@
 @component('admin.form-components._form_group',['field' => 'fl_app'])
     {{ Form::label('fl_app', 'Ativo no Aplicativo', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_app') ? ' text-danger' : ''}}">
-        <label>
-            {{ Form::radio('fl_app', (isset($model->fl_ativo) == 1) ? 1 : '1', true) }} Ativo
-        </label>
-    </div>
-
-    <div class="radio{{$errors->has('fl_app') ? ' text-danger' : ''}}">
-        <label>
-            {{ Form::radio('fl_app', 0, false) }} Oculta
-        </label>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="fl_ativo_app" name="fl_app" class="custom-control-input" value="1" @isset($model->fl_app) @if($model->fl_app ==  1) checked="checked" @endif @endisset checked="checked">
+            <label class="custom-control-label" for="fl_ativo_app">Ativo</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="fl_oculto_app" name="fl_app" class="custom-control-input" value="0" @isset($model->fl_app) @if($model->fl_app ==  0) checked="checked" @endif @endisset>
+            <label class="custom-control-label" for="fl_oculto_app">Oculto</label>
+        </div>
     </div>
 @endcomponent
 
 @component('admin.form-components._form_group',['field' => 'fl_ativo'])
     {{ Form::label('fl_ativo', 'Status da Convenção', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
-        <label>
-            {{ Form::radio('fl_ativo', '1', true) }} Ativo
-        </label>
-    </div>
-
-    <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
-        <label>
-            {{ Form::radio('fl_ativo', '0') }} Oculta
-        </label>
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_ativo', '1', true, ['class' => 'custom-control-input', 'id' => 'fl_ativo']) }}
+            {{ Form::label('fl_ativo', 'Ativo', ['class' => 'custom-control-label']) }}
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_ativo', '0', false, ['class' => 'custom-control-input', 'id' => 'fl_oculto']) }}
+            {{ Form::label('fl_oculto', 'Oculto', ['class' => 'custom-control-label']) }}
+        </div>
     </div>
 @endcomponent

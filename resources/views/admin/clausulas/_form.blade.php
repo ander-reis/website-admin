@@ -22,15 +22,14 @@
 
 @component('admin.form-components._form_group',['field' => 'fl_ativo'])
     {{ Form::label('fl_ativo', 'Status da Cláusula', ['class' => 'control-label']) }}
-    <div class="radio{{$errors->has('fl_ativo')?' text-danger':''}}">
-        <label>
-            {{ Form::radio('fl_ativo', '1', true) }} Ativo
-        </label>
-    </div>
-
-    <div class="radio{{$errors->has('fl_ativo')?' text-danger':''}}">
-        <label>
-            {{ Form::radio('fl_ativo', '0', false) }} Oculta
-        </label>
+    <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_ativo', '1', true, ['class' => 'custom-control-input', 'id' => 'fl_ativo']) }}
+            {{ Form::label('fl_ativo', 'Ativo', ['class' => 'custom-control-label']) }}
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_ativo', '0', false, ['class' => 'custom-control-input', 'id' => 'fl_oculto']) }}
+            {{ Form::label('fl_oculto', 'Oculto', ['class' => 'custom-control-label']) }}
+        </div>
     </div>
 @endcomponent

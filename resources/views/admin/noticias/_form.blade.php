@@ -22,16 +22,15 @@
 
 @component('admin.form-components._form_group', ['field' => 'fl_exibir_destaque'])
     {{ Form::label('fl_exibir_destaque', 'Destaque', ['class' => 'control-label']) }}
-    <div class="radio{{$errors->has('fl_exibir_destaque')?' text-danger':''}}">
-        <label>
-            {{ Form::radio('fl_exibir_destaque', '1') }} Em Destaque
-        </label>
-    </div>
-
-    <div class="radio{{$errors->has('fl_exibir_destaque')?' text-danger':''}}">
-        <label>
-            {{ Form::radio('fl_exibir_destaque', '0', true) }} Sem Destaque
-        </label>
+    <div class="radio{{$errors->has('fl_exibir_destaque') ? ' text-danger' : ''}}">
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_exibir_destaque', '1', true, ['class' => 'custom-control-input', 'id' => 'fl_exibir_destaque_ativo']) }}
+            {{ Form::label('fl_exibir_destaque_ativo', 'Ativo', ['class' => 'custom-control-label']) }}
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_exibir_destaque', '0', false, ['class' => 'custom-control-input', 'id' => 'fl_exibir_destaque_oculto']) }}
+            {{ Form::label('fl_exibir_destaque_oculto', 'Oculto', ['class' => 'custom-control-label']) }}
+        </div>
     </div>
 @endcomponent
 
@@ -49,15 +48,14 @@
 
 @component('admin.form-components._form_group',['field' => 'fl_oculta'])
     {{ Form::label('fl_oculta', 'Status da Notícia', ['class' => 'control-label']) }}
-    <div class="radio{{$errors->has('fl_oculta')?' text-danger':''}}">
-        <label>
-            {{ Form::radio('fl_oculta', '1', true) }} Ativo
-        </label>
-    </div>
-
-    <div class="radio{{$errors->has('fl_oculta')?' text-danger':''}}">
-        <label>
-            {{ Form::radio('fl_oculta', '0') }} Oculta
-        </label>
+    <div class="radio{{$errors->has('fl_oculta') ? ' text-danger' : ''}}">
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_oculta', '1', true, ['class' => 'custom-control-input', 'id' => 'fl_oculta_ativo']) }}
+            {{ Form::label('fl_oculta_ativo', 'Ativo', ['class' => 'custom-control-label']) }}
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_oculta', '0', false, ['class' => 'custom-control-input', 'id' => 'fl_oculta']) }}
+            {{ Form::label('fl_oculta', 'Oculto', ['class' => 'custom-control-label']) }}
+        </div>
     </div>
 @endcomponent

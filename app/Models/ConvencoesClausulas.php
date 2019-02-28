@@ -62,16 +62,6 @@ class ConvencoesClausulas extends Model implements Transformable
     }
 
     /**
-     * Accessor formata fl_ativo
-     *
-     * @return string
-     */
-    public function getFlAtivoFormattedAttribute()
-    {
-        return ($this->fl_ativo == 'S') ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
-    }
-
-    /**
      * Accessor formata ds_titulo para 6 palavras
      *
      * @return string
