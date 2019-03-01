@@ -1,6 +1,9 @@
 @component('admin.form-components._form_group', ['field' => 'ds_imagem'])
-    {{ Form::label('ds_imagem', 'Upload Imagem', ['class' => 'control-label']) }}
-    {{ Form::file('ds_imagem', ['class' => 'form-control-file']) }}
+    <p>Upload</p>
+    <div class="custom-file form-group">
+        {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br']) }}
+        {{ Form::label('ds_imagem', 'Upload Imagem', ['class' => 'custom-file-label control-label']) }}
+    </div>
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'ds_label'])
@@ -21,14 +24,13 @@
 @component('admin.form-components._form_group',['field' => 'fl_ativo'])
     {{ Form::label('fl_ativo', 'Status do Slide', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
-        <label>
-            {{ Form::radio('fl_ativo', '1', true) }} Ativo
-        </label>
-    </div>
-
-    <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
-        <label>
-            {{ Form::radio('fl_ativo', '0') }} Oculta
-        </label>
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_ativo', '1', true, ['class' => 'custom-control-input', 'id' => 'fl_ativo']) }}
+            {{ Form::label('fl_ativo', 'Ativo', ['class' => 'custom-control-label']) }}
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ Form::radio('fl_ativo', '0', false, ['class' => 'custom-control-input', 'id' => 'fl_oculto']) }}
+            {{ Form::label('fl_oculto', 'Oculto', ['class' => 'custom-control-label']) }}
+        </div>
     </div>
 @endcomponent

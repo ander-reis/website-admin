@@ -35,14 +35,4 @@ class Slider extends Model implements Transformable
         'ds_link',
         'fl_ativo'
     ];
-
-    /**
-     * Mutators formata status do slide
-     *
-     * @return string
-     */
-    public function getFlAtivoFormattedAttribute()
-    {
-        return $this->fl_ativo ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
-    }
 }

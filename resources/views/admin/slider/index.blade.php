@@ -39,7 +39,9 @@
                         <td>
                             {{ $slider->ds_link }}
                         </td>
-                        <td class="text-center">{!! $slider->fl_ativo_formatted !!}</td>
+                        <td class="text-center">
+                            {!! flStatus($slider->fl_ativo) !!}
+                        </td>
                         <td class="text-center">
                             <a class="text-dark" href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}">
                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>

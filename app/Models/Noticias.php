@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Noticias.
@@ -14,7 +15,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class Noticias extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, LogsActivity;
 
     /**
      * Conexão database website
@@ -58,6 +59,25 @@ class Noticias extends Model implements Transformable
         'ds_palavra_chave',
         'fl_oculta'
     ];
+
+    /**
+     * logging
+     */
+    protected static $logAttributes = [
+        'id_categoria',
+        'dt_cadastro',
+        'dt_expira',
+        'dt_noticia',
+        'fl_exibir_destaque',
+        'ds_resumo',
+        'ds_texto',
+        'ds_palavra_chave',
+        'fl_oculta'
+    ];
+
+    protected static $logFillable = true;
+
+    protected static $logName = 'noticias';
 
     /**
      * Dates
