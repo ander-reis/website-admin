@@ -4,14 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivityLogTable extends Migration
+class CreateTbSinproAdminAtividadeLogTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
-        Schema::create(config('activitylog.table_name'), function (Blueprint $table) {
+        Schema::create('tb_sinpro_admin_atividade_log', function (Blueprint $table) {
             $table->increments('id');
             $table->string('log_name')->nullable();
             $table->text('description');
@@ -28,9 +30,11 @@ class CreateActivityLogTable extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down()
     {
-        Schema::dropIfExists(config('activitylog.table_name'));
+        Schema::dropIfExists('tb_sinpro_admin_atividade_log');
     }
 }
