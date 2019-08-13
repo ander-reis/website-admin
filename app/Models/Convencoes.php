@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use App\Traits\ConvencaoPaths;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Convencoes.
@@ -14,7 +15,7 @@ use App\Traits\ConvencaoPaths;
  */
 class Convencoes extends Model implements Transformable
 {
-    use TransformableTrait, ConvencaoPaths;
+    use TransformableTrait, ConvencaoPaths, LogsActivity;
 
     /**
      * Conexão database website
@@ -99,4 +100,22 @@ class Convencoes extends Model implements Transformable
         $name = str_replace(" ", "", $name);
         return $entidade = removeSpecialChars($name);
     }
+
+    /**
+     * Configurações Logging
+     */
+    protected static $logAttributes = [
+        'ds_titulo',
+        'dt_validade',
+        'url_arquivo',
+        'ds_titulo_aditamento',
+        'url_aditamento',
+        'fl_app',
+        'fl_entidade',
+        'fl_ativo'
+    ];
+
+    protected static $logFillable = true;
+
+    protected static $logName = 'convencoes';
 }

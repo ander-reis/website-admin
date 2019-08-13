@@ -12,9 +12,6 @@
                     ['convencoes_entidade' => $convencoes->fl_entidade, $convencoes]) }}"
                        class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Cláusula</a>
                 @endcan
-                @cannot('convencoes.create')
-                    <button class="btn btn-primary mr-2 mt-2 mb-2" disabled>Cadastrar Claúsula</button>
-                @endcannot
             </p>
 
             @component('admin.components._data_exists', ['collection' => $clausulas->isEmpty()])@endcomponent
@@ -40,7 +37,7 @@
                         </td>
                         <td class="text-center">
                             @can('convencoes.update')
-                                <a class="text-dark" href="{{ route('admin.convencao.clausulas.edit', [
+                                <a class="text-dark link-icon" href="{{ route('admin.convencao.clausulas.edit', [
                                 'convencoes_entidade' => $convencoes->fl_entidade,
                                 $convencoes,
                                 $clausula,
@@ -73,7 +70,17 @@
         </div>
     </div>
 
-    @component('admin.clausulas._modal_delete', ['convencoes_entidade' => $convencoes->fl_entidade, 'convencao_id' => $convencoes->id_convencao])
+    @component('admin.components._confirm_delete_component')
+        @slot('idModal')
+            deleteClausulaModal
+        @endslot
+        @slot('openForm')
+            {{ Form::open(['route' => ['admin.convencao.clausulas.destroy', $convencoes->fl_entidade, $convencoes->id_convencao], 'method' => 'DELETE']) }}
+            {{ Form::hidden('id_clausula', null, ['class' => 'form-control', 'id' => 'id-clausula']) }}
+        @endslot
+        @slot('title')
+            Excluir Cláusula confirm?
+        @endslot
     @endcomponent
 
 @endsection()

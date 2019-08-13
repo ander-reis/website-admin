@@ -30,7 +30,9 @@ class SliderRepositoryEloquent extends BaseRepository implements SliderRepositor
     public function create(array $attributes)
     {
         $model = parent::create($attributes);
+
         $this->uploadSlider($model->id, $attributes['ds_imagem']);
+
         return $model;
     }
 
@@ -46,8 +48,9 @@ class SliderRepositoryEloquent extends BaseRepository implements SliderRepositor
     public function update(array $attributes, $id)
     {
         $model = parent::update(array_except($attributes, 'ds_imagem'), $id);
+
         if(isset($attributes['ds_imagem'])){
-            $this->uploadSlider($model->id, $attributes['ds_imagem']);
+            $this->uploadSlider($id, $attributes['ds_imagem']);
         }
         return $model;
     }

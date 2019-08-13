@@ -31,7 +31,7 @@ class NoticiasCreateRequest extends FormRequest
             'ds_resumo' => 'required|max:80',
             'ds_texto' => 'required',
             'fl_exibir_destaque' => 'required',
-            'fl_oculta' => 'required'
+            'fl_status' => 'required',
         ];
     }
 

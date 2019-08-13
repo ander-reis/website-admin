@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,16 @@ class LoginController extends Controller
     }
 
     /**
+     * Configura novo username
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'username';
+    }
+
+    /**
      * Valida request user
      *
      * @param  \Illuminate\Http\Request $request
@@ -61,15 +72,5 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         return $request->only($this->username(), 'senha');
-    }
-
-    /**
-     * Configura  novo username
-     *
-     * @return string
-     */
-    public function username()
-    {
-        return 'username';
     }
 }

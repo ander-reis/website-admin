@@ -90,7 +90,6 @@ class ConvencoesController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-
             if(array_key_exists('ds_titulo', $data)){
                 $this->convencoesRepository->create($data);
                 return redirect()->route('admin.convencao.index', ['convencao' => $data['fl_entidade']])

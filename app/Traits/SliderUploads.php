@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Http\UploadedFile;
 use Imagine\Image\Box;

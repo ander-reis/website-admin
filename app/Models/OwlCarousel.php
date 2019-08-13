@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class OwlCarousel.
@@ -13,7 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class OwlCarousel extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, LogsActivity;
 
     /**
      * Table
@@ -38,4 +39,16 @@ class OwlCarousel extends Model implements Transformable
      */
     public $timestamps = false;
 
+    /**
+     * Configurações Logging
+     */
+    protected static $logAttributes = [
+        'ds_icone',
+        'ds_titulo',
+        'ds_link'
+    ];
+
+    protected static $logFillable = true;
+
+    protected static $logName = 'owl_carousel';
 }

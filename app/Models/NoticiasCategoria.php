@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class NoticiasCategoria.
@@ -13,7 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class NoticiasCategoria extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, LogsActivity;
 
     /**
      * Conexão database website
@@ -54,4 +55,15 @@ class NoticiasCategoria extends Model implements Transformable
     {
         return $this->hasMany(Noticias::class, 'id_categoria');
     }
+
+    /**
+     * Configurações Logging
+     */
+    protected static $logAttributes = [
+        'ds_categoria'
+    ];
+
+    protected static $logFillable = true;
+
+    protected static $logName = 'noticias_categorias';
 }

@@ -36,8 +36,15 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item {{ active('admin.noticias.*') }}">
-                            <a class="nav-link" href="{{ route('admin.noticias.index') }}">Notícias</a>
+                        <li class="nav-item dropdown mx-3 {{ active('admin.noticias.*') }} {{ active('admin.categorias.*') }}">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Notícias
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.noticias.index') }}">Notícias</a>
+                                <a class="dropdown-item" href="{{ route('admin.categorias.index') }}">Categorias</a>
+                            </div>
                         </li>
 
                         <li class="nav-item {{ active('admin.slider.*') }}">
@@ -138,14 +145,13 @@
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/admin.js') }}"></script>
-<script src="{{ asset('js/bs-custom-file-input.min.js') }}"></script>
 
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        bsCustomFileInput.init()
+        bsCustomFileInput.init();
         $('#ds_texto').ckeditor();
         setTimeout(function () {
             $("#successMessage").hide('slow')

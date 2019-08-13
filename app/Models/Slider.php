@@ -6,6 +6,7 @@ use App\Traits\SliderPaths;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Slider.
@@ -14,7 +15,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class Slider extends Model implements Transformable
 {
-    use TransformableTrait, SliderPaths;
+    use TransformableTrait, SliderPaths, LogsActivity;
 
     /**
      * Table
@@ -35,4 +36,21 @@ class Slider extends Model implements Transformable
         'ds_link',
         'fl_ativo'
     ];
+
+    /**
+     * Configurações Logging
+     */
+    protected static $logAttributes = [
+        'ds_label',
+        'ds_titulo',
+        'ds_imagem',
+        'ds_link',
+        'fl_ativo'
+    ];
+
+    protected static $logFillable = true;
+
+    //protected static $ignoreChangedAttributes = ['ds_imagem'];
+
+    protected static $logName = 'slider';
 }

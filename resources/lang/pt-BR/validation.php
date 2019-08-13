@@ -128,6 +128,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'url_arquivo' => [
+            'uploaded' => 'O campo :attribute não pode conter um arquivo com mais de 2 mb.'
+        ]
     ],
 
     /*
@@ -188,8 +191,10 @@ return [
         'dt_validade'           => 'ano de validade',
         'ds_titulo'             => 'título',
         'url_arquivo'           => 'upload',
+        'url_aditamento'        => 'upload aditamento',
         'fl_entidade'           => 'entidade',
         'ds_texto'              => 'texto',
-        'num_clausula'          => 'cláusula',
+        'ds_imagem'             => 'imagem',
+        'num_clausula'          => 'cláusula'
     ],
 ];

@@ -65,7 +65,7 @@
                 <legend class="scheduler-border">Status da Notícia</legend>
                 <div class="control-group">
                     <div class="controls bootstrap-timepicker">
-                        {!! flStatus($model->fl_oculta) !!}
+                        {!! flStatus($model->fl_status) !!}
                     </div>
                 </div>
             </fieldset>

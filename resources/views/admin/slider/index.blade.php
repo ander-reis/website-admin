@@ -6,11 +6,9 @@
             <div class="my-3">
                 <h1>Slider</h1>
             </div>
-
             <p>
-                <a href="{{ route('admin.slider.create') }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Slider</a>
+                <a href="{{ route('admin.slider.create') }}" class="btn btn-outline-primary mr-2 mt-2 mb-2">Cadastrar Slider</a>
             </p>
-
             <table class="table">
                 <thead>
                 <tr>
@@ -43,7 +41,7 @@
                             {!! flStatus($slider->fl_ativo) !!}
                         </td>
                         <td class="text-center">
-                            <a class="text-dark" href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}">
+                            <a class="text-dark link-icon" href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}">
                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                             </a>
                         </td>
@@ -58,6 +56,18 @@
         </div>
     </div>
 
-    @component('admin.slider._modal_delete')@endcomponent
+    @component('admin.components._confirm_delete_component')
+        @slot('idModal')
+            deleteSliderModal
+        @endslot
+        @slot('openForm')
+            {{ Form::open(['route' => ['admin.slider.destroy', 'slider'], 'method' => 'DELETE']) }}
+            {{ Form::hidden('redirects_to', URL::full()) }}
+            {{ Form::hidden('id_slider', null, ['class' => 'form-control', 'id' => 'id-slider']) }}
+        @endslot
+        @slot('title')
+            Excluir Slider?
+        @endslot
+    @endcomponent
 
 @endsection()

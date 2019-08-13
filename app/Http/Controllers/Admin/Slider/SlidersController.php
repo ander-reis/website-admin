@@ -104,6 +104,7 @@ class SlidersController extends Controller
     {
         try {
             $form = $request->only(array_keys($request->all()));
+
             $this->repository->update($form, $id);
 
             return redirect()->route('admin.slider.index')->with('message', 'Slide editado com sucesso');
@@ -117,9 +118,7 @@ class SlidersController extends Controller
     {
         try{
             $id_slider = $request->only(array_keys($request->all()))['id_slider'];
-
             $this->repository->deleteSlider($id_slider);
-
             $request->session()->flash('message', 'Slider excluída com sucesso.');
             return redirect()->route('admin.slider.index')
                 ->with('message', 'Slider excluído com sucesso');

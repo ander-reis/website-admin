@@ -6,15 +6,12 @@
             <div class="my-3">
                 <h1>{{ $entidade->ds_entidade }}</h1>
             </div>
-            <p>
-                @can('convencoes.create')
-                    <a href="{{ route('admin.convencao.create', ['entidade_id' => $entidade->id]) }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Convenção</a>
-                @endcan
-                @cannot('convencoes.create')
-                    <button class="btn btn-primary mr-2 mt-2 mb-2" disabled>Cadastrar Convenção</button>
-                @endcannot
-            </p>
-
+            @can('convencoes.create')
+                <p>
+                    <a href="{{ route('admin.convencao.create', ['entidade_id' => $entidade->id]) }}"
+                       class="btn btn-outline-primary mr-2 mt-2 mb-2">Cadastrar Convenção</a>
+                </p>
+            @endcan
             @component('admin.components._data_exists', ['collection' => $convencoes->isEmpty()])@endcomponent
 
             @if(!$convencoes->isEmpty())
@@ -46,13 +43,15 @@
                                 {!! flStatus($convencao->fl_ativo) !!}
                             </td>
                             <td class="text-center">
-                                <a class="text-primary" href="{{ route('admin.convencao.clausulas.index', [$entidade, $convencao]) }}">
+                                <a class="text-primary"
+                                   href="{{ route('admin.convencao.clausulas.index', [$entidade, $convencao]) }}">
                                     <i class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
                                 </a>
                             </td>
                             <td class="text-center">
                                 @can('convencoes.update')
-                                    <a class="text-dark" href="{{ route('admin.convencao.edit', [$entidade, $convencao]) }}">
+                                    <a class="text-dark link-icon"
+                                       href="{{ route('admin.convencao.edit', [$entidade, $convencao]) }}">
                                         <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                     </a>
                                 @endcan

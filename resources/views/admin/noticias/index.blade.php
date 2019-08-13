@@ -4,17 +4,12 @@
     <div class="row">
         <div class="col-sm-12">
             <h1>Notícias</h1>
-            <p>
-                @can('noticias.create')
-                    <a href="{{ route('admin.noticias.create') }}" class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar
+            @can('noticias.create')
+                <p>
+                    <a href="{{ route('admin.noticias.create') }}" class="btn btn-outline-primary mr-2 mt-2 mb-2">Cadastrar
                         Notícia</a>
-                    <a href="{{ route('admin.categorias.index') }}" class="btn btn-info ml-2 mt-2 mb-2">Categorias</a>
-                @endcan
-                @cannot('noticias.create')
-                    <button class="btn btn-primary mr-2 mt-2 mb-2" disabled>Cadastrar</button>
-                    <button class="btn btn-primary mr-2 mt-2 mb-2" disabled>Categorias</button>
-                @endcannot
-            </p>
+                </p>
+            @endcan
             <table class="table">
                 <thead>
                 <tr>
@@ -41,13 +36,14 @@
                                 {{ $noticia->ds_resumo }}
                             @endcannot
                         </td>
-                        <td class="text-center">{{ $noticia->created_at_formatted }}</td>
-                        <td class="text-center">{!! flStatus($noticia->fl_oculta) !!}</td>
-                        <td class="text-center">{{ $noticia->dt_cadastro_formatted }}</td>
+                        <td class="text-center">{!! dtCadastroFormatted($noticia->dt_cadastro) !!}</td>
+                        <td class="text-center">{!! flStatus($noticia->fl_status) !!}</td>
+                        <td class="text-center">{!! dtCadastroFormatted($noticia->dt_cadastro) !!}</td>
                         <td class="text-center">
                             @can('noticias.update')
-                                <a class="text-dark"
+                                <a class="text-dark link-icon"
                                    href="{{ route('admin.noticias.edit', ['noticia' => $noticia->id_noticia]) }}">
+{{--                                    editar--}}
                                     <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                 </a>
                             @endcan

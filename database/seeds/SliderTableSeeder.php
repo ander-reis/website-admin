@@ -19,7 +19,7 @@ class SliderTableSeeder extends Seeder
         \File::deleteDirectory($rootPath, true);
 
         /** @var Collection $slider */
-        $sliders = factory(\App\Models\Slider::class, 5)->create();
+        $sliders = factory(\App\Models\Slider::class, 1)->create();
         $repository = app(\App\Repositories\SliderRepository::class);
         $collectionSliders = $this->getSliders();
 

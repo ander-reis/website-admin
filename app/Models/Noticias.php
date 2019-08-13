@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -20,14 +19,14 @@ class Noticias extends Model implements Transformable
     /**
      * Conexão database website
      */
-//    protected $connection = 'sqlsrv-website';
-//    protected $table = 'tb_sinpro_noticias';
+    protected $connection = 'sqlsrv-website';
+    protected $table = 'tb_sinpro_noticias';
 
     /**
      * Conexão teste Postgre
      */
-    protected $connection = 'pgsql';
-    protected $table = 'tb_sinpro_noticias';
+//    protected $connection = 'pgsql';
+//    protected $table = 'tb_sinpro_noticias';
 
     /**
      * configura primary key
@@ -57,11 +56,11 @@ class Noticias extends Model implements Transformable
         'ds_resumo',
         'ds_texto',
         'ds_palavra_chave',
-        'fl_oculta'
+        'fl_status'
     ];
 
     /**
-     * logging
+     * Configurações Logging
      */
     protected static $logAttributes = [
         'id_categoria',
@@ -72,7 +71,7 @@ class Noticias extends Model implements Transformable
         'ds_resumo',
         'ds_texto',
         'ds_palavra_chave',
-        'fl_oculta'
+        'fl_status'
     ];
 
     protected static $logFillable = true;
@@ -94,17 +93,6 @@ class Noticias extends Model implements Transformable
     public function categoria()
     {
         return $this->belongsTo(NoticiasCategoria::class, 'id_categoria');
-    }
-
-    /**
-     * Mutators formata data -> 01/01/2000
-     *
-     * @return string
-     * @throws \Exception
-     */
-    public function getDtCadastroFormattedAttribute()
-    {
-        return (new \DateTime($this->dt_cadastro))->format('d/m/Y');
     }
 
     /**

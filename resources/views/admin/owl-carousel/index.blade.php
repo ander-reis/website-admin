@@ -23,7 +23,7 @@
                         <td>{!! $owlItem->ds_titulo !!}</td>
                         <td>{{ $owlItem->ds_link }}</td>
                         <td>
-                            <a class="text-dark" href="{{ route('admin.owl-carousel.edit', ['owl_carousel' => $owlItem->id]) }}">
+                            <a class="text-dark link-icon" href="{{ route('admin.owl-carousel.edit', ['owl_carousel' => $owlItem->id]) }}">
                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                             </a>
                         </td>
