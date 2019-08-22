@@ -17,23 +17,11 @@ class Noticias extends Model implements Transformable
     use TransformableTrait, LogsActivity;
 
     /**
-     * Conexão database website
-     */
-    protected $connection = 'sqlsrv-website';
-    protected $table = 'tb_sinpro_noticias';
-
-    /**
      * Conexão teste Postgre
      */
 //    protected $connection = 'pgsql';
-//    protected $table = 'tb_sinpro_noticias';
 
-    /**
-     * configura primary key
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id_noticia';
+    protected $table = 'tb_sinpro_noticias';
 
     /**
      * configura CREATED_AT
@@ -49,14 +37,14 @@ class Noticias extends Model implements Transformable
      */
     protected $fillable = [
         'id_categoria',
-        'dt_cadastro',
-        'dt_expira',
         'dt_noticia',
-        'fl_exibir_destaque',
+        'dt_cadastro',
+        'dt_alteracao',
         'ds_resumo',
         'ds_texto',
         'ds_palavra_chave',
-        'fl_status'
+        'fl_status',
+        'fl_oculta',
     ];
 
     /**
@@ -65,9 +53,8 @@ class Noticias extends Model implements Transformable
     protected static $logAttributes = [
         'id_categoria',
         'dt_cadastro',
-        'dt_expira',
+        'dt_alteracao',
         'dt_noticia',
-        'fl_exibir_destaque',
         'ds_resumo',
         'ds_texto',
         'ds_palavra_chave',
@@ -83,7 +70,7 @@ class Noticias extends Model implements Transformable
      *
      * @var array
      */
-    protected $dates = ['dt_noticia'];
+    protected $dates = ['dt_noticia', 'dt_cadastro', 'dt_alteracao'];
 
     /**
      * Relacionamento noticias para categorias, um para um
@@ -103,7 +90,7 @@ class Noticias extends Model implements Transformable
      */
     public function getDtCadastroUTCFormattedAttribute()
     {
-        return (new \DateTime($this->dt_cadastro))->format('Y-m-d');
+        return (new \DateTime($this->dt_noticia))->format('Y-m-d');
     }
 
     /**
@@ -113,6 +100,6 @@ class Noticias extends Model implements Transformable
      */
     public function getHrNoticiaFormattedAttribute()
     {
-        return substr($this->dt_cadastro, 11, -3);
+        return substr($this->dt_noticia, 11, -3);
     }
 }

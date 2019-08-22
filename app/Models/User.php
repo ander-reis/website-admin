@@ -12,27 +12,13 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable, AuthenticationLogable;
 
     /**
-     * Conexão database SINPRO
-     */
-//    protected $connection = 'sqlsrv-sinpro';
-//    protected $table = 'Cadastro_Professores';
-//    protected $primaryKey = 'Codigo_Professor';
-//    protected $rememberTokenName = null;
-
-    /**
-     * Conexão database website
-     */
-//    protected $table = 'tb_sinpro_noticias';
-//    protected $connection = 'sqlsrv-website';
-
-    /**
      * Conexão teste Postgre
      */
-    protected $connection = 'pgsql';
+//    protected $connection = 'pgsql';
+
     protected $table = 'tb_sinpro_usuarios';
 
-    protected $primaryKey = 'id_usuario';
-
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
@@ -80,8 +66,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [
             'user' => [
-                'id' => $this->id,
-                'name' => $this->nome,
+                'id_usuario' => $this->id,
+                'nome' => $this->nome,
                 'username' => $this->username,
             ]
         ];

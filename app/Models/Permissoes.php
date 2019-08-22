@@ -13,16 +13,11 @@ class Permissoes extends Model
 {
 
     /**
-     * Conexão database website
-     */
-//    protected $connection = 'sqlsrv-website';
-//    protected $table = 'tb_sinpro_noticias';
-
-    /**
      * Conexão teste Postgre
      */
-    protected $connection = 'pgsql';
-    protected $table = 'tb_sinpro_admin_permissoes';
+//    protected $connection = 'pgsql';
+
+    protected $table = 'tb_sinpro_admin_permissoes_website';
 
     const CREATED_AT = 'dt_cadastro';
     const UPDATED_AT = 'dt_alteracao';

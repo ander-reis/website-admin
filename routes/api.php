@@ -35,7 +35,6 @@ use Illuminate\Http\Request;
             'expires' => 1
         ])->name('.refresh_token');
 
-
         ApiRoute::group([
             'middleware' => ['api.throttle', 'auth.renew'],
             'limit' => 100,
@@ -49,9 +48,9 @@ use Illuminate\Http\Request;
                     /**
                      * 3 metodos de exemplo para retonar user autenticado
                      */
-                    return $request->user('api');
+//                    return $request->user('api');
                     //return app(\Dingo\Api\Auth\Auth::class)->user();
-                    //return \Auth::guard('api')->user();
+                    return \Auth::guard('api')->user();
 
                     //teste loading payment
                     //throw new \Exception('teste');
@@ -75,11 +74,6 @@ use Illuminate\Http\Request;
                  * Rota clausulas
                  */
                 ApiRoute::resource('/clausulas', 'ClausulasController', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
-
-                /**
-                 * Rota menu
-                 */
-                ApiRoute::resource('/menu', 'MenuController', ['only' => ['index']]);
 
                 /**
                  * Rota paginas principais

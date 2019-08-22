@@ -13,15 +13,10 @@ class Paginas extends Model
 {
 
     /**
-     * Conexão database website
-     */
-//    protected $connection = 'sqlsrv-website';
-//    protected $table = 'tb_sinpro_noticias';
-
-    /**
      * Conexão teste Postgre
      */
     protected $connection = 'pgsql';
+
     protected $table = 'tb_sinpro_admin_paginas';
 
     /**

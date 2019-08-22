@@ -49,7 +49,8 @@ class NoticiasController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            $data['dt_expira'] = Noticias::convertDateTime($data['dt_expira'], $data['hr_expira']);
+            $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            unset($data['hr_noticia']);
             $result = $this->noticiasRepository->create($data);
             $response = [
                 'message' => 'Cadastro criado com sucesso.',
@@ -96,7 +97,8 @@ class NoticiasController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            $data['dt_expira'] = Noticias::convertDateTime($data['dt_expira'], $data['hr_expira']);
+            $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            unset($data['hr_noticia']);
             return $this->noticiasRepository->update($data, $id);
         } catch (ModelNotFoundException $e) {
             $response = [

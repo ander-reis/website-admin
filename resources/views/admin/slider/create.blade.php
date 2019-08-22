@@ -6,10 +6,6 @@
             <h1>Cadastrar Slider</h1>
         </div>
 
-        @component('admin.components._alert_error')
-            {{Session::get('error-message')}}
-        @endcomponent
-
         {{ Form::open(['route' => 'admin.slider.store', 'files' => true]) }}
 
         @include('admin.slider._form')

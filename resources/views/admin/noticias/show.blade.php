@@ -16,7 +16,7 @@
                 <legend class="scheduler-border">Texto</legend>
                 <div class="control-group">
                     <div class="controls bootstrap-timepicker">
-                        {{ $model->ds_texto }}
+                        {!! $model->ds_texto !!}
                     </div>
                 </div>
             </fieldset>

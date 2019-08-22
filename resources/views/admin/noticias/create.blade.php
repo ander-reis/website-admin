@@ -6,10 +6,6 @@
             <h1>Cadastrar Notícia</h1>
         </div>
 
-        @component('admin.components._alert_error')
-            {{Session::get('error-message')}}
-        @endcomponent
-
         {{ Form::open(['route' => 'admin.noticias.store']) }}
 
         @include('admin.noticias._form')

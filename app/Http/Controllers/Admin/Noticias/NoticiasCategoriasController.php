@@ -37,7 +37,7 @@ class NoticiasCategoriasController extends Controller
      */
     public function index()
     {
-        $noticiasCategorias = $this->repository->orderBy('id_categoria')->paginate();
+        $noticiasCategorias = $this->repository->orderBy('id')->paginate();
         return view('admin.categorias.index', compact('noticiasCategorias'));
     }
 
@@ -69,7 +69,7 @@ class NoticiasCategoriasController extends Controller
 
             return redirect()->route('admin.categorias.index')->with('message', 'Categoria cadastrada com sucesso');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível cadastrar a categoria');
+            return redirect()->back()->with('error-message', 'Não foi possível cadastrar a categoria' . $e->getMessage());
         }
     }
 

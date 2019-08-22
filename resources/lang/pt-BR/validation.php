@@ -195,6 +195,7 @@ return [
         'fl_entidade'           => 'entidade',
         'ds_texto'              => 'texto',
         'ds_imagem'             => 'imagem',
-        'num_clausula'          => 'cláusula'
+        'num_clausula'          => 'cláusula',
+        'ds_categoria'          => 'categoria',
     ],
 ];

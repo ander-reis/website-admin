@@ -16,4 +16,5 @@ mix.js('resources/assets/js/admin.js', 'public/js')
     .copy('node_modules/font-awesome/fonts', 'public/fonts')
     .sourceMaps();
 
-mix.browserSync('localhost:8000');
+// mix.browserSync('localhost:8000');
+mix.browserSync('website-admin.br');

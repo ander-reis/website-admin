@@ -12,15 +12,10 @@ use Illuminate\Database\Eloquent\Model;
 class PaginasPrincipais extends Model
 {
     /**
-     * Conexão database website
-     */
-//    protected $connection = 'sqlsrv-website';
-//    protected $table =  'tb_sinpro_conteudo_paginas_principais';
-
-    /**
      * Conexão teste Postgre
      */
     protected $connection = 'pgsql';
+
     protected $table =  'tb_sinpro_conteudo_paginas_principais';
 
     /**

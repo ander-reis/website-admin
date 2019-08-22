@@ -17,6 +17,11 @@ class OwlCarousel extends Model implements Transformable
     use TransformableTrait, LogsActivity;
 
     /**
+     * Conexão teste Postgre
+     */
+//    protected $connection = 'pgsql';
+
+    /**
      * Table
      *
      * @var string

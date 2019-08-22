@@ -37,8 +37,7 @@ class NoticiasController extends Controller
      */
     public function index()
     {
-        $noticias = $this->repository->orderBy('id_noticia', 'desc')->paginate();
-//        dd($noticias);
+        $noticias = $this->repository->orderBy('id', 'desc')->paginate();
         return view('admin.noticias.index', compact('noticias'));
     }
 
@@ -49,7 +48,7 @@ class NoticiasController extends Controller
      */
     public function create()
     {
-        if(\Gate::denies('noticias.create')){
+        if (\Gate::denies('noticias.create')) {
             return redirect()->route('admin.noticias.index')->with('error-message', 'Acesso não Autorizado');
         }
 
@@ -59,7 +58,7 @@ class NoticiasController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  NoticiasCreateRequest $request
+     * @param NoticiasCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
@@ -69,7 +68,8 @@ class NoticiasController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            $data['dt_cadastro'] = convertDateTime($data['dt_cadastro'], $data['hr_noticia']);
+            $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            unset($data['hr_noticia']);
             $this->repository->create($data);
             return redirect()->route('admin.noticias.index')->with('message', 'Cadastro realizado com sucesso');
         } catch (\Exception $e) {
@@ -80,7 +80,7 @@ class NoticiasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -97,14 +97,14 @@ class NoticiasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit($id)
     {
-        if(\Gate::denies('noticias.update')){
+        if (\Gate::denies('noticias.update')) {
             return redirect()->route('admin.noticias.index')->with('error-message', 'Acesso não Autorizado');
         }
 
@@ -116,8 +116,8 @@ class NoticiasController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  NoticiasUpdateRequest $request
-     * @param  string            $id
+     * @param NoticiasUpdateRequest $request
+     * @param string $id
      *
      * @return Response
      *
@@ -127,11 +127,10 @@ class NoticiasController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            $data['dt_cadastro'] = convertDateTime($data['dt_cadastro'], $data['hr_noticia']);
+            $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
             unset($data['hr_noticia']);
             $this->repository->update($data, $id);
-
-            return redirect()->to($data['redirects_to'])->with('message', 'Notícia editado com sucesso');
+            return redirect()->route('admin.noticias.index')->with('message', 'Notícia alterado com sucesso');
         } catch (\Exception $e) {
             return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a notícia');
         }

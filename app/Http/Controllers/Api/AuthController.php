@@ -67,11 +67,14 @@ class AuthController extends Controller
         $this->validateLogin($request);
 
         $credentials = $this->credentials($request);
-//        dd(\Auth::guard('api')->attempt($credentials));
-        if($token = \Auth::guard('api')->attempt($credentials)){
-            return $this->sendLoginResponse($request, $token);
-        }
 
+        $result = $this->ldapAccess($credentials['username'], $credentials['senha']);
+        //dd(\Auth::guard('api')->attempt($credentials));
+        if ($result['code']) {
+            if($token = \Auth::guard('api')->attempt($credentials)){
+                return $this->sendLoginResponse($request, $token);
+            }
+        }
         /**
          * retorna erro no login
          */
@@ -114,5 +117,28 @@ class AuthController extends Controller
         return response()->json([
             'status_code:' => 204
         ], 204);
+    }
+
+    /**
+     * metodo válida acesso do usuário no ldap
+     *
+     * @param $username
+     * @param $password
+     * @return bool|mixed|string
+     */
+    private function ldapAccess($username, $password)
+    {
+        $data = json_encode(array('user' => $username, 'pass' => $password));
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_URL, "http://api1.sinprosp.org.br/ldap/login");
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        $result = json_decode($result, true);
+        return $result;
     }
 }

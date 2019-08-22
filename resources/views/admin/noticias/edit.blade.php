@@ -6,11 +6,7 @@
             <h1>Editar Notícia</h1>
         </div>
 
-        @component('admin.components._alert_error')
-            {{Session::get('error-message')}}
-        @endcomponent
-
-        {{ Form::model($noticias, ['route' => ['admin.noticias.update', $noticias->id_noticia], 'method' => 'PUT']) }}
+        {{ Form::model($noticias, ['route' => ['admin.noticias.update', $noticias->id], 'method' => 'PUT']) }}
 
         @include('admin.noticias._form')
 

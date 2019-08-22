@@ -6,10 +6,6 @@
             <h1>Cadastrar Categoria</h1>
         </div>
 
-        @component('admin.components._alert_error')
-            {{Session::get('error-message')}}
-        @endcomponent
-
         {{ Form::open(['route' => 'admin.categorias.store']) }}
 
         @include('admin.categorias._form')

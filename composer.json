@@ -18,7 +18,7 @@
         "league/fractal": "^0.17.0",
         "prettus/l5-repository": "^2.6",
         "spatie/laravel-activitylog": "^3.2",
-        "tymon/jwt-auth": "dev-develop",
+        "tymon/jwt-auth": "dev-develop#d9fa7e2f35a617268f5b6d79f82bbe02c619a9d4",
         "unisharp/laravel-ckeditor": "^4.7",
         "watson/active": "^3.0",
         "yadahan/laravel-authentication-log": "^1.1"

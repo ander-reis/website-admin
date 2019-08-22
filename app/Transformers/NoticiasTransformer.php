@@ -27,14 +27,13 @@ class NoticiasTransformer extends TransformerAbstract
     {
         return [
             'id'         => (int) $model->id,
-            'dt_expira' => $model->dt_expira,
-            'fl_exibir_destaque' => $model->fl_exibir_destaque,
             'ds_resumo' => $model->ds_resumo,
             'ds_texto' => $model->ds_texto,
             'ds_palavra_chave' => $model->ds_palavra_chave,
-            'fl_oculta' => $model->fl_oculta,
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'fl_status' => $model->fl_status,
+            'dt_cadastro' => $model->dt_cadastro,
+            'dt_alteracao' => $model->dt_alteracao,
+            'dt_noticia' => $model->dt_noticia
         ];
     }
 

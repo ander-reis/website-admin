@@ -20,24 +20,10 @@
     {{ Form::text('ds_palavra_chave', null, ['class' => 'form-control', 'maxlength' => 150]) }}
 @endcomponent
 
-@component('admin.form-components._form_group', ['field' => 'fl_exibir_destaque'])
-    {{ Form::label('fl_exibir_destaque', 'Destaque', ['class' => 'control-label']) }}
-    <div class="radio{{$errors->has('fl_exibir_destaque') ? ' text-danger' : ''}}">
-        <div class="custom-control custom-radio custom-control-inline">
-            {{ Form::radio('fl_exibir_destaque', '1', true, ['class' => 'custom-control-input', 'id' => 'fl_exibir_destaque_ativo']) }}
-            {{ Form::label('fl_exibir_destaque_ativo', 'Ativo', ['class' => 'custom-control-label']) }}
-        </div>
-        <div class="custom-control custom-radio custom-control-inline">
-            {{ Form::radio('fl_exibir_destaque', '0', false, ['class' => 'custom-control-input', 'id' => 'fl_exibir_destaque_oculto']) }}
-            {{ Form::label('fl_exibir_destaque_oculto', 'Oculto', ['class' => 'custom-control-label']) }}
-        </div>
-    </div>
-@endcomponent
-
 <div class="row mb-3">
-@component('admin.form-components._form_group_inline',['field' => 'dt_cadastro', 'class' => 'col-md-6'])
-        {{ Form::label('dt_cadastro', 'Data da Notícia', ['class' => 'control-label']) }}
-        {{ Form::date('dt_cadastro', (isset($noticias->dt_cadastro_utc_formatted) ? $noticias->dt_cadastro_utc_formatted : \Carbon\Carbon::now()), ['class' => 'form-control']) }}
+@component('admin.form-components._form_group_inline',['field' => 'dt_noticia', 'class' => 'col-md-6'])
+        {{ Form::label('dt_noticia', 'Data da Notícia', ['class' => 'control-label']) }}
+        {{ Form::date('dt_noticia', (isset($noticias->dt_cadastro_utc_formatted) ? $noticias->dt_cadastro_utc_formatted : \Carbon\Carbon::now()), ['class' => 'form-control']) }}
 @endcomponent
 
 @component('admin.form-components._form_group_inline', ['field' => 'hr_noticia', 'class' => 'col-md-6'])

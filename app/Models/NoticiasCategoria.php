@@ -17,22 +17,16 @@ class NoticiasCategoria extends Model implements Transformable
     use TransformableTrait, LogsActivity;
 
     /**
-     * Conexão database website
-     */
-//    protected $connection = 'sqlsrv-website';
-//    protected $table = 'tb_sinpro_noticias_categorias';
-
-
-    /**
      * Conexão teste Postgre
      */
-    protected $connection = 'pgsql';
+//    protected $connection = 'pgsql';
+
     protected $table = 'tb_sinpro_noticias_categorias';
 
     /**
      * @var string
      */
-    protected $primaryKey = 'id_categoria';
+//    protected $primaryKey = 'id_categoria';
     /**
      * @var bool
      */

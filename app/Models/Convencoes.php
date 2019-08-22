@@ -18,15 +18,10 @@ class Convencoes extends Model implements Transformable
     use TransformableTrait, ConvencaoPaths, LogsActivity;
 
     /**
-     * Conexão database website
-     */
-//    protected $connection = 'sqlsrv-website';
-//    protected $table = 'tb_sinpro_convencoes';
-
-    /**
      * Conexão teste Postgre
      */
-    protected $connection = 'pgsql';
+//    protected $connection = 'pgsql';
+
     protected $table = 'tb_sinpro_convencoes';
 
     /**

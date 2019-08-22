@@ -67,13 +67,6 @@ class AppServiceProvider extends ServiceProvider
                 'status_code:' => 401,
             ], 401);
         });
-        $handler->register(function(\PDOException $exception){
-            return response()->json([
-                'error' => $exception->getMessage(),
-                'error_code' => $exception->getCode(),
-                'status_code:' => 401,
-            ], 401);
-        });
 
         /**
          * Registra transformer

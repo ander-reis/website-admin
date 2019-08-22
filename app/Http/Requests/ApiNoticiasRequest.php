@@ -27,12 +27,11 @@ class ApiNoticiasRequest extends FormRequest
 
         return [
             'id_categoria' => 'required',
-            'dt_expira' => 'required|date_format:Y-m-d',
-            'hr_expira' => 'required|date_format:h:i',
+            'dt_noticia' => 'required|date_format:Y-m-d',
+            'hr_noticia' => 'required',
             'ds_resumo' => 'required|max:80',
             'ds_texto' => 'required',
-            'fl_exibir_destaque' => 'required',
-            'fl_oculta' => 'required'
+            'fl_status' => 'required',
         ];
     }
 

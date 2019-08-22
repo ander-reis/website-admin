@@ -25,10 +25,10 @@
                 <tbody>
                 @foreach($noticias as $noticia)
                     <tr>
-                        <td>{{ $noticia->id_noticia }}</td>
+                        <td>{{ $noticia->id }}</td>
                         <td>
                             @can('noticias.view')
-                                <a href="{{ route('admin.noticias.show', ['noticia' => $noticia->id_noticia]) }}">
+                                <a href="{{ route('admin.noticias.show', ['noticia' => $noticia->id]) }}">
                                     {{ $noticia->ds_resumo }}
                                 </a>
                             @endcan
@@ -42,8 +42,7 @@
                         <td class="text-center">
                             @can('noticias.update')
                                 <a class="text-dark link-icon"
-                                   href="{{ route('admin.noticias.edit', ['noticia' => $noticia->id_noticia]) }}">
-{{--                                    editar--}}
+                                   href="{{ route('admin.noticias.edit', ['noticia' => $noticia->id]) }}">
                                     <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                 </a>
                             @endcan
@@ -54,7 +53,7 @@
                         <td class="text-center">
                             @if(!$noticia->fl_oculta == 0)
                                 <a class="text-success"
-                                   href="{{ env('APP_URL_SITE_VER_NOTICIA') }}{{ $noticia->id_noticia }}"
+                                   href="{{ env('APP_URL_SITE_VER_NOTICIA') }}{{ $noticia->id }}"
                                    target="_blank">
                                     <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
                                 </a>
