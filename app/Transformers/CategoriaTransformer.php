@@ -13,10 +13,7 @@ use League\Fractal\TransformerAbstract;
 class CategoriaTransformer extends TransformerAbstract
 {
     /**
-     * Transform the Categoria entity.
-     *
-     * @param \App\Models\Categoria $model
-     *
+     * @param NoticiasCategoria $model
      * @return array
      */
     public function transform(NoticiasCategoria $model)

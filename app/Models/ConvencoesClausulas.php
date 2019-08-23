@@ -47,6 +47,11 @@ class ConvencoesClausulas extends Model implements Transformable
     ];
 
     /**
+     * remove da consulta
+     */
+    protected $hidden = ['fl_ativo'];
+
+    /**
      * Relacionamento convencao para clausula, um para muitos
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

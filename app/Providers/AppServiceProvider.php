@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Convencoes;
 use App\Models\Noticias;
-use App\Transformers\NoticiasTransformer;
+use App\Transformers\CategoriaTransformer;
+use App\Transformers\ConvencoesTransformer;
 use Dingo\Api\Exception\Handler;
+use Dingo\Api\Transformer\Factory;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Auth\AuthenticationException;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -71,11 +74,7 @@ class AppServiceProvider extends ServiceProvider
         /**
          * Registra transformer
          */
-        $transformer = app(\Dingo\Api\Transformer\Factory::class);
-        $transformer->setAdapter(function ($app){
-            return new \Dingo\Api\Transformer\Adapter\Fractal(new \League\Fractal\Manager(), 'include', ',', false);
-        });
-//        $transformer->register(Convencoes::class, ConvencoesTransformer::class);
-        $transformer->register(Noticias::class, NoticiasTransformer::class);
+        app(Factory::class)->register(Convencoes::class, ConvencoesTransformer::class);
+        app(Factory::class)->register(Noticias::class, CategoriaTransformer::class);
     }
 }
