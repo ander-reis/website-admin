@@ -107,7 +107,7 @@ class ConvencoesClausulasController extends Controller
             return redirect()->back()->with('error-message', 'Acesso não Autorizado');
         }
 
-        return view('admin.clausulas.edit', compact('$convencoes_entidade', 'convencoes', 'clausula'));
+        return view('admin.clausulas.edit', compact('convencoesEntidade', 'convencoes', 'clausula'));
     }
 
     /**

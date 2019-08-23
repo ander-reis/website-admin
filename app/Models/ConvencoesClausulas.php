@@ -43,7 +43,7 @@ class ConvencoesClausulas extends Model implements Transformable
         'ds_titulo',
         'ds_texto',
         'ds_palavra_chave',
-        'fl_ativo'
+        'fl_status'
     ];
 
     /**

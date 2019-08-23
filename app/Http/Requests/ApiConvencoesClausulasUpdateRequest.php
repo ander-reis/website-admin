@@ -30,7 +30,7 @@ class ApiConvencoesClausulasUpdateRequest extends FormRequest
             'ds_titulo' => 'required|max:150|string',
             'ds_texto' => 'required',
             'ds_palavra_chave' => 'max:150',
-            'fl_ativo' => 'required'
+            'fl_status' => 'required'
         ];
     }
 

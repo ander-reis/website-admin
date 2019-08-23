@@ -51,7 +51,7 @@ class Convencoes extends Model implements Transformable
         'url_aditamento',
         'fl_app',
         'fl_entidade',
-        'fl_ativo'
+        'fl_status'
     ];
 
     /**
@@ -62,6 +62,7 @@ class Convencoes extends Model implements Transformable
     protected $hidden = [
         'url_arquivo',
         'url_aditamento',
+        'fl_ativo'
     ];
 
     /**
@@ -107,7 +108,7 @@ class Convencoes extends Model implements Transformable
         'url_aditamento',
         'fl_app',
         'fl_entidade',
-        'fl_ativo'
+        'fl_status'
     ];
 
     protected static $logFillable = true;

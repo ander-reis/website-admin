@@ -67,6 +67,7 @@ class SlidersController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
+            dd($data);
             if(array_key_exists('ds_imagem', $data)){
                 $this->repository->create($data);
                 return redirect()->route('admin.slider.index')->with('message', 'Cadastro realizado com sucesso');

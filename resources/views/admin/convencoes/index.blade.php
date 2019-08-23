@@ -40,7 +40,7 @@
                             </td>
                             <td class="text-center">{{ $convencao->dt_validade }}</td>
                             <td>
-                                {!! flStatus($convencao->fl_ativo) !!}
+                                {!! flStatus($convencao->fl_status) !!}
                             </td>
                             <td class="text-center">
                                 <a class="text-primary"

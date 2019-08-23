@@ -33,7 +33,7 @@
                         <td>{{ $clausula->ds_titulo }}</td>
                         <td class="text-center">{{ $clausula->num_clausula }}</td>
                         <td>
-                            {!! flStatus($clausula->fl_ativo) !!}
+                            {!! flStatus($clausula->fl_status) !!}
                         </td>
                         <td class="text-center">
                             @can('convencoes.update')

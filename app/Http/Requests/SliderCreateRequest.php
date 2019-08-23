@@ -29,7 +29,7 @@ class SliderCreateRequest extends FormRequest
         return [
             'ds_label' => 'max:15',
             'ds_titulo' => 'max:30',
-            'ds_imagem' => 'required|image|max:1024',
+//            'ds_imagem' => 'required|image|max:1024',
             'ds_link' => 'max:255'
         ];
     }

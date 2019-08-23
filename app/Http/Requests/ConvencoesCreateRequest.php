@@ -33,7 +33,7 @@ class ConvencoesCreateRequest extends FormRequest
             'ds_titulo_aditamento' => 'max:100',
             'url_aditamento' => 'mimes:pdf|max:2048',
             'fl_app' => 'required',
-            'fl_ativo' => 'required'
+            'fl_status' => 'required'
         ];
     }
 

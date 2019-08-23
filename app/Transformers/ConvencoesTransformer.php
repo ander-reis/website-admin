@@ -13,8 +13,9 @@ use App\Models\Convencoes;
 class ConvencoesTransformer extends TransformerAbstract
 {
     protected $availableIncludes = [
-        'clausulas'
+        'clausulas',
     ];
+
     /**
      * Transform the Convencoes entity.
      *
@@ -25,13 +26,13 @@ class ConvencoesTransformer extends TransformerAbstract
     public function transform(Convencoes $model)
     {
         return [
-            'id'         => (int) $model->id,
+            'id_convencao' => (int) $model->id_convencao,
             'fl_entidade' => $model->fl_entidade,
             'ds_titulo' => $model->ds_titulo,
             'dt_validade' => $model->dt_validade,
             'ds_titulo_aditamento' => $model->ds_titulo_aditamento,
             'fl_app' => $model->fl_app,
-            'fl_ativo' => $model->fl_ativo
+            'fl_status' => $model->fl_status
         ];
     }
 

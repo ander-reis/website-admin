@@ -27,7 +27,7 @@ class ClausulasTransformer extends TransformerAbstract
             'ds_titulo' => $model->ds_titulo,
             'ds_texto' => $model->ds_texto,
             'ds_palavra_chave' => $model->ds_palavra_chave,
-            'fl_ativo' => $model->fl_ativo,
+            'fl_status' => $model->fl_status,
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];

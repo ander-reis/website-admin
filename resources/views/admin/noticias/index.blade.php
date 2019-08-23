@@ -51,7 +51,7 @@
                             @endcannot
                         </td>
                         <td class="text-center">
-                            @if(!$noticia->fl_oculta == 0)
+                            @if(!$noticia->fl_status == 0)
                                 <a class="text-success"
                                    href="{{ env('APP_URL_SITE_VER_NOTICIA') }}{{ $noticia->id }}"
                                    target="_blank">

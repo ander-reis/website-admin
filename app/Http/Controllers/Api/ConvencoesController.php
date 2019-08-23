@@ -25,6 +25,7 @@ class ConvencoesController extends Controller
 
     /**
      * ConvencoesController constructor.
+     * @param ConvencoesRepository $convencoesRepository
      */
     public function __construct(ConvencoesRepository $convencoesRepository)
     {
