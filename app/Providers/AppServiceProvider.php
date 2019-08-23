@@ -6,6 +6,7 @@ use App\Models\Convencoes;
 use App\Models\Noticias;
 use App\Transformers\CategoriaTransformer;
 use App\Transformers\ConvencoesTransformer;
+use App\Transformers\NoticiasTransformer;
 use Dingo\Api\Exception\Handler;
 use Dingo\Api\Transformer\Factory;
 use Illuminate\Support\ServiceProvider;
@@ -75,6 +76,6 @@ class AppServiceProvider extends ServiceProvider
          * Registra transformer
          */
         app(Factory::class)->register(Convencoes::class, ConvencoesTransformer::class);
-        app(Factory::class)->register(Noticias::class, CategoriaTransformer::class);
+        app(Factory::class)->register(Noticias::class, NoticiasTransformer::class);
     }
 }
