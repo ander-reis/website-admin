@@ -19,6 +19,7 @@ class User extends Authenticatable implements JWTSubject
     protected $table = 'tb_sinpro_usuarios';
 
     public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
