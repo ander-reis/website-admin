@@ -16,6 +16,8 @@ class User extends Authenticatable implements JWTSubject
      */
 //    protected $connection = 'pgsql';
 
+    protected $connection = 'sqlsrv-website';
+
     protected $table = 'tb_sinpro_usuarios';
 
     public $timestamps = false;

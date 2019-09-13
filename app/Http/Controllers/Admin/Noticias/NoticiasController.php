@@ -37,7 +37,8 @@ class NoticiasController extends Controller
      */
     public function index()
     {
-        $noticias = $this->repository->orderBy('id', 'desc')->paginate();
+        $noticias = $this->repository->orderBy('id', 'desc')->paginate('15');
+
         return view('admin.noticias.index', compact('noticias'));
     }
 
@@ -135,4 +136,13 @@ class NoticiasController extends Controller
             return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a notícia');
         }
     }
+
+    public function paginasNoticias()
+    {
+        //
+    }
+
+    // tb_sinpro_admin_ordem_noticias
+    // listar noticias
+    // cadastrar ordem da noticia
 }

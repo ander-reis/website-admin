@@ -6,8 +6,9 @@
             <h1>Notícias</h1>
             @can('noticias.create')
                 <p>
-                    <a href="{{ route('admin.noticias.create') }}" class="btn btn-outline-primary mr-2 mt-2 mb-2">Cadastrar
-                        Notícia</a>
+                    <a href="{{ route('admin.noticias.create') }}" class="btn btn-outline-primary mr-2 mt-2 mb-2">
+                        Cadastrar Notícia
+                    </a>
                 </p>
             @endcan
             <table class="table">

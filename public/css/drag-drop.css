@@ -1,0 +1,55 @@
+/* drag object (DIV elements) */
+
+.redips-drag {
+  margin: 5px auto;
+  /* needed when details container is displayed to be wrapped nicely */
+  display: table;
+  text-align: center;
+  height: 28px;
+  line-height: 28px;
+  color: #555;
+  border: 1px solid #bebebe;
+  background-color: #dbdbdb;
+  /* round corners */
+  border-radius: 4px;
+  /* opacity */
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+#redips-drag .card {
+  height: 150px;
+  width: 278px;
+  border-radius: 10px;
+}
+
+/* right table - table editor */
+
+#tblEditor {
+  color: #777;
+  margin: 7px;
+  z-index: 0;
+}
+
+/* only TD for table editor (and not for any other descendant node)*/
+
+table#tblEditor > tbody > tr > td {
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+  height: 170px;
+}
+
+/* style for form elements */
+
+#tblEditor input {
+  cursor: auto;
+}
+
+/* style for cel selected */
+
+.cell-selected {
+  color: #fff;
+  background-color: #343A40;
+}
+

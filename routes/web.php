@@ -16,6 +16,13 @@ Route::get('/', function () {
 });
 
 /**
+ * rota home
+ */
+Route::name('home')->get('/', function(){
+    return redirect('/admin/dashboard');
+});
+
+/**
  * contém todas as rotas auth
  */
 //Auth::routes();
@@ -42,6 +49,11 @@ Route::prefix('admin')->group(function(){
          * notícias
          */
         Route::resource('noticias', 'Noticias\NoticiasController');
+
+        /**
+         * ordem noticias
+         */
+        Route::resource('ordem-noticias', 'Noticias\OrdemNoticiasController', ['only' => ['index', 'store']]);
 
         /**
          * notícias categorias

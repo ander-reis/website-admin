@@ -17,12 +17,19 @@
     <!-- Styles -->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
+    <!-- Drag and Drop -->
+    <link href="{{ asset('css/drag-drop.css') }}" rel="stylesheet">
+
     <!-- Highcharts -->
     <script src="{{ asset('js/highcharts.js') }}"></script>
+
+    <!-- Drag and Drop -->
+    <script src="{{ asset('js/redips-drag-min.js') }}"></script>
+    <script src="{{ asset('js/redips-table-min.js') }}"></script>
+    <script src="{{ asset('js/drag-drop.js') }}"></script>
 </head>
 <body>
 <div id="app">
-
     @auth()
         <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
             <div class="container">
@@ -36,14 +43,21 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item dropdown mx-3 {{ active('admin.noticias.*') }} {{ active('admin.categorias.*') }}">
+                        <li class="nav-item dropdown mx-3 {{ active('admin.noticias.*') }} {{ active('admin.categorias.*') }} {{ active('admin.ordem-noticias.*') }}">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Notícias
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('admin.noticias.index') }}">Notícias</a>
-                                <a class="dropdown-item" href="{{ route('admin.categorias.index') }}">Categorias</a>
+                                <a class="dropdown-item" href="{{ route('admin.noticias.index') }}">
+                                    Notícias
+                                </a>
+                                <a class="dropdown-item" href="{{ route('admin.ordem-noticias.index') }}">
+                                    Ordem Notícias
+                                </a>
+                                <a class="dropdown-item" href="{{ route('admin.categorias.index') }}">
+                                    Categorias
+                                </a>
                             </div>
                         </li>
 
