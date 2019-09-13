@@ -110,7 +110,7 @@ redips.save = function () {
 	}
 
 	if(JSONobj.length < 4){
-		alert("Não é possível cadastrar quantidade inferior a 4 notícias");
+		toastr.info('Quantidade mínima de 4 notícias!')
 		return;
 	}
 
@@ -133,11 +133,12 @@ redips.save = function () {
 			json: json,
 		},
 		success: function (result) {
-			if(result){
+			toastr.success('Cadastrado com Sucesso!');
+			setInterval(() => {
 				window.location.reload();
-			} else {
-				alert('erro ao salvar');
-			}
+			}, 1500);
+		}, error: function (error) {
+			toastr.error('Não foi possível realizar o cadastro.', 'Erro!');
 		}
 	});
 };

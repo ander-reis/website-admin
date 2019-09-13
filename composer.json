@@ -21,7 +21,8 @@
         "tymon/jwt-auth": "dev-develop#d9fa7e2f35a617268f5b6d79f82bbe02c619a9d4",
         "unisharp/laravel-ckeditor": "^4.7",
         "watson/active": "^3.0",
-        "yadahan/laravel-authentication-log": "^1.1"
+        "yadahan/laravel-authentication-log": "^1.1",
+        "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

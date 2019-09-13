@@ -160,6 +160,10 @@
 <!-- Scripts -->
 <script src="{{ asset('js/admin.js') }}"></script>
 
+@toastr_css
+@toastr_js
+@toastr_render
+
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 
