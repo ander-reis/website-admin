@@ -37,8 +37,10 @@
                 </tbody>
             </table>
             <div class="py-3">
-                <input type="button" value="Cadastrar" class="btn btn-primary" onclick="redips.save()"
-                       title="Cadastrar"/>
+                @can('ordem-noticias.create')
+                    <input type="button" value="Cadastrar" class="btn btn-primary" onclick="redips.save()"
+                           title="Cadastrar"/>
+                @endcan
             </div>
             <div>
                 <table id="tblComponents">

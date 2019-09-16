@@ -29,12 +29,12 @@
                     @foreach($convencoes as $convencao)
                         <tr>
                             <td>
-                                @can('noticias.view')
+                                @can('convencoes.view')
                                     <a href="{{ route('admin.convencao.show', [$entidade, $convencao]) }}">
                                         {{ $convencao->ds_titulo }}
                                     </a>
                                 @endcan
-                                @cannot('noticias.view')
+                                @cannot('convencoes.view')
                                     {{ $convencao->ds_titulo }}
                                 @endcannot
                             </td>
@@ -43,10 +43,15 @@
                                 {!! flStatus($convencao->fl_status) !!}
                             </td>
                             <td class="text-center">
-                                <a class="text-primary"
-                                   href="{{ route('admin.convencao.clausulas.index', [$entidade, $convencao]) }}">
-                                    <i class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
-                                </a>
+                                @can('convencoes.view')
+                                    <a class="text-primary"
+                                       href="{{ route('admin.convencao.clausulas.index', [$entidade, $convencao]) }}">
+                                        <i class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
+                                    </a>
+                                @endcan
+                                @cannot('convencoes.view')
+                                        <i class="fa fa-exclamation-circle text-danger" aria-hidden="true"></i>
+                                @endcannot
                             </td>
                             <td class="text-center">
                                 @can('convencoes.update')

@@ -38,7 +38,7 @@ class NoticiasCategoriasController extends Controller
     public function index()
     {
         $noticiasCategorias = $this->repository->orderBy('id')->paginate();
-        return view('admin.categorias.index', compact('noticiasCategorias'));
+        return view('admin.noticias-categoria.index', compact('noticiasCategorias'));
     }
 
     /**
@@ -48,7 +48,14 @@ class NoticiasCategoriasController extends Controller
      */
     public function create()
     {
-        return view('admin.categorias.create');
+        if (\Gate::denies('noticias-categoria.create')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.noticias-categoria.index');
+        }
+
+        return view('admin.noticias-categoria.create');
     }
 
     /**
@@ -67,7 +74,9 @@ class NoticiasCategoriasController extends Controller
 
             $this->repository->create($data);
 
-            return redirect()->route('admin.categorias.index')->with('message', 'Categoria cadastrada com sucesso');
+            toastr()->success('Cadastrado com sucesso!');
+
+            return redirect()->route('admin.noticias-categoria.index')->with('message', 'Categoria cadastrada com sucesso');
         } catch (\Exception $e) {
             return redirect()->back()->with('error-message', 'Não foi possível cadastrar a categoria' . $e->getMessage());
         }
@@ -82,9 +91,16 @@ class NoticiasCategoriasController extends Controller
      */
     public function edit($id)
     {
+        if (\Gate::denies('noticias-categoria.update')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.noticias-categoria.index');
+        }
+
         $categorias = $this->repository->find($id);
 
-        return view('admin.categorias.edit', compact('categorias'));
+        return view('admin.noticias-categoria.edit', compact('categorias'));
     }
 
     /**
@@ -102,8 +118,14 @@ class NoticiasCategoriasController extends Controller
         try {
             $data = $request->only(array_keys($request->all()));
             $this->repository->update($data, $id);
+
+            toastr()->success('Cadastro alterado com sucesso!');
+
             return redirect()->to($data['redirects_to'])->with('message', 'Categoria editado com sucesso');
         } catch (\Exception $e) {
+
+            toastr()->error("Acesso não Autorizado");
+
             return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a categoria');
         }
     }

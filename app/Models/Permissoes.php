@@ -55,7 +55,7 @@ class Permissoes extends Model
      */
     public function pagina()
     {
-        return $this->belongsTo(Paginas::class, 'id_pagina');
+        return $this->belongsTo(Paginas::class, 'id');
     }
 
 

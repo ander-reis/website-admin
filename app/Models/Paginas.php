@@ -15,9 +15,10 @@ class Paginas extends Model
     /**
      * Conexão teste Postgre
      */
-    protected $connection = 'pgsql';
+//    protected $connection = 'pgsql';
+    protected $connection = 'sqlsrv-site';
 
-    protected $table = 'tb_sinpro_admin_paginas';
+    protected $table = 'tb_admin_paginas';
 
     /**
      * configura primary key
@@ -32,7 +33,6 @@ class Paginas extends Model
      * @var array
      */
     protected $fillable = [
-        'id_pagina',
         'ds_pagina',
         'url_pagina'
     ];

@@ -42,6 +42,11 @@ class AuthServiceProvider extends ServiceProvider
          * define acl para paginas
          */
         Gate::resource('noticias', 'App\Policies\NoticiasPolicy');
+        Gate::resource('noticias-categoria', 'App\Policies\NoticiasCategoriaPolicy');
+        Gate::resource('ordem-noticias', 'App\Policies\OrdemNoticiasPolicy');
+
         Gate::resource('convencoes', 'App\Policies\ConvencoesPolicy');
+        Gate::resource('clausulas', 'App\Policies\ClausulasPolicy');
+        Gate::resource('slider', 'App\Policies\SliderPolicy');
     }
 }

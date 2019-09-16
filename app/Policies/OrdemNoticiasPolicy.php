@@ -5,40 +5,30 @@ namespace App\Policies;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class NoticiasPolicy extends Policies
+class OrdemNoticiasPolicy extends Policies
 {
     use HandlesAuthorization;
 
     /**
-     * Permissão ver
+     * Permissão Visualizar
      *
      * @param User $user
      * @return bool
      */
     public function view(User $user)
     {
-        return parent::viewPolicy($user, 1);
+        return parent::viewPolicy($user, 3);
     }
 
     /**
      * Permissão criar
      *
      * @param User $user
-     * @return bool
+     * @param $
+     * @return void
      */
     public function create(User $user)
     {
-        return parent::createPolicy($user, 1);
-    }
-
-    /**
-     * Permissão alterar
-     *
-     * @param User $user
-     * @return bool
-     */
-    public function update(User $user)
-    {
-        return parent::updatePolicy($user, 1);
+        return parent::createPolicy($user, 3);
     }
 }

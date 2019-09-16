@@ -43,6 +43,13 @@ class OrdemNoticiasController extends Controller
      */
     public function index()
     {
+        if (\Gate::denies('ordem-noticias.view')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.dashboard');
+        }
+
         /**
          * noticias collection
          */
@@ -75,6 +82,13 @@ class OrdemNoticiasController extends Controller
      */
     public function store(Request $request)
     {
+        if (\Gate::denies('ordem-noticias.create')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.ordem-noticias.index');
+        }
+
         /**
          * truncate tabela antes do insert
          */

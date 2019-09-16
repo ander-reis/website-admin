@@ -50,7 +50,10 @@ class NoticiasController extends Controller
     public function create()
     {
         if (\Gate::denies('noticias.create')) {
-            return redirect()->route('admin.noticias.index')->with('error-message', 'Acesso não Autorizado');
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.noticias.index');
         }
 
         return view('admin.noticias.create');
@@ -72,9 +75,15 @@ class NoticiasController extends Controller
             $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
             unset($data['hr_noticia']);
             $this->repository->create($data);
-            return redirect()->route('admin.noticias.index')->with('message', 'Cadastro realizado com sucesso');
+
+            toastr()->success('Cadastrado com sucesso!');
+
+            return redirect()->route('admin.noticias.index');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
+
+            toastr()->error("Não foi possível realizar o cadastro");
+
+            return redirect()->back();
         }
     }
 
@@ -87,7 +96,10 @@ class NoticiasController extends Controller
     public function show($id)
     {
         if (\Gate::denies('noticias.view')) {
-            return redirect()->route('admin.noticias.index')->with('error-message', 'Acesso não Autorizado');
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.noticias.index');
         }
 
         $model = $this->repository->find($id);
@@ -106,7 +118,10 @@ class NoticiasController extends Controller
     public function edit($id)
     {
         if (\Gate::denies('noticias.update')) {
-            return redirect()->route('admin.noticias.index')->with('error-message', 'Acesso não Autorizado');
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.noticias.index');
         }
 
         $noticias = $this->repository->find($id);
@@ -131,18 +146,15 @@ class NoticiasController extends Controller
             $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
             unset($data['hr_noticia']);
             $this->repository->update($data, $id);
-            return redirect()->route('admin.noticias.index')->with('message', 'Notícia alterado com sucesso');
+
+            toastr()->success('Cadastro alterado com sucesso!');
+
+            return redirect()->route('admin.noticias.index');
         } catch (\Exception $e) {
-            return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a notícia');
+
+            toastr()->error("Não foi possível alterar o cadastro");
+
+            return redirect()->to($data['redirects_to']);
         }
     }
-
-    public function paginasNoticias()
-    {
-        //
-    }
-
-    // tb_sinpro_admin_ordem_noticias
-    // listar noticias
-    // cadastrar ordem da noticia
 }

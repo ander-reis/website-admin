@@ -61,8 +61,11 @@ class ConvencoesClausulasController extends Controller
      */
     public function create($convencoes_entidade, Convencoes $convencoes)
     {
-        if (\Gate::denies('convencoes.create')) {
-            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
+        if (\Gate::denies('clausulas.create')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->back();
         }
 
         return view('admin.clausulas.create', compact('convencoes'));
@@ -85,12 +88,17 @@ class ConvencoesClausulasController extends Controller
 
             $this->clausulasRepository->create($data);
 
+            toastr()->success('Cadastrado com sucesso!');
+
             return redirect()->route('admin.convencao.clausulas.index', [
                 'convencoes_entidade' => $convencoesEntidade->id,
                 'convencoes' => $convencoes->id_convencao
-            ])->with('message', 'Cadastro realizado com sucesso');
+            ]);
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
+
+            toastr()->error("Não foi possível realizar o cadastro");
+
+            return redirect()->back();
         }
     }
 
@@ -103,8 +111,11 @@ class ConvencoesClausulasController extends Controller
      */
     public function edit(ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes, ConvencoesClausulas $clausula)
     {
-        if (\Gate::denies('convencoes.update')) {
-            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
+        if (\Gate::denies('clausulas.update')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->back();
         }
 
         return view('admin.clausulas.edit', compact('convencoesEntidade', 'convencoes', 'clausula'));
@@ -127,12 +138,17 @@ class ConvencoesClausulasController extends Controller
 
             $this->clausulasRepository->update($data, $clausula->id_clausula);
 
+            toastr()->success('Cadastro alterado com sucesso!');
+
             return redirect()->route('admin.convencao.clausulas.index', [
                 'convencoes_entidade' => $convencoesEntidade->id,
                 'convencoes' => $convencoes->id_convencao
-            ])->with('message', 'Editado realizado com sucesso');
+            ]);
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível editar a cláusula' . $e->getMessage());
+
+            toastr()->error("Não foi possível alterar o cadastro");
+
+            return redirect()->back();
         }
     }
 
@@ -154,12 +170,18 @@ class ConvencoesClausulasController extends Controller
             $id_clausula = $request->only(array_keys($request->all()))['id_clausula'];
 
             $this->clausulasRepository->delete($id_clausula);
+
+            toastr()->success('Cadastro excluído com sucesso!');
+
             return redirect()->route('admin.convencao.clausulas.index', [
                 'convencoes_entidade' => $convencoes_entidade,
                 'convencoes' => $id_convencao
-            ])->with('message', 'Cláusula excluído com sucesso');
+            ]);
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível excluir a cláusula');
+
+            toastr()->error("Não foi possível excluir o cadastro");
+
+            return redirect()->back();
         }
     }
 }

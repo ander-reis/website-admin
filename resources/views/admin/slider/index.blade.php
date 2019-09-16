@@ -7,7 +7,9 @@
                 <h1>Slider</h1>
             </div>
             <p>
-                <a href="{{ route('admin.slider.create') }}" class="btn btn-outline-primary mr-2 mt-2 mb-2">Cadastrar Slider</a>
+                @can('slider.create')
+                    <a href="{{ route('admin.slider.create') }}" class="btn btn-outline-primary mr-2 mt-2 mb-2">Cadastrar Slider</a>
+                @endcan
             </p>
             <table class="table">
                 <thead>
@@ -41,14 +43,24 @@
                             {!! flStatus($slider->fl_ativo) !!}
                         </td>
                         <td class="text-center">
-                            <a class="text-dark link-icon" href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}">
+                            @can('slider.update')
+                                <a class="text-dark link-icon" href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}">
+                                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                </a>
+                            @endcan
+                            @cannot('slider.update')
                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                            </a>
+                            @endcannot
                         </td>
                         <td class="text-center">
-                            <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteSliderModal" data-whatever="{{ $slider->id }}">
-                                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
-                            </a>
+                            @can('slider.delete')
+                                <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteSliderModal" data-whatever="{{ $slider->id }}">
+                                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                                </a>
+                            @endcan
+                            @cannot('slider.delete')
+                                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                            @endcannot
                         </td>
                     </tr>
                 @endforeach

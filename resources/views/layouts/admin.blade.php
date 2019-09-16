@@ -55,7 +55,7 @@
                                 <a class="dropdown-item" href="{{ route('admin.ordem-noticias.index') }}">
                                     Ordem Notícias
                                 </a>
-                                <a class="dropdown-item" href="{{ route('admin.categorias.index') }}">
+                                <a class="dropdown-item" href="{{ route('admin.noticias-categoria.index') }}">
                                     Categorias
                                 </a>
                             </div>
@@ -146,14 +146,6 @@
     @endauth
 
     <div class="container mt-3 mb-3">
-        @component('admin.components._alert_success')
-            {{Session::get('message')}}
-        @endcomponent
-
-        @component('admin.components._alert_error')
-            {{Session::get('error-message')}}
-        @endcomponent
-
         @yield('content')
     </div>
 </div>

@@ -71,7 +71,10 @@ class ConvencoesController extends Controller
     public function create()
     {
         if(\Gate::denies('convencoes.create')){
-            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->back();
         }
 
         return view('admin.convencoes.create');
@@ -93,18 +96,26 @@ class ConvencoesController extends Controller
 
             if(array_key_exists('ds_titulo', $data)){
                 $this->convencoesRepository->create($data);
-                return redirect()->route('admin.convencao.index', ['convencao' => $data['fl_entidade']])
-                    ->with('message', 'Cadastro realizado com sucesso');
+
+                toastr()->success('Cadastrado com sucesso!');
+
+                return redirect()->route('admin.convencao.index', ['convencao' => $data['fl_entidade']]);
             }
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
+
+            toastr()->error("Não foi possível realizar o cadastro");
+
+            return redirect()->back();
         }
     }
 
     public function show(ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes)
     {
         if (\Gate::denies('convencoes.view')) {
-            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->back();
         }
 
         $model = $convencoes;
@@ -122,7 +133,10 @@ class ConvencoesController extends Controller
     public function edit(ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes)
     {
         if(\Gate::denies('convencoes.update')){
-            return redirect()->back()->with('error-message', 'Acesso não Autorizado');
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->back();
         }
 
         $model = $convencoes;
@@ -142,9 +156,15 @@ class ConvencoesController extends Controller
         try {
             $data = $request->only(array_keys($request->all()));
             $this->convencoesRepository->update($data, $id);
-            return redirect()->to($data['redirects_to'])->with('message', 'Convenção editado com sucesso');
+
+            toastr()->success('Cadastro alterado com sucesso!');
+
+            return redirect()->to($data['redirects_to']);
         } catch (\Exception $e) {
-            return redirect()->to($data['redirects_to'])->with('error-message', 'Não foi possível editar a convenção');
+
+            toastr()->error("Não foi possível alterar o cadastro");
+
+            return redirect()->to($data['redirects_to']);
         }
     }
 

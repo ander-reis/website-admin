@@ -96,6 +96,21 @@ return [
                 //PDO::SQLSRV_ATTR_FETCHES_NUMERIC_TYPE => true
             ]
         ],
+
+        'sqlsrv-site' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_SQLSRV_WEBSITE', 'localhost'),
+            'port' => env('DB_PORT_SQLSRV_WEBSITE', '1433'),
+            'database' => env('DB_DATABASE_SQLSRV_WEBSITE', 'forge'),
+            'username' => env('DB_USERNAME_SQLSRV_WEBSITE', 'forge'),
+            'password' => env('DB_PASSWORD_SQLSRV_WEBSITE', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'options' => [
+                PDO::ATTR_STRINGIFY_FETCHES => false,
+                //PDO::SQLSRV_ATTR_FETCHES_NUMERIC_TYPE => true
+            ]
+        ],
     ],
 
     /*

@@ -51,13 +51,20 @@ class SlidersController extends Controller
      */
     public function create(SliderRepository $repository)
     {
+        if (\Gate::denies('slider.create')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.slider.index');
+        }
+
         return view('admin.slider.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  SliderCreateRequest $request
+     * @param SliderCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
@@ -67,25 +74,38 @@ class SlidersController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-//            dd($data);
-            if(array_key_exists('ds_imagem', $data)){
+
+            if (array_key_exists('ds_imagem', $data)) {
                 $this->repository->create($data);
-                return redirect()->route('admin.slider.index')->with('message', 'Cadastro realizado com sucesso');
+
+                toastr()->success('Cadastrado com sucesso!');
+
+                return redirect()->route('admin.slider.index');
             }
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível realizar o cadastro');
+
+            toastr()->error("Não foi possível realizar o cadastro");
+
+            return redirect()->back();
         }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        if (\Gate::denies('slider.update')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.slider.index');
+        }
+
         $slider = $this->repository->find($id);
 
         return view('admin.slider.edit', compact('slider'));
@@ -94,8 +114,8 @@ class SlidersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  SliderUpdateRequest $request
-     * @param  string            $id
+     * @param SliderUpdateRequest $request
+     * @param string $id
      *
      * @return Response
      *
@@ -108,23 +128,33 @@ class SlidersController extends Controller
 
             $this->repository->update($form, $id);
 
-            return redirect()->route('admin.slider.index')->with('message', 'Slide editado com sucesso');
+            toastr()->success('Cadastro alterado com sucesso!');
+
+            return redirect()->route('admin.slider.index');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível editar o Slide');
+
+            toastr()->error("Não foi possível alterar o cadastro");
+
+            return redirect()->back();
         }
     }
 
-
     public function destroy(SliderDeleteRequest $request, $id)
     {
-        try{
+        try {
             $id_slider = $request->only(array_keys($request->all()))['id_slider'];
             $this->repository->deleteSlider($id_slider);
-            $request->session()->flash('message', 'Slider excluída com sucesso.');
-            return redirect()->route('admin.slider.index')
-                ->with('message', 'Slider excluído com sucesso');
-        }catch (\Exception $e){
-            return redirect()->back()->with('error-message', 'Não foi possível excluir o slider');
+
+            toastr()->success('Cadastro excluído com sucesso!');
+
+
+            return redirect()->route('admin.slider.index');
+
+        } catch (\Exception $e) {
+
+            toastr()->error("Não foi possível excluir o cadastro");
+
+            return redirect()->back();
         }
     }
 

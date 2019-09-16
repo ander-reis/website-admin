@@ -58,7 +58,7 @@ Route::prefix('admin')->group(function(){
         /**
          * notícias categorias
          */
-        Route::resource('categorias', 'Noticias\NoticiasCategoriasController', ['only' => ['index', 'create', 'store', 'edit', 'update']]);
+        Route::resource('noticias-categoria', 'Noticias\NoticiasCategoriasController', ['only' => ['index', 'create', 'store', 'edit', 'update']]);
 
         /**
          * slider

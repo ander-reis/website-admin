@@ -2,35 +2,54 @@
 
 namespace App\Policies;
 
-use App\Models\Permissoes;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ConvencoesPolicy
+class ConvencoesPolicy extends Policies
 {
     use HandlesAuthorization;
 
-    public function create(User $user)
-    {
-        $permissao = Permissoes::where('id_usuario', '=', $user->id_usuario)->where('id_pagina', '=', 21)->first();
-        return (isset($permissao)) ? ($permissao->fl_cadastro) ? true : false : true;
-    }
-
-    public function update(User $user)
-    {
-        $permissao = Permissoes::where('id_usuario', '=', $user->id_usuario)->where('id_pagina', '=', 21)->first();
-        return (isset($permissao)) ? ($permissao->fl_alteracao) ? true : false : true;
-    }
-
+    /**
+     * Permissao ver
+     *
+     * @param User $user
+     * @return bool
+     */
     public function view(User $user)
     {
-        $permissao = Permissoes::where('id_usuario', '=', $user->id_usuario)->where('id_pagina', '=', 21)->first();
-        return (isset($permissao)) ? ($permissao->fl_consulta) ? true : false : true;
+        return parent::viewPolicy($user, 5);
     }
 
+    /**
+     * Permissao criar
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function create(User $user)
+    {
+        return parent::createPolicy($user, 5);
+    }
+
+    /**
+     * Permissao alterar
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function update(User $user)
+    {
+       return parent::updatePolicy($user, 5);
+    }
+
+    /**
+     * Permissao excluir
+     *
+     * @param User $user
+     * @return bool
+     */
     public function delete(User $user)
     {
-        $permissao = Permissoes::where('id_usuario', '=', $user->id_usuario)->where('id_pagina', '=', 21)->first();
-        return (isset($permissao)) ? ($permissao->fl_exclusao) ? true : false : true;
+       return parent::deletePolicy($user, 5);
     }
 }

@@ -7,7 +7,7 @@
                 <h1>{{ $convencoes->ds_titulo }}</h1>
             </div>
             <p>
-                @can('convencoes.create')
+                @can('clausulas.create')
                     <a href="{{ route('admin.convencao.clausulas.create',
                     ['convencoes_entidade' => $convencoes->fl_entidade, $convencoes]) }}"
                        class="btn btn-primary mr-2 mt-2 mb-2">Cadastrar Cláusula</a>
@@ -36,7 +36,7 @@
                             {!! flStatus($clausula->fl_status) !!}
                         </td>
                         <td class="text-center">
-                            @can('convencoes.update')
+                            @can('clausulas.update')
                                 <a class="text-dark link-icon" href="{{ route('admin.convencao.clausulas.edit', [
                                 'convencoes_entidade' => $convencoes->fl_entidade,
                                 $convencoes,
@@ -45,17 +45,17 @@
                                     <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                 </a>
                             @endcan
-                            @cannot('convencoes.update')
+                            @cannot('clausulas.update')
                                 <i class="fa fa-exclamation-circle text-danger" aria-hidden="true"></i>
                             @endcannot
                         </td>
                         <td class="text-center">
-                            @can('convencoes.delete')
+                            @can('clausulas.delete')
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteClausulaModal" data-whatever="{{ $clausula->id_clausula }}">
                                     <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
                                 </a>
                             @endcan
-                            @cannot('convencoes.delete')
+                            @cannot('clausulas.delete')
                                 <i class="fa fa-exclamation-circle text-danger" aria-hidden="true"></i>
                             @endcannot
                         </td>

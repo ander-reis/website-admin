@@ -6,9 +6,9 @@
             <h1>Editar Categoria</h1>
         </div>
 
-        {{ Form::model($categorias, ['route' => ['admin.categorias.update', $categorias->id], 'method' => 'PUT']) }}
+        {{ Form::model($categorias, ['route' => ['admin.noticias-categoria.update', $categorias->id], 'method' => 'PUT']) }}
 
-        @include('admin.categorias._form')
+        @include('admin.noticias-categoria._form')
 
         <button type="submit" class="btn btn-primary">Editar</button>
 
