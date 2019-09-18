@@ -163,5 +163,7 @@
         $("input[maxlength]").maxlength();
     });
 </script>
+
+@stack('preview-script')
 </body>
 </html>

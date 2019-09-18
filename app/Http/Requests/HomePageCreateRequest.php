@@ -24,8 +24,8 @@ class HomePageCreateRequest extends FormRequest
     public function rules()
     {
         return [
-//            'ds_categoria' => 'required|max:50',
-//            'ds_titulo' => 'required|max:80',
+            'ds_categoria' => 'required|max:50',
+            'ds_titulo' => 'required|max:80',
 //            'ds_texto_noticia' => 'required|max:150',
 //            'ds_link' => 'required|max:150',
         ];
