@@ -15,10 +15,9 @@ class CreateOrdemNoticiasTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('ordem_noticias', function(Blueprint $table) {
-            $table->increments('id');
-
-            $table->timestamps();
+		Schema::create('tb_sinpro_admin_ordem_noticias', function(Blueprint $table) {
+            $table->integer('id_noticia');
+            $table->integer('ordem_noticia');
 		});
 	}
 
@@ -29,6 +28,6 @@ class CreateOrdemNoticiasTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('ordem_noticias');
+		Schema::drop('tb_sinpro_admin_ordem_noticias');
 	}
 }

@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class OrdemNoticias.
+ * Class HomePage.
  *
  * @package namespace App\Models;
  */
-class OrdemNoticias extends Model implements Transformable
+class HomePage extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -20,23 +20,27 @@ class OrdemNoticias extends Model implements Transformable
      *
      * @var string
      */
-//    protected $connection = 'sqlsrv-site';
+    protected $connection = 'sqlsrv-site';
 
     /**
      * Table
+     *
      * @var string
      */
-    protected $table = 'tb_sinpro_admin_ordem_noticia';
+    protected $table = 'tb_sinpro_admin_home_page';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['id_noticia', 'ordem_noticia'];
+    protected $fillable = [
+        'ds_categoria',
+        'ds_titulo',
+        'ds_texto_noticia',
+        'ds_link',
+        'created_at',
+        'updated_at'
+    ];
 
-    /**
-     * @var bool
-     */
-    public $timestamps = false;
 }

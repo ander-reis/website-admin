@@ -76,6 +76,11 @@ Route::prefix('admin')->group(function(){
         Route::resource('paginas', 'PaginasPrincipais\PaginasPrincipaisController');
 
         /**
+         * Home
+         */
+        Route::resource('home-page', 'HomePage\HomePageController');
+
+        /**
          * rotas para download da slider/imagem no sistema
          */
         Route::name('slider.thumb_asset')->get('slider/{slider}/thumb_asset', 'Slider\SlidersController@thumbAsset');

@@ -5,28 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
+    {{-- Fonts --}}
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
-    <!-- Styles -->
+    {{-- Styles --}}
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
-    <!-- Drag and Drop -->
+    {{--Drag and Drop--}}
     <link href="{{ asset('css/drag-drop.css') }}" rel="stylesheet">
 
-    <!-- Highcharts -->
+    {{-- Highcharts --}}
     <script src="{{ asset('js/highcharts.js') }}"></script>
-
-    <!-- Drag and Drop -->
-    <script src="{{ asset('js/redips-drag-min.js') }}"></script>
-    <script src="{{ asset('js/redips-table-min.js') }}"></script>
-    <script src="{{ asset('js/drag-drop.js') }}"></script>
 </head>
 <body>
 <div id="app">
@@ -108,7 +103,7 @@
                                 <a class="dropdown-item" href="#">Convênios Diversos</a>
                                 <a class="dropdown-item" href="#">Cursos</a>
                                 <a class="dropdown-item" href="#">Guia de Consultas</a>
-                                <a class="dropdown-item" href="#">Home</a>
+                                <a class="dropdown-item" href="{{ route('admin.home-page.index') }}">Home</a>
                                 <a class="dropdown-item" href="#">Inscrição Colônia de Férias - SINPRO Osasco</a>
                             </div>
                         </li>
@@ -149,13 +144,15 @@
         @yield('content')
     </div>
 </div>
-<!-- Scripts -->
+{{-- Scripts --}}
 <script src="{{ asset('js/admin.js') }}"></script>
 
+{{-- ToastJS --}}
 @toastr_css
 @toastr_js
 @toastr_render
 
+{{-- Unisharp --}}
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 
@@ -163,11 +160,8 @@
     $(document).ready(function () {
         bsCustomFileInput.init();
         $('#ds_texto').ckeditor();
-        // setTimeout(function () {
-        //     $("#successMessage").hide('slow')
-        // }, 10000);
         $("input[maxlength]").maxlength();
-    })
+    });
 </script>
 </body>
 </html>

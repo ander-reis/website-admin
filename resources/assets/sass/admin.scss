@@ -69,3 +69,14 @@ legend.scheduler-border {
 a.link-icon:hover, a.link-icon:focus {
   color: #9ACD32 !important;
 }
+
+/** icon field **/
+.fv-plugins-bootstrap:not(.form-inline) label ~ .fv-plugins-icon {
+  top: 30px !important;
+  right: 32px !important;
+}
+
+.fv-plugins-bootstrap .form-group.row .fv-plugins-icon{
+  top: 0px !important;
+  right: 50px !important;
+}

@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+    <!-- Drag and Drop -->
+    <script src="{{ asset('js/redips-drag-min.js') }}"></script>
+    <script src="{{ asset('js/redips-table-min.js') }}"></script>
+    <script src="{{ asset('js/drag-drop.js') }}"></script>
+
     <div class="row" onload="REDIPS.drag.init()">
         <h1>Ordem Notícias</h1>
         <div id="redips-drag">

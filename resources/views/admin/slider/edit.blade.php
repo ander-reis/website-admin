@@ -6,10 +6,6 @@
             <h1>Editar Slider</h1>
         </div>
 
-        @component('admin.components._alert_error')
-            {{Session::get('error-message')}}
-        @endcomponent
-
         <p>
             <img src="{{ $slider->thumb_small_asset }}" alt="{{ $slider->ds_titulo }}">
         </p>
