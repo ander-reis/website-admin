@@ -20,6 +20,9 @@
     {{--Drag and Drop--}}
     <link href="{{ asset('css/drag-drop.css') }}" rel="stylesheet">
 
+    {{-- Form Validation --}}
+    <link href="{{ asset('css/formValidation.min.css') }}" rel="stylesheet">
+
     {{-- Highcharts --}}
     <script src="{{ asset('js/highcharts.js') }}"></script>
 </head>
@@ -155,6 +158,10 @@
 {{-- Unisharp --}}
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+
+{{-- Form Validation --}}
+<script src="{{ asset('js/FormValidation.min.js') }}"></script>
+<script src="{{ asset('js/Bootstrap.min.js') }}"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {

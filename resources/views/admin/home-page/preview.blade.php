@@ -4,7 +4,7 @@
     <div class="row">
         <h1>Preview</h1>
         <div>
-            <a href="{{ Redirect::back() }}" class="btn btn-outline-danger">voltar</a>
+            <a href="javascript:history.go(-1)" class="btn btn-danger" title="Return to the previous page">&laquo; Fuck YOU</a>
         </div>
 
         <div>

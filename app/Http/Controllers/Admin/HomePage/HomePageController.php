@@ -64,6 +64,7 @@ class HomePageController extends Controller
     {
         $data = $request->only(array_keys($request->input()));
         $action = $request->input('action');
+
         unset($data['_token']);
         unset($data['action']);
 
@@ -83,7 +84,7 @@ class HomePageController extends Controller
                 foreach ($noticias as $noticia) {
                     //$this->repository->create($noticia);
                 }
-
+                dd('cadastrar');
                 break;
             case 'preview':
 
@@ -110,6 +111,7 @@ class HomePageController extends Controller
         } catch (\Exception $e) {
 //            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
+
     }
 
 

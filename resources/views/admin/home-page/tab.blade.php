@@ -29,7 +29,7 @@
                     {{ Form::label('ds_titulo', 'Título', ['class' => 'col-sm-2 col-form-label']) }}
                 @endslot
                 @slot('input')
-                    {{ Form::text('ds_titulo[]', null, ['class' => 'form-control', 'maxlength' => 80, 'id' => 'teste']) }}
+                    {{ Form::text('ds_titulo[]', null, ['class' => 'form-control', 'maxlength' => 80]) }}
                 @endslot
             @endcomponent
 
@@ -53,7 +53,7 @@
                     {{ Form::label('ds_titulo', 'Título', ['class' => 'col-sm-2 col-form-label']) }}
                 @endslot
                 @slot('input')
-                    {{ Form::text('ds_titulo[]', null, ['class' => 'form-control', 'maxlength' => 80, 'id' => 'teste']) }}
+                    {{ Form::text('ds_titulo[]', null, ['class' => 'form-control', 'maxlength' => 80]) }}
                 @endslot
             @endcomponent
 
@@ -85,7 +85,7 @@
                     {{ Form::label('ds_titulo', 'Título', ['class' => 'col-sm-2 col-form-label']) }}
                 @endslot
                 @slot('input')
-                    {{ Form::text('ds_titulo[]', null, ['class' => 'form-control', 'maxlength' => 80, 'id' => 'teste']) }}
+                    {{ Form::text('ds_titulo[]', null, ['class' => 'form-control', 'maxlength' => 80]) }}
                 @endslot
             @endcomponent
 

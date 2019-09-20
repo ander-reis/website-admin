@@ -87,7 +87,7 @@ Route::prefix('admin')->group(function(){
 
         Route::name('home-page.index')->get('/home-page', 'HomePage\HomePageController@index');
         Route::name('home-page.store')->post('/home-page', 'HomePage\HomePageController@store');
-        Route::name('home-page.preview')->post('/preview', 'HomePage\HomePageController@preview');
+        //Route::name('home-page.preview')->post('/preview', 'HomePage\HomePageController@preview');
 
         /**
          * rotas para download da slider/imagem no sistema
