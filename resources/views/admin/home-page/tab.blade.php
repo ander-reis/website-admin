@@ -20,7 +20,7 @@
                     {{ Form::label('ds_categoria', 'Chapéu', ['class' => 'col-sm-2 col-form-label']) }}
                 @endslot
                 @slot('input')
-                    {{ Form::select('ds_categoria[]', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id_categoria'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
+                    {{ Form::select('ds_categoria[]', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
                 @endslot
             @endcomponent
 
@@ -44,7 +44,7 @@
                     {{ Form::label('ds_categoria', 'Chapéu', ['class' => 'col-sm-2 col-form-label']) }}
                 @endslot
                 @slot('input')
-                    {{ Form::select('ds_categoria[]', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id_categoria'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
+                    {{ Form::select('ds_categoria[]', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
                 @endslot
             @endcomponent
 
@@ -60,11 +60,8 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-    <div class="tab-pane fade" id="contato" role="tabpanel" aria-labelledby="contact-tab">
-=======
+
     <div class="tab-pane fade" id="destaque3" role="tabpanel" aria-labelledby="destaque3-tab">
->>>>>>> Correção drag-drop;
         <div class="container mt-2">
 
             @component('admin.form-components._input_inline',['field' => 'ds_categoria'])
@@ -72,11 +69,7 @@
                     {{ Form::label('ds_categoria', 'Chapéu', ['class' => 'col-sm-2 col-form-label']) }}
                 @endslot
                 @slot('input')
-<<<<<<< HEAD
-                    {{ Form::select('ds_categoria[]', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id_categoria'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
-=======
-                    {{ Form::select('ds_categoria[]', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'ds_categoria'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
->>>>>>> Correção drag-drop;
+                    {{ Form::select('ds_categoria[]', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
                 @endslot
             @endcomponent
 

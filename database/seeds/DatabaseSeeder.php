@@ -16,14 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(NoticiasTableSeeder::class);
         $this->call(SliderTableSeeder::class);
         $this->call(OwlCarouselTableSeeder::class);
-        $this->call(ConteudoPaginasPrincipaisTableSeeder::class);
         $this->call(ConvencoesEntidadeTableSeeder::class);
         $this->call(ConvencoesTableSeeder::class);
         $this->call(ConvencoesClausulasTableSeeder::class);
-        $this->call(SinproWebsiteEscolaTableSeeder::class);
-        $this->call(CadastroProfessoresTableSeeder::class);
-        $this->call(MateriaTableSeeder::class);
-        $this->call(CepSPTableSeeder::class);
         $this->call(PaginasTableSeeder::class);
         $this->call(PermissoesTableSeeder::class);
     }

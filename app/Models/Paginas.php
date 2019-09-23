@@ -13,19 +13,18 @@ class Paginas extends Model
 {
 
     /**
-     * Conexão teste Postgre
+     * Conexão
      */
-//    protected $connection = 'pgsql';
-    protected $connection = 'sqlsrv-site';
+//    protected $connection = 'sqlsrv-site';
 
-    protected $table = 'tb_admin_paginas';
+    protected $table = 'tb_sinpro_admin_paginas';
 
     /**
      * configura primary key
      *
      * @var string
      */
-    protected $primaryKey = 'id_pagina';
+//    protected $primaryKey = 'id_pagina';
 
     /**
      * The attributes that are mass assignable.

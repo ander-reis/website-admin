@@ -71,9 +71,14 @@ class OwlCarouselController extends Controller
 
             $this->repository->update($data, $id);
 
-            return redirect()->route('admin.owl-carousel.index')->with('message', 'Editado com sucesso');
+            toastr()->success('Cadastro alterado com sucesso!');
+
+            return redirect()->route('admin.owl-carousel.index');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error-message', 'Não foi possível editar');
+
+            toastr()->error("Não foi possível alterar o cadastro");
+
+            return redirect()->back();
         }
     }
 }

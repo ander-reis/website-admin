@@ -14,7 +14,7 @@ class CreateTbSinproUsuariosTable extends Migration
     public function up()
     {
         Schema::create('tb_sinpro_usuarios', function (Blueprint $table) {
-            $table->increments('id_usuario');
+            $table->increments('id');
             $table->string('nome');
             $table->string('username')->unique();
             $table->string('senha');

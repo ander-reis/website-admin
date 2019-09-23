@@ -45,7 +45,7 @@ class Permissoes extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_usuario');
+        return $this->belongsTo(User::class, 'id');
     }
 
     /**

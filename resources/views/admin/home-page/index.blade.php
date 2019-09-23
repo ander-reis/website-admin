@@ -12,12 +12,16 @@
     @include('admin.home-page._form')
 
     <input type="hidden" id="action" name="action" value="preview">
+
     {{--        {{ Form::submit('Cadastrar',['name' => 'btnCadastrar', 'id' => 'btnCadastrar', 'class' => 'btn btn-primary']) }}--}}
+
     <button type="submit" id="cadastrar" class="btn btn-primary">Cadastrar</button>
     <button type="submit" id="preview" class="btn btn-primary">Preview</button>
+
     {{ Form::open(['route' => 'admin.home-page.store']) }}
-    @include('admin.home-page.tab')
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+{{--    @include('admin.home-page.tab')--}}
+{{--    <button type="submit" class="btn btn-primary">Cadastrar</button>--}}
     {{ Form::close() }}
 
     @push('preview-script')

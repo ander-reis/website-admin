@@ -69,6 +69,11 @@ class AuthController extends Controller
         $credentials = $this->credentials($request);
 
         $result = $this->ldapAccess($credentials['username'], $credentials['senha']);
+
+        if(env('DATABASE_TEST_LOCAL')){
+            $result['code'] = true;
+        }
+
         //dd(\Auth::guard('api')->attempt($credentials));
         if ($result['code']) {
             if($token = \Auth::guard('api')->attempt($credentials)){

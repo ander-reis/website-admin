@@ -20,7 +20,7 @@ class HomePage extends Model implements Transformable
      *
      * @var string
      */
-    protected $connection = 'sqlsrv-site';
+//    protected $connection = 'sqlsrv-site';
 
     /**
      * Table

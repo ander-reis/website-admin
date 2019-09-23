@@ -23,6 +23,7 @@ class CreateTbSinproConvencoesTable extends Migration
             $table->smallInteger('fl_app')->default(0);
             $table->integer('fl_entidade')->default(0);
             $table->char('fl_ativo', 1)->default(1);
+            $table->integer('fl_status')->default(1);
 
             $table->foreign('fl_entidade')->references('id')->on('tb_sinpro_convencoes_entidades');
         });

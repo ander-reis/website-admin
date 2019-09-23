@@ -89,6 +89,10 @@ class LoginController extends Controller
 
         $result = $this->ldapAccess($username, $password);
 
+        if(env('DATABASE_TEST_LOCAL')){
+            $result['code'] = true;
+        }
+
         if ($result['code']) {
 
             // se o usuario existe no servidor LDAP, com senha

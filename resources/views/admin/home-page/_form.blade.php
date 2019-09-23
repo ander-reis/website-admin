@@ -5,7 +5,7 @@
     </div>
     @component('admin.form-components._form_group_inline',['field' => 'ds_categoria', 'class' => 'col-md-6'])
             {{ Form::label('ds_categoria', 'Chapéu', ['class' => 'col-sm-2 col-form-label']) }}
-            {{ Form::select('ds_categoria', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id_categoria'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
+            {{ Form::select('ds_categoria', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
     @endcomponent
 
     @component('admin.form-components._form_group_inline',['field' => 'ds_link', 'class' => 'col-md-6'])

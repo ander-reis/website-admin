@@ -13,7 +13,8 @@ class CreateAuthenticationLogTable extends Migration
      */
     public function up()
     {
-        Schema::connection('sqlsrv-website')->create('authentication_log', function (Blueprint $table) {
+//        Schema::connection('sqlsrv-website')->create('authentication_log', function (Blueprint $table) {
+        Schema::connection('pgsql')->create('authentication_log', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->morphs('authenticatable');
             $table->string('ip_address', 45)->nullable();
@@ -30,6 +31,7 @@ class CreateAuthenticationLogTable extends Migration
      */
     public function down()
     {
-        Schema::connection('sqlsrv-website')->dropIfExists('authentication_log');
+//        Schema::connection('sqlsrv-website')->dropIfExists('authentication_log');
+        Schema::connection('pgsql')->dropIfExists('authentication_log');
     }
 }

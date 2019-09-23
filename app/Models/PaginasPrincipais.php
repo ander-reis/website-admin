@@ -14,7 +14,7 @@ class PaginasPrincipais extends Model
     /**
      * Conexão teste Postgre
      */
-    protected $connection = 'pgsql';
+//    protected $connection = 'pgsql';
 
     protected $table =  'tb_sinpro_conteudo_paginas_principais';
 
