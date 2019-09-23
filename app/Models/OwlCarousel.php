@@ -17,12 +17,7 @@ class OwlCarousel extends Model implements Transformable
     use TransformableTrait, LogsActivity;
 
     /**
-     * Conexão teste Postgre
-     */
-//    protected $connection = 'pgsql';
-
-    /**
-     * Table
+     * table
      *
      * @var string
      */
@@ -40,12 +35,14 @@ class OwlCarousel extends Model implements Transformable
     ];
 
     /**
+     * set datetime
+     *
      * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Configurações Logging
+     * set Logging
      */
     protected static $logAttributes = [
         'ds_icone',
@@ -53,7 +50,17 @@ class OwlCarousel extends Model implements Transformable
         'ds_link'
     ];
 
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
     protected static $logFillable = true;
 
+    /**
+     * set log name
+     *
+     * @var string
+     */
     protected static $logName = 'owl_carousel';
 }

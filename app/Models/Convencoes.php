@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\Integer;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use App\Traits\ConvencaoPaths;
@@ -19,21 +18,21 @@ class Convencoes extends Model implements Transformable
     use TransformableTrait, ConvencaoPaths, LogsActivity;
 
     /**
-     * Conexão teste Postgre
+     * table
+     *
+     * @var string
      */
-//    protected $connection = 'pgsql';
-
     protected $table = 'tb_sinpro_convencoes';
 
     /**
-     * Configura primary key
+     * set primary key
      *
      * @var string
      */
     protected $primaryKey = 'id_convencao';
 
     /**
-     * Configura a criação dos campos created_at e updated_at no banco de dados
+     * set datetime
      *
      * @var bool
      */
@@ -56,7 +55,7 @@ class Convencoes extends Model implements Transformable
     ];
 
     /**
-     * Configura os campos que não deverão aparecer na coleção
+     * set input hidden
      *
      * @var array
      */
@@ -99,7 +98,7 @@ class Convencoes extends Model implements Transformable
     }
 
     /**
-     * Configurações Logging
+     * set log
      */
     protected static $logAttributes = [
         'ds_titulo',
@@ -112,7 +111,17 @@ class Convencoes extends Model implements Transformable
         'fl_status'
     ];
 
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
     protected static $logFillable = true;
 
+    /**
+     * set log name
+     *
+     * @var string
+     */
     protected static $logName = 'convencoes';
 }

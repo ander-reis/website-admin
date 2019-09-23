@@ -16,12 +16,7 @@ class ConvencoesEntidade extends Model implements Transformable
     use TransformableTrait;
 
     /**
-     * Conexão teste Postgre
-     */
-//    protected $connection = 'pgsql';
-
-    /**
-     * Table
+     * table
      *
      * @var string
      */

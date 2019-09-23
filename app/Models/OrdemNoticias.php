@@ -16,14 +16,7 @@ class OrdemNoticias extends Model implements Transformable
     use TransformableTrait;
 
     /**
-     * Connection
-     *
-     * @var string
-     */
-//    protected $connection = 'sqlsrv-site';
-
-    /**
-     * Table
+     * table
      * @var string
      */
     protected $table = 'tb_sinpro_admin_ordem_noticia';
@@ -36,7 +29,28 @@ class OrdemNoticias extends Model implements Transformable
     protected $fillable = ['id_noticia', 'ordem_noticia'];
 
     /**
+     * set datetime
+     *
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * set logging
+     */
+    protected static $logAttributes = ['id_noticia', 'ordem_noticia'];
+
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
+    protected static $logFillable = true;
+
+    /**
+     * set log name
+     *
+     * @var string
+     */
+    protected static $logName = 'ordem_noticias';
 }

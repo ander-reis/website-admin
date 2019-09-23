@@ -12,14 +12,17 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable, AuthenticationLogable;
 
     /**
-     * Conexão teste Postgre
+     * table
+     *
+     * @var string
      */
-//    protected $connection = 'pgsql';
-
-//    protected $connection = 'sqlsrv-website';
-
     protected $table = 'tb_sinpro_usuarios';
 
+    /**
+     * set datetime
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
     /**
@@ -32,7 +35,7 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * set input hidden
      *
      * @var array
      */

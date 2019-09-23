@@ -17,17 +17,20 @@ class Noticias extends Model implements Transformable
     use TransformableTrait, LogsActivity;
 
     /**
-     * Conexão teste Postgre
+     * table
+     *
+     * @var string
      */
-//    protected $connection = 'pgsql';
-
     protected $table = 'tb_sinpro_noticias';
 
     /**
-     * configura CREATED_AT
+     * set created_at
      */
     const CREATED_AT = 'dt_cadastro';
 
+    /**
+     * set updated_at
+     */
     const UPDATED_AT = 'dt_alteracao';
 
     /**
@@ -48,7 +51,7 @@ class Noticias extends Model implements Transformable
     ];
 
     /**
-     * Configurações Logging
+     * set logging
      */
     protected static $logAttributes = [
         'id_categoria',
@@ -61,8 +64,18 @@ class Noticias extends Model implements Transformable
         'fl_status'
     ];
 
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
     protected static $logFillable = true;
 
+    /**
+     * set log name
+     *
+     * @var string
+     */
     protected static $logName = 'noticias';
 
     /**
