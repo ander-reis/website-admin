@@ -38,7 +38,7 @@ class Slider extends Model implements Transformable
     ];
 
     /**
-     * Configurações Logging
+     * set logging
      */
     protected static $logAttributes = [
         'ds_label',
@@ -48,9 +48,22 @@ class Slider extends Model implements Transformable
         'fl_ativo'
     ];
 
+    /**
+     * set log fillble
+     *
+     * @var bool
+     */
     protected static $logFillable = true;
 
-    //protected static $ignoreChangedAttributes = ['ds_imagem'];
+    /**
+     * @var array
+     */
+//    protected static $ignoreChangedAttributes = ['ds_imagem'];
 
+    /**
+     * set log name
+     *
+     * @var string
+     */
     protected static $logName = 'slider';
 }

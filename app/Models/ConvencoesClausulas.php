@@ -17,19 +17,24 @@ class ConvencoesClausulas extends Model implements Transformable
     use TransformableTrait;
 
     /**
-     * Conexão teste Postgre
+     * table
+     *
+     * @var string
      */
-//    protected $connection = 'pgsql';
-
     protected $table = 'tb_sinpro_convencoes_clausulas';
 
     /**
-     * configura primary key
+     * set primary key
      *
      * @var string
      */
     protected $primaryKey = 'id_clausula';
 
+    /**
+     * set datetime
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
     /**
@@ -47,7 +52,7 @@ class ConvencoesClausulas extends Model implements Transformable
     ];
 
     /**
-     * remove da consulta
+     * set input hidden
      */
     protected $hidden = ['fl_ativo'];
 

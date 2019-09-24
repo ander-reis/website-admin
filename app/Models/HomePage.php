@@ -16,14 +16,14 @@ class HomePage extends Model implements Transformable
     use TransformableTrait;
 
     /**
-     * Connection
+     * Conexão novo database
      *
      * @var string
      */
     protected $connection = 'sqlsrv-site';
 
     /**
-     * Table
+     * table
      *
      * @var string
      */
@@ -42,5 +42,4 @@ class HomePage extends Model implements Transformable
         'created_at',
         'updated_at'
     ];
-
 }

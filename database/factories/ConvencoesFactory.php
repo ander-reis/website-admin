@@ -9,5 +9,6 @@ $factory->define(\App\Models\Convencoes::class, function (Faker $faker) {
         'ds_titulo_aditamento' => $faker->text(100),
         'fl_app' => '1',
         'fl_ativo' => 1,
+        'fl_status' => 1,
     ];
 });

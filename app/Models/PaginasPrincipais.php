@@ -12,20 +12,27 @@ use Illuminate\Database\Eloquent\Model;
 class PaginasPrincipais extends Model
 {
     /**
-     * Conexão teste Postgre
+     * table
+     *
+     * @var string
      */
-    protected $connection = 'pgsql';
-
     protected $table =  'tb_sinpro_conteudo_paginas_principais';
 
     /**
+     * set primary key
+     *
      * @var string
      */
     protected $primaryKey = 'id_pagina';
+
     /**
-     * configura timestamps
+     * set created_at
      */
     const CREATED_AT = 'dt_criacao';
+
+    /**
+     * set updated_at
+     */
     const UPDATED_AT = 'dt_alteracao';
 
     /**
@@ -43,15 +50,37 @@ class PaginasPrincipais extends Model
         'fl_status'
     ];
 
+    /**
+     * set input hidden
+     *
+     * @var array
+     */
     protected $hidden = ['dt_alteracao', 'dt_criacao'];
 
     /**
-     * Mutators formata status da página
-     *
-     * @return string
+     * set logging
      */
-    public function getFlStatusFormattedAttribute()
-    {
-        return $this->fl_status ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Oculto</span>';
-    }
+    protected static $logAttributes = [
+        'tp_busca',
+        'txt_titulo_busca',
+        'txt_titulo',
+        'txt_pagina',
+        'url_pagina',
+        'ds_palavra_chave',
+        'fl_status'
+    ];
+
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
+    protected static $logFillable = true;
+
+    /**
+     * set log name
+     *
+     * @var string
+     */
+    protected static $logName = 'paginas_principais';
 }

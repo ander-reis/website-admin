@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSinproMateriaTable extends Migration
+class CreateTbSinproAdminPaginasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateSinproMateriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('Materia', function (Blueprint $table) {
-            $table->increments('Codigo_Materia');
-            $table->string('Materia')->nullable();
+        Schema::create('tb_sinpro_admin_paginas', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('ds_pagina', 50);
+            $table->string('url_pagina', 70);
         });
     }
 
@@ -26,6 +27,6 @@ class CreateSinproMateriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Materia');
+        Schema::dropIfExists('tb_sinpro_admin_paginas');
     }
 }

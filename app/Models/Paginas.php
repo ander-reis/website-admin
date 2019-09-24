@@ -13,19 +13,18 @@ class Paginas extends Model
 {
 
     /**
-     * Conexão teste Postgre
-     */
-//    protected $connection = 'pgsql';
-    protected $connection = 'sqlsrv-site';
-
-    protected $table = 'tb_admin_paginas';
-
-    /**
-     * configura primary key
+     * Conexão novo database
      *
      * @var string
      */
-    protected $primaryKey = 'id_pagina';
+    protected $connection = 'sqlsrv-site';
+
+    /**
+     * table
+     *
+     * @var string
+     */
+    protected $table = 'tb_sinpro_admin_paginas';
 
     /**
      * The attributes that are mass assignable.
@@ -37,6 +36,32 @@ class Paginas extends Model
         'url_pagina'
     ];
 
+    /**
+     * set datetime
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * set Logging
+     */
+    protected static $logAttributes = [
+        'ds_pagina',
+        'url_pagina'
+    ];
+
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
+    protected static $logFillable = true;
+
+    /**
+     * set log name
+     *
+     * @var string
+     */
+    protected static $logName = 'paginas';
 }

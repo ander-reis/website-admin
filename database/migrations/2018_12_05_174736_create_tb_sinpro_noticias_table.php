@@ -14,7 +14,7 @@ class CreateTbSinproNoticiasTable extends Migration
     public function up()
     {
         Schema::create('tb_sinpro_noticias', function (Blueprint $table) {
-            $table->increments('id_noticia');
+            $table->increments('id');
             $table->integer('id_categoria')->nullable();
             $table->dateTime('dt_cadastro');
             $table->dateTime('dt_alteracao');
@@ -25,7 +25,7 @@ class CreateTbSinproNoticiasTable extends Migration
             $table->string('ds_palavra_chave', 150)->nullable();
             $table->char('fl_oculta', 1);
 
-            $table->foreign('id_categoria')->references('id_categoria')->on('tb_sinpro_noticias_categorias');
+            $table->foreign('id_categoria')->references('id')->on('tb_sinpro_noticias_categorias');
         });
     }
 

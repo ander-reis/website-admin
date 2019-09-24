@@ -17,7 +17,7 @@ class ConvencoesPolicy extends Policies
      */
     public function view(User $user)
     {
-        return parent::viewPolicy($user, 5);
+        return parent::viewPolicy($user, 21);
     }
 
     /**
@@ -28,7 +28,7 @@ class ConvencoesPolicy extends Policies
      */
     public function create(User $user)
     {
-        return parent::createPolicy($user, 5);
+        return parent::createPolicy($user, 21);
     }
 
     /**
@@ -39,7 +39,7 @@ class ConvencoesPolicy extends Policies
      */
     public function update(User $user)
     {
-       return parent::updatePolicy($user, 5);
+       return parent::updatePolicy($user, 21);
     }
 
     /**
@@ -50,6 +50,6 @@ class ConvencoesPolicy extends Policies
      */
     public function delete(User $user)
     {
-       return parent::deletePolicy($user, 5);
+       return parent::deletePolicy($user, 21);
     }
 }

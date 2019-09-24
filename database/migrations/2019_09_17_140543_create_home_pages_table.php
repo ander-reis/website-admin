@@ -19,8 +19,8 @@ class CreateHomePagesTable extends Migration
             $table->increments('id');
             $table->string('ds_categoria', 50);
             $table->string('ds_titulo', 80);
-            $table->string('ds_texto_noticia', 150);
-            $table->string('ds_link', 150);
+            $table->string('ds_texto_noticia', 150)->nullable();
+            $table->string('ds_link', 150)->nullable();
             $table->timestamps();
 		});
 	}

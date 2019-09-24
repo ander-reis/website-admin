@@ -17,21 +17,18 @@ class NoticiasCategoria extends Model implements Transformable
     use TransformableTrait, LogsActivity;
 
     /**
-     * Conexão teste Postgre
+     * table
+     *
+     * @var string
      */
-//    protected $connection = 'pgsql';
-
     protected $table = 'tb_sinpro_noticias_categorias';
 
     /**
-     * @var string
-     */
-//    protected $primaryKey = 'id_categoria';
-    /**
+     * set datetime
+     *
      * @var bool
      */
     public $timestamps = false;
-
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +36,27 @@ class NoticiasCategoria extends Model implements Transformable
      * @var array
      */
     protected $fillable = ['ds_categoria'];
+
+    /**
+     * set logging
+     */
+    protected static $logAttributes = [
+        'ds_categoria'
+    ];
+
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
+    protected static $logFillable = true;
+
+    /**
+     * set log name
+     *
+     * @var string
+     */
+    protected static $logName = 'noticias_categorias';
 
     /**
      * Relacionamento categoria para noticias, um para muitos
@@ -49,15 +67,4 @@ class NoticiasCategoria extends Model implements Transformable
     {
         return $this->hasMany(Noticias::class, 'id_categoria');
     }
-
-    /**
-     * Configurações Logging
-     */
-    protected static $logAttributes = [
-        'ds_categoria'
-    ];
-
-    protected static $logFillable = true;
-
-    protected static $logName = 'noticias_categorias';
 }

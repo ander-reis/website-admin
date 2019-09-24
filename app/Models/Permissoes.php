@@ -11,15 +11,21 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Permissoes extends Model
 {
-
     /**
-     * Conexão teste Postgre
+     * table
+     *
+     * @var string
      */
-//    protected $connection = 'pgsql';
-
     protected $table = 'tb_sinpro_admin_permissoes_website';
 
+    /**
+     * set created_at
+     */
     const CREATED_AT = 'dt_cadastro';
+
+    /**
+     * set updated_at
+     */
     const UPDATED_AT = 'dt_alteracao';
 
     /**
@@ -39,13 +45,41 @@ class Permissoes extends Model
     ];
 
     /**
+     * set logging
+     */
+    protected static $logAttributes = [
+        'id_usuario',
+        'id_pagina',
+        'fl_consulta',
+        'fl_cadastro',
+        'fl_alteracao',
+        'fl_exclusao',
+        'dt_cadastro',
+        'dt_alteracao'
+    ];
+
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
+    protected static $logFillable = true;
+
+    /**
+     * set log name
+     *
+     * @var string
+     */
+    protected static $logName = 'permissoes';
+
+    /**
      * Relacionamento usuarios para permissoes, um para um
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_usuario');
+        return $this->belongsTo(User::class, 'id');
     }
 
     /**
@@ -57,6 +91,4 @@ class Permissoes extends Model
     {
         return $this->belongsTo(Paginas::class, 'id');
     }
-
-
 }
