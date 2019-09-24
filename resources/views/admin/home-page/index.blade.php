@@ -3,7 +3,9 @@
 @section('content')
 
     {{ Form::model($data, ['route' => 'admin.home-page.store', 'id' => 'formHomePage']) }}
+
     @include('admin.home-page._form')
+
     {{ Form::hidden('action', 'preview', ['id' => 'action']) }}
     {{ Form::submit('Cadastrar', ['id' => 'cadastrar', 'class' => 'btn btn-primary']) }}
     {{ Form::submit('Preview', ['id' => 'preview', 'class' => 'btn btn-secondary']) }}
@@ -19,7 +21,6 @@
         });
         document.addEventListener('DOMContentLoaded', function (e) {
             const form = document.getElementById('formHomePage');
-            console.log(form);
             FormValidation.formValidation(
                 form,
                 {
