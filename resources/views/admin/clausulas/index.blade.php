@@ -42,7 +42,7 @@
                                 $convencoes,
                                 $clausula,
                                 ]) }}">
-                                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                    <i class="fas fa-edit fa-2x"></i>
                                 </a>
                             @endcan
                             @cannot('clausulas.update')
@@ -52,7 +52,7 @@
                         <td class="text-center">
                             @can('clausulas.delete')
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteClausulaModal" data-whatever="{{ $clausula->id_clausula }}">
-                                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                                    <i class="fas fa-trash-alt fa-2x"></i>
                                 </a>
                             @endcan
                             @cannot('clausulas.delete')
