@@ -46,8 +46,6 @@
             </div>
 
 
-
-
             <div class="col-lg-7">
                 <div class="row">
                     <div class="col-12">
@@ -123,19 +121,23 @@
                 <div class="owl-carousel owl-theme pt-3">
                     <div class="item text-center">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <a href="http://sinprosp.org.br/escola.asp" class="black faixa_size" target="_blank">Cursos e <br>congressos</a>
+                        <a href="http://sinprosp.org.br/escola.asp" class="black faixa_size" target="_blank">Cursos e
+                            <br>congressos</a>
                     </div>
                     <div class="item text-center">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <a href="http://sinprosp.org.br/guia_consultas.asp#salario" class="black faixa_size" target="_blank">Salários e<br/>reajustes</a>
+                        <a href="http://sinprosp.org.br/guia_consultas.asp#salario" class="black faixa_size"
+                           target="_blank">Salários e<br/>reajustes</a>
                     </div>
                     <div class="item text-center">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <a href="http://sinprosp.org.br/convencoes_acordos.asp" class="black faixa_size" target="_blank">Convenções e<br/>acordos</a>
+                        <a href="http://sinprosp.org.br/convencoes_acordos.asp" class="black faixa_size"
+                           target="_blank">Convenções e<br/>acordos</a>
                     </div>
                     <div class="item text-center">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <a href="http://sinprosp.org.br/guia_consultas.asp" class="black faixa_size" target="_blank">Guia de<br/>direitos</a>
+                        <a href="http://sinprosp.org.br/guia_consultas.asp" class="black faixa_size" target="_blank">Guia
+                            de<br/>direitos</a>
                     </div>
                 </div>
             </div>
@@ -327,8 +329,9 @@
                                             <div class="col-12">
                                                 <a href="http://revistagiz.sinprosp.org.br/?p=7724" target="_blank"
                                                    class="text-link">
-                                        <span class="text-dark font-weight-bold giz_titulo">Como algoritmos afetam a
-                                            democria</span>
+                                                    <span class="text-dark font-weight-bold giz_titulo">
+                                                    {{ $noticias[7]['ds_titulo'] }}
+                                                    </span>
                                                 </a>
                                             </div>
                                         </div>
@@ -337,10 +340,9 @@
                                             <div class="col-12">
                                                 <a href="http://revistagiz.sinprosp.org.br/?p=7724" target="_blank"
                                                    class="text-link">
-                                                    <p class="text-dark giz_corpo text-justify mb-0">Livro discute como
-                                                        esses códigos
-                                                        atuam sobre a modulação de comportamentos e seus efeitos na
-                                                        política</p>
+                                                    <p class="text-dark giz_corpo text-justify mb-0">
+                                                        {{ $noticias[7]['ds_texto_noticia'] }}
+                                                    </p>
                                                 </a>
                                             </div>
                                         </div>

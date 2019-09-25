@@ -57,16 +57,6 @@ class ConvencoesClausulas extends Model implements Transformable
     protected $hidden = ['fl_ativo'];
 
     /**
-     * Relacionamento convencao para clausula, um para muitos
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function convencao()
-    {
-        return $this->belongsTo(Convencoes::class, 'id_convencao');
-    }
-
-    /**
      * Accessor formata ds_titulo para 6 palavras
      *
      * @return string
@@ -74,5 +64,15 @@ class ConvencoesClausulas extends Model implements Transformable
     public function getDsTituloClausulaFormattedAttribute()
     {
         return Str::words(strip_tags($this->ds_titulo), 3, '...');
+    }
+
+    /**
+     * Relacionamento convencao para clausula, um para muitos
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function convencao()
+    {
+        return $this->belongsTo(Convencoes::class, 'id_convencao');
     }
 }

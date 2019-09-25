@@ -66,38 +66,6 @@ class Convencoes extends Model implements Transformable
     ];
 
     /**
-     * Relacionamento convencoes para entidade, um para um
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function entidade()
-    {
-        return $this->belongsTo(ConvencoesEntidade::class, 'fl_entidade');
-    }
-
-    /**
-     * Relacionamento convencoes para clausulas, muitos para muitos
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function clausulas()
-    {
-        return $this->hasMany(ConvencoesClausulas::class, 'id_convencao');
-    }
-
-    /**
-     * Accessor para normatizar nome da entidade para o pdf
-     *
-     * @return mixed
-     */
-    public function getEntidadeNameAttribute()
-    {
-        $name = $this->entidade->ds_entidade;
-        $name = str_replace(" ", "", $name);
-        return $entidade = removeSpecialChars($name);
-    }
-
-    /**
      * set log
      */
     protected static $logAttributes = [
@@ -124,4 +92,36 @@ class Convencoes extends Model implements Transformable
      * @var string
      */
     protected static $logName = 'convencoes';
+
+    /**
+     * Accessor para normatizar nome da entidade para o pdf
+     *
+     * @return mixed
+     */
+    public function getEntidadeNameAttribute()
+    {
+        $name = $this->entidade->ds_entidade;
+        $name = str_replace(" ", "", $name);
+        return $entidade = removeSpecialChars($name);
+    }
+
+    /**
+     * Relacionamento convencoes para entidade, um para um
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function entidade()
+    {
+        return $this->belongsTo(ConvencoesEntidade::class, 'fl_entidade');
+    }
+
+    /**
+     * Relacionamento convencoes para clausulas, muitos para muitos
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function clausulas()
+    {
+        return $this->hasMany(ConvencoesClausulas::class, 'id_convencao');
+    }
 }
