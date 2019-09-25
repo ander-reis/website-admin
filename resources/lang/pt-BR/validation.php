@@ -190,6 +190,7 @@ return [
         'fl_app'                => 'ativo no aplicativo',
         'dt_validade'           => 'ano de validade',
         'ds_titulo'             => 'título',
+        'ds_label'              => 'chapéu',
         'url_arquivo'           => 'upload',
         'url_aditamento'        => 'upload aditamento',
         'fl_entidade'           => 'entidade',
@@ -197,5 +198,6 @@ return [
         'ds_imagem'             => 'imagem',
         'num_clausula'          => 'cláusula',
         'ds_categoria'          => 'categoria',
+
     ],
 ];

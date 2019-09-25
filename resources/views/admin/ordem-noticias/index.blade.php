@@ -43,8 +43,8 @@
             </table>
             <div class="py-3">
                 @can('ordem-noticias.create')
-                    <input type="button" value="Cadastrar" class="btn btn-primary" onclick="redips.save()"
-                           title="Cadastrar"/>
+                    <input type="button" value="Salvar" class="btn btn-primary" onclick="redips.save()"
+                           title="Salvar"/>
                 @endcan
             </div>
             <div>

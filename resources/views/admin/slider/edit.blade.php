@@ -14,7 +14,7 @@
 
         @include('admin.slider._form')
 
-        <button type="submit" class="btn btn-primary">Editar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
 
         {{ Form::close() }}
     </div>

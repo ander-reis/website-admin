@@ -7,18 +7,18 @@
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'ds_label'])
-    {{ Form::label('ds_label', 'Label', ['class' => 'control-label']) }}
-    {{ Form::text('ds_label', null, ['class' => 'form-control', 'maxlength' => 15]) }}
+    {{ Form::label('ds_label', 'Chapéu', ['class' => 'control-label']) }}
+    {{ Form::text('ds_label', null, ['class' => 'form-control', 'maxlength' => 30]) }}
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'ds_titulo'])
     {{ Form::label('ds_titulo', 'Título', ['class' => 'control-label']) }}
-    {{ Form::text('ds_titulo', null, ['class' => 'form-control', 'maxlength' => 30]) }}
+    {{ Form::text('ds_titulo', null, ['class' => 'form-control', 'maxlength' => 70]) }}
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'ds_link'])
     {{ Form::label('ds_link', 'Link', ['class' => 'control-label']) }}
-    {{ Form::text('ds_link', null, ['class' => 'form-control', 'maxlength' => 255]) }}
+    {{ Form::text('ds_link', null, ['class' => 'form-control', 'maxlength' => 60]) }}
 @endcomponent
 
 @component('admin.form-components._form_group',['field' => 'fl_ativo'])

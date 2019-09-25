@@ -27,10 +27,10 @@ class SliderCreateRequest extends FormRequest
         $this->sanitize();
 
         return [
-            'ds_label' => 'max:15',
-            'ds_titulo' => 'max:30',
+            'ds_label' => 'max:30',
+            'ds_titulo' => 'max:70',
 //            'ds_imagem' => 'required|image|max:1024',
-            'ds_link' => 'max:255'
+            'ds_link' => 'max:60'
         ];
     }
 
