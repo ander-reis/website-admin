@@ -29,7 +29,7 @@
                                     <a href={!! $slider->ds_link !!}>
                                         <div class="gradient_img">
                                             <img class="d-block w-100"
-                                                 src="{{ asset('/images/layout-1/slider/slider_1.jpeg' ) }}"
+                                                 src="{{ asset('/layout-1/slider/slider_1.jpeg' ) }}"
                                                  alt="{!! $slider->ds_label !!}">
                                         </div>
                                         <div class="carousel-caption p-2">
