@@ -18,9 +18,9 @@ class CreateHomePagesTable extends Migration
 		Schema::create('tb_sinpro_admin_home_page', function(Blueprint $table) {
             $table->increments('id');
             $table->string('ds_categoria', 50);
-            $table->string('ds_titulo', 80);
-            $table->string('ds_texto_noticia', 150)->nullable();
-            $table->string('ds_link', 150)->nullable();
+            $table->string('ds_titulo', 100);
+            $table->string('ds_texto_noticia', 800)->default('');
+            $table->string('ds_link', 150)->default('');
             $table->timestamps();
 		});
 	}

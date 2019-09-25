@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\HomePageCreateRequest;
 use App\Models\HomePage;
+use App\Models\Slider;
 use App\Repositories\HomePageRepository;
 
 /**
@@ -71,10 +72,10 @@ class HomePageController extends Controller
 
                     foreach ($data as $key => $value) {
                         for ($i = 0; $i < count($value); $i++) {
-                            $noticias[$i]['ds_categoria'] = isset($data['ds_categoria'][$i]) ? $data['ds_categoria'][$i] : null;
-                            $noticias[$i]['ds_titulo'] = isset($data['ds_titulo'][$i]) ? $data['ds_titulo'][$i] : null;
-                            $noticias[$i]['ds_link'] = isset($data['ds_link'][$i]) ? $data['ds_link'][$i] : null;
-                            $noticias[$i]['ds_texto_noticia'] = isset($data['ds_texto_noticia'][$i]) ? $data['ds_texto_noticia'][$i] : null;
+                            $noticias[$i]['ds_categoria'] = isset($data['ds_categoria'][$i]) ? $data['ds_categoria'][$i] : '';
+                            $noticias[$i]['ds_titulo'] = isset($data['ds_titulo'][$i]) ? $data['ds_titulo'][$i] : '';
+                            $noticias[$i]['ds_link'] = isset($data['ds_link'][$i]) ? $data['ds_link'][$i] : '';
+                            $noticias[$i]['ds_texto_noticia'] = isset($data['ds_texto_noticia'][$i]) ? $data['ds_texto_noticia'][$i] : '';
                         }
                     }
 
@@ -82,7 +83,7 @@ class HomePageController extends Controller
                         $this->repository->create($noticia);
                     }
 
-                    toastr()->success('Cadastrado com sucesso!');
+                    toastr()->success('Cadastrado alterado com sucesso!');
 
                     return redirect()->back();
 
@@ -95,35 +96,21 @@ class HomePageController extends Controller
 
                 $data = $request->only(array_keys($request->input()));
                 unset($data['_token']);
+                unset($data['action']);
 
                 foreach ($data as $key => $value) {
-                    for ($i = 0; $i < count($data['ds_categoria']); $i++) {
-                        $noticias[$i]['ds_categoria'] = $data['ds_categoria'][$i];
-                        $noticias[$i]['ds_titulo'] = $data['ds_titulo'][$i];
-                        //$noticias[$i]['ds_link'] = $data['ds_link'][$i];
+                    for ($i = 0; $i < count($value); $i++) {
+                        $noticias[$i]['ds_categoria'] = isset($data['ds_categoria'][$i]) ? $data['ds_categoria'][$i] : '';
+                        $noticias[$i]['ds_titulo'] = isset($data['ds_titulo'][$i]) ? $data['ds_titulo'][$i] : '';
+                        $noticias[$i]['ds_link'] = isset($data['ds_link'][$i]) ? $data['ds_link'][$i] : '';
+                        $noticias[$i]['ds_texto_noticia'] = isset($data['ds_texto_noticia'][$i]) ? $data['ds_texto_noticia'][$i] : '';
                     }
                 }
 
-                foreach ($noticias as $noticia) {
-                    //$this->repository->create($noticia);
-                }
+                // sliders
+                $sliders = Slider::where('fl_ativo', 1)->get();
 
-                return view('admin.home-page.preview', compact('noticias'));
-                break;
+                return view('admin.home-page.preview', compact('noticias', 'sliders'));
         }
-        try {
-//            return redirect()->route('admin.home-page.preview', ['data']);
-        } catch (\Exception $e) {
-//            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
-
-    }
-
-
-    public function preview(HomePageCreateRequest $request)
-    {
-        $data = $request->only(array_keys($request->all()));
-        dd($data);
-        return view('admin.home-page.preview', compact('data'));
     }
 }

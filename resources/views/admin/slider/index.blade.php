@@ -45,21 +45,21 @@
                         <td class="text-center">
                             @can('slider.update')
                                 <a class="text-dark link-icon" href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}">
-                                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                    <i class="fas fa-edit fa-2x"></i>
                                 </a>
                             @endcan
                             @cannot('slider.update')
-                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                <i class="fas fa-edit fa-2x"></i>
                             @endcannot
                         </td>
                         <td class="text-center">
                             @can('slider.delete')
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteSliderModal" data-whatever="{{ $slider->id }}">
-                                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                                    <i class="fas fa-trash-alt fa-2x"></i>
                                 </a>
                             @endcan
                             @cannot('slider.delete')
-                                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                                    <i class="fas fa-trash-alt fa-2x"></i>
                             @endcannot
                         </td>
                     </tr>

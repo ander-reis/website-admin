@@ -57,7 +57,7 @@
                                 @can('convencoes.update')
                                     <a class="text-dark link-icon"
                                        href="{{ route('admin.convencao.edit', [$entidade, $convencao]) }}">
-                                        <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                        <i class="fas fa-edit fa-2x"></i>
                                     </a>
                                 @endcan
                                 @cannot('convencoes.update')

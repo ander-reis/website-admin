@@ -44,7 +44,7 @@
                             @can('noticias.update')
                                 <a class="text-dark link-icon"
                                    href="{{ route('admin.noticias.edit', ['noticia' => $noticia->id]) }}">
-                                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                    <i class="fas fa-edit fa-2x"></i>
                                 </a>
                             @endcan
                             @cannot('noticias.update')
