@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\HomePage;
 
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\HomePageCreateRequest;
 use App\Models\HomePage;
 use App\Models\Slider;
 use App\Repositories\HomePageRepository;
+use Illuminate\Http\Request;
 
 /**
  * Class HomePagesController.
@@ -52,7 +52,7 @@ class HomePageController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(HomePageCreateRequest $request)
+    public function store(Request $request)
     {
         $data = $request->only(array_keys($request->input()));
         $action = $request->input('action');
@@ -95,22 +95,29 @@ class HomePageController extends Controller
             case 'preview':
 
                 $data = $request->only(array_keys($request->input()));
+//                dd($data);
+                $imagem = $data['ds_imagem'];
+
                 unset($data['_token']);
                 unset($data['action']);
+                unset($data['ds_imagem']);
 
                 foreach ($data as $key => $value) {
                     for ($i = 0; $i < count($value); $i++) {
                         $noticias[$i]['ds_categoria'] = isset($data['ds_categoria'][$i]) ? $data['ds_categoria'][$i] : '';
                         $noticias[$i]['ds_titulo'] = isset($data['ds_titulo'][$i]) ? $data['ds_titulo'][$i] : '';
                         $noticias[$i]['ds_link'] = isset($data['ds_link'][$i]) ? $data['ds_link'][$i] : '';
-                        $noticias[$i]['ds_texto_noticia'] = isset($data['ds_texto_noticia'][$i]) ? $data['ds_texto_noticia'][$i] : '';
+                        if($key == 'ds_texto_noticia'){
+                            $noticias[$i]['ds_texto_noticia'] = isset($data['ds_texto_noticia'][$i]) ? $data['ds_texto_noticia'][$i] : '';
+                        }
+
                     }
                 }
-
+                dd($noticias);
                 // sliders
                 $sliders = Slider::where('fl_ativo', 1)->get();
 
-                return view('admin.home-page.preview', compact('noticias', 'sliders'));
+                return view('admin.home-page.preview', compact('noticias', 'sliders', 'imagem'));
         }
     }
 }

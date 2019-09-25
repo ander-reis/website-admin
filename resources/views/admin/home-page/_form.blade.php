@@ -134,3 +134,34 @@
         {{ Form::text('ds_titulo[]', isset($data[6]['ds_titulo'])?$data[6]['ds_titulo']:null, ['class' => 'form-control', 'maxlength' => 100]) }}
     @endslot
 @endcomponent
+
+<section class="row">
+    <div class="col-12">
+        <h3>Revista Giz</h3>
+        <hr>
+    </div>
+    <div class="col-12">
+        <div class="form-group">
+            <div class="custom-file form-group">
+                {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br']) }}
+                {{ Form::label('ds_imagem', 'Upload Imagem', ['class' => 'custom-file-label control-label']) }}
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-group">
+            {{ Form::label('ds_link', 'Link', ['class' => 'col-sm-2 control-label']) }}
+            {{ Form::text('ds_link[]', 'teste link giz', ['class' => 'form-control', 'maxlength' => 150]) }}
+        </div>
+    </div>
+    <div class="col-12 no-gutters">
+        <div class="form-group">
+            {{ Form::label('ds_titulo', 'Título', ['class' => 'col-sm-2 col-label']) }}
+            {{ Form::text('ds_titulo[]', 'teste titulo giz', ['class' => 'form-control', 'maxlength' => 100]) }}
+        </div>
+        <div class="form-group">
+            {{ Form::label('ds_texto_noticia', 'Texto', ['class' => 'col-sm-2 control-label']) }}
+            {{ Form::textarea('ds_texto_noticia[]', 'teste texto noticia giz', ['class' => 'form-control', 'rows' => 3]) }}
+        </div>
+    </div>
+</section>

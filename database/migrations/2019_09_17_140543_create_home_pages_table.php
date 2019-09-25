@@ -21,6 +21,7 @@ class CreateHomePagesTable extends Migration
             $table->string('ds_titulo', 100);
             $table->string('ds_texto_noticia', 800)->default('');
             $table->string('ds_link', 150)->default('');
+            $table->string('ds_imagem', 100)->default('');
             $table->timestamps();
 		});
 	}

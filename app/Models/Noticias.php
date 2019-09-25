@@ -86,16 +86,6 @@ class Noticias extends Model implements Transformable
     protected $dates = ['dt_noticia', 'dt_cadastro', 'dt_alteracao'];
 
     /**
-     * Relacionamento noticias para categorias, um para um
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function categoria()
-    {
-        return $this->belongsTo(NoticiasCategoria::class, 'id_categoria');
-    }
-
-    /**
      * Mutators formata data para o form de edição -> 2000-12-30
      *
      * @return string
@@ -114,5 +104,15 @@ class Noticias extends Model implements Transformable
     public function getHrNoticiaFormattedAttribute()
     {
         return substr($this->dt_noticia, 11, -3);
+    }
+
+    /**
+     * Relacionamento noticias para categorias, um para um
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function categoria()
+    {
+        return $this->belongsTo(NoticiasCategoria::class, 'id_categoria');
     }
 }
