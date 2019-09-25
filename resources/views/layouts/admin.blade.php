@@ -59,12 +59,16 @@
                             </div>
                         </li>
 
-                        <li class="nav-item {{ active('admin.slider.*') }}">
-                            <a class="nav-link" href="{{ route('admin.slider.index') }}">Slider</a>
-                        </li>
-
-                        <li class="nav-item {{ active('admin.owl-carousel.*') }}">
-                            <a class="nav-link" href="{{ route('admin.owl-carousel.index') }}">Owl Carousel</a>
+                         <li class="nav-item dropdown mx-3 {{ active('admin.intro.*') }} {{ active('admin.slider.*') }} {{ active('admin.owl-carousel.*') }}">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Home
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.intro.index') }}">Intro</a>
+                                <a class="dropdown-item" href="{{ route('admin.slider.index') }}">Slider</a>
+                                <a class="dropdown-item" href="{{ route('admin.owl-carousel.index') }}">Owl Carousel</a>
+                            </div>
                         </li>
 
                         <li class="nav-item dropdown mx-3 {{ active('admin.convencao.*') }}">

@@ -66,6 +66,11 @@ Route::prefix('admin')->group(function(){
         Route::resource('slider', 'Slider\SlidersController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
 
         /**
+         * intro
+         */
+        Route::resource('intro', 'Intro\IntrosController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+
+        /**
          * owl carousel
          */
         Route::resource('owl-carousel', 'OwlCarousel\OwlCarouselController', ['only' => ['index', 'edit', 'update']]);
