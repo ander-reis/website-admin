@@ -45,6 +45,9 @@
                 {{--slider end--}}
             </div>
 
+
+
+
             <div class="col-lg-7">
                 <div class="row">
                     <div class="col-12">
