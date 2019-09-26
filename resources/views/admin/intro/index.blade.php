@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="my-3">
-                <h1>Slider</h1>
+                <h1>Intro</h1>
             </div>
             <p>
                 @can('intro.create')
@@ -44,21 +44,21 @@
                         <td class="text-center">
                             @can('intro.update')
                                 <a class="text-dark link-icon" href="{{ route('admin.intro.edit', ['intro' => $intro->id]) }}">
-                                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                    <i class="fas fa-edit fa-2x"></i>
                                 </a>
                             @endcan
                             @cannot('intro.update')
-                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                <i class="fas fa-edit fa-2x"></i>
                             @endcannot
                         </td>
                         <td class="text-center">
                             @can('intro.delete')
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteIntroModal" data-whatever="{{ $intro->id }}">
-                                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                                    <i class="fas fa-trash-alt fa-2x"></i>
                                 </a>
                             @endcan
                             @cannot('intro.delete')
-                                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                            <i class="fas fa-trash-alt fa-2x"></i>
                             @endcannot
                         </td>
                     </tr>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IntroUpdateRequest extends FormRequest
+class IntroCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +26,12 @@ class IntroUpdateRequest extends FormRequest
         $this->sanitize();
 
         return [
-            'ds_titulo' => 'max:50',
-            'ds_link' => 'max:60'
+            'ds_imagem_desktop' => 'required|image|max:1024',
+            'ds_imagem_mobile' => 'required|image|max:1024',
+            'ds_titulo' => 'required|max:50',
+            'ds_link' => 'required|max:60'
         ];
 
-            // 'ds_imagem_desktop' => 'image|max:1024',
-            // 'ds_imagem_mobile' => 'image|max:1024'
     }
 
     /**

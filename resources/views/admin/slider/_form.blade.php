@@ -1,7 +1,7 @@
 @component('admin.form-components._form_group', ['field' => 'ds_imagem'])
     <p>Upload</p>
     <div class="custom-file form-group">
-        {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br']) }}
+        {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br', 'id' => 'ds_imagem']) }}
         {{ Form::label('ds_imagem', 'Upload Imagem', ['class' => 'custom-file-label control-label']) }}
     </div>
 @endcomponent

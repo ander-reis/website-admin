@@ -1,5 +1,5 @@
 @component('admin.form-components._form_group', ['field' => 'ds_imagem_desktop'])
-    <p>Upload Desktop</p>
+    <p>Imagem Desktop</p>
     <div class="custom-file form-group">
         {{ Form::file('ds_imagem_desktop', ['class' => 'custom-file-input', 'lang' => 'br']) }}
         {{ Form::label('ds_imagem_desktop', 'Upload Imagem Desktop', ['class' => 'custom-file-label control-label']) }}
@@ -7,7 +7,7 @@
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'ds_imagem_mobile'])
-<p>Upload Mobile</p>
+    <p>Imagem Mobile</p>
     <div class="custom-file form-group">
         {{ Form::file('ds_imagem_mobile', ['class' => 'custom-file-input', 'lang' => 'br']) }}
         {{ Form::label('ds_imagem_Mobile', 'Upload Imagem Mobile', ['class' => 'custom-file-label control-label']) }}
@@ -16,7 +16,7 @@
 
 @component('admin.form-components._form_group', ['field' => 'ds_titulo'])
     {{ Form::label('ds_titulo', 'Título', ['class' => 'control-label']) }}
-    {{ Form::text('ds_titulo', null, ['class' => 'form-control', 'maxlength' => 70]) }}
+    {{ Form::text('ds_titulo', null, ['class' => 'form-control', 'maxlength' => 50]) }}
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'ds_link'])
@@ -34,4 +34,3 @@
     {{ Form::label('dt_ate', 'Até', ['class' => 'control-label']) }}
     {{ Form::text('dt_ate', null, ['class' => 'form-control']) }}
 @endcomponent
-
