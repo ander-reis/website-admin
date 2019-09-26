@@ -198,6 +198,9 @@ return [
         'ds_imagem'             => 'imagem',
         'num_clausula'          => 'cláusula',
         'ds_categoria'          => 'categoria',
+        'ds_imagem_desktop'     => 'imagem desktop',
+        'ds_imagem_mobile'      => 'imagem mobile',
+        'ds_link'               => 'link'
 
     ],
 ];

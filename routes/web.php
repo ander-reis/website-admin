@@ -93,6 +93,12 @@ Route::prefix('admin')->group(function(){
         Route::name('slider.thumb_small_asset')->get('slider/{slider}/thumb_small_asset', 'Slider\SlidersController@thumbSmallAsset');
 
         /**
+         * rotas para download da slider/imagem no sistema
+         */
+        Route::name('intro.thumb_asset')->get('intro/{intro}/thumb_asset', 'Intro\IntrosController@thumbAsset');
+        Route::name('intro.thumb_small_asset')->get('intro/{intro}/thumb_small_asset', 'Intro\IntrosController@thumbSmallAsset');
+
+        /**
          * grupo convencoes e acordos
          */
         Route::group(['prefix' => 'convencoes-e-acordo'], function(){

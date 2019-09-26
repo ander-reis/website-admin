@@ -6,7 +6,7 @@ use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Http\UploadedFile;
 use Imagine\Image\Box;
 
-trait SliderUploads
+trait IntroUploads
 {
     /**
      * Chama o model
@@ -15,27 +15,30 @@ trait SliderUploads
      * @param UploadedFile $file
      * @return mixed
      */
-    public function uploadSlider($id, UploadedFile $file)
+    public function uploadIntro($id, UploadedFile $file1, UploadedFile $file2)
     {
+
         $model = $this->find($id);
-        $name = $this->upload($model, $file);
-        if($name){
+        $name1 = $this->upload($model, $file1);
+        $name2 = $this->upload($model, $file2);
+        if($name1 && $name2){
             /**
              * verifica se existe arquivo e deleta
              */
             $this->deleteThumbOld($model);
 
-            $model->ds_imagem = $name;
+            $model->ds_imagem_desktop = $name1;
+            $model->ds_imagem_mobile = $name2;
 
             /**
-             * cria slider da imagem com tamanho 980x380
+             * cria intro da imagem com tamanho 980x380
              */
-            $this->makeSlider($model);
+            $this->makeIntro($model);
 
             /**
              * criar thumbnail da imagem
              */
-            $this->makeSliderSmall($model);
+            $this->makeIntroSmall($model);
 
             $model->save();
         }
@@ -53,37 +56,63 @@ trait SliderUploads
     {
         /** @var FilesystemAdapter $storage */
         $storage = $model->getStorage();
+
         //cria nome para imagem
         $name = md5(time() . "{$model->id}-{$file->getClientOriginalName()}") . ".{$file->guessExtension()}";
         //faz upload
-        $result = $storage->putFileAs($model->slider_folder_storage, $file, $name);
+        $result = $storage->putFileAs($model->intro_folder_storage, $file, $name);
         //retorna nome com sucesso ou resultado de erro
         return $result ? $name : $result;
     }
 
-    public function makeSlider($model)
+    public function makeIntro($model)
     {
         /**
          * pega storage
          */
         $storage = $model->getStorage();
+
         /**
-         * pega arquivo
+         * pega arquivo desktop
          */
-        $sliderFile = $model->slider_path;
+        $introFile = $model->intro_desktop_path;
+
         /**
          * pega formato do arquivo
          */
-        $format = \Image::format($sliderFile);
+        $format = \Image::format($introFile);
+
         /**
          * abre a imagem e gera o arquivo
          */
-        //$sliderImage = \Image::open($sliderFile)->thumbnail(new Box(980, 380));
-        $sliderImage = \Image::open($sliderFile)->thumbnail(new Box(507, 380));
+        // $introImage = \Image::open($introFile)->thumbnail(new Box(1190, 390));
+         $introImage = \Image::open($introFile)->thumbnail(new Box(980, 380));
+
         /**
          * envia o arquivo para o local e formato
          */
-        $storage->put($model->slider_relative, $sliderImage->get($format));
+        $storage->put($model->intro_desktop_relative, $introImage->get($format));
+
+        /**
+         * pega arquivo mobile
+         */
+        $introFile = $model->intro_mobile_path;
+
+        /**
+         * pega formato do arquivo
+         */
+        $format = \Image::format($introFile);
+
+        /**
+         * abre a imagem e gera o arquivo
+         */
+        // $introImage = \Image::open($introFile)->thumbnail(new Box(1190, 390));
+         $introImage = \Image::open($introFile)->thumbnail(new Box(490, 190));
+
+        /**
+         * envia o arquivo para o local e formato
+         */
+        $storage->put($model->intro_mobile_relative, $introImage->get($format));
     }
 
     /**
@@ -91,7 +120,7 @@ trait SliderUploads
      *
      * @param $model
      */
-    protected function makeSliderSmall($model)
+    protected function makeIntroSmall($model)
     {
         /**
          * pega storage
@@ -100,19 +129,19 @@ trait SliderUploads
         /**
          * pega arquivo
          */
-        $sliderFile = $model->slider_path;
+        $introFile = $model->intro_desktop_path;
         /**
          * pega formato do arquivo
          */
-        $format = \Image::format($sliderFile);
+        $format = \Image::format($introFile);
         /**
          * abre a imagem e gera o arquivo
          */
-        $thumbnailSmall = \Image::open($sliderFile)->thumbnail(new Box(64, 36));
+        $thumbnailSmall = \Image::open($introFile)->thumbnail(new Box(64, 36));
         /**
          * envia o arquivo para o local e formato
          */
-        $storage->put($model->slider_small_relative, $thumbnailSmall->get($format));
+        $storage->put($model->intro_desktop_small_relative, $thumbnailSmall->get($format));
     }
 
     /**
@@ -127,8 +156,8 @@ trait SliderUploads
         /**
          * verifica se imagem existe na pasta na hora da edição
          */
-        if($storage->exists($model->slider_relative)){
-            $storage->delete([$model->slider_relative, $model->slider_small_relative]);
+        if($storage->exists($model->intro_desktop_relative)){
+            $storage->delete([$model->intro_desktop_relative, $model->intro_desktop_small_relative, $model->intro_mobile_relative]);
         }
     }
 
@@ -138,7 +167,7 @@ trait SliderUploads
      * @param $id
      * @return mixed
      */
-    public function deleteSlider($id)
+    public function deleteIntro($id)
     {
         $model = $this->find($id);
 
@@ -153,8 +182,9 @@ trait SliderUploads
             /**
              * verifica se a pasta existe
              */
-            if($storage->exists($model->slider_relative)){
-                $storage->deleteDirectory($model->slider_folder_storage);
+
+            if($storage->exists($model->intro_desktop_relative)){
+                $storage->deleteDirectory($model->intro_folder_storage);
             }
         }
         return $model;
