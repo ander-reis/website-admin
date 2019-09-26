@@ -4,9 +4,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateHomePagesTable.
+ * Class CreateHomePageTempsTable.
  */
-class CreateHomePagesTable extends Migration
+class CreateHomePageTempsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -15,13 +15,13 @@ class CreateHomePagesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('tb_sinpro_admin_home_page', function(Blueprint $table) {
+		Schema::create('home_page_temp', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('ds_categoria', 50);
+            $table->string('ds_categoria', 50)->default('');
             $table->string('ds_titulo', 100);
             $table->string('ds_texto_noticia', 800)->default('');
             $table->string('ds_link', 150)->default('');
-            $table->string('ds_imagem', 100)->default('');
+            $table->string('ds_imagem', 100)->default('')->nullable();
             $table->timestamps();
 		});
 	}
@@ -33,6 +33,6 @@ class CreateHomePagesTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('tb_sinpro_admin_home_page');
+		Schema::drop('home_page_temp');
 	}
 }

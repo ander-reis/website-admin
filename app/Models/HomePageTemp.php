@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
+use App\Traits\RevistaGizPaths;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class HomePage.
+ * Class HomePageTemp.
  *
  * @package namespace App\Models;
  */
-class HomePage extends Model implements Transformable
+class HomePageTemp extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, RevistaGizPaths;
 
     /**
      * Conexão novo database
@@ -27,7 +28,7 @@ class HomePage extends Model implements Transformable
      *
      * @var string
      */
-    protected $table = 'tb_sinpro_admin_home_page';
+    protected $table = 'tb_sinpro_admin_home_page_temp';
 
     /**
      * The attributes that are mass assignable.
@@ -35,7 +36,6 @@ class HomePage extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-        'ds_categoria',
         'ds_titulo',
         'ds_texto_noticia',
         'ds_link',

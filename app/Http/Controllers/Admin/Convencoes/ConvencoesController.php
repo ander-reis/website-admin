@@ -74,7 +74,7 @@ class ConvencoesController extends Controller
 
             toastr()->error("Acesso não Autorizado");
 
-            return redirect()->back();
+            return redirect()->route('admin.dashboard');
         }
 
         return view('admin.convencoes.create');

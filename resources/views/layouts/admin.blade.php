@@ -172,6 +172,7 @@
         bsCustomFileInput.init();
         $('#ds_texto').ckeditor();
         $("input[maxlength]").maxlength();
+        $("#preloaders").fadeOut(2000);
     });
 </script>
 

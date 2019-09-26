@@ -51,6 +51,20 @@
                                 }
                             },
                         },
+                        // 'ds_imagem': {
+                        //     validators: {
+                        //         notEmpty: {
+                        //             message: 'Campo obrigatório'
+                        //         }
+                        //     },
+                        // },
+                        'ds_giz[]': {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Campo obrigatório'
+                                }
+                            },
+                        },
                     },
                     plugins: {
                         trigger: new FormValidation.plugins.Trigger(),
