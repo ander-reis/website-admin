@@ -75,6 +75,4 @@ class ConvencoesClausulas extends Model implements Transformable
     {
         return $this->belongsTo(Convencoes::class, 'id_convencao');
     }
-
-
 }

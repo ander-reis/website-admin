@@ -52,17 +52,17 @@
                         <span class="mb-0">
                             <i class="fa fa-ellipsis-v red" aria-hidden="true"></i>
                             <span class="manchete_chapeu">
-                                {{ dataUppercase($noticias[0]['ds_categoria']) }}
+                                {{ dataUppercase($noticias_temp[0]['ds_categoria']) }}
                                 <i class="fa fa-share-alt" aria-hidden="true"></i>
                             </span>
                         </span>
                         <p class="mb-0 text-dark manchete_titulo text-justify">
                             <a href="#" class="text-link">
-                                {{ $noticias[0]['ds_titulo'] }}
+                                {{ $noticias_temp[0]['ds_titulo'] }}
                             </a>
                         </p>
                         <p class="text-dark manchete_corpo text-justify">
-                            {{ $noticias[0]['ds_texto_noticia'] }}
+                            {{ $noticias_temp[0]['ds_texto_noticia'] }}
                         </p>
                     </div>
 
@@ -70,17 +70,17 @@
                         <span class="mb-0">
                             <i class="fa fa-ellipsis-v green" aria-hidden="true"></i>
                             <span class="noticia_chapeu1">
-                                {{ dataUppercase($noticias[1]['ds_categoria']) }}
+                                {{ dataUppercase($noticias_temp[1]['ds_categoria']) }}
                                 <i class="fa fa-share-alt" aria-hidden="true"></i>
                             </span>
                         </span>
                         <p class="text-dark mb-1 noticia_titulo1 text-justify">
                             <a href="#" class="text-link">
-                                {{ $noticias[1]['ds_titulo'] }}
+                                {{ $noticias_temp[1]['ds_titulo'] }}
                             </a>
                         </p>
                         <p class="text-dark text-justify noticia_corpo1">
-                            {{ $noticias[1]['ds_texto_noticia'] }}
+                            {{ $noticias_temp[1]['ds_texto_noticia'] }}
                         </p>
                     </div>
 
@@ -88,17 +88,17 @@
                     <span class="mb-0">
                         <i class="fa fa-ellipsis-v blue" aria-hidden="true"></i>
                         <span class="noticia_chapeu1">
-                            {{ dataUppercase($noticias[2]['ds_categoria']) }}
+                            {{ dataUppercase($noticias_temp[2]['ds_categoria']) }}
                             <i class="fa fa-share-alt" aria-hidden="true"></i>
                         </span>
                     </span>
                         <p class="text-dark mb-1 noticia_titulo1 text-justify">
                             <a href="#" class="text-link">
-                                {{ $noticias[2]['ds_titulo'] }}
+                                {{ $noticias_temp[2]['ds_titulo'] }}
                             </a>
                         </p>
                         <p class="text-dark text-justify noticia_corpo1">
-                            {{ $noticias[2]['ds_texto_noticia'] }}
+                            {{ $noticias_temp[2]['ds_texto_noticia'] }}
                         </p>
                     </div>
                 </div>
@@ -149,41 +149,41 @@
             <div class="row">
                 <div class="col-sm-6 col-md-3 mt-2">
                     <i class="fa fa-ellipsis-v green" aria-hidden="true"></i>
-                    <span class="manchete_chapeu">{{ dataUppercase($noticias[3]['ds_categoria']) }}</span>
+                    <span class="manchete_chapeu">{{ dataUppercase($noticias_temp[3]['ds_categoria']) }}</span>
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                     <p class="text-dark mb-0 noticia_titulo2 text-justify">
                         <a href="#" class="text-link">
-                            {{ $noticias[3]['ds_titulo'] }}
+                            {{ $noticias_temp[3]['ds_titulo'] }}
                         </a>
                     </p>
                 </div>
                 <div class="col-sm-6 col-md-3 mt-2">
                     <i class="fa fa-ellipsis-v orange" aria-hidden="true"></i>
-                    <span class="manchete_chapeu">{{ dataUppercase($noticias[4]['ds_categoria']) }}</span>
+                    <span class="manchete_chapeu">{{ dataUppercase($noticias_temp[4]['ds_categoria']) }}</span>
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                     <p class="text-dark mb-0 noticia_titulo2 text-justify">
                         <a href="#" class="text-link">
-                            {{ $noticias[4]['ds_titulo'] }}
+                            {{ $noticias_temp[4]['ds_titulo'] }}
                         </a>
                     </p>
                 </div>
                 <div class="col-sm-6 col-md-3 mt-2">
                     <i class="fa fa-ellipsis-v lightblue" aria-hidden="true"></i>
-                    <span class="manchete_chapeu">{{ dataUppercase($noticias[5]['ds_categoria']) }}</span>
+                    <span class="manchete_chapeu">{{ dataUppercase($noticias_temp[5]['ds_categoria']) }}</span>
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                     <p class="text-dark mb-0 noticia_titulo2 text-justify">
                         <a href="#" class="text-link">
-                            {{ $noticias[5]['ds_titulo'] }}
+                            {{ $noticias_temp[5]['ds_titulo'] }}
                         </a>
                     </p>
                 </div>
                 <div class="col-sm-6 col-md-3 mt-2">
                     <i class="fa fa-ellipsis-v purple" aria-hidden="true"></i>
-                    <span class="manchete_chapeu">{{ dataUppercase($noticias[6]['ds_categoria']) }}</span>
+                    <span class="manchete_chapeu">{{ dataUppercase($noticias_temp[6]['ds_categoria']) }}</span>
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                     <p class="text-dark mb-0 noticia_titulo2 text-justify">
                         <a href="#" class="text-link">
-                            {{ $noticias[6]['ds_titulo'] }}
+                            {{ $noticias_temp[6]['ds_titulo'] }}
                         </a>
                     </p>
                 </div>
@@ -330,7 +330,7 @@
                                                 <a href="http://revistagiz.sinprosp.org.br/?p=7724" target="_blank"
                                                    class="text-link">
                                                     <span class="text-dark font-weight-bold giz_titulo">
-                                                    {{ $noticias[7]['ds_titulo'] }}
+                                                    {{ $noticias_temp[7]['ds_titulo'] }}
                                                     </span>
                                                 </a>
                                             </div>
@@ -341,7 +341,7 @@
                                                 <a href="http://revistagiz.sinprosp.org.br/?p=7724" target="_blank"
                                                    class="text-link">
                                                     <p class="text-dark giz_corpo text-justify mb-0">
-                                                        {{ $noticias[7]['ds_texto_noticia'] }}
+                                                        {{ $noticias_temp[7]['ds_texto_noticia'] }}
                                                     </p>
                                                 </a>
                                             </div>

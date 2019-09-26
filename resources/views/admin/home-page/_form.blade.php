@@ -151,17 +151,17 @@
     <div class="col-12">
         <div class="form-group">
             {{ Form::label('ds_link', 'Link', ['class' => 'col-sm-2 control-label']) }}
-            {{ Form::text('ds_link[]', 'teste link giz', ['class' => 'form-control', 'maxlength' => 150]) }}
+            {{ Form::text('ds_giz[]', 'teste link giz', ['class' => 'form-control', 'maxlength' => 150]) }}
         </div>
     </div>
     <div class="col-12 no-gutters">
         <div class="form-group">
             {{ Form::label('ds_titulo', 'Título', ['class' => 'col-sm-2 col-label']) }}
-            {{ Form::text('ds_titulo[]', 'teste titulo giz', ['class' => 'form-control', 'maxlength' => 100]) }}
+            {{ Form::text('ds_giz[]', 'teste titulo giz', ['class' => 'form-control', 'maxlength' => 100]) }}
         </div>
         <div class="form-group">
             {{ Form::label('ds_texto_noticia', 'Texto', ['class' => 'col-sm-2 control-label']) }}
-            {{ Form::textarea('ds_texto_noticia[]', 'teste texto noticia giz', ['class' => 'form-control', 'rows' => 3]) }}
+            {{ Form::textarea('ds_giz[]', 'teste texto noticia giz', ['class' => 'form-control', 'rows' => 3]) }}
         </div>
     </div>
 </section>

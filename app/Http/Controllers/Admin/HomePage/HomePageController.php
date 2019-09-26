@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin\HomePage;
 use App\Http\Controllers\Controller;
 
 use App\Models\HomePage;
+use App\Models\HomePageTemp;
 use App\Models\Slider;
 use App\Repositories\HomePageRepository;
+use App\Repositories\HomePageTempRepository;
 use Illuminate\Http\Request;
 
 /**
@@ -20,15 +22,20 @@ class HomePageController extends Controller
      * @var HomePageRepository
      */
     protected $repository;
+    /**
+     * @var HomePageTempRepository
+     */
+    private $homePageTempRepository;
 
     /**
      * HomePagesController constructor.
      *
      * @param HomePageRepository $repository
      */
-    public function __construct(HomePageRepository $repository)
+    public function __construct(HomePageRepository $repository, HomePageTempRepository $homePageTempRepository)
     {
         $this->repository = $repository;
+        $this->homePageTempRepository = $homePageTempRepository;
     }
 
     /**
@@ -46,7 +53,7 @@ class HomePageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  HomePageCreateRequest $request
+     * @param Request $request
      *
      * @return \Illuminate\Http\Response
      *
@@ -57,67 +64,97 @@ class HomePageController extends Controller
         $data = $request->only(array_keys($request->input()));
         $action = $request->input('action');
 
-        switch ($action){
+        switch ($action) {
             /**
              * truncate tabela antes do insert
              */
             case 'cadastrar':
-                try{
+                try {
                     HomePage::truncate();
 
-                    $data = $request->only(array_keys($request->input()));
+                    $revistaGiz = $this->formatDataImagem($data);
 
-                    unset($data['_token']);
-                    unset($data['action']);
+                    $noticias = $this->formatDataNoticia($data);
 
-                    foreach ($data as $key => $value) {
-                        for ($i = 0; $i < count($value); $i++) {
-                            $noticias[$i]['ds_categoria'] = isset($data['ds_categoria'][$i]) ? $data['ds_categoria'][$i] : '';
-                            $noticias[$i]['ds_titulo'] = isset($data['ds_titulo'][$i]) ? $data['ds_titulo'][$i] : '';
-                            $noticias[$i]['ds_link'] = isset($data['ds_link'][$i]) ? $data['ds_link'][$i] : '';
-                            $noticias[$i]['ds_texto_noticia'] = isset($data['ds_texto_noticia'][$i]) ? $data['ds_texto_noticia'][$i] : '';
-                        }
-                    }
-
+                    // cadastrar data noticias
                     foreach ($noticias as $noticia) {
                         $this->repository->create($noticia);
                     }
+                    // cadastrar data revista giz
+                    $this->repository->create($revistaGiz);
 
                     toastr()->success('Cadastrado alterado com sucesso!');
 
                     return redirect()->back();
 
                     break;
-                }catch (\Exception $e){
-                    toastr()->error("Não foi possível realizar o cadastro");
+                } catch (\Exception $e) {
+                    toastr()->error("Não foi possível realizar o cadastro" . $e->getMessage());
                     break;
                 }
             case 'preview':
+                HomePageTemp::truncate();
 
-                $data = $request->only(array_keys($request->input()));
-//                dd($data);
-                $imagem = $data['ds_imagem'];
+                $revistaGiz = $this->formatDataImagem($data);
 
-                unset($data['_token']);
-                unset($data['action']);
-                unset($data['ds_imagem']);
+                $noticias = $this->formatDataNoticia($data);
 
-                foreach ($data as $key => $value) {
-                    for ($i = 0; $i < count($value); $i++) {
-                        $noticias[$i]['ds_categoria'] = isset($data['ds_categoria'][$i]) ? $data['ds_categoria'][$i] : '';
-                        $noticias[$i]['ds_titulo'] = isset($data['ds_titulo'][$i]) ? $data['ds_titulo'][$i] : '';
-                        $noticias[$i]['ds_link'] = isset($data['ds_link'][$i]) ? $data['ds_link'][$i] : '';
-                        if($key == 'ds_texto_noticia'){
-                            $noticias[$i]['ds_texto_noticia'] = isset($data['ds_texto_noticia'][$i]) ? $data['ds_texto_noticia'][$i] : '';
-                        }
-
-                    }
+                //cadastra data noticias temp
+                foreach ($noticias as $noticia) {
+                    $this->homePageTempRepository->create($noticia);
                 }
-                dd($noticias);
+
+                // cadastra data revista giz temp
+                if (array_key_exists('ds_imagem', $revistaGiz)) {
+                    $this->homePageTempRepository->create($revistaGiz);
+                }
+
+                // return data model
+                $noticias_temp = $this->homePageTempRepository->all();
+
                 // sliders
                 $sliders = Slider::where('fl_ativo', 1)->get();
 
-                return view('admin.home-page.preview', compact('noticias', 'sliders', 'imagem'));
+                return view('admin.home-page.preview', compact('noticias_temp', 'sliders'));
         }
+    }
+
+    /**
+     * Trata daata array criar noticias
+     * @param array $data
+     * @return mixed
+     */
+    private function formatDataNoticia(Array $data)
+    {
+        unset($data['_token']);
+        unset($data['action']);
+        unset($data['ds_imagem']);
+        unset($data['ds_giz']);
+
+        foreach ($data as $key => $value) {
+            for ($i = 0; $i < count($value); $i++) {
+                $noticias[$i]['ds_categoria'] = isset($data['ds_categoria'][$i]) ? $data['ds_categoria'][$i] : '';
+                $noticias[$i]['ds_titulo'] = isset($data['ds_titulo'][$i]) ? $data['ds_titulo'][$i] : '';
+                $noticias[$i]['ds_link'] = isset($data['ds_link'][$i]) ? $data['ds_link'][$i] : '';
+                $noticias[$i]['ds_texto_noticia'] = isset($data['ds_texto_noticia'][$i]) ? $data['ds_texto_noticia'][$i] : '';
+            }
+        }
+
+        return $noticias;
+    }
+
+    /**
+     * Trata data array criar imagem
+     * @param array $data
+     * @return array
+     */
+    public function formatDataImagem(Array $data)
+    {
+        return [
+            'ds_imagem' => $data['ds_imagem'],
+            'ds_link' => $data['ds_giz'][0],
+            'ds_titulo' => $data['ds_giz'][1],
+            'ds_texto_noticia' => $data['ds_giz'][2]
+        ];
     }
 }

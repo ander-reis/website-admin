@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-sm-12">
             <h1>Notícias</h1>
+            @include('admin.components._preloader')
             @can('noticias.create')
                 <p>
                     <a href="{{ route('admin.noticias.create') }}" class="btn btn-outline-primary mr-2 mt-2 mb-2">
