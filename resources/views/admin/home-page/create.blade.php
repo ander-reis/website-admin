@@ -2,11 +2,13 @@
 
 @section('content')
 
-    {{ Form::model($data, ['route' => 'admin.home-page.store', 'id' => 'formHomePage']) }}
+    {{ Form::model($data, ['route' => 'admin.home-page.store', 'files' => true, 'id' => 'formHomePage']) }}
+
     @include('admin.home-page._form')
+
     {{ Form::hidden('action', 'preview', ['id' => 'action']) }}
     {{ Form::submit('Cadastrar', ['id' => 'cadastrar', 'class' => 'btn btn-primary']) }}
-    {{ Form::submit('Preview', ['id' => 'preview', 'class' => 'btn btn-secondary']) }}
+
     {{ Form::close() }}
 
 @push('preview-script')
@@ -51,13 +53,13 @@
                                 }
                             },
                         },
-                        // 'ds_imagem': {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Campo obrigatório'
-                        //         }
-                        //     },
-                        // },
+                        'ds_imagem': {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Campo obrigatório'
+                                }
+                            },
+                        },
                         'ds_giz[]': {
                             validators: {
                                 notEmpty: {

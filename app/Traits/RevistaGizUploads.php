@@ -18,6 +18,7 @@ trait RevistaGizUploads
     public function uploadRevistaGiz($id, UploadedFile $file)
     {
         $model = $this->find($id);
+
         $name = $this->upload($model, $file);
         if($name){
             /**

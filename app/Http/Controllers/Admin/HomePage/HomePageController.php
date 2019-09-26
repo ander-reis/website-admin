@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\HomePage;
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\HomePageRequest;
 use App\Models\HomePage;
 use App\Models\HomePageTemp;
 use App\Models\Slider;
@@ -47,7 +48,7 @@ class HomePageController extends Controller
     {
         $data = $this->repository->all();
 
-        return view('admin.home-page.index', compact('data'));
+        return view('admin.home-page.create', compact('data'));
     }
 
     /**
@@ -61,8 +62,11 @@ class HomePageController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(array_keys($request->input()));
+//        $data = $request->only(array_keys($request->input()));
+        $data = $request->all();
         $action = $request->input('action');
+
+        dd($data);
 
         switch ($action) {
             /**
