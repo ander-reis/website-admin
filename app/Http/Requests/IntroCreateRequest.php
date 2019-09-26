@@ -13,7 +13,7 @@ class IntroCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,25 @@ class IntroCreateRequest extends FormRequest
      */
     public function rules()
     {
+        $this->sanitize();
+
         return [
-            //
+            'ds_imagem_desktop' => 'required|image|max:1024',
+            'ds_imagem_mobile' => 'required|image|max:1024',
+            'ds_titulo' => 'required|max:50',
+            'ds_link' => 'required|max:60'
         ];
+
+    }
+
+    /**
+     *  sanitize html
+     */
+    public function sanitize()
+    {
+        $input = $this->all();
+        $input['ds_titulo'] = trim(filter_var($input['ds_titulo'], FILTER_SANITIZE_STRING));
+        $input['ds_link'] = trim(filter_var($input['ds_link'], FILTER_SANITIZE_STRING));
+        $this->replace($input);
     }
 }

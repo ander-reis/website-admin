@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Admin\Intro;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\IntroCreateRequest;
+use App\Http\Requests\IntroDeleteRequest;
 use App\Http\Requests\IntroUpdateRequest;
+use App\models\Intro;
 use App\Repositories\IntroRepository;
 
 /**
@@ -32,7 +29,6 @@ class IntrosController extends Controller
     public function __construct(IntroRepository $repository)
     {
         $this->repository = $repository;
-        //$this->validator  = $validator;
     }
 
     /**
@@ -42,17 +38,26 @@ class IntrosController extends Controller
      */
     public function index()
     {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $intros = $this->repository->all();
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $intros,
-            ]);
-        }
+        $intros = $this->repository->orderBy('id', 'asc')->paginate();
 
         return view('admin.intro.index', compact('intros'));
+    }
+
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(IntroRepository $repository)
+    {
+        if (\Gate::denies('intro.create')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.intro.index');
+        }
+
+        return view('admin.intro.create');
     }
 
     /**
@@ -67,53 +72,23 @@ class IntrosController extends Controller
     public function store(IntroCreateRequest $request)
     {
         try {
+            $data = $request->only(array_keys($request->all()));
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+            //if (array_key_exists('ds_imagem', $data)) {
+                $this->repository->create($data);
 
-            $intro = $this->repository->create($request->all());
+                toastr()->success('Cadastrado com sucesso!');
 
-            $response = [
-                'message' => 'Intro created.',
-                'data'    => $intro->toArray(),
-            ];
+                return redirect()->route('admin.intro.index');
+            //}
+        } catch (\Exception $e) {
 
-            if ($request->wantsJson()) {
+            dd($e);
 
-                return response()->json($response);
-            }
+            toastr()->error("Não foi possível realizar o cadastro");
 
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            return redirect()->back();
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $intro = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $intro,
-            ]);
-        }
-
-        return view('admin.intro.show', compact('intro'));
     }
 
     /**
@@ -125,6 +100,13 @@ class IntrosController extends Controller
      */
     public function edit($id)
     {
+        if (\Gate::denies('intro.update')) {
+
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.intro.index');
+        }
+
         $intro = $this->repository->find($id);
 
         return view('admin.intro.edit', compact('intro'));
@@ -144,35 +126,20 @@ class IntrosController extends Controller
     {
         try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            $form = $request->only(array_keys($request->all()));
 
-            $intro = $this->repository->update($request->all(), $id);
+            $this->repository->update($form, $id);
 
-            $response = [
-                'message' => 'Intro updated.',
-                'data'    => $intro->toArray(),
-            ];
+            toastr()->success('Cadastro alterado com sucesso!');
 
-            if ($request->wantsJson()) {
+            return redirect()->route('admin.intro.index');
+        } catch (\Exception $e) {
 
-                return response()->json($response);
-            }
+            toastr()->error("Não foi possível alterar o cadastro");
 
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            return redirect()->back();
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -181,18 +148,42 @@ class IntrosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(IntroDeleteRequest $request, $id)
     {
-        $deleted = $this->repository->delete($id);
+        try {
+            $id_intro = $request->only(array_keys($request->all()))['id_intro'];
+            $this->repository->deleteIntro($id_intro);
 
-        if (request()->wantsJson()) {
+            toastr()->success('Cadastro excluído com sucesso!');
 
-            return response()->json([
-                'message' => 'Intro deleted.',
-                'deleted' => $deleted,
-            ]);
+            return redirect()->route('admin.intro.index');
+
+        } catch (\Exception $e) {
+            toastr()->error("Não foi possível excluir o cadastro");
+
+            return redirect()->back();
         }
+    }
 
-        return redirect()->back()->with('message', 'Intro deleted.');
+    /**
+     * Metodo responsavel download imagem
+     *
+     * @param Intro $intro
+     * @return mixed
+     */
+    public function thumbAsset(Intro $intro)
+    {
+        return response()->download($intro->intro_desktop_path);
+    }
+
+    /**
+     * Metodo responsavel dowload imagem small
+     *
+     * @param Intro $intro
+     * @return mixed
+     */
+    public function thumbSmallAsset(Intro $intro)
+    {
+        return response()->download($intro->intro_desktop_small_path);
     }
 }

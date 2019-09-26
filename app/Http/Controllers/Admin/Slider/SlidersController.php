@@ -21,7 +21,6 @@ class SlidersController extends Controller
      */
     protected $repository;
 
-
     /**
      * SlidersController constructor.
      *

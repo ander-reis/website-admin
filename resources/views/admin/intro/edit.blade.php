@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-md-12">
         <div class="my-3">
-            <h1>Editar Intro</h1>
+            <h1>Editar Imagem Intro</h1>
         </div>
 
         <p>

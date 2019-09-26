@@ -23,3 +23,10 @@ $('#updateRedeSocialModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     modal.find('#id-rede-social').val(recipient);
 });
+
+$('#deleteIntroModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var recipient = button.data('whatever');
+    var modal = $(this);
+    modal.find('#id-intro').val(recipient);
+});
