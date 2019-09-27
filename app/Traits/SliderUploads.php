@@ -53,6 +53,11 @@ trait SliderUploads
     {
         /** @var FilesystemAdapter $storage */
         $storage = $model->getStorage();
+
+        // Remove todos os arquivos da pasta
+        $files = $storage->allFiles(substr($model->slider_small_relative,0,strripos($model->slider_small_relative, '/')));
+        $storage->delete($files);
+
         //cria nome para imagem
         $name = md5(time() . "{$model->id}-{$file->getClientOriginalName()}") . ".{$file->guessExtension()}";
         //faz upload

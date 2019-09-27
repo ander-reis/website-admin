@@ -200,7 +200,9 @@ return [
         'ds_categoria'          => 'categoria',
         'ds_imagem_desktop'     => 'imagem desktop',
         'ds_imagem_mobile'      => 'imagem mobile',
-        'ds_link'               => 'link'
+        'ds_link'               => 'link',
+        'dt_de'                 => 'de',
+        'dt_ate'                => 'até'
 
     ],
 ];

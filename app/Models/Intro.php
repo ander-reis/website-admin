@@ -69,14 +69,12 @@ class Intro extends Model implements Transformable
     public function getDtDeAttribute($value)
     {
         $date = \Carbon\Carbon::parse($value);
-
         return $date->format('d/m/Y H:i:s');
     }
 
     public function getDtAteAttribute($value)
     {
         $date = \Carbon\Carbon::parse($value);
-
         return $date->format('d/m/Y H:i:s');
     }
 

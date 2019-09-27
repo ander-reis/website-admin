@@ -359,7 +359,7 @@
         {{--botao voltar--}}
         <div class="col">
             <hr>
-            <a href="javascript:history.go(-1)" class="btn btn-danger" title="Voltar página anterior">Voltar</a>
+            <a href="javascript:history.go(-1)" id="voltar" class="btn btn-danger" title="Voltar página anterior">Voltar</a>
         </div>
         {{--botao voltar end--}}
     </div>

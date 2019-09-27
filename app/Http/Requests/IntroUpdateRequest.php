@@ -26,12 +26,13 @@ class IntroUpdateRequest extends FormRequest
         $this->sanitize();
 
         return [
-            'ds_titulo' => 'max:50',
-            'ds_link' => 'max:60'
+            'ds_imagem_desktop' => 'required_with:ds_imagem_mobile|image|max:1024',
+            'ds_imagem_mobile'  => 'required_with:ds_imagem_desktop|image|max:1024',
+            'ds_titulo'         => 'required|max:50',
+            'ds_link'           => 'required|url|max:60',
+            'dt_de'             => 'required',
+            'dt_ate'            => 'required|after:dt_de'
         ];
-
-            // 'ds_imagem_desktop' => 'image|max:1024',
-            // 'ds_imagem_mobile' => 'image|max:1024'
     }
 
     /**
@@ -40,8 +41,8 @@ class IntroUpdateRequest extends FormRequest
     public function sanitize()
     {
         $input = $this->all();
-        $input['ds_titulo'] = trim(filter_var($input['ds_titulo'], FILTER_SANITIZE_STRING));
-        $input['ds_link'] = trim(filter_var($input['ds_link'], FILTER_SANITIZE_STRING));
+        $input['ds_titulo'] = mb_strtoupper(trim(filter_var($input['ds_titulo'], FILTER_SANITIZE_STRING)));
+        $input['ds_link'] = mb_strtolower(trim(filter_var($input['ds_link'], FILTER_SANITIZE_STRING)));
         $this->replace($input);
     }
 }

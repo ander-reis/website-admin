@@ -76,10 +76,21 @@ trait IntroPaths
      *
      * @return string
      */
-    public function getThumbAssetAttribute()
+    public function getThumbDesktopAssetAttribute()
     {
-        return route('admin.intro.thumb_asset', ['intro' => $this->id]);
+        return route('admin.intro.thumb_desktop_asset', ['intro' => $this->id]);
     }
+
+    /**
+     * Download da imagem para disponibilizar no sistema
+     *
+     * @return string
+     */
+    public function getThumbMobileAssetAttribute()
+    {
+        return route('admin.intro.thumb_mobile_asset', ['intro' => $this->id]);
+    }
+
 
     /**
      * Download da imagem small para disponibilizar no sistema
