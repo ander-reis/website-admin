@@ -2,11 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Traits\RevistaGizUploads;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\HomePageRepository;
 use App\Models\HomePage;
-use App\Validators\HomePageValidator;
 
 /**
  * Class HomePageRepositoryEloquent.
@@ -15,6 +14,11 @@ use App\Validators\HomePageValidator;
  */
 class HomePageRepositoryEloquent extends BaseRepository implements HomePageRepository
 {
+    /**
+     * Trait para upload do arquivo
+     */
+    use RevistaGizUploads;
+
     /**
      * Specify Model class name
      *
@@ -25,7 +29,16 @@ class HomePageRepositoryEloquent extends BaseRepository implements HomePageRepos
         return HomePage::class;
     }
 
-    
+    public function create(array $attributes)
+    {
+        $model = parent::create($attributes);
+
+        if($model->id === 8){
+            $this->uploadImagemRevistaGiz(8, $attributes['ds_imagem']);
+        }
+
+        return $model;
+    }
 
     /**
      * Boot up the repository, pushing criteria
@@ -34,5 +47,4 @@ class HomePageRepositoryEloquent extends BaseRepository implements HomePageRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
 }

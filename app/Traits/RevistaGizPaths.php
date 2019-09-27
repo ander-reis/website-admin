@@ -11,13 +11,23 @@ trait RevistaGizPaths
     use UploadsStorages;
 
     /**
-     * Retorna slider
+     * Path revista giz
      *
      * @return mixed
      */
     public function getRevistaGizFolderStorageAttribute()
     {
         return "revista_giz/{$this->id}";
+    }
+
+    /**
+     * Path revista giz temp
+     *
+     * @return string
+     */
+    public function getRevistaGizTempFolderStorageAttribute()
+    {
+        return "revista_giz_temp/{$this->id}";
     }
 
     /**
@@ -31,6 +41,16 @@ trait RevistaGizPaths
     }
 
     /**
+     * Retorna caminho relativo
+     *
+     * @return string
+     */
+    public function getRevistaGizTempRelativeAttribute()
+    {
+        return "{$this->revista_giz_temp_folder_storage}/{$this->ds_imagem}";
+    }
+
+    /**
      * Retorna o caminho absoluto da imagem
      *
      * @return mixed
@@ -41,43 +61,12 @@ trait RevistaGizPaths
     }
 
     /**
-     * Gerar imagem small
+     * Retorna o caminho absoluto da imagem
      *
-     * @return bool|string
+     * @return mixed
      */
-    public function getRevistaGizSmallRelativeAttribute()
+    public function getRevistaGizTempPathAttribute()
     {
-        list($name, $extension) = explode('.', $this->ds_imagem);
-        return "{$this->revista_giz_folder_storage}/{$name}_small.{$extension}";
+        return $this->getAbsolutePath($this->getStorage(), $this->revista_giz_temp_relative);
     }
-
-    /**
-     * Caminho da imagem small
-     *
-     * @return bool|mixed
-     */
-//    public function getRevistaGizSmallPathAttribute()
-//    {
-//        return $this->getAbsolutePath($this->getStorage(), $this->revista_giz_slider_small_relative);
-//    }
-
-    /**
-     * Download da imagem para disponibilizar no sistema
-     *
-     * @return string
-     */
-    public function getThumbAssetAttribute()
-    {
-        //return route('admin.slider.thumb_asset', ['slider' => $this->id]);
-    }
-
-    /**
-     * Download da imagem small para disponibilizar no sistema
-     *
-     * @return string
-     */
-//    public function getThumbSmallAssetAttribute()
-//    {
-//        return route('admin.slider.thumb_small_asset', ['slider' => $this->id]);
-//    }
 }

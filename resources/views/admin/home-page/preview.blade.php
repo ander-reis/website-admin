@@ -316,10 +316,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 mt-2">
-                                                <a href="http://revistagiz.sinprosp.org.br/?p=7724" target="_blank"
+                                                <a href="{{ $noticias_temp[7]['ds_link'] }}" target="_blank"
                                                    class="text-link">
-                                                    <img src="{{ asset('images/layout-1/home/img_giz.png') }}"
-                                                         alt="SinproSP">
+                                                    <img src="{{ asset('/storage/revista_giz_temp/8/' . $noticias_temp[7]['ds_imagem']) }}"
+                                                         alt="Revista Giz">
                                                 </a>
                                             </div>
                                         </div>

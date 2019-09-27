@@ -36,6 +36,7 @@ class HomePageTemp extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
+        'ds_categoria',
         'ds_titulo',
         'ds_texto_noticia',
         'ds_link',

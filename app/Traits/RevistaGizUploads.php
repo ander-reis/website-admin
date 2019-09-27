@@ -9,34 +9,25 @@ use Imagine\Image\Box;
 trait RevistaGizUploads
 {
     /**
-     * Chama o model
+     * metodo utilizado em Repositories/HomePageRepositoryEloquent
      *
      * @param $id
      * @param UploadedFile $file
      * @return mixed
      */
-    public function uploadRevistaGiz($id, UploadedFile $file)
+    public function uploadImagemRevistaGiz($id, UploadedFile $file)
     {
         $model = $this->find($id);
 
         $name = $this->upload($model, $file);
-        if($name){
-            /**
-             * verifica se existe arquivo e deleta
-             */
-            $this->deleteThumbOld($model);
+        if ($name) {
 
             $model->ds_imagem = $name;
 
             /**
-             * cria slider da imagem com tamanho 980x380
+             * cria thumb da imagem com tamanho 162x85
              */
-            $this->makeUpload($model);
-
-            /**
-             * criar thumbnail da imagem
-             */
-//            $this->makeSliderSmall($model);
+            $this->makeImage($model);
 
             $model->save();
         }
@@ -44,7 +35,33 @@ trait RevistaGizUploads
     }
 
     /**
-     * Faz upload da imagem no storage
+     * metodo utilizado em Repositories/HomePageTempRepositoryEloquent
+     *
+     * @param $id
+     * @param UploadedFile $file
+     * @return mixed
+     */
+    public function uploadImagemRevistaGizTemp($id, UploadedFile $file)
+    {
+        $model = $this->find($id);
+
+        $name = $this->uploadTemp($model, $file);
+        if ($name) {
+
+            $model->ds_imagem = $name;
+
+            /**
+             * cria thumb da imagem com tamanho 162x85
+             */
+            $this->makeImageTemp($model);
+
+            $model->save();
+        }
+        return $model;
+    }
+
+    /**
+     * Faz upload da imagem e deleta no storage
      *
      * @param $model
      * @param UploadedFile $file
@@ -54,6 +71,9 @@ trait RevistaGizUploads
     {
         /** @var FilesystemAdapter $storage */
         $storage = $model->getStorage();
+        // remove imagem da pasta
+        $files = $storage->allFiles(substr($model->revista_giz_folder_storage, 0, strripos($model->revista_giz_folder_storage, '/')));
+        $storage->delete($files);
         //cria nome para imagem
         $name = md5(time() . "{$model->id}-{$file->getClientOriginalName()}") . ".{$file->guessExtension()}";
         //faz upload
@@ -62,7 +82,36 @@ trait RevistaGizUploads
         return $result ? $name : $result;
     }
 
-    public function makeUpload($model)
+    /**
+     * Faz upload da imagem e deleta no storage temp
+     *
+     * @param $model
+     * @param UploadedFile $file
+     * @return false|string
+     */
+    public function uploadTemp($model, UploadedFile $file)
+    {
+        /** @var FilesystemAdapter $storage */
+        $storage = $model->getStorage();
+        // remove imagem da pasta
+        $files = $storage->allFiles(substr($model->revista_giz_temp_folder_storage, 0, strripos($model->revista_giz_temp_folder_storage, '/')));
+        $storage->delete($files);
+        //cria nome para imagem
+        $name = md5(time() . "{$model->id}-{$file->getClientOriginalName()}") . ".{$file->guessExtension()}";
+        //faz upload
+        $result = $storage->putFileAs($model->revista_giz_temp_folder_storage, $file, $name);
+        //retorna nome com sucesso ou resultado de erro
+        return $result ? $name : $result;
+    }
+
+    /**
+     * formata imagem
+     *
+     * @param $model
+     * @param UploadedFile $file
+     * @return false|string
+     */
+    public function makeImage($model)
     {
         /**
          * pega storage
@@ -87,76 +136,33 @@ trait RevistaGizUploads
     }
 
     /**
-     * Cria thumbnail
+     * formata imagem
      *
      * @param $model
+     * @param UploadedFile $file
+     * @return false|string
      */
-//    protected function makeSliderSmall($model)
-//    {
-//        /**
-//         * pega storage
-//         */
-//        $storage = $model->getStorage();
-//        /**
-//         * pega arquivo
-//         */
-//        $sliderFile = $model->slider_path;
-//        /**
-//         * pega formato do arquivo
-//         */
-//        $format = \Image::format($sliderFile);
-//        /**
-//         * abre a imagem e gera o arquivo
-//         */
-//        $thumbnailSmall = \Image::open($sliderFile)->thumbnail(new Box(162, 85));
-//        /**
-//         * envia o arquivo para o local e formato
-//         */
-//        $storage->put($model->slider_small_relative, $thumbnailSmall->get($format));
-//    }
-
-    /**
-     * Deleta imagem da pasta de upload
-     *
-     * @param $model
-     */
-    public function deleteThumbOld($model)
+    public function makeImageTemp($model)
     {
-        /** @var FilesystemAdapter $storage */
+        /**
+         * pega storage
+         */
         $storage = $model->getStorage();
         /**
-         * verifica se imagem existe na pasta na hora da edição
+         * pega arquivo
          */
-        if($storage->exists($model->revista_giz_relative)){
-            $storage->delete([$model->revista_giz_relative]);
-        }
-    }
-
-    /**
-     * Deleta a pasta em caso de exclusão
-     *
-     * @param $id
-     * @return mixed
-     */
-    public function deleteSlider($id)
-    {
-        $model = $this->find($id);
-
-        if($model){
-            /**
-             * Deleta do database
-             */
-            $this->delete($id);
-
-            /** @var FilesystemAdapter $storage */
-            $storage = $model->getStorage();
-            /**
-             * verifica se a pasta existe
-             */
-            if($storage->exists($model->revista_giz_relative)){
-                $storage->deleteDirectory($model->revista_giz_folder_storage);
-            }
-        }
-        return $model;
+        $revistaGizFile = $model->revista_giz_temp_path;
+        /**
+         * pega formato do arquivo
+         */
+        $format = \Image::format($revistaGizFile);
+        /**
+         * abre a imagem e gera o arquivo
+         */
+        $revistaGizImage = \Image::open($revistaGizFile)->thumbnail(new Box(162, 85));
+        /**
+         * envia o arquivo para o local e formato
+         */
+        $storage->put($model->revista_giz_temp_relative, $revistaGizImage->get($format));
     }
 }
