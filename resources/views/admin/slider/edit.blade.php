@@ -6,15 +6,13 @@
             <h1>Editar Slider</h1>
         </div>
 
-        <p>
-            <img src="{{ $slider->thumb_small_asset }}" alt="{{ $slider->ds_titulo }}">
-        </p>
-
-        {{ Form::model($slider, ['route' => ['admin.slider.update', $slider->id], 'files' => true, 'method' => 'PUT']) }}
+        {{ Form::model($slider, ['route' => ['admin.slider.update', $slider->id], 'id' => 'formSlider', 'files' => true, 'method' => 'PUT']) }}
 
         @include('admin.slider._form')
 
         <button type="submit" class="btn btn-primary">Salvar</button>
+
+        <a href="{{ route('admin.slider.index') }}" class="button btn btn-danger">Voltar</a>
 
         {{ Form::close() }}
     </div>

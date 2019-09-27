@@ -85,7 +85,6 @@ trait IntroUploads
         /**
          * abre a imagem e gera o arquivo
          */
-        // $introImage = \Image::open($introFile)->thumbnail(new Box(1190, 390));
          $introImage = \Image::open($introFile)->thumbnail(new Box(980, 380));
 
         /**
@@ -106,8 +105,7 @@ trait IntroUploads
         /**
          * abre a imagem e gera o arquivo
          */
-        // $introImage = \Image::open($introFile)->thumbnail(new Box(1190, 390));
-         $introImage = \Image::open($introFile)->thumbnail(new Box(490, 190));
+         $introImage = \Image::open($introFile)->thumbnail(new Box(328, 321));
 
         /**
          * envia o arquivo para o local e formato

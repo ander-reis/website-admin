@@ -128,84 +128,110 @@ a.link-icon:hover, a.link-icon:focus {
     }
   }
 }
+/***
+* CAROUSEL
+***/
 .carousel-caption {
-  top: auto;
-  right: 0;
-  bottom: 4%;
-  left: 0;
-  color: #fff;
-  padding-bottom: 0px !important;
-  text-align: left;
-}
-.carousel-indicators {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 15;
-  display: flex;
-  justify-content: center;
-  padding-left: 0; // override <ol> default
-  // Use the .carousel-control's width as margin so we don't overlay those
-  margin-right: $carousel-control-width;
-  margin-left: $carousel-control-width;
-  margin-bottom: 0;
-  list-style: none;
-  li {
+    top: auto;
+    right: 0;
+    bottom: 27px !important;
+    color: #fff;
+    padding-bottom: 0px !important;
+    text-align: left !important;
+  }
+
+  .carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    padding-left: 0; // override <ol> default
+    // Use the .carousel-control's width as margin so we don't overlay those
+    margin-right: $carousel-control-width;
+    margin-left: $carousel-control-width;
+    margin-bottom: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      flex: 0 1 auto;
+      width: $carousel-indicator-width !important;
+      height: $carousel-indicator-height !important;
+      margin-right: $carousel-indicator-spacer;
+      margin-left: $carousel-indicator-spacer;
+      text-indent: -999px;
+      background-color: rgba($carousel-indicator-active-bg, .5);
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+
+      // Use pseudo classes to increase the hit area by 10px on top and bottom.
+      &::before {
+        position: absolute;
+        top: -10px;
+        left: 0;
+        display: inline-block;
+        width: 100%;
+        height: 10px;
+        content: "";
+      }
+
+      &::after {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        display: inline-block;
+        width: 100%;
+        height: 10px;
+        content: "";
+      }
+    }
+
+    .active {
+      background-color: $carousel-indicator-active-bg;
+    }
+  }
+
+  .carousel-caption h5 {
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 1.64 ;
+  }
+
+  .carousel-caption p {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 20px;
+    letter-spacing: -.3px;
+  }
+
+  .gradient_img::after {
+    display: block;
     position: relative;
-    flex: 0 1 auto;
-    width: $carousel-indicator-width;
-    height: $carousel-indicator-height;
-    margin-right: $carousel-indicator-spacer;
-    margin-left: $carousel-indicator-spacer;
-    text-indent: -999px;
-    background-color: rgba($carousel-indicator-active-bg, .5);
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    // Use pseudo classes to increase the hit area by 10px on top and bottom.
-    &::before {
-      position: absolute;
-      top: -10px;
-      left: 0;
-      display: inline-block;
-      width: 100%;
-      height: 10px;
-      content: "";
-    }
-    &::after {
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      display: inline-block;
-      width: 100%;
-      height: 10px;
-      content: "";
-    }
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000 100%);
+    margin-top: -150px;
+    height: 150px;
+    width: 100%;
+    content: '';
   }
-  .active {
-    background-color: $carousel-indicator-active-bg;
-  }
-}
-.carousel-caption h5 {
-  font-size: 12px;
-  text-transform: uppercase;
-  line-height: 1.64;
-}
-.carousel-caption p {
-  color: #fff;
-  font-size: 16px;
-  font-style: normal;
-  line-height: 20px;
-  letter-spacing: -.3px;
-}
-.gradient_img::after {
-  display: block;
-  position: relative;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000 100%);
-  margin-top: -150px;
-  height: 150px;
-  width: 100%;
-  content: '';
-}
 /*** CAROUSEL website end ***/
+
+/*** TAMANHO DA IMAGEM E DIV DA INTRO ***/
+.intro-img-desktop {
+    width: 525px;
+    height: 172px;
+}
+
+.intro-img-mobile {
+    width: 328px;
+    height: 321px;
+}
+
+.slider-img {
+    width: 445px;
+    height: 333px;
+}

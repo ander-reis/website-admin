@@ -7,3 +7,4 @@ include __DIR__ . '/dateValidateUpload.php';
 include __DIR__ . '/flStatus.php';
 include __DIR__ . '/dtCadastroFormatted.php';
 include __DIR__ . '/dataUppercase.php';
+include __DIR__ . '/datetimeUTC.php';

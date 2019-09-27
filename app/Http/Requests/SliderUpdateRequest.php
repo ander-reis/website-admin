@@ -26,10 +26,10 @@ class SliderUpdateRequest extends FormRequest
         $this->sanitize();
 
         return [
-            'ds_label' => 'max:30',
-            'ds_titulo' => 'max:70',
-            'ds_imagem' => 'image|max:1024',
-            'ds_link' => 'max:60'
+            'ds_imagem' => '|image|max:1024',
+            'ds_label'  => 'required|max:40',
+            'ds_titulo' => 'required|max:70',
+            'ds_link'   => 'required|url|max:60',
         ];
     }
 
@@ -39,9 +39,9 @@ class SliderUpdateRequest extends FormRequest
     public function sanitize()
     {
         $input = $this->all();
-        $input['ds_label'] = trim(filter_var($input['ds_label'], FILTER_SANITIZE_STRING));
-        $input['ds_titulo'] = trim(filter_var($input['ds_titulo'], FILTER_SANITIZE_STRING));
-        $input['ds_link'] = trim(filter_var($input['ds_link'], FILTER_SANITIZE_STRING));
+        $input['ds_label'] = mb_strtoupper(trim(filter_var($input['ds_label'], FILTER_SANITIZE_STRING)));
+        $input['ds_titulo'] = mb_strtoupper(trim(filter_var($input['ds_titulo'], FILTER_SANITIZE_STRING)));
+        $input['ds_link'] = mb_strtolower(trim(filter_var($input['ds_link'], FILTER_SANITIZE_STRING)));
         $this->replace($input);
     }
 }

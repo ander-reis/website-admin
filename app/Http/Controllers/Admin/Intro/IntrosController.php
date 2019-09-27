@@ -171,9 +171,14 @@ class IntrosController extends Controller
      * @param Intro $intro
      * @return mixed
      */
-    public function thumbAsset(Intro $intro)
+    public function thumbDesktopAsset(Intro $intro)
     {
         return response()->download($intro->intro_desktop_path);
+    }
+
+    public function thumbMobileAsset(Intro $intro)
+    {
+        return response()->download($intro->intro_mobile_path);
     }
 
     /**

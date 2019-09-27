@@ -93,9 +93,10 @@ Route::prefix('admin')->group(function(){
         Route::name('slider.thumb_small_asset')->get('slider/{slider}/thumb_small_asset', 'Slider\SlidersController@thumbSmallAsset');
 
         /**
-         * rotas para download da slider/imagem no sistema
+         * rotas para download da intro/imagem no sistema
          */
-        Route::name('intro.thumb_asset')->get('intro/{intro}/thumb_asset', 'Intro\IntrosController@thumbAsset');
+        Route::name('intro.thumb_desktop_asset')->get('intro/{intro}/thumb_desktop_asset', 'Intro\IntrosController@thumbDesktopAsset');
+        Route::name('intro.thumb_mobile_asset')->get('intro/{intro}/thumb_mobile_asset', 'Intro\IntrosController@thumbMobileAsset');
         Route::name('intro.thumb_small_asset')->get('intro/{intro}/thumb_small_asset', 'Intro\IntrosController@thumbSmallAsset');
 
         /**
