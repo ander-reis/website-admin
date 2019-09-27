@@ -12,5 +12,12 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface HomePageTempRepository extends RepositoryInterface
 {
-    public function uploadRevistaGiz($id, UploadedFile $file);
+    /**
+     * Interface upload temp
+     *
+     * @param $id
+     * @param UploadedFile $file
+     * @return mixed
+     */
+    public function uploadImagemRevistaGizTemp($id, UploadedFile $file);
 }

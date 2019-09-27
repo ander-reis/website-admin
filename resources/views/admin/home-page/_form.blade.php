@@ -143,7 +143,7 @@
     <div class="col-12">
         <div class="form-group">
             <div class="custom-file form-group">
-                {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br']) }}
+                {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br', 'accept' => 'image/*']) }}
                 {{ Form::label('ds_imagem', 'Upload Imagem', ['class' => 'custom-file-label control-label']) }}
             </div>
         </div>

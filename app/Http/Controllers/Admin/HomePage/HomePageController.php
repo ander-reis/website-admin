@@ -21,7 +21,7 @@ class HomePageController extends Controller
     /**
      * @var HomePageRepository
      */
-    protected $repository;
+    protected $homePageRepository;
     /**
      * @var HomePageTempRepository
      */
@@ -30,11 +30,12 @@ class HomePageController extends Controller
     /**
      * HomePagesController constructor.
      *
-     * @param HomePageRepository $repository
+     * @param HomePageRepository $homePageRepository
+     * @param HomePageTempRepository $homePageTempRepository
      */
-    public function __construct(HomePageRepository $repository, HomePageTempRepository $homePageTempRepository)
+    public function __construct(HomePageRepository $homePageRepository, HomePageTempRepository $homePageTempRepository)
     {
-        $this->repository = $repository;
+        $this->homePageRepository = $homePageRepository;
         $this->homePageTempRepository = $homePageTempRepository;
     }
 
@@ -45,9 +46,16 @@ class HomePageController extends Controller
      */
     public function index()
     {
-        $data = $this->repository->all();
+        if (\Gate::denies('home-page.view')) {
 
-        return view('admin.home-page.index', compact('data'));
+            toastr()->error("Acesso não Autorizado");
+
+            return redirect()->route('admin.dashboard');
+        }
+
+        $data = $this->homePageRepository->all();
+
+        return view('admin.home-page.create', compact('data'));
     }
 
     /**
@@ -61,7 +69,8 @@ class HomePageController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(array_keys($request->input()));
+//        $data = $request->only(array_keys($request->input()));
+        $data = $request->all();
         $action = $request->input('action');
 
         switch ($action) {
@@ -78,10 +87,13 @@ class HomePageController extends Controller
 
                     // cadastrar data noticias
                     foreach ($noticias as $noticia) {
-                        $this->repository->create($noticia);
+                        $this->homePageRepository->create($noticia);
                     }
-                    // cadastrar data revista giz
-                    $this->repository->create($revistaGiz);
+
+                    // cadastra data revista giz temp
+                    if (array_key_exists('ds_imagem', $revistaGiz)) {
+                        $this->homePageRepository->create($revistaGiz);
+                    }
 
                     toastr()->success('Cadastrado alterado com sucesso!');
 
@@ -99,7 +111,7 @@ class HomePageController extends Controller
 
                 $noticias = $this->formatDataNoticia($data);
 
-                //cadastra data noticias temp
+                // cadastra data noticias temp
                 foreach ($noticias as $noticia) {
                     $this->homePageTempRepository->create($noticia);
                 }
@@ -115,7 +127,7 @@ class HomePageController extends Controller
                 // sliders
                 $sliders = Slider::where('fl_ativo', 1)->get();
 
-                return view('admin.home-page.preview', compact('noticias_temp', 'sliders'));
+                return view('admin.home-page.preview', compact('noticias_temp', 'sliders', 'revistaGiz'));
         }
     }
 
@@ -151,6 +163,7 @@ class HomePageController extends Controller
     public function formatDataImagem(Array $data)
     {
         return [
+            'ds_categoria' => '',
             'ds_imagem' => $data['ds_imagem'],
             'ds_link' => $data['ds_giz'][0],
             'ds_titulo' => $data['ds_giz'][1],

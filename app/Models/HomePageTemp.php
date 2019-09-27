@@ -17,7 +17,7 @@ class HomePageTemp extends Model implements Transformable
     use TransformableTrait, RevistaGizPaths;
 
     /**
-     * Conexão novo database
+     * conexão novo database
      *
      * @var string
      */
@@ -36,6 +36,7 @@ class HomePageTemp extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
+        'ds_categoria',
         'ds_titulo',
         'ds_texto_noticia',
         'ds_link',

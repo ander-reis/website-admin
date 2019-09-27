@@ -49,5 +49,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::resource('clausulas', 'App\Policies\ClausulasPolicy');
         Gate::resource('slider', 'App\Policies\SliderPolicy');
         Gate::resource('intro', 'App\Policies\IntroPolicy');
+        Gate::resource('home-page', 'App\Policies\HomePagePolicy');
     }
 }

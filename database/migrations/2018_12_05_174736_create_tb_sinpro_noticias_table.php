@@ -24,6 +24,7 @@ class CreateTbSinproNoticiasTable extends Migration
             $table->text('ds_texto');
             $table->string('ds_palavra_chave', 150)->nullable();
             $table->char('fl_oculta', 1);
+            $table->smallInteger('fl_status')->default(0);
 
             $table->foreign('id_categoria')->references('id')->on('tb_sinpro_noticias_categorias');
         });

@@ -29,6 +29,7 @@ class SliderRepositoryEloquent extends BaseRepository implements SliderRepositor
      */
     public function create(array $attributes)
     {
+
         $model = parent::create($attributes);
 
         $this->uploadSlider($model->id, $attributes['ds_imagem']);
@@ -72,5 +73,5 @@ class SliderRepositoryEloquent extends BaseRepository implements SliderRepositor
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

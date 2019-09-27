@@ -17,7 +17,7 @@ class CreateHomePageTempsTable extends Migration
 	{
 		Schema::create('home_page_temp', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('ds_categoria', 50)->default('');
+            $table->string('ds_categoria', 50)->default('')->nullable();
             $table->string('ds_titulo', 100);
             $table->string('ds_texto_noticia', 800)->default('');
             $table->string('ds_link', 150)->default('');

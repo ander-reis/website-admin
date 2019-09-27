@@ -31,14 +31,14 @@ class HomePageTempRepositoryEloquent extends BaseRepository implements HomePageT
 
     public function create(array $attributes)
     {
-        return parent::create($attributes);
-        $this->uploadRevistaGiz($model->id, $attributes['ds_imagem']);
+        $model = parent::create($attributes);
+
+        if($model->id === 8){
+            $this->uploadImagemRevistaGizTemp(8, $attributes['ds_imagem']);
+        }
 
         return $model;
     }
-
-
-
 
     /**
      * Boot up the repository, pushing criteria
