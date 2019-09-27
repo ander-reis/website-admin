@@ -13,7 +13,7 @@ class Paginas extends Model
 {
 
     /**
-     * Conexão novo database
+     * conexão novo database
      *
      * @var string
      */

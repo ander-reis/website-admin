@@ -17,8 +17,18 @@ class Intro extends Model implements Transformable
 {
     use TransformableTrait, IntroPaths, LogsActivity;
 
+    /**
+     * connection
+     *
+     * @var string
+     */
     protected $connection = 'sqlsrv-site';
 
+    /**
+     * Table
+     *
+     * @var string
+     */
     protected $table = 'tb_sinpro_intro';
 
      /**

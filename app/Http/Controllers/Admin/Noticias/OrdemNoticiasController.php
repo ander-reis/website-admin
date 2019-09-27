@@ -120,9 +120,11 @@ class OrdemNoticiasController extends Controller
     private function ordemNoticiaSelect()
     {
         $list = $this->repository->all();
+
         foreach ($list as $item) {
             $noticias[] = $this->noticiasRepository->find($item->id_noticia);
         }
+
         return $noticias;
     }
 }

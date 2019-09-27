@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTbSinproAdminPermissoesWebsiteTable extends Migration
+class CreateTbSinproAdminPermissoesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTbSinproAdminPermissoesWebsiteTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_sinpro_admin_permissoes_website', function (Blueprint $table) {
+        Schema::create('tb_sinpro_admin_permissoes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_usuario');
             $table->integer('id_pagina');
@@ -24,8 +24,8 @@ class CreateTbSinproAdminPermissoesWebsiteTable extends Migration
             $table->dateTime('dt_cadastro')->default(Carbon\Carbon::now());
             $table->dateTime('dt_alteracao')->default(Carbon\Carbon::now());
 
-            $table->foreign('id_usuario')->references('id')->on('tb_sinpro_usuarios');
-            $table->foreign('id_pagina')->references('id')->on('tb_sinpro_admin_paginas');
+//            $table->foreign('id_usuario')->references('id')->on('tb_sinpro_usuarios');
+//            $table->foreign('id_pagina')->references('id')->on('tb_sinpro_admin_paginas');
         });
     }
 
@@ -36,7 +36,7 @@ class CreateTbSinproAdminPermissoesWebsiteTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('tb_sinpro_admin_permissoes_website');
+//        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('tb_sinpro_admin_permissoes');
     }
 }

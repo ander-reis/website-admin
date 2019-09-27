@@ -140,5 +140,10 @@ class PaginasTableSeeder extends Seeder
             'ds_pagina' => 'Owl Carousel',
             'url_pagina' => 'owl-carousel'
         ]);
+
+        factory(\App\Models\Paginas::class)->create([
+            'ds_pagina' => 'Ordem Noticia',
+            'url_pagina' => 'ordem-noticia'
+        ]);
     }
 }

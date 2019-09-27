@@ -53,7 +53,6 @@ class HomePageController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-
         $data = $this->homePageRepository->all();
 
         return view('admin.home-page.create', compact('data'));
@@ -164,6 +163,7 @@ class HomePageController extends Controller
     public function formatDataImagem(Array $data)
     {
         return [
+            'ds_categoria' => '',
             'ds_imagem' => $data['ds_imagem'],
             'ds_link' => $data['ds_giz'][0],
             'ds_titulo' => $data['ds_giz'][1],

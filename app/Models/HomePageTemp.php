@@ -17,7 +17,7 @@ class HomePageTemp extends Model implements Transformable
     use TransformableTrait, RevistaGizPaths;
 
     /**
-     * Conexão novo database
+     * conexão novo database
      *
      * @var string
      */
