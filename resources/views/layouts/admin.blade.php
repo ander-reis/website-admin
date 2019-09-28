@@ -161,7 +161,7 @@
 @toastr_js
 @toastr_render
 
-{{-- Unisharp --}}
+{{-- CKEditor --}}
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 
@@ -169,15 +169,21 @@
 <script src="{{ asset('js/FormValidation.min.js') }}"></script>
 <script src="{{ asset('js/Bootstrap.min.js') }}"></script>
 
+@include('ckfinder::setup')
+@stack('preview-script')
+
 <script type="text/javascript">
     $(document).ready(function () {
         bsCustomFileInput.init();
         $('#ds_texto').ckeditor();
         $("input[maxlength]").maxlength();
         $("#preloaders").fadeOut(2000);
+
+        CKFinder.widget( 'ckfinder-widget', {
+            width: '100%',
+            height: 700
+        } );
     });
 </script>
-
-@stack('preview-script')
 </body>
 </html>
