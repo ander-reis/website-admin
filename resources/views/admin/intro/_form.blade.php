@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <div id="div_desktop" class="intro-img-desktop" style="{{ (isset($intro)) ? '' : 'display: none;' }}">
                             @if (isset($intro) && !$errors->has('ds_imagem_desktop') && !$errors->has('ds_imagem_mobile'))
-                                <img id='img_desktop' class="img-fluid rounded img-intro-desktop" src="{{ $intro->thumb_desktop_asset }}" alt="{!! $intro->ds_titulo !!}">
+                                <img id='img_desktop' class="img-fluid rounded intro-img-desktop" src="{{ $intro->thumb_desktop_asset }}" alt="{!! $intro->ds_titulo !!}">
                             @endif
                         </div>
                     </div>
