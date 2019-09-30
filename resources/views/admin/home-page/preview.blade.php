@@ -307,11 +307,7 @@
                                     <div class="col-12 col-sm-5">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <a href="http://revistagiz.sinprosp.org.br" target="_blank"
-                                                   class="text-link">
-                                                    <img src="{{ asset('http://www.sinprosp.org.br/img/diversos/logo_revistagiz.png') }}"
-                                                         alt="SinproSP">
-                                                </a>
+                                                    <img src="{{ asset('images/layout-1/home/logo_revistagiz.png') }}" alt="SinproSP">
                                             </div>
                                         </div>
                                         <div class="row">

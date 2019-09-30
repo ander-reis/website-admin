@@ -128,7 +128,7 @@ trait RevistaGizUploads
         /**
          * abre a imagem e gera o arquivo
          */
-        $revistaGizImage = \Image::open($revistaGizFile)->thumbnail(new Box(162, 85));
+        $revistaGizImage = \Image::open($revistaGizFile)->thumbnail(new Box(195, 103));
         /**
          * envia o arquivo para o local e formato
          */
@@ -159,7 +159,7 @@ trait RevistaGizUploads
         /**
          * abre a imagem e gera o arquivo
          */
-        $revistaGizImage = \Image::open($revistaGizFile)->thumbnail(new Box(162, 85));
+        $revistaGizImage = \Image::open($revistaGizFile)->thumbnail(new Box(195, 103));
         /**
          * envia o arquivo para o local e formato
          */
