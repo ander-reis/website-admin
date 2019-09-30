@@ -312,8 +312,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 mt-2">
-                                                <a href="{{ $noticias_temp[7]['ds_link'] }}" target="_blank"
-                                                   class="text-link">
+                                                <a href="#" class="text-link">
                                                     <img src="{{ asset('/storage/revista_giz_temp/8/' . $noticias_temp[7]['ds_imagem']) }}"
                                                          alt="Revista Giz">
                                                 </a>
@@ -323,8 +322,7 @@
                                     <div class="col-12 col-sm-7">
                                         <div class="row">
                                             <div class="col-12">
-                                                <a href="http://revistagiz.sinprosp.org.br/?p=7724" target="_blank"
-                                                   class="text-link">
+                                                <a href="#" class="text-link">
                                                     <span class="text-dark font-weight-bold giz_titulo">
                                                     {{ $noticias_temp[7]['ds_titulo'] }}
                                                     </span>
@@ -334,8 +332,7 @@
 
                                         <div class="row">
                                             <div class="col-12">
-                                                <a href="http://revistagiz.sinprosp.org.br/?p=7724" target="_blank"
-                                                   class="text-link">
+                                                <a href="#" class="text-link">
                                                     <p class="text-dark giz_corpo text-justify mb-0">
                                                         {{ $noticias_temp[7]['ds_texto_noticia'] }}
                                                     </p>
