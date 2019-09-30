@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta http-equiv="cache-control" content="no-cache">
+
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -173,14 +175,14 @@
 <script type="text/javascript">
     $(document).ready(function () {
         bsCustomFileInput.init();
-        $('#ds_texto').ckeditor();
+        $('#ds_texto').ckeditor({
+            // Use named CKFinder browser route
+	        filebrowserBrowseUrl: '{{ route('ckfinder_browser') }}',
+	        // Use named CKFinder connector route
+	        filebrowserUploadUrl: '{{ route('ckfinder_connector') }}?command=QuickUpload&type=Files'
+        });
         $("input[maxlength]").maxlength();
-        $("#preloaders").fadeOut(2000);
-
-        CKFinder.widget( 'ckfinder-widget', {
-            width: '100%',
-            height: 700
-        } );
+        // $("#preloaders").fadeOut(2000);
     });
 </script>
 </body>

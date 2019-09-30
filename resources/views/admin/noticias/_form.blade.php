@@ -13,8 +13,6 @@
 @component('admin.form-components._form_group',['field' => 'ds_texto'])
     {{ Form::label('ds_texto', 'Texto', ['class' => 'control-label']) }}
     {{ Form::textarea('ds_texto', null, ['class' => 'form-control']) }}
-
-    <div id="ckfinder-widget"></div>
 @endcomponent
 
 @component('admin.form-components._form_group',['field' => 'ds_palavra_chave'])

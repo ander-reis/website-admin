@@ -38,7 +38,6 @@ class NoticiasController extends Controller
     public function index()
     {
         $noticias = $this->repository->orderBy('id', 'desc')->paginate('15');
-
         return view('admin.noticias.index', compact('noticias'));
     }
 
@@ -95,6 +94,7 @@ class NoticiasController extends Controller
      */
     public function show($id)
     {
+
         if (\Gate::denies('noticias.view')) {
 
             toastr()->error("Acesso não Autorizado");

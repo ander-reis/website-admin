@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 /*
  * CKFinder Configuration File
@@ -9,13 +10,16 @@
 /*============================ PHP Error Reporting ====================================*/
 // http://docs.cksource.com/ckfinder3-php/debugging.html
 
+//require_once '../app/Auth/AuthenticateCKFinder.php';
+//dd('/app/Auth/foo.php');
+
 // Production
 //error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 //ini_set('display_errors', 0);
 
 // Development
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 
 /*============================ General Settings =======================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html
@@ -23,8 +27,9 @@ ini_set('display_errors', 1);
 $config = array();
 
 //$config['authentication'] = '\CKSource\CKFinderBridge\CKFinderMiddleware';
-$config['authentication'] = function (){
-    return true;
+$config['authentication'] = function () {
+    $is_logged = $_SESSION['isLogged'];
+    return isset($is_logged) ?? false;
 };
 
 /*============================ License Key ============================================*/
