@@ -41,18 +41,4 @@ CKEDITOR.editorConfig = function (config) {
 
     // configura skin
     config.skin = 'moono-dark';
-
-
-    // config.filebrowserBrowseUrl = '/browser/browse.php';
-    // config.filebrowserImageUploadUrl = '/uploader/upload.php?type=Images';
-
-    config.filebrowserBrowseUrl =  '/ckfinder/ckfinder.html';
-    config.filebrowserUploadUrl = '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
 };
-
-
-// CKEDITOR.replace( 'editor1', {
-//     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-//     filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
-// } );
-
