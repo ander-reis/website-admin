@@ -18,5 +18,5 @@ mix.js('resources/assets/js/admin.js', 'public/js')
     .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts')
     .sourceMaps();
 
-// mix.browserSync('localhost:8000');
+//mix.browserSync('localhost:8000');
 mix.browserSync('website-admin.br');

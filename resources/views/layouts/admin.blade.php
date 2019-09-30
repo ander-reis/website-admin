@@ -175,14 +175,14 @@
 <script type="text/javascript">
     $(document).ready(function () {
         bsCustomFileInput.init();
-        $('#ds_texto').ckeditor();
+        $('#ds_texto').ckeditor({
+            // Use named CKFinder browser route
+	        filebrowserBrowseUrl: '{{ route('ckfinder_browser') }}',
+	        // Use named CKFinder connector route
+	        filebrowserUploadUrl: '{{ route('ckfinder_connector') }}?command=QuickUpload&type=Files'
+        });
         $("input[maxlength]").maxlength();
         $("#preloaders").fadeOut(2000);
-
-        CKFinder.widget( 'ckfinder-widget', {
-            width: '100%',
-            height: 700
-        } );
     });
 </script>
 </body>

@@ -10,7 +10,8 @@
 
         @include('admin.noticias._form')
 
-        <button type="submit" class="btn btn-primary">Editar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{{ route('admin.noticias.index') }}" class="button btn btn-danger">Voltar</a>
 
         {{ Form::close() }}
     </div>
