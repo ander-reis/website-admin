@@ -53,13 +53,13 @@
                             }
                         },
                     },
-                    'ds_imagem': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Campo obrigatório'
-                            }
-                        },
-                    },
+                    // 'ds_imagem': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Campo obrigatório'
+                    //         }
+                    //     },
+                    // },
                     'ds_giz[]': {
                         validators: {
                             notEmpty: {

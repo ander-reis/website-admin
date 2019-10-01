@@ -108,3 +108,19 @@
   background: #56a1c0;
 }
 
+.giz_background {
+  background: #f2f2f2;
+}
+
+.giz_titulo {
+  font-family: Helvetica, Arial;
+  font-size: 1.3rem;
+  line-height: 1.4em;
+}
+
+.giz_corpo {
+  font-family: Helvetica, Arial;
+  font-size: 1.1rem;
+  line-height: 1.4em;
+}
+
