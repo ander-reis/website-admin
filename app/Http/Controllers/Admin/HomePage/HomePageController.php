@@ -78,6 +78,7 @@ class HomePageController extends Controller
              */
             case 'cadastrar':
                 try {
+
                     //verifica se está sendo cadastro img da revistagiz
                     $img_giz = $request->all('ds_imagem');
 

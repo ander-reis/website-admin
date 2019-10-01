@@ -35,8 +35,9 @@ class HomePageTempRepositoryEloquent extends BaseRepository implements HomePageT
         $model = parent::create($attributes);
 
         if($model->id === 8){
-            if (substr($attributes['ds_imagem'],-4) != 'jpeg')
-            $this->uploadImagemRevistaGizTemp(8, $attributes['ds_imagem']);
+            if (substr($attributes['ds_imagem'],-4) != 'jpeg') {
+                $this->uploadImagemRevistaGizTemp(8, $attributes['ds_imagem']);
+            }
         }
 
         return $model;

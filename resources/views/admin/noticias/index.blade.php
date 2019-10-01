@@ -62,9 +62,11 @@
                                     <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
                                 </a>
                             @else
-                                <span class="text-muted">
-                                    <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
-                                </span>
+                            <a class="text-danger"
+                            href="{{ env('APP_URL_SITE_VER_OCULTA') }}{{ $noticia->id }}"
+                            target="_blank">
+                             <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                         </a>
                             @endif
                         </td>
                     </tr>
