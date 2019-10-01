@@ -10,9 +10,6 @@ session_start();
 /*============================ PHP Error Reporting ====================================*/
 // http://docs.cksource.com/ckfinder3-php/debugging.html
 
-//require_once '../app/Auth/AuthenticateCKFinder.php';
-//dd('/app/Auth/foo.php');
-
 // Production
 //error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 //ini_set('display_errors', 0);

@@ -81,8 +81,5 @@
             </div>
         </div><!-- drag container -->
     </div>
-
-    {{--paginacao--}}
-    {{--{!! $noticias->links() !!}--}}
 @endsection()
 

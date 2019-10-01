@@ -12,6 +12,13 @@ use Illuminate\Database\Eloquent\Model;
 class PaginasPrincipais extends Model
 {
     /**
+     * conexão novo database
+     *
+     * @var string
+     */
+    protected $connection = 'sqlsrv-site';
+
+    /**
      * table
      *
      * @var string
@@ -41,11 +48,10 @@ class PaginasPrincipais extends Model
      * @var array
      */
     protected $fillable = [
-        'tp_busca',
         'txt_titulo_busca',
         'txt_titulo',
-        'txt_pagina',
-        'url_pagina',
+        'ds_texto',
+        'url',
         'ds_palavra_chave',
         'fl_status'
     ];
@@ -61,11 +67,10 @@ class PaginasPrincipais extends Model
      * set logging
      */
     protected static $logAttributes = [
-        'tp_busca',
         'txt_titulo_busca',
         'txt_titulo',
-        'txt_pagina',
-        'url_pagina',
+        'ds_texto',
+        'url',
         'ds_palavra_chave',
         'fl_status'
     ];

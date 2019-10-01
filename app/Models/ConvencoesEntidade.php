@@ -16,6 +16,13 @@ class ConvencoesEntidade extends Model implements Transformable
     use TransformableTrait;
 
     /**
+     * conexão novo database
+     *
+     * @var string
+     */
+    protected $connection = 'sqlsrv-site';
+
+    /**
      * table
      *
      * @var string

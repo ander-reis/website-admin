@@ -81,14 +81,4 @@ class Permissoes extends Model
     {
         return $this->belongsTo(User::class, 'id');
     }
-
-    /**
-     * Relacionamento paginas para permissoes, um para um
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function pagina()
-    {
-        return $this->belongsTo(Paginas::class, 'id');
-    }
 }

@@ -106,13 +106,13 @@
                                 Administração de Conteúdo
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.paginas-principais.index') }}">Conteúdo Geral</a>
+                                <a class="dropdown-item" href="{{ route('admin.home-page.index') }}">Home</a>
                                 <a class="dropdown-item" href="#">Acontece</a>
                                 <a class="dropdown-item" href="#">Atendimento on-line</a>
-                                <a class="dropdown-item" href="{{ route('admin.paginas.index') }}">Conteúdo Geral</a>
                                 <a class="dropdown-item" href="#">Convênios Diversos</a>
                                 <a class="dropdown-item" href="#">Cursos</a>
                                 <a class="dropdown-item" href="#">Guia de Consultas</a>
-                                <a class="dropdown-item" href="{{ route('admin.home-page.index') }}">Home</a>
                                 <a class="dropdown-item" href="#">Inscrição Colônia de Férias - SINPRO Osasco</a>
                             </div>
                         </li>
