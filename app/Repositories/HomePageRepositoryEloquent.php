@@ -34,7 +34,9 @@ class HomePageRepositoryEloquent extends BaseRepository implements HomePageRepos
         $model = parent::create($attributes);
 
         if($model->id === 8){
-            $this->uploadImagemRevistaGiz(8, $attributes['ds_imagem']);
+            if (substr($attributes['ds_imagem'],-4) != 'jpeg') {
+                $this->uploadImagemRevistaGiz(8, $attributes['ds_imagem']);
+            }
         }
 
         return $model;

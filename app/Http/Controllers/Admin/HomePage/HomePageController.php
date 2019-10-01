@@ -54,8 +54,9 @@ class HomePageController extends Controller
         }
 
         $data = $this->homePageRepository->all();
+        $temp = $this->homePageTempRepository->find(8);
 
-        return view('admin.home-page.create', compact('data'));
+        return view('admin.home-page.create', compact('data', 'temp'));
     }
 
     /**
@@ -78,6 +79,7 @@ class HomePageController extends Controller
              */
             case 'cadastrar':
                 try {
+
                     //verifica se está sendo cadastro img da revistagiz
                     $img_giz = $request->all('ds_imagem');
 

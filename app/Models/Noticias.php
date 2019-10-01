@@ -39,6 +39,7 @@ class Noticias extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
+        'id_noticia',
         'id_categoria',
         'dt_noticia',
         'dt_cadastro',
