@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ConvencoesEntidadeTableSeeder::class);
         $this->call(ConvencoesTableSeeder::class);
         $this->call(ConvencoesClausulasTableSeeder::class);
-        $this->call(PaginasTableSeeder::class);
+        $this->call(PaginasPrincipaisTableSeeder::class);
         $this->call(PermissoesTableSeeder::class);
     }
 }

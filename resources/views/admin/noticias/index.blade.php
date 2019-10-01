@@ -51,7 +51,7 @@
                                 </a>
                             @endcan
                             @cannot('noticias.update')
-                                <i class="fa fa-exclamation-circle text-danger" aria-hidden="true"></i>
+                                <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
                             @endcannot
                         </td>
                         <td class="text-center">

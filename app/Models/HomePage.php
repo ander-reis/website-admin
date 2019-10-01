@@ -44,4 +44,31 @@ class HomePage extends Model implements Transformable
         'created_at',
         'updated_at'
     ];
+
+    /**
+     * set logging
+     */
+    protected static $logAttributes = [
+        'ds_categoria',
+        'ds_titulo',
+        'ds_texto_noticia',
+        'ds_link',
+        'ds_imagem',
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
+    protected static $logFillable = true;
+
+    /**
+     * set log name
+     *
+     * @var string
+     */
+    protected static $logName = 'home_page';
 }

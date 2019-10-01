@@ -18,6 +18,13 @@ class Convencoes extends Model implements Transformable
     use TransformableTrait, ConvencaoPaths, LogsActivity;
 
     /**
+     * conexão novo database
+     *
+     * @var string
+     */
+//    protected $connection = 'sqlsrv-site';
+
+    /**
      * table
      *
      * @var string

@@ -130,7 +130,7 @@ return [
         ],
         'url_arquivo' => [
             'uploaded' => 'O campo :attribute não pode conter um arquivo com mais de 2 mb.'
-        ]
+        ],
     ],
 
     /*

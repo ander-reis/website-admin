@@ -58,7 +58,7 @@
                                 </a>
                             @endcan
                             @cannot('intro.delete')
-                            <i class="fas fa-trash-alt fa-2x"></i>
+                                <i class="fas fa-trash-alt fa-2x"></i>
                             @endcannot
                         </td>
                     </tr>
