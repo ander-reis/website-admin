@@ -26,11 +26,16 @@
                         <div class="carousel-inner">
                             @foreach($sliders as $slider)
                                 <div class="carousel-item {{ $loop->index == 0 ? 'active' : ''}}">
-                                    <a href={!! $slider->ds_link !!}>
+                                    <a href="{!! $slider->ds_link !!}" class="disabled">
                                         <div class="gradient_img">
-                                            <img class="d-block w-100"
+                                            {{-- <img class="d-block w-100"
                                                  src="{{ asset('/layout-1/slider/slider_1.jpeg' ) }}"
+                                                 alt="{!! $slider->ds_label !!}"> --}}
+
+                                                 <img class="d-block w-100"
+                                                 src="{{ asset('/storage/slider/' . $slider->id . '/' . $slider->ds_imagem) }}"
                                                  alt="{!! $slider->ds_label !!}">
+
                                         </div>
                                         <div class="carousel-caption p-2">
                                             <h5 class="m-0 p-0">{!! $slider->ds_label !!}</h5>
@@ -57,7 +62,7 @@
                             </span>
                         </span>
                         <p class="mb-0 text-dark manchete_titulo text-justify">
-                            <a href="#" class="text-link">
+                            <a href="{{$noticias_temp[0]['ds_link']}}" class="text-link" target="_blank">
                                 {{ $noticias_temp[0]['ds_titulo'] }}
                             </a>
                         </p>
@@ -75,7 +80,7 @@
                             </span>
                         </span>
                         <p class="text-dark mb-1 noticia_titulo1 text-justify">
-                            <a href="#" class="text-link">
+                            <a href="{{$noticias_temp[1]['ds_link']}}" class="text-link" target="_blank">
                                 {{ $noticias_temp[1]['ds_titulo'] }}
                             </a>
                         </p>
@@ -93,7 +98,7 @@
                         </span>
                     </span>
                         <p class="text-dark mb-1 noticia_titulo1 text-justify">
-                            <a href="#" class="text-link">
+                            <a href="{{$noticias_temp[2]['ds_link']}}" class="text-link" target="_blank">
                                 {{ $noticias_temp[2]['ds_titulo'] }}
                             </a>
                         </p>
@@ -121,22 +126,22 @@
                 <div class="owl-carousel owl-theme pt-3">
                     <div class="item text-center">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <a href="http://sinprosp.org.br/escola.asp" class="black faixa_size" target="_blank">Cursos e
+                        <a href="#" class="black faixa_size disabled" target="_blank" >Cursos e
                             <br>congressos</a>
                     </div>
                     <div class="item text-center">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <a href="http://sinprosp.org.br/guia_consultas.asp#salario" class="black faixa_size"
+                        <a href="#" class="black faixa_size disabled"
                            target="_blank">Salários e<br/>reajustes</a>
                     </div>
                     <div class="item text-center">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <a href="http://sinprosp.org.br/convencoes_acordos.asp" class="black faixa_size"
+                        <a href="#" class="black faixa_size disabled"
                            target="_blank">Convenções e<br/>acordos</a>
                     </div>
                     <div class="item text-center">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <a href="http://sinprosp.org.br/guia_consultas.asp" class="black faixa_size" target="_blank">Guia
+                        <a href="#" class="black faixa_size disabled" target="_blank">Guia
                             de<br/>direitos</a>
                     </div>
                 </div>
@@ -152,7 +157,7 @@
                     <span class="manchete_chapeu">{{ dataUppercase($noticias_temp[3]['ds_categoria']) }}</span>
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                     <p class="text-dark mb-0 noticia_titulo2 text-justify">
-                        <a href="#" class="text-link">
+                        <a href="{{$noticias_temp[3]['ds_link']}}" class="text-link" target="_blank">
                             {{ $noticias_temp[3]['ds_titulo'] }}
                         </a>
                     </p>
@@ -162,7 +167,7 @@
                     <span class="manchete_chapeu">{{ dataUppercase($noticias_temp[4]['ds_categoria']) }}</span>
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                     <p class="text-dark mb-0 noticia_titulo2 text-justify">
-                        <a href="#" class="text-link">
+                        <a href="{{$noticias_temp[4]['ds_link']}}" class="text-link" target="_blank">
                             {{ $noticias_temp[4]['ds_titulo'] }}
                         </a>
                     </p>
@@ -172,7 +177,7 @@
                     <span class="manchete_chapeu">{{ dataUppercase($noticias_temp[5]['ds_categoria']) }}</span>
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                     <p class="text-dark mb-0 noticia_titulo2 text-justify">
-                        <a href="#" class="text-link">
+                        <a href="{{$noticias_temp[5]['ds_link']}}" class="text-link" target="_blank">
                             {{ $noticias_temp[5]['ds_titulo'] }}
                         </a>
                     </p>
@@ -182,7 +187,7 @@
                     <span class="manchete_chapeu">{{ dataUppercase($noticias_temp[6]['ds_categoria']) }}</span>
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                     <p class="text-dark mb-0 noticia_titulo2 text-justify">
-                        <a href="#" class="text-link">
+                        <a href="{{$noticias_temp[6]['ds_link']}}" class="text-link" target="_blank">
                             {{ $noticias_temp[6]['ds_titulo'] }}
                         </a>
                     </p>
@@ -288,14 +293,14 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-3 col-md-6 mt-3">
-                            <a href="http://www.sinprosp.org.br/sindicalizacao.asp" target="_blank">
+                            <a href="#" target="_blank" class="disabled">
                                 <img class="rounded mx-auto d-block w-100"
                                      src="{{ asset('images/layout-1/home/sindicalizese.jpg') }}" alt="SinproSP">
                             </a>
                         </div>
 
                         <div class="col-lg-3 col-md-6 mt-3">
-                            <a href="http://www.sinprosp.org.br/cadastro_login.asp" target="_blank">
+                            <a href="#" target="_blank" class="disabled">
                                 <img class="rounded mx-auto d-block w-100"
                                      src="{{ asset('images/layout-1/home/cadevoce.jpg') }}" alt="SinproSP">
                             </a>
@@ -312,9 +317,9 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 mt-2">
-                                                <a href="#" class="text-link">
+                                                <a href="{{$noticias_temp[7]['ds_link']}}" class="text-link" target="_blank">
                                                     <img src="{{ asset('/storage/revista_giz_temp/8/' . $noticias_temp[7]['ds_imagem']) }}"
-                                                         alt="Revista Giz">
+                                                         alt="Revista Giz" class="giz-img">
                                                 </a>
                                             </div>
                                         </div>
@@ -322,7 +327,7 @@
                                     <div class="col-12 col-sm-7">
                                         <div class="row">
                                             <div class="col-12">
-                                                <a href="#" class="text-link">
+                                                <a href="{{$noticias_temp[7]['ds_link']}}" class="text-link" target="_blank">
                                                     <span class="text-dark font-weight-bold giz_titulo">
                                                     {{ $noticias_temp[7]['ds_titulo'] }}
                                                     </span>
@@ -332,7 +337,7 @@
 
                                         <div class="row">
                                             <div class="col-12">
-                                                <a href="#" class="text-link">
+                                                <a href="{{$noticias_temp[7]['ds_link']}}" class="text-link" target="_blank">
                                                     <p class="text-dark giz_corpo text-justify mb-0">
                                                         {{ $noticias_temp[7]['ds_texto_noticia'] }}
                                                     </p>

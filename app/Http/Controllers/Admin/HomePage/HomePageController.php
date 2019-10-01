@@ -69,7 +69,6 @@ class HomePageController extends Controller
      */
     public function store(Request $request)
     {
-//        $data = $request->only(array_keys($request->input()));
         $data = $request->all();
         $action = $request->input('action');
 
@@ -79,7 +78,17 @@ class HomePageController extends Controller
              */
             case 'cadastrar':
                 try {
-                    HomePage::truncate();
+                    //verifica se está sendo cadastro img da revistagiz
+                    $img_giz = $request->all('ds_imagem');
+
+                    if (!is_null($img_giz['ds_imagem'])) { //se estiver, apaga todos os dados da tabela
+                        HomePage::truncate();
+                        $img = 1;
+                    }
+                    else {  //caso não, apaga somente os registros que não são referentes a revista giz
+                        HomePage::where('id', '<>' , 8)->delete();
+                        $img = 0;
+                    }
 
                     $revistaGiz = $this->formatDataImagem($data);
 
@@ -90,10 +99,14 @@ class HomePageController extends Controller
                         $this->homePageRepository->create($noticia);
                     }
 
-                    // cadastra data revista giz temp
-                    if (array_key_exists('ds_imagem', $revistaGiz)) {
+                    // cadastra data revista giz
+                    //if (array_key_exists('ds_imagem', $revistaGiz)) {
+                    if ( $img == 1) {
                         $this->homePageRepository->create($revistaGiz);
+                    } else {
+                        $this->homePageRepository->update($revistaGiz, 8);
                     }
+                    //}
 
                     toastr()->success('Cadastrado alterado com sucesso!');
 
@@ -105,21 +118,35 @@ class HomePageController extends Controller
                     break;
                 }
             case 'preview':
-                HomePageTemp::truncate();
+
+                //verifica se está sendo cadastro img da revistagiz
+                $img_giz = $request->all('ds_imagem');
+
+                if (!is_null($img_giz['ds_imagem'])) { //se estiver, apaga todos os dados da tabela
+                    HomePageTemp::truncate();
+                    $img = 1;
+                }
+                else {  //caso não, apaga somente os registros que não referentes a revista giz
+                    HomePageTemp::where('id', '<>' , 8)->delete();
+                    $img = 0;
+                }
 
                 $revistaGiz = $this->formatDataImagem($data);
 
                 $noticias = $this->formatDataNoticia($data);
-
                 // cadastra data noticias temp
                 foreach ($noticias as $noticia) {
                     $this->homePageTempRepository->create($noticia);
                 }
 
                 // cadastra data revista giz temp
-                if (array_key_exists('ds_imagem', $revistaGiz)) {
-                    $this->homePageTempRepository->create($revistaGiz);
-                }
+                //if (array_key_exists('ds_imagem', $revistaGiz)) {
+                    if ( $img == 1) {
+                        $this->homePageTempRepository->create($revistaGiz);
+                    } else {
+                        $this->homePageTempRepository->update($revistaGiz, 8);
+                    }
+                //}
 
                 // return data model
                 $noticias_temp = $this->homePageTempRepository->all();
@@ -162,12 +189,26 @@ class HomePageController extends Controller
      */
     public function formatDataImagem(Array $data)
     {
-        return [
-            'ds_categoria' => '',
-            'ds_imagem' => $data['ds_imagem'],
-            'ds_link' => $data['ds_giz'][0],
-            'ds_titulo' => $data['ds_giz'][1],
-            'ds_texto_noticia' => $data['ds_giz'][2]
-        ];
+
+        if (isset($data['ds_imagem'])) {
+            return [
+
+                'ds_categoria' => '',
+                'ds_link' => $data['ds_giz'][0],
+                'ds_titulo' => $data['ds_giz'][1],
+                'ds_texto_noticia' => $data['ds_giz'][2],
+                'ds_imagem' => $data['ds_imagem']
+            ];
+            }
+        else {
+            return [
+                'ds_categoria' => '',
+                'ds_link' => $data['ds_giz'][0],
+                'ds_titulo' => $data['ds_giz'][1],
+                'ds_texto_noticia' => $data['ds_giz'][2]
+            ];
+        }
+
+
     }
 }
