@@ -64,7 +64,6 @@
     @endslot
 @endcomponent
 
-
 @component('admin.form-components._form_group_validation')
     @slot('title')
         Notícia 1
@@ -82,7 +81,6 @@
         {{ Form::text('ds_titulo[]', isset($data[3]['ds_titulo'])?$data[3]['ds_titulo']:null, ['class' => 'form-control', 'maxlength' => 100]) }}
     @endslot
 @endcomponent
-
 
 @component('admin.form-components._form_group_validation')
     @slot('title')
@@ -102,7 +100,6 @@
     @endslot
 @endcomponent
 
-
 @component('admin.form-components._form_group_validation')
     @slot('title')
         Notícia 3
@@ -120,7 +117,6 @@
         {{ Form::text('ds_titulo[]', isset($data[5]['ds_titulo'])?$data[5]['ds_titulo']:null, ['class' => 'form-control', 'maxlength' => 100]) }}
     @endslot
 @endcomponent
-
 
 @component('admin.form-components._form_group_validation')
     @slot('title')
@@ -140,40 +136,33 @@
     @endslot
 @endcomponent
 
-<div class="card mb-2">
-    <section class="row">
-        <div class="col-12">
-            <div class="card-header text-center">
-                <h3 class="mb-0">Revista Giz</h3>
+<section class="row">
+    <div class="col-12">
+        <h3>Revista Giz</h3>
+        <hr>
+    </div>
+    <div class="col-12">
+        <div class="form-group">
+            <div class="custom-file form-group">
+                {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br', 'accept' => 'image/*']) }}
+                {{ Form::label('ds_imagem', 'Upload Imagem', ['class' => 'custom-file-label control-label']) }}
             </div>
         </div>
-
-        <div class="card-body">
-            <div class="col-12">
-                <div class="form-group">
-                    <div class="custom-file form-group">
-                        {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br', 'accept' => 'image/*']) }}
-                        {{ Form::label('ds_imagem', 'Upload Imagem', ['class' => 'custom-file-label control-label']) }}
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="form-group">
-                    {{ Form::label('ds_link', 'Link', ['class' => 'col-sm-2 control-label']) }}
-                    {{ Form::text('ds_giz[]', isset($data[7]['ds_link'])?$data[7]['ds_link']:null, ['class' => 'form-control', 'maxlength' => 150]) }}
-                </div>
-            </div>
-            <div class="col-12 no-gutters">
-                <div class="form-group">
-                    {{ Form::label('ds_titulo', 'Título', ['class' => 'col-sm-2 col-label']) }}
-                    {{ Form::text('ds_giz[]', isset($data[7]['ds_titulo'])?$data[7]['ds_titulo']:null, ['class' => 'form-control', 'maxlength' => 100]) }}
-                </div>
-                <div class="form-group">
-                    {{ Form::label('ds_texto_noticia', 'Texto', ['class' => 'col-sm-2 control-label']) }}
-                    {{ Form::textarea('ds_giz[]', isset($data[7]['ds_texto_noticia'])?$data[7]['ds_texto_noticia']:null, ['class' => 'form-control', 'rows' => 3]) }}
-                </div>
-            </div>
+    </div>
+    <div class="col-12">
+        <div class="form-group">
+            {{ Form::label('ds_link', 'Link', ['class' => 'col-sm-2 control-label']) }}
+            {{ Form::text('ds_giz[]', isset($data[7]['ds_link'])?$data[7]['ds_link']:null, ['class' => 'form-control', 'maxlength' => 150]) }}
         </div>
-    </section>
-
-</div>
+    </div>
+    <div class="col-12 no-gutters">
+        <div class="form-group">
+            {{ Form::label('ds_titulo', 'Título', ['class' => 'col-sm-2 col-label']) }}
+            {{ Form::text('ds_giz[]', isset($data[7]['ds_titulo'])?$data[7]['ds_titulo']:null, ['class' => 'form-control', 'maxlength' => 100]) }}
+        </div>
+        <div class="form-group">
+            {{ Form::label('ds_texto_noticia', 'Texto', ['class' => 'col-sm-2 control-label']) }}
+            {{ Form::textarea('ds_giz[]', isset($data[7]['ds_texto_noticia'])?$data[7]['ds_texto_noticia']:null, ['class' => 'form-control', 'rows' => 3]) }}
+        </div>
+    </div>
+</section>
