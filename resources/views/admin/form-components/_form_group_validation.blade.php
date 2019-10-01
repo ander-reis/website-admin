@@ -1,11 +1,11 @@
-<div class="card mb-2">
-    <section class="row">
+<section class="card mb-2">
+    <div class="row">
         <div class="col-12">
             <div class="card-header text-center">
                 <h3>{{$title}}</h3>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body row">
             @if(isset($block_one))
             <div class="col-6">
                 <div class="form-group">
@@ -35,6 +35,5 @@
             </div>
             @endif
         </div>
-
-    </section>
-</div>
+    </div>
+</section>
