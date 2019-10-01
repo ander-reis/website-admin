@@ -54,8 +54,9 @@ class HomePageController extends Controller
         }
 
         $data = $this->homePageRepository->all();
+        $temp = $this->homePageTempRepository->find(8);
 
-        return view('admin.home-page.create', compact('data'));
+        return view('admin.home-page.create', compact('data', 'temp'));
     }
 
     /**
