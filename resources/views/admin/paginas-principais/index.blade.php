@@ -31,7 +31,7 @@
                         </td>
                         <td class="text-center">
                             @can('paginas-principais.view')
-                                <a href="{{ env('APP_URL_SITE_VER_PAGINA') .  $item->url }}">
+                                <a href="{{ env('APP_URL_SITE_VER_PAGINA') .  $item->url }}" target="_blank">
                                     <i class="fas fa-eye fa-2x"></i>
                                 </a>
                             @endcan

@@ -26,12 +26,12 @@ class PaginasPrincipaisUpdateRequest extends FormRequest
         $this->sanitize();
 
         return [
-            'txt_titulo_busca',
-            'txt_titulo',
-            'ds_texto',
-            'url',
-            'ds_palavra_chave',
-            'fl_status'
+            'txt_titulo_busca' => 'required',
+            'txt_titulo'  => 'required',
+            'ds_texto'  => 'required',
+            'url'  => 'required',
+            'ds_palavra_chave'  => 'required',
+            'fl_status' => 'required'
         ];
     }
 
