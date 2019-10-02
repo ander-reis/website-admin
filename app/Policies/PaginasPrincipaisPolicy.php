@@ -17,7 +17,7 @@ class PaginasPrincipaisPolicy extends Policies
      */
     public function view(User $user)
     {
-        return parent::viewPolicy($user, 5);
+        return parent::viewPolicy($user, 1);
     }
 
     /**
@@ -28,6 +28,6 @@ class PaginasPrincipaisPolicy extends Policies
      */
     public function update(User $user)
     {
-        return parent::updatePolicy($user, 5);
+        return parent::updatePolicy($user, 1);
     }
 }

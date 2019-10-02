@@ -17,6 +17,6 @@ class HomePagePolicy extends Policies
      */
     public function view(User $user)
     {
-        return parent::viewPolicy($user, 8);
+        return parent::viewPolicy($user, 1);
     }
 }

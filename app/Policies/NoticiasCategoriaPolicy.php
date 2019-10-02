@@ -17,7 +17,7 @@ class NoticiasCategoriaPolicy extends Policies
      */
     public function create(User $user)
     {
-        return parent::createPolicy($user, 2);
+        return parent::createPolicy($user, 1);
     }
 
     /**
@@ -27,6 +27,6 @@ class NoticiasCategoriaPolicy extends Policies
      */
     public function update(User $user)
     {
-        return parent::updatePolicy($user, 2);
+        return parent::updatePolicy($user, 1);
     }
 }

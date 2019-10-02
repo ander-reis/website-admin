@@ -17,7 +17,7 @@ class OrdemNoticiasPolicy extends Policies
      */
     public function view(User $user)
     {
-        return parent::viewPolicy($user, 3);
+        return parent::viewPolicy($user, 1);
     }
 
     /**
@@ -29,6 +29,6 @@ class OrdemNoticiasPolicy extends Policies
      */
     public function create(User $user)
     {
-        return parent::createPolicy($user, 3);
+        return parent::createPolicy($user, 1);
     }
 }
