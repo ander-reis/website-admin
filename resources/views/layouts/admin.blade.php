@@ -119,7 +119,7 @@
 
                     </ul>
 
-                    {{-- <!-- Right Side Of Navbar -->
+                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -128,9 +128,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">
-                                    {{ __('Configuração') }}
-                                </a>
+{{--                                <a class="dropdown-item" href="">--}}
+{{--                                    {{ __('Configuração') }}--}}
+{{--                                </a>--}}
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Sair') }}
@@ -142,7 +142,7 @@
                                 </form>
                             </div>
                         </li>
-                    </ul> --}}
+                    </ul>
                 </div>
             </div>
         </nav>

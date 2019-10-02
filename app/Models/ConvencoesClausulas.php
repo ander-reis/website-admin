@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class ConvencoesClausulas.
@@ -14,14 +15,14 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class ConvencoesClausulas extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, LogsActivity;
 
     /**
      * conexão novo database
      *
      * @var string
      */
-    protected $connection = 'sqlsrv-site';
+//    protected $connection = 'sqlsrv-site';
 
     /**
      * table
@@ -62,6 +63,32 @@ class ConvencoesClausulas extends Model implements Transformable
      * set input hidden
      */
     protected $hidden = ['fl_ativo'];
+
+    /**
+     * set log
+     */
+    protected static $logAttributes = [
+        'id_convencao',
+        'num_clausula',
+        'ds_titulo',
+        'ds_texto',
+        'ds_palavra_chave',
+        'fl_status'
+    ];
+
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
+    protected static $logFillable = true;
+
+    /**
+     * set log name
+     *
+     * @var string
+     */
+    protected static $logName = 'convencoes_clausulas';
 
     /**
      * Accessor formata ds_titulo para 6 palavras

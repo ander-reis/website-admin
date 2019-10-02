@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class OrdemNoticias.
@@ -13,7 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class OrdemNoticias extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, LogsActivity;
 
     /**
      * table
