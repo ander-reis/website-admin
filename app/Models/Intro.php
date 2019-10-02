@@ -31,7 +31,7 @@ class Intro extends Model implements Transformable
      */
     protected $table = 'tb_sinpro_intro';
 
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

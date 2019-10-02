@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class PaginasPrincipais.
@@ -11,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PaginasPrincipais extends Model
 {
+    use LogsActivity;
+
     /**
      * conexão novo database
      *

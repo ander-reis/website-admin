@@ -6,6 +6,7 @@ use App\Traits\RevistaGizPaths;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class HomePage.
@@ -14,7 +15,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class HomePage extends Model implements Transformable
 {
-    use TransformableTrait, RevistaGizPaths;
+    use TransformableTrait, RevistaGizPaths, LogsActivity;
 
     /**
      * conexão novo database

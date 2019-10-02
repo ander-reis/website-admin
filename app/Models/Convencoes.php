@@ -46,6 +46,15 @@ class Convencoes extends Model implements Transformable
     public $timestamps = false;
 
     /**
+     * set data value
+     *
+     * @var array
+     */
+    protected $casts = [
+        'fl_status' => 'integer'
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

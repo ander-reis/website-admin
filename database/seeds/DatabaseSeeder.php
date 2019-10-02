@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ConvencoesClausulasTableSeeder::class);
         $this->call(PaginasPrincipaisTableSeeder::class);
         $this->call(PermissoesTableSeeder::class);
+        $this->call(HomePageTableSeeder::class);
+        $this->call(HomePageTempTableSeeder::class);
     }
 }
