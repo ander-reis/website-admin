@@ -17,7 +17,7 @@ class ClausulasPolicy extends Policies
      */
     public function create(User $user)
     {
-        return parent::createPolicy($user, 6);
+        return parent::createPolicy($user, 1);
     }
 
     /**
@@ -28,7 +28,7 @@ class ClausulasPolicy extends Policies
      */
     public function update(User $user)
     {
-        return parent::updatePolicy($user, 6);
+        return parent::updatePolicy($user, 1);
     }
 
     /**
@@ -39,6 +39,6 @@ class ClausulasPolicy extends Policies
      */
     public function delete(User $user)
     {
-        return parent::deletePolicy($user, 6);
+        return parent::deletePolicy($user, 1);
     }
 }

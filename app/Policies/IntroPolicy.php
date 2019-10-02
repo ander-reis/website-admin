@@ -17,7 +17,7 @@ class IntroPolicy extends Policies
      */
     public function view(User $user)
     {
-        return parent::viewPolicy($user, 7);
+        return parent::viewPolicy($user, 1);
     }
 
     /**
@@ -28,7 +28,7 @@ class IntroPolicy extends Policies
      */
     public function create(User $user)
     {
-        return parent::createPolicy($user, 7);
+        return parent::createPolicy($user, 1);
     }
 
     /**
@@ -39,7 +39,7 @@ class IntroPolicy extends Policies
      */
     public function update(User $user)
     {
-        return parent::updatePolicy($user, 7);
+        return parent::updatePolicy($user, 1);
     }
 
     /**
@@ -50,6 +50,6 @@ class IntroPolicy extends Policies
      */
     public function delete(User $user)
     {
-        return parent::deletePolicy($user, 7);
+        return parent::deletePolicy($user, 1);
     }
 }
