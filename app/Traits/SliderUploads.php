@@ -18,6 +18,7 @@ trait SliderUploads
     public function uploadSlider($id, UploadedFile $file)
     {
         $model = $this->find($id);
+
         $name = $this->upload($model, $file);
         if($name){
             /**
@@ -52,11 +53,8 @@ trait SliderUploads
     public function upload($model, UploadedFile $file)
     {
         /** @var FilesystemAdapter $storage */
-        $storage = $model->getStorage();
 
-        // Remove todos os arquivos da pasta
-        $files = $storage->allFiles(substr($model->slider_small_relative,0,strripos($model->slider_small_relative, '/')));
-        $storage->delete($files);
+        $storage = $model->getStorage();
 
         //cria nome para imagem
         $name = md5(time() . "{$model->id}-{$file->getClientOriginalName()}") . ".{$file->guessExtension()}";
