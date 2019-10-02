@@ -17,10 +17,10 @@ class CreateTbSinproAdminPermissoesTable extends Migration
             $table->increments('id');
             $table->integer('id_usuario');
             $table->integer('id_pagina');
-            $table->char('fl_consulta', 1)->default(0);
-            $table->char('fl_cadastro', 1)->default(0);
-            $table->char('fl_alteracao', 1)->default(0);
-            $table->char('fl_exclusao', 1)->default(0);
+            $table->char('fl_consulta_novo', 1)->default(0);
+            $table->char('fl_cadastro_novo', 1)->default(0);
+            $table->char('fl_alteracao_novo', 1)->default(0);
+            $table->char('fl_exclusao_novo', 1)->default(0);
             $table->dateTime('dt_cadastro')->default(Carbon\Carbon::now());
             $table->dateTime('dt_alteracao')->default(Carbon\Carbon::now());
 

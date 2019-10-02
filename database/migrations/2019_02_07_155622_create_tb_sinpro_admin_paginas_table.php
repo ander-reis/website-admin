@@ -16,7 +16,7 @@ class CreateTbSinproAdminPaginasTable extends Migration
         Schema::create('tb_sinpro_admin_paginas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ds_pagina', 50);
-            $table->string('url_pagina', 70);
+            $table->string('url_pagina_novo', 70);
         });
     }
 
