@@ -60,17 +60,19 @@ class OrdemNoticiasController extends Controller
          */
         $ordemNoticias = $this->ordemNoticiaSelect();
 
-        /**
-         * map para marcar quais noticias estão na ordem
-         */
-        $noticias->map(function($item, $key) use($ordemNoticias) {
-            foreach ($ordemNoticias as $ordem){
-                if($item['id_noticia'] == $ordem->id_noticia){
-                    $item['class'] = 'cell-selected';
+        if (!is_null($ordemNoticias)) {
+            /**
+             * map para marcar quais noticias estão na ordem
+             */
+            $noticias->map(function($item, $key) use($ordemNoticias) {
+                foreach ($ordemNoticias as $ordem){
+                    if($item['id_noticia'] == $ordem->id_noticia){
+                        $item['class'] = 'cell-selected';
+                    }
                 }
-            }
-        });
 
+            });
+        }
         return view('admin.ordem-noticias.index', compact('noticias', 'ordemNoticias'));
     }
 
@@ -119,6 +121,7 @@ class OrdemNoticiasController extends Controller
      */
     private function ordemNoticiaSelect()
     {
+        $noticias = null;
         $list = $this->repository->all();
 
         foreach ($list as $item) {
