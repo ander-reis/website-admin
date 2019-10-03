@@ -15,6 +15,13 @@ class Permissoes extends Model
     use LogsActivity;
 
     /**
+     * conexão novo database
+     *
+     * @var string
+     */
+    protected $connection = 'sqlsrv-website';
+
+    /**
      * table
      *
      * @var string
