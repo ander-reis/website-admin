@@ -26,7 +26,7 @@ class Permissoes extends Model
      *
      * @var string
      */
-    protected $table = 'tb_sinpro_admin_permissoes';
+    protected $table = 'tb_sinpro_permissoes';
 
     /**
      * set created_at
@@ -46,10 +46,10 @@ class Permissoes extends Model
     protected $fillable = [
         'id_usuario',
         'id_pagina',
-        'fl_consulta_novo',
-        'fl_cadastro_novo',
-        'fl_alteracao_novo',
-        'fl_exclusao_novo',
+        'fl_consulta',
+        'fl_cadastro',
+        'fl_alteracao',
+        'fl_exclusao',
         'dt_cadastro',
         'dt_alteracao'
     ];
@@ -60,10 +60,10 @@ class Permissoes extends Model
     protected static $logAttributes = [
         'id_usuario',
         'id_pagina',
-        'fl_consulta_novo',
-        'fl_cadastro_novo',
-        'fl_alteracao_novo',
-        'fl_exclusao_novo',
+        'fl_consulta',
+        'fl_cadastro',
+        'fl_alteracao',
+        'fl_exclusao',
         'dt_cadastro',
         'dt_alteracao'
     ];

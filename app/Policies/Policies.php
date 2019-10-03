@@ -17,7 +17,7 @@ class Policies
     public function viewPolicy(User $user, $id_pagina)
     {
         $permissao = Permissoes::where('id_usuario', $user->id)->where('id_pagina', $id_pagina)->first();
-        return (isset($permissao)) ? ($permissao->fl_consulta_novo) ? true : false : false;
+        return (isset($permissao)) ? ($permissao->fl_consulta) ? true : false : false;
     }
 
     /**
@@ -28,7 +28,7 @@ class Policies
     public function createPolicy(User $user, $id_pagina)
     {
         $permissao = Permissoes::where('id_usuario', $user->id)->where('id_pagina', $id_pagina)->first();
-        return (isset($permissao)) ? ($permissao->fl_cadastro_novo) ? true : false : false;
+        return (isset($permissao)) ? ($permissao->fl_cadastro) ? true : false : false;
     }
 
     /**
@@ -39,7 +39,7 @@ class Policies
     public function updatePolicy(User $user, $id_pagina)
     {
         $permissao = Permissoes::where('id_usuario', $user->id)->where('id_pagina', $id_pagina)->first();
-        return (isset($permissao)) ? ($permissao->fl_alteracao_novo) ? true : false : false;
+        return (isset($permissao)) ? ($permissao->fl_alteracao) ? true : false : false;
     }
 
     /**
@@ -50,6 +50,6 @@ class Policies
     public function deletePolicy(User $user, $id_pagina)
     {
         $permissao = Permissoes::where('id_usuario', $user->id)->where('id_pagina', $id_pagina)->first();
-        return (isset($permissao)) ? ($permissao->fl_exclusao_novo) ? true : false : false;
+        return (isset($permissao)) ? ($permissao->fl_exclusao) ? true : false : false;
     }
 }
