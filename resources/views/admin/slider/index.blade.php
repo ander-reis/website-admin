@@ -18,6 +18,7 @@
                     <th scope="col">Imagem</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Link</th>
+                    <th scope="col">Ordem</th>
                     <th scope="col" class="text-center">Ativo</th>
                     <th scope="col" class="text-center">Editar</th>
                     <th scope="col" class="text-center">Excluir</th>
@@ -38,6 +39,9 @@
                         </td>
                         <td>
                             {{ $slider->ds_link }}
+                        </td>
+                        <td class="text-center">
+                            {{ $slider->fl_ordem }}
                         </td>
                         <td class="text-center">
                             {!! flStatus($slider->fl_ativo) !!}

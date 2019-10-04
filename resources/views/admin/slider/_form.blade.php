@@ -1,82 +1,95 @@
+@component('admin.form-components._form_group', ['field' => 'ds_imagem'])
 <section class="row">
     <div class="col-12">
         <div class="row">
             <div class="col-12 form-group">
-                    <p>Upload</p>
-                    <div class="custom-file form-group">
-                        {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br', 'id' => 'btn_imagem', 'accept' => 'image/*']) }}
-                        {{ Form::label('ds_imagem', 'Upload Imagem', ['class' => 'custom-file-label control-label']) }}
-                    </div>
+                <p>Upload</p>
+                <div class="custom-file form-group">
+                    {{ Form::file('ds_imagem', ['class' => 'custom-file-input', 'lang' => 'br', 'id' => 'btn_imagem', 'accept' => 'image/*']) }}
+                    {{ Form::label('ds_imagem', 'Upload Imagem', ['class' => 'custom-file-label control-label']) }}
+                </div>
             </div>
         </div>
     </div>
 </section>
+@endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'ds_label'])
-    {{ Form::label('lb_label', 'Chapéu', ['class' => 'control-label']) }}
-    {{ Form::text('ds_label', null, ['class' => 'form-control', 'maxlength' => 40, 'id' => 'ds_label']) }}
+{{ Form::label('lb_label', 'Chapéu', ['class' => 'control-label']) }}
+{{ Form::text('ds_label', null, ['class' => 'form-control', 'maxlength' => 40, 'id' => 'ds_label']) }}
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'ds_titulo'])
-    {{ Form::label('lb_titulo', 'Título', ['class' => 'control-label']) }}
-    {{ Form::text('ds_titulo', null, ['class' => 'form-control', 'maxlength' => 70, 'id' => 'ds_titulo']) }}
+{{ Form::label('lb_titulo', 'Título', ['class' => 'control-label']) }}
+{{ Form::text('ds_titulo', null, ['class' => 'form-control', 'maxlength' => 70, 'id' => 'ds_titulo']) }}
 @endcomponent
 
 @component('admin.form-components._form_group', ['field' => 'ds_link'])
-    {{ Form::label('ds_link', 'Link', ['class' => 'control-label']) }}
-    {{ Form::text('ds_link', null, ['class' => 'form-control', 'maxlength' => 60]) }}
+{{ Form::label('ds_link', 'Link', ['class' => 'control-label']) }}
+{{ Form::text('ds_link', null, ['class' => 'form-control', 'maxlength' => 60]) }}
 @endcomponent
 
-@component('admin.form-components._form_group',['field' => 'fl_ativo'])
-    {{ Form::label('fl_ativo', 'Status do Slide', ['class' => 'control-label']) }}
-    <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
-        <div class="custom-control custom-radio custom-control-inline">
-            {{ Form::radio('fl_ativo', '1', true, ['class' => 'custom-control-input', 'id' => 'fl_ativo']) }}
-            {{ Form::label('fl_ativo', 'Ativo', ['class' => 'custom-control-label']) }}
+<section class="row">
+    <div class="col-6">
+        @component('admin.form-components._form_group',['field' => 'fl_ativo'])
+        {{ Form::label('fl_ativo', 'Status do Slide', ['class' => 'control-label']) }}
+        <div class="radio{{$errors->has('fl_ativo') ? ' text-danger' : ''}}">
+            <div class="custom-control custom-radio custom-control-inline">
+                {{ Form::radio('fl_ativo', '1', true, ['class' => 'custom-control-input', 'id' => 'fl_ativo']) }}
+                {{ Form::label('fl_ativo', 'Ativo', ['class' => 'custom-control-label']) }}
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                {{ Form::radio('fl_ativo', '0', false, ['class' => 'custom-control-input', 'id' => 'fl_oculto']) }}
+                {{ Form::label('fl_oculto', 'Oculto', ['class' => 'custom-control-label']) }}
+            </div>
         </div>
-        <div class="custom-control custom-radio custom-control-inline">
-            {{ Form::radio('fl_ativo', '0', false, ['class' => 'custom-control-input', 'id' => 'fl_oculto']) }}
-            {{ Form::label('fl_oculto', 'Oculto', ['class' => 'custom-control-label']) }}
-        </div>
+        @endcomponent
     </div>
-@endcomponent
 
-<div class="row">
+    <div class="col-6">
+        @component('admin.form-components._form_group', ['field' => 'fl_ordem'])
+        {{ Form::label('fl_ordem', 'Escolha a ordem do slider:', ['class' => 'control-label']) }}
+        {{ Form::select('fl_ordem', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'], null, ['placeholder' => 'Escolha uma opção ...', 'class' => 'form-control']) }}
+        @endcomponent
+    </div>
+</section>
+
+<div class="row mb-3">
     <div class="col-12">
-        @component('admin.form-components._form_group', ['field' => 'ds_imagem'])
-            <div class="col-lg-5" id="div_carousel" style="{{ (isset($slider)) ? '' : 'display: none;' }}">
-                {{--slider--}}
-                <div id="carousel-sinpro" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-sinpro" data-slide-to="0" class="active"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="gradient_img">
-                                    <div id="div_imagem" class="slider-img">
-                                            @if (isset($slider))
-                                        <img id='img_imagem' class="d-block w-100"
-                                        src="{{ (isset($slider)) ? $slider->thumb_asset : ''}}"
-                                        alt="Título">
-                                        @endif
-                                    </div>
+        <div class="col-lg-5" id="div_carousel" style="{{ (isset($slider)) ? '' : 'display: none;' }}">
+            {{--slider--}}
+            <div id="carousel-sinpro" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-sinpro" data-slide-to="0" class="active"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="gradient_img">
+                            <div id="div_imagem" class="slider-img">
+                                @if (isset($slider))
+                                <img id='img_imagem' class="d-block w-100"
+                                    src="{{ (isset($slider)) ? $slider->thumb_asset : ''}}" alt="Título">
+                                @endif
                             </div>
-                            <div class="carousel-caption p-2">
-                                <h5 class="m-0 p-0"><span id="sp_chapeu" name="sp_chapeu">{{ (isset($slider)) ? $slider->ds_label : '' }}</span></h5>
-                                <p class="m-0 pb-2"><span id="sp_titulo" name="sp_titulo">{{  (isset($slider)) ? $slider->ds_titulo : '' }}</span></p>
-                            </div>
+                        </div>
+                        <div class="carousel-caption p-2">
+                            <h5 class="m-0 p-0"><span id="sp_chapeu"
+                                    name="sp_chapeu">{{ (isset($slider)) ? $slider->ds_label : '' }}</span></h5>
+                            <p class="m-0 pb-2"><span id="sp_titulo"
+                                    name="sp_titulo">{{  (isset($slider)) ? $slider->ds_titulo : '' }}</span></p>
                         </div>
                     </div>
                 </div>
-                {{--slider end--}}
             </div>
-        @endcomponent
+            {{--slider end--}}
+        </div>
+
     </div>
 </div>
 
 @push('preview-script')
-    <script type="text/javascript">
-        function previewImage(file) {
+<script type="text/javascript">
+    function previewImage(file) {
             var imageType = /image.*/;
 
             if (!file.type.match(imageType)) {
@@ -161,6 +174,13 @@
                                 }
                             },
                         },
+                        'fl_ordem': {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Campo obrigatório'
+                                }
+                            },
+                        },
                     },
                     plugins: {
                         trigger: new FormValidation.plugins.Trigger(),
@@ -172,5 +192,5 @@
             );
         });
 
-    </script>
+</script>
 @endpush
