@@ -12,7 +12,7 @@
 
     <button type="submit" class="btn btn-primary">Salvar</button>
 
-    {{-- <a href="{{ route('admin.convencao.clausulas.index') }}" class="button btn btn-danger">Voltar</a> --}}
+     <a href="{{ route('admin.convencao.clausulas.index', ['convencoes_entidade' => $convencoes->fl_entidade, 'convencoes' => $convencoes->id_convencao]) }}" class="button btn btn-danger">Voltar</a>
 
     {{ Form::close() }}
 </div>
