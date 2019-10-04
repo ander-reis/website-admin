@@ -12,6 +12,8 @@
 
         <button type="submit" class="btn btn-primary">Cadastrar</button>
 
+        {{-- <a href="{{ route('admin.convencao.index') }}" class="button btn btn-danger">Voltar</a> --}}
+
         {{ Form::close() }}
 
     </div>
