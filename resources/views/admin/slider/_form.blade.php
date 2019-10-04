@@ -133,24 +133,24 @@
                 form,
                 {
                     fields: {
-                        'ds_label': {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Campo obrigatório'
-                                },
-                                stringLength: {
-                                    min: 3,
-                                    message: 'Campo deve ter pelo menos 3 caracteres'
-                                }
-                            },
-                        },
-                        'ds_titulo': {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Campo obrigatório'
-                                }
-                            },
-                        },
+                        // 'ds_label': {
+                        //     validators: {
+                        //         notEmpty: {
+                        //             message: 'Campo obrigatório'
+                        //         },
+                        //         stringLength: {
+                        //             min: 3,
+                        //             message: 'Campo deve ter pelo menos 3 caracteres'
+                        //         }
+                        //     },
+                        // },
+                        // 'ds_titulo': {
+                        //     validators: {
+                        //         notEmpty: {
+                        //             message: 'Campo obrigatório'
+                        //         }
+                        //     },
+                        // },
                         'ds_link': {
                             validators: {
                                 notEmpty: {
