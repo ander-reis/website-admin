@@ -42,7 +42,7 @@ class PaginasPrincipaisController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        $data = $this->repository->orderBy('id_pagina')->paginate();
+        $data = $this->repository->orderBy('txt_titulo')->get();
 
         return view('admin.paginas-principais.index', compact('data'));
     }

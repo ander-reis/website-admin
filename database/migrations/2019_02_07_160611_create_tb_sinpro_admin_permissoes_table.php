@@ -13,11 +13,11 @@ class CreateTbSinproAdminPermissoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_sinpro_admin_permissoes', function (Blueprint $table) {
+        Schema::create('tb_sinpro_permissoes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_usuario');
             $table->integer('id_pagina');
-            $table->char('fl_consulta', 1)->default(0);
+            $table->char('fl_consulta', 1)->default(1);
             $table->char('fl_cadastro', 1)->default(0);
             $table->char('fl_alteracao', 1)->default(0);
             $table->char('fl_exclusao', 1)->default(0);
@@ -37,6 +37,6 @@ class CreateTbSinproAdminPermissoesTable extends Migration
     public function down()
     {
 //        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('tb_sinpro_admin_permissoes');
+        Schema::dropIfExists('tb_sinpro_permissoes');
     }
 }

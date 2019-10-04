@@ -19,7 +19,7 @@ class PaginasPrincipais extends Model
      *
      * @var string
      */
-    protected $connection = 'sqlsrv-site';
+    protected $connection = 'sqlsrv-website';
 
     /**
      * table

@@ -18,6 +18,13 @@ class Slider extends Model implements Transformable
     use TransformableTrait, SliderPaths, LogsActivity;
 
     /**
+     * conexão novo database
+     *
+     * @var string
+     */
+    protected $connection = 'sqlsrv-website';
+
+    /**
      * Table
      *
      * @var string
