@@ -19,7 +19,7 @@ class Permissoes extends Model
      *
      * @var string
      */
-    protected $table = 'tb_sinpro_admin_permissoes';
+    protected $table = 'tb_sinpro_permissoes';
 
     /**
      * set created_at
