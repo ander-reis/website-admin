@@ -27,9 +27,7 @@ class SliderUpdateRequest extends FormRequest
 
         return [
             'ds_imagem' => '|image|max:1024',
-            'ds_label'  => 'required|max:40',
-            'ds_titulo' => 'required|max:70',
-            'ds_link'   => 'required|url|max:60',
+            'ds_link'   => 'required|url|max:60'
         ];
     }
 
