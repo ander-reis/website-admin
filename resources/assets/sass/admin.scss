@@ -235,3 +235,13 @@ a.link-icon:hover, a.link-icon:focus {
     width: 445px;
     height: 333px;
 }
+
+.giz-img {
+    width:195px;
+    height:103px;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+  }

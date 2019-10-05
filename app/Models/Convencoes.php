@@ -18,6 +18,13 @@ class Convencoes extends Model implements Transformable
     use TransformableTrait, ConvencaoPaths, LogsActivity;
 
     /**
+     * conexão novo database
+     *
+     * @var string
+     */
+    protected $connection = 'sqlsrv-website';
+
+    /**
      * table
      *
      * @var string
@@ -37,6 +44,15 @@ class Convencoes extends Model implements Transformable
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * set data value
+     *
+     * @var array
+     */
+    protected $casts = [
+        'fl_status' => 'integer'
+    ];
 
     /**
      * The attributes that are mass assignable.

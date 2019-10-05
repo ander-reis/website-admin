@@ -6,6 +6,7 @@ use App\Traits\RevistaGizPaths;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class HomePage.
@@ -14,14 +15,14 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class HomePage extends Model implements Transformable
 {
-    use TransformableTrait, RevistaGizPaths;
+    use TransformableTrait, RevistaGizPaths, LogsActivity;
 
     /**
      * conexão novo database
      *
      * @var string
      */
-//    protected $connection = 'sqlsrv-site';
+    protected $connection = 'sqlsrv-website';
 
     /**
      * table
@@ -44,4 +45,31 @@ class HomePage extends Model implements Transformable
         'created_at',
         'updated_at'
     ];
+
+    /**
+     * set logging
+     */
+    protected static $logAttributes = [
+        'ds_categoria',
+        'ds_titulo',
+        'ds_texto_noticia',
+        'ds_link',
+        'ds_imagem',
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
+     * set log fillable
+     *
+     * @var bool
+     */
+    protected static $logFillable = true;
+
+    /**
+     * set log name
+     *
+     * @var string
+     */
+    protected static $logName = 'home_page';
 }

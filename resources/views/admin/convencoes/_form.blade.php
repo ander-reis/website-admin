@@ -68,11 +68,11 @@
     {{ Form::label('fl_status', 'Status da Conveção', ['class' => 'control-label']) }}
     <div class="radio{{$errors->has('fl_status') ? ' text-danger' : ''}}">
         <div class="custom-control custom-radio custom-control-inline">
-            {{ Form::radio('fl_status', '1', true, ['class' => 'custom-control-input', 'id' => 'fl_status_ativo']) }}
+            {{ Form::radio('fl_status', 1, true, ['class' => 'custom-control-input', 'id' => 'fl_status_ativo']) }}
             {{ Form::label('fl_status_ativo', 'Ativo', ['class' => 'custom-control-label']) }}
         </div>
         <div class="custom-control custom-radio custom-control-inline">
-            {{ Form::radio('fl_status', '0', false, ['class' => 'custom-control-input', 'id' => 'fl_status']) }}
+            {{ Form::radio('fl_status', 0, false, ['class' => 'custom-control-input', 'id' => 'fl_status']) }}
             {{ Form::label('fl_status', 'Oculto', ['class' => 'custom-control-label']) }}
         </div>
     </div>

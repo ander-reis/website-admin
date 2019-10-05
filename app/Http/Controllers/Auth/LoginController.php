@@ -94,7 +94,6 @@ class LoginController extends Controller
         }
 
         if ($result['code']) {
-
             // se o usuario existe no servidor LDAP, com senha
             $user = User::where($this->username(), $username)->first();
 
@@ -106,8 +105,14 @@ class LoginController extends Controller
                 $user->senha = Hash::make($password);
             }
 
+            /**
+             * cria sessao para o ckfinder
+             */
+            $_SESSION['isLogged'] = true;
+
             // registra usuário e cria a session
             $this->guard()->login($user, true);
+
             return true;
         }
         return false;
@@ -133,6 +138,21 @@ class LoginController extends Controller
         curl_close($curl);
 
         $result = json_decode($result, true);
+
         return $result;
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        /**
+         * destrui a sessao do ckfinder
+         */
+        session_destroy();
+
+        return $this->loggedOut($request) ?: redirect('/');
     }
 }

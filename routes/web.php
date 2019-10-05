@@ -78,7 +78,9 @@ Route::prefix('admin')->group(function(){
         /**
          * páginas principais
          */
-        Route::resource('paginas', 'PaginasPrincipais\PaginasPrincipaisController');
+        Route::name('paginas-principais.index')->get('/paginas-principais', 'PaginasPrincipais\PaginasPrincipaisController@index');
+        Route::name('paginas-principais.edit')->get('/paginas-principais/{id}/edit', 'PaginasPrincipais\PaginasPrincipaisController@edit');
+        Route::name('paginas-principais.update')->put('/paginas-principais/{id}', 'PaginasPrincipais\PaginasPrincipaisController@update');
 
         /**
          * Home Page

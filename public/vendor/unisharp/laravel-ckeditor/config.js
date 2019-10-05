@@ -10,20 +10,21 @@ CKEDITOR.editorConfig = function (config) {
 
     // The toolbar groups arrangement, optimized for two toolbar rows.
     config.toolbarGroups = [
-        {name: 'document', groups: ['mode', 'document', 'doctools']},
-        {name: 'styles', groups: ['styles']},
-        {name: 'clipboard', groups: ['clipboard', 'undo']},
-        {name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing']},
-        {name: 'forms', groups: ['forms']},
-        {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
-        {name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph']},
-        {name: 'links', groups: ['links']},
-        {name: 'insert', groups: ['insert']},
-        {name: 'colors', groups: ['colors']},
+        { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+        { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+        { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ] },
+        { name: 'forms' },
+
+        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+        { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+        { name: 'links' },
+        { name: 'insert' },
         '/',
-        {name: 'tools', groups: ['tools']},
-        {name: 'others', groups: ['others']},
-        {name: 'about', groups: ['about']}
+        { name: 'styles', },
+        { name: 'colors' },
+        { name: 'tools' },
+        { name: 'others' },
+        { name: 'about' }
     ];
 
     // Remove some buttons provided by the standard plugins, which are
@@ -42,17 +43,6 @@ CKEDITOR.editorConfig = function (config) {
     // configura skin
     config.skin = 'moono-dark';
 
-
-    // config.filebrowserBrowseUrl = '/browser/browse.php';
-    // config.filebrowserImageUploadUrl = '/uploader/upload.php?type=Images';
-
-    config.filebrowserBrowseUrl =  '/ckfinder/ckfinder.html';
-    config.filebrowserUploadUrl = '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
+	// habilitar plugins
+    config.extraPlugins = 'font,colorbutton,justify,div,showblocks,dialogui,dialog,templates';
 };
-
-
-// CKEDITOR.replace( 'editor1', {
-//     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-//     filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
-// } );
-

@@ -18,10 +18,11 @@ class CreateTbSinproConteudoPaginasPrincipaisTable extends Migration
             $table->smallInteger('tp_busca')->default(0);
             $table->string('txt_titulo_busca', 75)->default('');
             $table->string('txt_titulo', 75)->default('');
-            $table->text('txt_pagina')->default('');
-            $table->string('url_pagina', 100)->unique()->default('');
+            $table->text('ds_texto')->default('');
+            $table->string('url_pagina', 100)->default('');
+            $table->string('url', 100)->unique()->default('');
             $table->string('ds_palavra_chave', 150)->default('');
-            $table->integer('fl_status')->default(1);
+            $table->char('fl_status',1)->default(1);
             $table->dateTime('dt_criacao');
             $table->dateTime('dt_alteracao');
             /**

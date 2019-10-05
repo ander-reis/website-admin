@@ -22,7 +22,7 @@ class Intro extends Model implements Transformable
      *
      * @var string
      */
-//    protected $connection = 'sqlsrv-site';
+    protected $connection = 'sqlsrv-website';
 
     /**
      * Table
@@ -31,7 +31,7 @@ class Intro extends Model implements Transformable
      */
     protected $table = 'tb_sinpro_intro';
 
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

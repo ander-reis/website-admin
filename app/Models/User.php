@@ -12,6 +12,13 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable, AuthenticationLogable;
 
     /**
+     * conexão novo database
+     *
+     * @var string
+     */
+    protected $connection = 'sqlsrv-website';
+
+    /**
      * table
      *
      * @var string

@@ -38,7 +38,6 @@ class NoticiasController extends Controller
     public function index()
     {
         $noticias = $this->repository->orderBy('id', 'desc')->paginate('15');
-
         return view('admin.noticias.index', compact('noticias'));
     }
 
@@ -73,8 +72,15 @@ class NoticiasController extends Controller
         try {
             $data = $request->only(array_keys($request->all()));
             $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            $data['fl_oculta'] = ($data['fl_status'] == 1 ? 'N' : 'S');
+            $data['ds_palavra_chave'] = (!is_null($data['ds_palavra_chave']) ? $data['ds_palavra_chave'] : '');
             unset($data['hr_noticia']);
-            $this->repository->create($data);
+
+            $insert = $this->repository->create($data);
+            $data['id_noticia'] = $insert->id;
+
+            $noticia['id_noticia'] = $insert->id;
+            $this->repository->update($noticia, $insert->id);
 
             toastr()->success('Cadastrado com sucesso!');
 
@@ -95,6 +101,7 @@ class NoticiasController extends Controller
      */
     public function show($id)
     {
+
         if (\Gate::denies('noticias.view')) {
 
             toastr()->error("Acesso não Autorizado");
@@ -144,6 +151,8 @@ class NoticiasController extends Controller
         try {
             $data = $request->only(array_keys($request->all()));
             $data['dt_noticia'] = convertDateTime($data['dt_noticia'], $data['hr_noticia']);
+            $data['fl_oculta'] = ($data['fl_status'] == 1 ? 'N' : 'S');
+            $data['ds_palavra_chave'] = (!is_null($data['ds_palavra_chave']) ? $data['ds_palavra_chave'] : '');
             unset($data['hr_noticia']);
             $this->repository->update($data, $id);
 

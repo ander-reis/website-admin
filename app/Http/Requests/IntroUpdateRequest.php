@@ -41,7 +41,7 @@ class IntroUpdateRequest extends FormRequest
     public function sanitize()
     {
         $input = $this->all();
-        $input['ds_titulo'] = mb_strtoupper(trim(filter_var($input['ds_titulo'], FILTER_SANITIZE_STRING)));
+        $input['ds_titulo'] = trim(filter_var($input['ds_titulo'], FILTER_SANITIZE_STRING));
         $input['ds_link'] = mb_strtolower(trim(filter_var($input['ds_link'], FILTER_SANITIZE_STRING)));
         $this->replace($input);
     }

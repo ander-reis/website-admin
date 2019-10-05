@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Permissoes.
@@ -11,12 +12,21 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Permissoes extends Model
 {
+    use LogsActivity;
+
+    /**
+     * conexão novo database
+     *
+     * @var string
+     */
+    protected $connection = 'sqlsrv-website';
+
     /**
      * table
      *
      * @var string
      */
-    protected $table = 'tb_sinpro_admin_permissoes';
+    protected $table = 'tb_sinpro_permissoes';
 
     /**
      * set created_at
@@ -80,15 +90,5 @@ class Permissoes extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'id');
-    }
-
-    /**
-     * Relacionamento paginas para permissoes, um para um
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function pagina()
-    {
-        return $this->belongsTo(Paginas::class, 'id');
     }
 }
