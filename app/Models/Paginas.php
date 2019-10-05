@@ -17,7 +17,7 @@ class Paginas extends Model
      *
      * @var string
      */
-    protected $connection = 'sqlsrv-site';
+//    protected $connection = 'sqlsrv-site';
 
     /**
      * table
