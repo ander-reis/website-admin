@@ -21,7 +21,7 @@ class HomePageTemp extends Model implements Transformable
      *
      * @var string
      */
-    protected $connection = 'sqlsrv-website';
+//    protected $connection = 'sqlsrv-website';
 
     /**
      * table

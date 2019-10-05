@@ -19,7 +19,7 @@ class Permissoes extends Model
      *
      * @var string
      */
-    protected $connection = 'sqlsrv-website';
+//    protected $connection = 'sqlsrv-website';
 
     /**
      * table
