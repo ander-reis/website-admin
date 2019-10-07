@@ -2,6 +2,7 @@
 
 if(!function_exists('convertDateTime')){
     function convertDateTime($date, $hour){
-        return $date . ' ' . $hour . ':00.000';
+        $datas = $date . ' ' . $hour;
+        return \Carbon\Carbon::parse($datas);
     }
 }
