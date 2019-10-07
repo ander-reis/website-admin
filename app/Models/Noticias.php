@@ -59,6 +59,15 @@ class Noticias extends Model implements Transformable
     ];
 
     /**
+     * Dates
+     *
+     * @var array
+     * date: 2019-08-30 10:22:15.187 America/Sao_Paulo (-03:00)
+     * date: 2019-10-07 14:12:24.0 America/Sao_Paulo (-03:00)
+     */
+    protected $dates = ['dt_noticia', 'dt_cadastro', 'dt_alteracao'];
+
+    /**
      * set logging
      */
     protected static $logAttributes = [
@@ -87,13 +96,6 @@ class Noticias extends Model implements Transformable
     protected static $logName = 'noticias';
 
     /**
-     * Dates
-     *
-     * @var array
-     */
-    protected $dates = ['dt_noticia', 'dt_cadastro', 'dt_alteracao'];
-
-    /**
      * Mutators formata data para o form de edição -> 2000-12-30
      *
      * @return string
@@ -101,7 +103,7 @@ class Noticias extends Model implements Transformable
      */
     public function getDtCadastroUTCFormattedAttribute()
     {
-        return (new \DateTime($this->dt_noticia))->format('Y-m-d');
+        return \Carbon\Carbon::parse($this->dt_noticia);
     }
 
     /**
@@ -111,7 +113,7 @@ class Noticias extends Model implements Transformable
      */
     public function getHrNoticiaFormattedAttribute()
     {
-        return substr($this->dt_noticia, 11, -3);
+        return \Carbon\Carbon::parse($this->dt_noticia);
     }
 
     /**

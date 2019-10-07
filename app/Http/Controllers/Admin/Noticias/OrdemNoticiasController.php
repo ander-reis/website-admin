@@ -66,7 +66,7 @@ class OrdemNoticiasController extends Controller
              */
             $noticias->map(function($item, $key) use($ordemNoticias) {
                 foreach ($ordemNoticias as $ordem){
-                    if($item['id_noticia'] == $ordem->id_noticia){
+                    if($item['id'] == $ordem->id){
                         $item['class'] = 'cell-selected';
                     }
                 }

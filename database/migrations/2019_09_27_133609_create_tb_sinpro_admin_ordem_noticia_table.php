@@ -14,9 +14,10 @@ class CreateTbSinproAdminOrdemNoticiaTable extends Migration
     public function up()
     {
         Schema::create('tb_sinpro_admin_ordem_noticia', function (Blueprint $table) {
-            $table->integer('id_noticia');
-            $table->integer('ordem_noticia');
-            $table->timestamps();
+            $table->increments('id');
+            $table->integer('id_noticia')->default(0);
+            $table->integer('ordem_noticia')->default(0);
+//            $table->timestamps();
         });
     }
 
