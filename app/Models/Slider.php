@@ -41,7 +41,8 @@ class Slider extends Model implements Transformable
         'ds_titulo',
         'ds_imagem',
         'ds_link',
-        'fl_ativo'
+        'fl_ativo',
+        'fl_ordem'
     ];
 
     /**

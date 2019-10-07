@@ -1,6 +1,6 @@
 @component('admin.form-components._form_group_validation')
     @slot('title')
-        Destaque 1
+        Manchete Principal
     @endslot
     @slot('block_one')
         {{ Form::label('ds_categoria', 'Chapéu', ['class' => 'col-sm-2 col-label']) }}
@@ -21,7 +21,7 @@
 @endcomponent
 @component('admin.form-components._form_group_validation')
     @slot('title')
-        Destaque 2
+        Destaque 1
     @endslot
     @slot('block_one')
         {{ Form::label('ds_categoria', 'Chapéu', ['class' => 'col-sm-2 col-label']) }}
@@ -44,7 +44,7 @@
 
 @component('admin.form-components._form_group_validation')
     @slot('title')
-        Destaque 3
+        Destaque 2
     @endslot
     @slot('block_one')
         {{ Form::label('ds_categoria', 'Chapéu', ['class' => 'col-sm-2 col-label']) }}
