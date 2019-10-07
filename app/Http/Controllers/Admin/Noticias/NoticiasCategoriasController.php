@@ -37,7 +37,7 @@ class NoticiasCategoriasController extends Controller
      */
     public function index()
     {
-        $noticiasCategorias = $this->repository->orderBy('id')->paginate();
+        $noticiasCategorias = $this->repository->orderBy('ds_categoria')->paginate();
         return view('admin.noticias-categoria.index', compact('noticiasCategorias'));
     }
 

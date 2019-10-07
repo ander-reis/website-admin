@@ -29,9 +29,9 @@ class ConvencoesCreateRequest extends FormRequest
             'fl_entidade' => 'required',
             'ds_titulo' => 'required|max:100',
             'dt_validade' => 'required|max:9',
-            'url_arquivo' => 'required|file|mimetypes:application/pdf|max:15360',
+            'url_arquivo' => 'required|file|mimetypes:application/pdf|max:30720',
             'ds_titulo_aditamento' => 'max:100',
-            'url_aditamento' => 'mimes:pdf|max:2048',
+            'url_aditamento' => 'mimes:pdf|max:30720',
             'fl_app' => 'required',
             'fl_status' => 'required'
         ];

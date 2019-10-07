@@ -5,7 +5,7 @@
     {{ Form::model([$data, $temp], ['route' => 'admin.home-page.store', 'files' => true, 'id' => 'formHomePage']) }}
     @include('admin.home-page._form')
     {{ Form::hidden('action', 'preview', ['id' => 'action']) }}
-    {{ Form::submit('Cadastrar', ['id' => 'cadastrar', 'class' => 'btn btn-primary']) }}
+    {{ Form::submit('Salvar', ['id' => 'cadastrar', 'class' => 'btn btn-primary']) }}
     {{ Form::submit('Preview', ['id' => 'preview', 'class' => 'btn btn-secondary']) }}
 
     {{ Form::close() }}

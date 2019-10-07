@@ -2,7 +2,7 @@
 
 @component('admin.form-components._form_group',['field' => 'id_categoria'])
     {{ Form::label('id_categoria', 'Categoria', ['class' => 'control-label']) }}
-    {{ Form::select('id_categoria', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
+    {{ Form::select('id_categoria', \App\Models\NoticiasCategoria::orderBy('ds_categoria')->pluck('ds_categoria', 'id'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control']) }}
 @endcomponent
 
 @component('admin.form-components._form_group',['field' => 'ds_resumo'])
