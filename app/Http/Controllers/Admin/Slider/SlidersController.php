@@ -38,7 +38,7 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        $sliders = $this->repository->orderBy('id', 'asc')->paginate();
+        $sliders = $this->repository->orderBy('fl_ativo', 'desc')->orderBy('fl_ordem', 'asc')->orderBy('id', 'desc')->paginate();
 
         return view('admin.slider.index', compact('sliders'));
     }

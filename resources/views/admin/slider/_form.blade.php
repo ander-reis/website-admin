@@ -49,7 +49,7 @@
     <div class="col-6">
         @component('admin.form-components._form_group', ['field' => 'fl_ordem'])
         {{ Form::label('fl_ordem', 'Escolha a ordem do slider:', ['class' => 'control-label']) }}
-        {{ Form::select('fl_ordem', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'], null, ['placeholder' => 'Escolha uma opção ...', 'class' => 'form-control']) }}
+        {{ Form::select('fl_ordem', ['0' => '0', '1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'], null, ['placeholder' => 'Escolha uma opção ...', 'class' => 'form-control']) }}
         @endcomponent
     </div>
 </section>
