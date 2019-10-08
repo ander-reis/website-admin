@@ -85,8 +85,8 @@ $config['backends']['laravel_logs'] = array(
 $config['backends']['default'] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl'      => env('APP_URL').'/userfiles/',
-    'root'         => public_path('/userfiles/'),
+    'baseUrl'      => env('APP_URL').'/upl/',
+    'root'         => public_path('/upl/'),
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,
     'filesystemEncoding' => 'UTF-8'
@@ -98,8 +98,8 @@ $config['backends']['default'] = array(
 $config['defaultResourceTypes'] = '';
 
 $config['resourceTypes'][] = array(
-    'name'              => 'Files', // Single quotes not allowed.
-    'directory'         => 'files',
+    'name'              => 'Arquivos', // Single quotes not allowed.
+    'directory'         => 'arq',
     'maxSize'           => 0,
     'allowedExtensions' => '7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,png,ppt,pptx,pxd,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,sitd,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
     'deniedExtensions'  => '',
@@ -107,8 +107,8 @@ $config['resourceTypes'][] = array(
 );
 
 $config['resourceTypes'][] = array(
-    'name'              => 'Images',
-    'directory'         => 'images',
+    'name'              => 'Imagens',
+    'directory'         => 'img',
     'maxSize'           => 0,
     'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
     'deniedExtensions'  => '',
