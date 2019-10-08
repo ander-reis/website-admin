@@ -18,7 +18,7 @@
 @endcomponent
 
 @component('admin.form-components._form_group',['field' => 'url'])
-    {{ Form::label('url', 'Título da Busca', ['class' => 'control-label']) }}
+    {{ Form::label('url', 'Endereço da Página', ['class' => 'control-label']) }}
     {{ Form::text('url', null, ['class' => 'form-control', 'maxlength' => 100]) }}
 @endcomponent
 
