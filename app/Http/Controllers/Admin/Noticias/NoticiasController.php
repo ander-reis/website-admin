@@ -160,7 +160,7 @@ class NoticiasController extends Controller
 
             toastr()->success('Cadastro alterado com sucesso!');
 
-            return redirect()->route('admin.noticias.index');
+            return redirect()->to($data['redirects_to']);
         } catch (\Exception $e) {
 
             toastr()->error("Não foi possível alterar o cadastro");
