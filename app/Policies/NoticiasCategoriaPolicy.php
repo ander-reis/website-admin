@@ -10,6 +10,17 @@ class NoticiasCategoriaPolicy extends Policies
     use HandlesAuthorization;
 
     /**
+     * Permissão ver
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function view(User $user)
+    {
+        return parent::viewPolicy($user, 1);
+    }
+
+    /**
      * Permissão criar
      *
      * @param User $user

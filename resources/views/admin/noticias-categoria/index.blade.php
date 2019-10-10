@@ -21,20 +21,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($noticiasCategorias as $categoria)
+                @foreach($model as $categoria)
                     <tr>
                         <td>{{ $categoria->id }}</td>
                         <td>{{ $categoria->ds_categoria }}</td>
                         <td class="text-center">
-                            @can('noticias-categoria.update')
+                            @if($permission)
                             <a class="text-dark link-icon"
                                href="{{ route('admin.noticias-categoria.edit', ['noticia' => $categoria->id]) }}">
                                 <i class="fas fa-edit fa-2x"></i>
                             </a>
-                            @endcan
-                            @cannot('noticias-categoria.update')
+                            @else
                                 <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
-                            @endcannot
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -42,7 +41,7 @@
             </table>
 
             {{--paginacao--}}
-            {!! $noticiasCategorias->links() !!}
+            {!! $model->links() !!}
 
         </div>
     </div>

@@ -29,7 +29,7 @@
                         <td class="text-center">{!! dtCadastroFormatted($item->dt_boletim) !!}</td>
                         <td>{{ $item->ds_link }}</td>
                         <td class="text-center">
-                            @if(!isset($not_update))
+                            @if($permission)
                                 <a class="text-dark link-icon"
                                    href="{{ route('admin.boletim-cadastro.edit', ['id' => $item->id]) }}">
                                     <i class="fas fa-edit fa-2x"></i>

@@ -37,8 +37,19 @@ class NoticiasCategoriasController extends Controller
      */
     public function index()
     {
-        $noticiasCategorias = $this->repository->orderBy('ds_categoria')->paginate();
-        return view('admin.noticias-categoria.index', compact('noticiasCategorias'));
+        $permission = true;
+
+        $model = $this->repository->orderBy('ds_categoria')->paginate('15', ['id', 'ds_categoria']);
+
+        if (\Gate::denies('noticias-categoria.view')) {
+            toastr()->error("Acesso não Autorizado");
+            return redirect()->route('admin.dashboard');
+        }
+        if (\Gate::denies('noticias-categoria.update')) {
+            $permission = false;
+        }
+
+        return view('admin.noticias-categoria.index', compact('model', 'permission'));
     }
 
     /**

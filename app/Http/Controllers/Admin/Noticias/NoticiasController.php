@@ -37,8 +37,19 @@ class NoticiasController extends Controller
      */
     public function index()
     {
-        $noticias = $this->repository->orderBy('id', 'desc')->paginate('15');
-        return view('admin.noticias.index', compact('noticias'));
+        $permission_view = true;
+        $permission_update = true;
+
+        $model = $this->repository->orderBy('id', 'desc')->paginate('15', ['id', 'ds_resumo', 'dt_cadastro', 'fl_status']);
+
+        if (\Gate::denies('noticias.view')) {
+            $permission_view = false;
+        }
+        if (\Gate::denies('noticias.update')) {
+            $permission_update = false;
+        }
+
+        return view('admin.noticias.index', compact('model', 'permission_view', 'permission_update'));
     }
 
     /**

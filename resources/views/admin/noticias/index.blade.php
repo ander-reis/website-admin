@@ -14,6 +14,7 @@
                     </a>
                 </p>
             @endcan
+
             <table class="table">
                 <thead>
                 <tr>
@@ -27,32 +28,30 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($noticias as $noticia)
+                @foreach($model as $noticia)
                     <tr>
                         <td>{{ $noticia->id }}</td>
                         <td>
-                            @can('noticias.view')
+                            @if($permission_view)
                                 <a href="{{ route('admin.noticias.show', ['noticia' => $noticia->id]) }}">
                                     {{ $noticia->ds_resumo }}
                                 </a>
-                            @endcan
-                            @cannot('noticias.view')
+                            @else
                                 {{ $noticia->ds_resumo }}
-                            @endcannot
+                            @endif
                         </td>
                         <td class="text-center">{!! dtCadastroFormatted($noticia->dt_cadastro) !!}</td>
                         <td class="text-center">{!! flStatus($noticia->fl_status) !!}</td>
                         <td class="text-center">{!! dtCadastroFormatted($noticia->dt_cadastro) !!}</td>
                         <td class="text-center">
-                            @can('noticias.update')
+                            @if($permission_update)
                                 <a class="text-dark link-icon"
                                    href="{{ route('admin.noticias.edit', ['noticia' => $noticia->id]) }}">
                                     <i class="fas fa-edit fa-2x"></i>
                                 </a>
-                            @endcan
-                            @cannot('noticias.update')
+                            @else
                                 <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
-                            @endcannot
+                            @endif
                         </td>
                         <td class="text-center">
                             @if(!$noticia->fl_status == 0)
@@ -62,11 +61,11 @@
                                     <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
                                 </a>
                             @else
-                            <a class="text-danger"
-                            href="{{ env('APP_URL_SITE_VER_OCULTA') }}{{ $noticia->id }}"
-                            target="_blank">
-                             <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
-                         </a>
+                                <a class="text-danger"
+                                   href="{{ env('APP_URL_SITE_VER_OCULTA') }}{{ $noticia->id }}"
+                                   target="_blank">
+                                    <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                                </a>
                             @endif
                         </td>
                     </tr>
@@ -75,7 +74,7 @@
             </table>
 
             {{--paginacao--}}
-            {!! $noticias->links() !!}
+            {!! $model->links() !!}
 
         </div>
     </div>

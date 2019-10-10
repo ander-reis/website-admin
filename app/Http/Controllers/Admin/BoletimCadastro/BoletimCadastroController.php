@@ -37,6 +37,8 @@ class BoletimCadastroController extends Controller
      */
     public function index()
     {
+        $permission = true;
+
         $model = $this->repository->orderBy('id_boletim', 'desc')->paginate(15, ['id', 'id_boletim', 'dt_boletim', 'ds_destaque', 'ds_link']);
 
         if (\Gate::denies('boletim-cadastro.view')) {
@@ -44,11 +46,10 @@ class BoletimCadastroController extends Controller
             return redirect()->route('admin.dashboard');
         }
         if (\Gate::denies('boletim-cadastro.update')) {
-            $not_update = true;
-            return view('admin.boletim-cadastro.index', compact('model', 'not_update'));
+            $permission = false;
         }
 
-        return view('admin.boletim-cadastro.index', compact('model'));
+        return view('admin.boletim-cadastro.index', compact('model', 'permission'));
     }
 
     /**

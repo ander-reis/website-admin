@@ -42,24 +42,22 @@
                             {{ $intro->dt_ate }}
                         </td>
                         <td class="text-center">
-                            @can('intro.update')
+                            @if($permission_update)
                                 <a class="text-dark link-icon" href="{{ route('admin.intro.edit', ['intro' => $intro->id]) }}">
                                     <i class="fas fa-edit fa-2x"></i>
                                 </a>
-                            @endcan
-                            @cannot('intro.update')
-                                <i class="fas fa-edit fa-2x"></i>
-                            @endcannot
+                            @else
+                                <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
+                            @endif
                         </td>
                         <td class="text-center">
-                            @can('intro.delete')
+                            @if($permission_destroy)
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteIntroModal" data-whatever="{{ $intro->id }}">
                                     <i class="fas fa-trash-alt fa-2x"></i>
                                 </a>
-                            @endcan
-                            @cannot('intro.delete')
-                                <i class="fas fa-trash-alt fa-2x"></i>
-                            @endcannot
+                            @else
+                                 <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

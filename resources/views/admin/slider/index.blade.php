@@ -47,24 +47,22 @@
                             {!! flStatus($slider->fl_ativo) !!}
                         </td>
                         <td class="text-center">
-                            @can('slider.update')
+                            @if($permission_update)
                                 <a class="text-dark link-icon" href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}">
                                     <i class="fas fa-edit fa-2x"></i>
                                 </a>
-                            @endcan
-                            @cannot('slider.update')
-                                <i class="fas fa-edit fa-2x"></i>
-                            @endcannot
+                            @else
+                                 <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
+                            @endif
                         </td>
                         <td class="text-center">
-                            @can('slider.delete')
+                            @if($permission_destroy)
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteSliderModal" data-whatever="{{ $slider->id }}">
                                     <i class="fas fa-trash-alt fa-2x"></i>
                                 </a>
-                            @endcan
-                            @cannot('slider.delete')
-                                    <i class="fas fa-trash-alt fa-2x"></i>
-                            @endcannot
+                            @else
+                                <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

@@ -53,7 +53,7 @@ class OrdemNoticiasController extends Controller
         /**
          * noticias collection
          */
-        $noticias = $this->noticiasRepository->orderBy('id', 'desc')->take(52)->get();
+        $noticias = $this->noticiasRepository->orderBy('id', 'desc')->take(52)->get(['id', 'ds_resumo', 'dt_cadastro', 'fl_status']);
 
         /**
          * ordemNoticias collection
@@ -122,10 +122,10 @@ class OrdemNoticiasController extends Controller
     private function ordemNoticiaSelect()
     {
         $noticias = null;
-        $list = $this->repository->all();
+        $list = $this->repository->all(['id_noticia']);
 
         foreach ($list as $item) {
-            $noticias[] = $this->noticiasRepository->find($item->id_noticia);
+            $noticias[] = $this->noticiasRepository->find($item->id_noticia, ['id', 'ds_resumo', 'dt_cadastro', 'fl_status']);
         }
 
         return $noticias;

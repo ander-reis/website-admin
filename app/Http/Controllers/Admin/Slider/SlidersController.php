@@ -38,9 +38,25 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        $sliders = $this->repository->orderBy('fl_ativo', 'desc')->orderBy('fl_ordem', 'asc')->orderBy('id', 'desc')->paginate();
+        $permission_update = true;
+        $permission_destroy = true;
 
-        return view('admin.slider.index', compact('sliders'));
+        $sliders = $this->repository->orderBy('fl_ativo', 'desc')
+            ->orderBy('fl_ordem', 'asc')
+            ->orderBy('id', 'desc')->paginate(15, ['id', 'ds_label', 'ds_titulo', 'ds_link', 'fl_ordem', 'fl_ativo']);
+
+        if (\Gate::denies('slider.view')) {
+            toastr()->error("Acesso não Autorizado");
+            return redirect()->route('admin.dashboard');
+        }
+        if (\Gate::denies('slider.update')) {
+            $permission_update = false;
+        }
+        if (\Gate::denies('slider.delete')) {
+            $permission_destroy = false;
+        }
+
+        return view('admin.slider.index', compact('sliders', 'permission_update', 'permission_destroy'));
     }
 
     /**

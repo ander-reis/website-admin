@@ -38,9 +38,23 @@ class IntrosController extends Controller
      */
     public function index()
     {
-        $intros = $this->repository->orderBy('id', 'asc')->paginate();
+        $permission_update = true;
+        $permission_destroy = true;
 
-        return view('admin.intro.index', compact('intros'));
+        $intros = $this->repository->orderBy('id', 'asc')->paginate(15, ['id', 'ds_titulo', 'dt_de', 'dt_ate']);
+
+        if (\Gate::denies('intro.view')) {
+            toastr()->error("Acesso não Autorizado");
+            return redirect()->route('admin.dashboard');
+        }
+        if (\Gate::denies('intro.update')) {
+            $permission_update = false;
+        }
+        if (\Gate::denies('intro.delete')) {
+            $permission_destroy = false;
+        }
+
+        return view('admin.intro.index', compact('intros', 'permission_update', 'permission_destroy'));
     }
 
      /**
@@ -74,16 +88,12 @@ class IntrosController extends Controller
         try {
             $data = $request->only(array_keys($request->all()));
 
-            //if (array_key_exists('ds_imagem', $data)) {
-                $this->repository->create($data);
+            $this->repository->create($data);
 
-                toastr()->success('Cadastrado com sucesso!');
+            toastr()->success('Cadastrado com sucesso!');
 
-                return redirect()->route('admin.intro.index');
-            //}
+            return redirect()->route('admin.intro.index');
         } catch (\Exception $e) {
-
-            dd($e);
 
             toastr()->error("Não foi possível realizar o cadastro");
 
@@ -125,7 +135,6 @@ class IntrosController extends Controller
     public function update(IntroUpdateRequest $request, $id)
     {
         try {
-
             $form = $request->only(array_keys($request->all()));
 
             $this->repository->update($form, $id);
