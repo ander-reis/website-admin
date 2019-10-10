@@ -108,14 +108,18 @@
                             </div>
                         </li>
 
-                        <li class="nav-item dropdown mx-3">
+                        <li class="nav-item dropdown mx-3 {{ active('admin.paginas-principais.*') }} {{ active('admin.boletim-cadastro.*') }}">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Administração de Conteúdo
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('admin.paginas-principais.index') }}">Conteúdo
-                                    Geral</a>
+                                <a class="dropdown-item" href="{{ route('admin.paginas-principais.index') }}">
+                                    Conteúdo Geral
+                                </a>
+                                <a class="dropdown-item" href="{{ route('admin.boletim-cadastro.index') }}">
+                                    Cadastrar Boletim
+                                </a>
                             </div>
                         </li>
 

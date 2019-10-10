@@ -48,7 +48,7 @@ class OrdemNoticiasController extends Controller
             toastr()->error("Acesso não Autorizado");
 
             return redirect()->route('admin.dashboard');
-        }
+    }
 
         /**
          * noticias collection

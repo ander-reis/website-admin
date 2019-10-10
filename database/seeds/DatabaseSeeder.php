@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissoesTableSeeder::class);
         $this->call(HomePageTableSeeder::class);
         $this->call(HomePageTempTableSeeder::class);
+        $this->call(BoletimCadastroTableSeeder::class);
+        $this->call(OrdemNoticiaTableSeeder::class);
     }
 }

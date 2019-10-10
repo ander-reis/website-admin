@@ -202,7 +202,10 @@ return [
         'ds_imagem_mobile'      => 'imagem mobile',
         'ds_link'               => 'link',
         'dt_de'                 => 'de',
-        'dt_ate'                => 'até'
-
+        'dt_ate'                => 'até',
+        'id_boletim'            => 'id',
+		'ds_destaque'           => 'destaque',
+		'dt_boletim'            => 'data',
+        'ds_tag'                => 'descrição'
     ],
 ];

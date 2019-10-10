@@ -76,6 +76,11 @@ Route::prefix('admin')->group(function(){
         Route::resource('owl-carousel', 'OwlCarousel\OwlCarouselController', ['only' => ['index', 'edit', 'update']]);
 
         /**
+         * Boletim Cadastro
+         */
+        Route::resource('boletim-cadastro', 'BoletimCadastro\BoletimCadastroController', ['index', 'create', 'store', 'edit', 'update']);
+
+        /**
          * páginas principais
          */
         Route::name('paginas-principais.index')->get('/paginas-principais', 'PaginasPrincipais\PaginasPrincipaisController@index');

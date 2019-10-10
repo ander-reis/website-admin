@@ -103,7 +103,6 @@ class NoticiasController extends Controller
      */
     public function show($id)
     {
-
         if (\Gate::denies('noticias.view')) {
 
             toastr()->error("Acesso não Autorizado");
@@ -160,7 +159,7 @@ class NoticiasController extends Controller
 
             toastr()->success('Cadastro alterado com sucesso!');
 
-            return redirect()->route('admin.noticias.index');
+            return redirect()->to($data['redirects_to']);
         } catch (\Exception $e) {
 
             toastr()->error("Não foi possível alterar o cadastro");
