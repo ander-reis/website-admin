@@ -19,25 +19,19 @@
                         <td>{{ $item->txt_titulo }}</td>
                         <td class="text-center">{!! flStatus($item->fl_status) !!}</td>
                         <td class="text-center">
-                            @can('paginas-principais.update')
+                            @if($permission_update)
                                 <a class="text-dark link-icon"
                                    href="{{ route('admin.paginas-principais.edit', ['id' => $item->id_pagina]) }}">
                                     <i class="fas fa-edit fa-2x"></i>
                                 </a>
-                            @endcan
-                            @cannot('paginas-principais.update')
+                            @else
                                 <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
-                            @endcannot
+                            @endif
                         </td>
                         <td class="text-center">
-                            @can('paginas-principais.view')
-                                <a href="{{ env('APP_URL_SITE_VER_PAGINA') .  $item->url }}" target="_blank">
-                                    <i class="fas fa-eye fa-2x"></i>
-                                </a>
-                            @endcan
-                            @cannot('paginas-principais.view')
-                                <i class="fas fa-eye-slash fa-2x text-danger"></i>
-                            @endcannot
+                            <a href="{{ env('APP_URL_SITE_VER_PAGINA') .  $item->url }}" target="_blank">
+                                <i class="fas fa-eye fa-2x"></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

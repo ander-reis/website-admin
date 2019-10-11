@@ -48,6 +48,9 @@ class ConvencoesController extends Controller
      */
     public function index($id)
     {
+        $permission_view = true;
+        $permission_update = true;
+
         /**
          * consulta entidade
          */
@@ -58,9 +61,18 @@ class ConvencoesController extends Controller
         $convencoes = $this->convencoesRepository->scopeQuery(function($query) use($id){
             return $query->orderBy('id_convencao','desc')
                 ->where('fl_entidade', $id);
-        })->paginate();
+        })->paginate(15, ['id_convencao', 'ds_titulo', 'dt_validade', 'fl_status']);
 
-        return view('admin.convencoes.index', compact('entidade', 'convencoes'));
+        if (\Gate::denies('convencoes.view')) {
+            $permission_view = false;
+            toastr()->error("Acesso não Autorizado");
+            return redirect()->route('admin.dashboard');
+        }
+        if (\Gate::denies('convencoes.update')) {
+            $permission_update = false;
+        }
+
+        return view('admin.convencoes.index', compact('entidade', 'convencoes', 'permission_view', 'permission_update'));
     }
 
     /**

@@ -29,40 +29,37 @@
                     @foreach($convencoes as $convencao)
                         <tr>
                             <td>
-                                @can('convencoes.view')
+                                @if($permission_view)
                                     <a href="{{ route('admin.convencao.show', [$entidade, $convencao]) }}">
                                         {{ $convencao->ds_titulo }}
                                     </a>
-                                @endcan
-                                @cannot('convencoes.view')
+                                @else
                                     {{ $convencao->ds_titulo }}
-                                @endcannot
+                                @endif
                             </td>
                             <td class="text-center">{{ $convencao->dt_validade }}</td>
                             <td>
                                 {!! flStatus($convencao->fl_status) !!}
                             </td>
                             <td class="text-center">
-                                @can('convencoes.view')
+                                @if($permission_view)
                                     <a class="text-primary"
                                        href="{{ route('admin.convencao.clausulas.index', [$entidade, $convencao]) }}">
                                         <i class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
                                     </a>
-                                @endcan
-                                @cannot('convencoes.view')
-                                        <i class="fa fa-exclamation-circle text-danger" aria-hidden="true"></i>
-                                @endcannot
+                                @else
+                                        <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
+                                @endif
                             </td>
                             <td class="text-center">
-                                @can('convencoes.update')
+                                @if($permission_update)
                                     <a class="text-dark link-icon"
                                        href="{{ route('admin.convencao.edit', [$entidade, $convencao]) }}">
                                         <i class="fas fa-edit fa-2x"></i>
                                     </a>
-                                @endcan
-                                @cannot('convencoes.update')
+                                @else
                                     <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
-                                @endcannot
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -71,7 +68,6 @@
             @endif
         </div>
     </div>
-
     {{--paginacao--}}
     {!! $convencoes->links() !!}
 @endsection()
