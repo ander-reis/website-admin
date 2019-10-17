@@ -36,7 +36,7 @@
                             {!! flStatus($clausula->fl_status) !!}
                         </td>
                         <td class="text-center">
-                            @can('clausulas.update')
+                            @if($permission_update)
                                 <a class="text-dark link-icon" href="{{ route('admin.convencao.clausulas.edit', [
                                 'convencoes_entidade' => $convencoes->fl_entidade,
                                 $convencoes,
@@ -44,27 +44,24 @@
                                 ]) }}">
                                     <i class="fas fa-edit fa-2x"></i>
                                 </a>
-                            @endcan
-                            @cannot('clausulas.update')
+                            @else
                                 <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
-                            @endcannot
+                            @endif
                         </td>
                         <td class="text-center">
-                            @can('clausulas.delete')
+                            @if($permission_destroy)
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#deleteClausulaModal" data-whatever="{{ $clausula->id_clausula }}">
                                     <i class="fas fa-trash-alt fa-2x"></i>
                                 </a>
-                            @endcan
-                            @cannot('clausulas.delete')
+                            @else
                                 <i class="fa fa-exclamation-circle fa-2x text-danger" aria-hidden="true"></i>
-                            @endcannot
+                            @endif
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
             @endif
-
             {{--paginacao--}}
             {!! $clausulas->links() !!}
         </div>

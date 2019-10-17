@@ -35,16 +35,19 @@ class PaginasPrincipaisController extends Controller
      */
     public function index()
     {
+        $permission_update = true;
+
+        $data = $this->repository->orderBy('txt_titulo')->get(['txt_titulo', 'fl_status', 'id_pagina', 'url']);
+
         if (\Gate::denies('paginas-principais.view')) {
-
             toastr()->error("Acesso não Autorizado");
-
             return redirect()->route('admin.dashboard');
         }
+        if (\Gate::denies('paginas-principais.update')) {
+            $permission_update = false;
+        }
 
-        $data = $this->repository->orderBy('txt_titulo')->get();
-
-        return view('admin.paginas-principais.index', compact('data'));
+        return view('admin.paginas-principais.index', compact('data', 'permission_update'));
     }
 
     /**

@@ -49,9 +49,25 @@ class ConvencoesClausulasController extends Controller
      */
     public function index(ConvencoesEntidade $convencoesEntidade, Convencoes $convencoes)
     {
-        $clausulas = $convencoes->clausulas()->orderBy('num_clausula', 'asc')->paginate();
+        $permission_update = true;
+        $permission_destroy = true;
 
-        return view('admin.clausulas.index', compact('clausulas', 'convencoes'));
+        $clausulas = $convencoes->clausulas()
+            ->orderBy('num_clausula', 'asc')
+            ->paginate(15, ['id_clausula', 'ds_titulo', 'num_clausula', 'fl_status']);
+
+        if (\Gate::denies('clausulas.view')) {
+            toastr()->error("Acesso não Autorizado");
+            return redirect()->route('admin.dashboard');
+        }
+        if (\Gate::denies('clausulas.update')) {
+            $permission_update = false;
+        }
+        if (\Gate::denies('clausulas.delete')) {
+            $permission_destroy = false;
+        }
+
+        return view('admin.clausulas.index', compact('clausulas', 'convencoes', 'permission_update', 'permission_destroy'));
     }
 
     /**
@@ -74,7 +90,7 @@ class ConvencoesClausulasController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  ConvencoesClausulasCreateRequest $request
+     * @param ConvencoesClausulasCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
@@ -105,7 +121,7 @@ class ConvencoesClausulasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -124,8 +140,8 @@ class ConvencoesClausulasController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  ConvencoesClausulasUpdateRequest $request
-     * @param  string $id
+     * @param ConvencoesClausulasUpdateRequest $request
+     * @param string $id
      *
      * @return Response
      *
@@ -157,7 +173,7 @@ class ConvencoesClausulasController extends Controller
      * Remove the specified resource from storage.
      *
      * @param ConvencoesClausulasDeleteRequest $request
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(ConvencoesClausulasDeleteRequest $request, $convencoes_entidade, $id_convencao)
