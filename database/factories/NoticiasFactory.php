@@ -3,7 +3,9 @@
 use Faker\Generator as Faker;
 
 $factory->define(\App\Models\Noticias::class, function (Faker $faker) {
+    static $index = 1;
     return [
+        'id_noticia' => $index++,
         'dt_cadastro' => $faker->dateTime('now', 'UTC'),
         'fl_exibir_destaque' => rand(0, 1),
         'ds_resumo' => $faker->text(80),

@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(HomePageTempTableSeeder::class);
         $this->call(BoletimCadastroTableSeeder::class);
         $this->call(OrdemNoticiaTableSeeder::class);
+        $this->call(EscolaMesesTableSeeder::class);
     }
 }

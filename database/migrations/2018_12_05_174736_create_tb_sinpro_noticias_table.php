@@ -16,7 +16,7 @@ class CreateTbSinproNoticiasTable extends Migration
         Schema::create('tb_sinpro_noticias', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_noticia')->default(0);
-            $table->integer('id_categoria')->default(19);
+            $table->integer('id_categoria')->default(0);
             $table->dateTime('dt_noticia', 3)->nullable()->default(\Carbon\Carbon::now());
             $table->dateTime('dt_cadastro', 3)->default(\Carbon\Carbon::now());
             $table->dateTime('dt_alteracao', 3)->default(\Carbon\Carbon::now());
