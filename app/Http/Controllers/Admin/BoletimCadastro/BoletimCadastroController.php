@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BoletimCadastroCreateRequest;
 use App\Http\Requests\BoletimCadastroUpdateRequest;
 use App\Repositories\BoletimCadastroRepository;
+use Debugbar;
 
 /**
  * Class BoletimCadastroController.
@@ -83,9 +84,9 @@ class BoletimCadastroController extends Controller
         try {
             $data = $request->only(array_keys($request->all()));
 
-            toastr()->success('Cadastrado com sucesso!');
-
             $this->repository->create($data);
+
+            toastr()->success('Cadastrado com sucesso!');
 
             return redirect()->route('admin.boletim-cadastro.index');
         } catch (\Exception $e) {
