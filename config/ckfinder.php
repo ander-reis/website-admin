@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'sinprosp.org.br';
-$config['licenseKey']  = 'Q131LR2DMK5GAN4L35LQTQ35LHUEG';
+$config['licenseName'] = 'admin.sinprosp.org.br';
+$config['licenseKey']  = '7B8BB4AU13H6P2TNNG8UUGEVVU5KU';
 
 //$config['licenseName'] = 'website-admin.br';
 //$config['licenseKey']  = 'MU3UUY8RE69CDFFUNTSVEL2V23DHK';
