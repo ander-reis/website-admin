@@ -35,6 +35,9 @@ $config['authentication'] = function () {
 $config['licenseName'] = 'sinprosp.org.br';
 $config['licenseKey']  = 'Q131LR2DMK5GAN4L35LQTQ35LHUEG';
 
+//$config['licenseName'] = 'website-admin.br';
+//$config['licenseKey']  = 'MU3UUY8RE69CDFFUNTSVEL2V23DHK';
+
 /*============================ CKFinder Internal Directory ============================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_privateDir
 
