@@ -94,6 +94,13 @@ Route::prefix('admin')->group(function(){
         Route::name('home-page.store')->post('/home-page', 'HomePage\HomePageController@store');
 
         /**
+         * Instruções
+         */
+        Route::name('instrucoes.index')->get('/instrucoes', function () {
+           return view('admin.instrucoes.index');
+        });
+
+        /**
          * rotas para download da slider/imagem no sistema
          */
         Route::name('slider.thumb_asset')->get('slider/{slider}/thumb_asset', 'Slider\SlidersController@thumbAsset');

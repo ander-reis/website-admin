@@ -85,4 +85,14 @@ class User extends Authenticatable implements JWTSubject
             ]
         ];
     }
+
+    /**
+     * Retorna username em maiusculo
+     *
+     * @return mixed|string
+     */
+    public function getUsernameAttribute($value)
+    {
+        return strtoupper($value);
+    }
 }
