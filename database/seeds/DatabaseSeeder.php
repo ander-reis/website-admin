@@ -26,5 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(BoletimCadastroTableSeeder::class);
         $this->call(OrdemNoticiaTableSeeder::class);
         $this->call(EscolaMesesTableSeeder::class);
+        $this->call(CurriculosDisciplinasTableSeeder::class);
+        $this->call(CurriculosFormacaoTableSeeder::class);
+        $this->call(CurriculosNivelAtuacaoTableSeeder::class);
     }
 }

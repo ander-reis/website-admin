@@ -10,8 +10,8 @@ $factory->define(\App\Models\BoletimCadastro::class, function (Faker $faker) {
         'id_boletim' => $faker->randomNumber(2),
         'dt_boletim' => $faker->dateTime(),
         'ds_destaque' => $faker->word(),
-        'ds_link' => $faker->url,
-        'ds_tag' => $faker->word,
+        'ds_link' => 'http://' . $faker->text(80),
+        'ds_tag' => $faker->text(100),
         'dt_cadastro' => $faker->dateTime('now'),
     ];
 });
