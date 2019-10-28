@@ -118,7 +118,7 @@
                                     Conteúdo Geral
                                 </a>
                                 <a class="dropdown-item" href="{{ route('admin.boletim-cadastro.index') }}">
-                                    Cadastrar Boletim
+                                    Boletim
                                 </a>
                             </div>
                         </li>
