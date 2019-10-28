@@ -118,11 +118,16 @@
                                     Conteúdo Geral
                                 </a>
                                 <a class="dropdown-item" href="{{ route('admin.boletim-cadastro.index') }}">
-                                    Cadastrar Boletim
+                                    Boletim
                                 </a>
                             </div>
                         </li>
 
+                        <li class="nav-item dropdown mx-3 {{ active('admin.paginas-principais.*') }} {{ active('admin.boletim-cadastro.*') }}">
+                            <a class="nav-link" href="{{ route('admin.instrucoes.index') }}" target="_blank">
+                                Instruções
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -130,7 +135,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->nome }} <span class="caret"></span>
+                                {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

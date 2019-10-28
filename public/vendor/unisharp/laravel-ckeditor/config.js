@@ -44,7 +44,7 @@ CKEDITOR.editorConfig = function (config) {
     config.skin = 'moono-dark';
 
 	// habilitar plugins
-    config.extraPlugins = 'font,colorbutton,justify,div,showblocks,dialogui,dialog,templates';
+    config.extraPlugins = 'font,colorbutton,justify,div,showblocks,dialogui,dialog,templates,youtube';
 
     //desabilitar copia com formatacao do word
     config.forcePasteAsPlainText = true;
