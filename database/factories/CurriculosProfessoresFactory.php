@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Models\CurriculosProfessores::class, function (Faker $faker) {
     return [
-
+        //
     ];
 });
