@@ -148,5 +148,11 @@ class PaginasPrincipaisTableSeeder extends Seeder
             'txt_titulo' => 'Baile dos Professores',
             'url' => 'baile_professor',
         ]);
+
+//        factory(\App\Models\PaginasPrincipais::class)->create([
+//            'txt_titulo_busca' => 'Processos',
+//            'txt_titulo' => 'Processos',
+//            'url' => 'processos',
+//        ]);
     }
 }
