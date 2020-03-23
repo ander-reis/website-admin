@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
         factory(\App\Models\User::class)->create([
             'nome' => 'ANDERSON',
             'username' => 'anderson',
-            'senha' => bcrypt('ander2515'),
+            'senha' => bcrypt('secret'),
             'remember_token' => str_random(10),
         ]);
     }

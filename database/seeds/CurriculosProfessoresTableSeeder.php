@@ -11,6 +11,6 @@ class CurriculosProfessoresTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\CurriculosProfessores::class)->create();
+        factory(\App\Models\CurriculosProfessores::class, 1)->create();
     }
 }
